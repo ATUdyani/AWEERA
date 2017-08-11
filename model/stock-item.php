@@ -11,7 +11,7 @@
 			$query = "SELECT * FROM stock_item ORDER BY type";
 			$stocks = $db->executeQuery($query);
 
-			$db->verify_query($stocks);
+			$db->verifyQuery($stocks);
 
 			while($stock = mysqli_fetch_assoc($stocks)){
 				$stock_list.= "<tr>";

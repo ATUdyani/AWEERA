@@ -10,7 +10,7 @@
 			$query = "SELECT * FROM user WHERE is_deleted=0 ORDER BY type";
 			$users = $db->executeQuery($query);
 
-			$db->verify_query($users);
+			$db->verifyQuery($users);
 
 			while($user = mysqli_fetch_assoc($users)){
 				$user_list.= "<tr>";

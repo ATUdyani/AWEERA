@@ -150,7 +150,7 @@
                         <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
                         <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
-                        <li><a href="#" id="btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
+                        <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
                             <ul class="nav collapse my-sidebar-submenu" id="submenuStaff" role="menu" aria-labelledby="btnStaff">
                                 <li><a href="../view/add-staff.php" class="my-sidebar-submenu-item">Add Staff</a></li>
                                 <li><a href="#">Update Staff</a></li>

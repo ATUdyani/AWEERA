@@ -39,7 +39,7 @@
 
                $result_set = mysqli_query($connection,$query);
 
-               $db->verify_query($result_set);
+               $db->verifyQuery($result_set);
 
                // query successful
                if (mysqli_num_rows($result_set) == 1){
@@ -53,7 +53,7 @@
                   $query = "UPDATE user SET last_login=NOW() WHERE id = {$_SESSION['user_id']} LIMIT 1";
                   $result_set = mysqli_query($connection,$query);
 
-                  $db->verify_query($result_set);
+                  $db->verifyQuery($result_set);
                   
                   // redirect to user.php
                   $type=$user["type"];

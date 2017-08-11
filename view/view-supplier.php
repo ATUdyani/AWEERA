@@ -7,16 +7,16 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Supplier ID</th>
-      <th>Supplier Name</th>
-      <th>Supplier Phone</th>
-      <th>Supplier Address</th>
-      <th>Supplier Email</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Email</th>
     </tr>
   </thead>
   <tbody>
     <?php 
-    	// create an oblject from StockItem class
+    	// create an object from StockItem class
 		$supplier= new Supplier();
 		$supplier_list = $supplier->loadSupplierDetails();
 		echo $supplier_list; 

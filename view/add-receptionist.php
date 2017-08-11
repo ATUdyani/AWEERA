@@ -9,7 +9,7 @@
 		formArray.push(document.getElementById("emp_email").value);
 		formArray.push(document.getElementById("emp_phone").value);
 		formArray.push(document.getElementById("emp_address").value);
-		formArray.push(document.getElementById("emp_type").value);
+		formArray.push("Receptionist");
 		var jsonString = JSON.stringify(formArray);
 	      $.ajax({
 	        url:"../controller/add-staff-handler.php", //the page containing php script
@@ -64,18 +64,6 @@
         <label class="col-md-4 control-label">Address</label>
         <div class="col-md-8">
             <textarea class="form-control" type="text" rows="5" id="emp_address" maxlength="60" required=""></textarea>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-md-4 col-form-label">Type</label>
-        <div class="col-md-8 selectContainer">
-            <select class="form-control" name="size" id="emp_type" required="">
-                <option value="None">Select employee type</option>
-                <option value="Administrator">Administrator</option>
-                <option value="Receptionist">Receptionist</option>
-                <option value="Beautician">Beautician</option>
-            </select>
         </div>
     </div>
 
@@ -143,7 +131,7 @@
 	</div>
 
 	<div>
-	  <button name="clear" type="button" class="btn btn-primary col-md-1 my-button-action">Clear</button>
+	  <button name="clear" type="button" class="btn btn-primary col-md-1">Clear</button>
 	  <button name="submit" onclick="checkForm()" type="button" value="submit" class="btn btn-primary col-md-1 my-form-action"  method="post">Submit</button>
 	</div>
 

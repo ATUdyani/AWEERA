@@ -3,6 +3,24 @@
     $db->connect();
 ?>
 
+<script type="text/javascript">
+    function checkForm() {
+        var formArray = [];
+        formArray.push(document.getElementById("email").value);
+        formArray.push(document.getElementById("password").value);
+        var jsonString = JSON.stringify(formArray);
+          $.ajax({
+            url:"../controller/loginCopy.php", //the page containing php script
+            type: "POST", //request type
+            data: {data : jsonString}, 
+            cache: false,
+            success:function(result){
+                document.getElementById("errorMsg").innerHTML = result;
+            }
+           });
+      }
+    </script>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -110,24 +128,24 @@
                 	<form method="post">
                 		<h4>Log In</h4>
 
-                        <?php
-                            if (isset($errors) && !empty($errors)){
-                                echo '<p class="error">Invalid Email / Password</p>';
-                            }
-                        ?>
+                        <div>
+                            <p id="errorMsg"></p>
+                        </div>
+
                         <!-- <p class="error">Invalid Email / Password</p> -->
                 		<div>
-                			<input class="my-login-text" type="text" placeholder="Email" required="" name="email">
+                			<input id="email" class="my-login-text" type="text" placeholder="Email" required="" name="email">
                 		</div>
 
                 		<div>
-                			<input class="my-login-text" type="password" placeholder="Password" required=""  name="password">
+                			<input id="password" class="my-login-text" type="password" placeholder="Password" required=""  name="password">
                 		</div>
                 		<div class="clearfix" >
                 			<a href="#">Forgot Password?</a>
                 		</div>
                 		<div>
-                			<input class="my-login-button" type="submit" formaction="controller/login.php" value="Log In" name="submit">
+                            <!-- <button name="submit" onclick="checkForm()" type="button" value="submit" class="my-login-button"  method="post">Log In</button> -->
+                            <input class="my-login-button" type="submit" formaction="controller/login.php" value="Log In" name="submit">
                 		</div>
                 		<div>
                 			<text>Don't have an account?</text>
@@ -396,6 +414,8 @@
     		})
     	})
     </script>
+
+
 </body>
 
 </html>

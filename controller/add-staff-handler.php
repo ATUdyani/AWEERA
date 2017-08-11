@@ -1,25 +1,55 @@
-<?php 
+<?php require_once '../controller/functions.php' ?>
+<?php require_once '../model/database.php' ?>
+<?php require_once '../model/employee.php' ?>
+
+<?php
+	$db = new Database();
+	$connection = $db->connect();
 
 	$data = json_decode(stripslashes($_POST['data']));
 	$errors = array();
 
 	// checking required fields
 	if (empty($data[0])){
-		$errors[] = 'First Name is required';
+		$errors[] = 'First Name is required.';
 	}
+
 	if (empty($data[1])){
-		$errors[] = 'Last Name is required';
+		$errors[] = 'Last Name is required.';
 	}
+
 	if (empty($data[2])){
-		$errors[] = 'Email is required';
+		$errors[] = 'Email is required.';
 	}
+ 	elseif(!is_email($data[2])){ // cheking email address
+ 		$errors[] = "Email Address is invalid.";
+ 	}
+ 	else{ // checking if email address already exists
+ 		//$email = $db->removeSqlInjection($data[2]);
+ 		$email = $data[2];
+ 		$query = "SELECT * FROM employee WHERE emp_email='{$email}' LIMIT 1";
+
+ 		$result_set = $db->executeQuery($query);
+
+ 		if($result_set){
+ 			if($db->getNumRows($result_set)==1){
+ 				$errors[] = 'Email Address already exists.';
+ 			}
+ 		}
+
+ 	}
+
 	if (empty($data[3])){
-		$errors[] = 'Phone Number is required';
+		$errors[] = 'Phone Number is required.';
 	}
+
 	if (empty($data[4])){
-		$errors[] = 'Address is required';
+		$errors[] = 'Address is required.';
 	}
-	
+
+	if ($data[5]=="None"){
+		$errors[] = 'Employee type is required.';
+	}
 
 	if (!empty($errors)){
  		echo 'There were error(s) on your form.<br>';
@@ -27,4 +57,21 @@
  			echo $error."<br>";
  		}
  	}
+ 	else{
+ 		// adding a new record
+ 		$first_name = mysqli_real_escape_string($connection,$data[0]); 
+ 		$last_name = mysqli_real_escape_string($connection,$data[1]);
+ 		$emp_email = mysqli_real_escape_string($connection,$data[2]);
+ 		$emp_phone = mysqli_real_escape_string($connection,$data[3]);
+ 		$emp_address = mysqli_real_escape_string($connection,$data[4]);
+        $emp_type = mysqli_real_escape_string($connection,$data[5]);
+
+
+ 		$employee = new Employee();
+ 		$employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type);
+ 		$employee->addEmployee();
+
+ 	}
+
+ 	
  ?>

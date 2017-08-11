@@ -11,7 +11,7 @@
 			$query = "SELECT * FROM supplier ORDER BY supplier_name";
 			$suppliers = $db->executeQuery($query);
 
-			$db->verify_query($suppliers);
+			$db->verifyQuery($suppliers);
 
 			while($supplier = mysqli_fetch_assoc($suppliers)){
 				$supplier_list.= "<tr>";

@@ -7,10 +7,10 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Stock ID</th>
-      <th>Item Name</th>
+      <th>ID</th>
+      <th>Name</th>
       <th>Brand</th>
-      <th>Count</th>
+      <th>Stock Count</th>
       <th>Type</th>
       <th>Price</th>
       <th>Description</th>
@@ -19,7 +19,7 @@
   </thead>
   <tbody>
     <?php 
-    	// create an oblject from StockItem class
+    	// create an object from StockItem class
 		$stockitem= new StockItem();
 		$stock_list = $stockitem->loadStockDetails();
 		echo $stock_list; 
