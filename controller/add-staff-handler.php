@@ -47,8 +47,8 @@
 		$errors[] = 'Address is required.';
 	}
 
-	if ($data[5]=="None"){
-		$errors[] = 'Employee type is required.';
+	if ($data[5]=="Beautician"){
+		echo $data[6];
 	}
 
 	if (!empty($errors)){

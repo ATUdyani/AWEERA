@@ -56,7 +56,7 @@
         formArray.push(document.getElementById("emp_phone_beautician").value);
         formArray.push(document.getElementById("emp_address_beautician").value);
         formArray.push(document.getElementById("emp_type_button_beautician").value);
-        formArray.push(document.getElementById("emp_type_beautician").value);
+        alert(formArray.push(document.getElementsByName("services[]").value));
         var jsonString = JSON.stringify(formArray);
         $.ajax({
             url: "../controller/add-staff-handler.php", //the page containing php script
@@ -134,6 +134,18 @@
                 <div class="col-md-8">
                     <input class="form-control" type="text"  id="last_name_admin" maxlength="50">
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <form>
+                    <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                        <div class="col-md-8">
+                            <input type="radio" name="optradio">Male
+                        </div>
+                        <div class="col-md-8">
+                            <input type="radio" name="optradio">Female
+                        </div>
+                </form>
             </div>
 
             <div class="form-group row">
@@ -272,7 +284,7 @@
 
             <div>
                 <button name="clear" type="button" class="btn btn-primary col-md-1 my-button-action">Clear</button>
-                <button name="submit" id="emp_type_button_beautician" onclick="checkFormBeautician()" type="button" value="Receptionist" class="btn btn-primary col-md-1" method="post">Save</button>
+                <button name="submit" id="emp_type_button_beautician" onclick="checkFormBeautician()" type="button" value="Beautician" class="btn btn-primary col-md-1" method="post">Save</button>
             </div>
         </form>
 

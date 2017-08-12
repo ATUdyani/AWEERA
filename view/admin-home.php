@@ -164,6 +164,8 @@
                             </ul>
                         </li>
 
+                        <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
+
                     </ul>
                 </nav>
             </div>
