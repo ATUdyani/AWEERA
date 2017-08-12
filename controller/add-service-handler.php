@@ -49,6 +49,7 @@
  		$service ->setService($service_name,$service_charge,$description,$duration,$commission_percentage);
  		$service->addService();
 
+
  	}
  	
  ?>

@@ -48,7 +48,10 @@
 	}
 
 	if ($data[5]=="Beautician"){
-		echo $data[6];
+		// if services are not selected
+		if (empty($data[7])){
+            $errors[] = 'Services are required.';
+		}
 	}
 
 	if (!empty($errors)){
@@ -65,12 +68,15 @@
  		$emp_phone = mysqli_real_escape_string($connection,$data[3]);
  		$emp_address = mysqli_real_escape_string($connection,$data[4]);
         $emp_type = mysqli_real_escape_string($connection,$data[5]);
+        $emp_gender = mysqli_real_escape_string($connection,$data[6]);
+        $emp_services = $data[7] ;
 
+        $employee = new Employee();
+        $employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender);
+        $employee->addEmployee();
 
- 		$employee = new Employee();
- 		$employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type);
- 		$employee->addEmployee();
-
+        // if employee is a beautician, beautician's service list has to be inserted to the database
+		$employee ->addEmployeeServices($emp_services);
  	}
 
  	

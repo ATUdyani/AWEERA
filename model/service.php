@@ -98,7 +98,7 @@
 
                 while($service = mysqli_fetch_assoc($services)){
                     $service_names .= "<label class=\"form-check-label\">";
-                    $service_names .= "<input class=\"form-check-input\" type=\"checkbox\" name=\"services[]\" value=\"".$service['service_id']."\">";
+                    $service_names .= "<input class=\"form-check-input\" type=\"checkbox\" name=\"services\" value=\"".$service['service_id']."\">";
                     $service_names .= $service['service_name'];
                     $service_names .= "</label> <br>";
                 }

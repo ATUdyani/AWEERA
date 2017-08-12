@@ -4,12 +4,15 @@
 	
 	class Employee{
 
+	    protected static $emp_id;
 		protected static $first_name;
 		protected static $last_name; 
 		protected static $emp_email; 
 		protected static $emp_phone;
 		protected static $emp_address;
         protected static $emp_type;
+        protected static $emp_gender;
+        protected static $emp_services =[];
 		protected static $db;
 		protected static $connection;
 
@@ -18,17 +21,36 @@
             self::$connection = self::$db->connect();
         }
 
-        public function setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type){
-            self::$db = new Database();
-            self::$connection = self::$db->connect();
-
+        public function setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender){
             self::$first_name = $first_name;
             self::$last_name = $last_name;
             self::$emp_email = $emp_email;
             self::$emp_phone = $emp_phone;
             self::$emp_address = $emp_address;
             self::$emp_type = $emp_type;
+            self::$emp_gender = $emp_gender;
 
+        }
+
+        // add employee service list to the database
+        public function addEmployeeServices($emp_services){
+            self::$emp_services = $emp_services;
+
+            $last_id=self::$db->getLastRecordId('emp_id','employee');
+
+            foreach ( self::$emp_services as $service) {
+                $query = "INSERT INTO beautician_service (emp_id, service_id) VALUES ('".$last_id."', '"
+                    .$service."')";
+
+                try{
+                    $result = self::$db->executeQuery($query);
+                    if (!$result){
+                        echo "Failed to add the new record to the beautician_service table.";
+                    }
+                }catch (mysqli_sql_exception $e){
+                    echo $e;
+                }
+            }
         }
 
         /*
@@ -53,8 +75,9 @@
 
 		    echo $id;
 
-			$query = "INSERT INTO employee (emp_id, first_name, last_name, emp_email, emp_phone, emp_address, emp_type) VALUES ('".
-            $id."', '".self::$first_name."', '".self::$last_name."', '".self::$emp_email."', '".self::$emp_phone."', '".self::$emp_address."', '".self::$emp_type."')";
+			$query = "INSERT INTO employee (emp_id, first_name, last_name, emp_email, emp_phone, emp_address, emp_type,emp_gender) VALUES ('"
+                .$id."', '".self::$first_name."', '".self::$last_name."', '".self::$emp_email."', '"
+                .self::$emp_phone."', '".self::$emp_address."', '".self::$emp_type."', '".self::$emp_gender."')";
 
 			echo $query;
 

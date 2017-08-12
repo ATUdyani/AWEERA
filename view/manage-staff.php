@@ -16,6 +16,7 @@
         formArray.push(document.getElementById("emp_phone_admin").value);
         formArray.push(document.getElementById("emp_address_admin").value);
         formArray.push(document.getElementById("emp_type_button_admin").value);
+        formArray.push(document.querySelector('input[name = "gender_admin"]:checked').value);
         var jsonString = JSON.stringify(formArray);
         $.ajax({
             url:"../controller/add-staff-handler.php", //the page containing php script
@@ -36,6 +37,7 @@
         formArray.push(document.getElementById("emp_phone_receptionist").value);
         formArray.push(document.getElementById("emp_address_receptionist").value);
         formArray.push(document.getElementById("emp_type_button_receptionist").value);
+        formArray.push(document.querySelector('input[name = "gender_receptionist"]:checked').value);
         var jsonString = JSON.stringify(formArray);
         $.ajax({
             url: "../controller/add-staff-handler.php", //the page containing php script
@@ -56,7 +58,15 @@
         formArray.push(document.getElementById("emp_phone_beautician").value);
         formArray.push(document.getElementById("emp_address_beautician").value);
         formArray.push(document.getElementById("emp_type_button_beautician").value);
-        alert(formArray.push(document.getElementsByName("services[]").value));
+        formArray.push(document.querySelector('input[name = "gender_beautician"]:checked').value);
+        var services = document.getElementsByName('services');
+        var serviceArray = [];
+        for(var i = 0; i < services.length; i++){
+            if(services[i].checked){
+                serviceArray.push(services[i].value);
+            }
+        }
+        formArray.push(serviceArray);
         var jsonString = JSON.stringify(formArray);
         $.ajax({
             url: "../controller/add-staff-handler.php", //the page containing php script
@@ -140,10 +150,10 @@
                 <form>
                     <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
                         <div class="col-md-8">
-                            <input type="radio" name="optradio">Male
+                            <input id="male_radio_button" name="gender_admin" type="radio" name="optradio" value="Male" checked="">Male
                         </div>
                         <div class="col-md-8">
-                            <input type="radio" name="optradio">Female
+                            <input id="female_radio_button" name="gender_admin" type="radio" name="optradio" value="Female">Female
                         </div>
                 </form>
             </div>
@@ -198,6 +208,18 @@
             </div>
 
             <div class="form-group row">
+                <form>
+                    <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                    <div class="col-md-8">
+                        <input id="male_radio_button" name="gender_receptionist" type="radio" name="optradio" value="Male" checked="">Male
+                    </div>
+                    <div class="col-md-8">
+                        <input id="female_radio_button" name="gender_receptionist" type="radio" name="optradio" value="Female">Female
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-group row">
                 <label for="example-email-input" class="col-md-4 col-form-label">Email</label>
                 <div class="col-md-8">
                     <input class="form-control" type="email"  id="emp_email_receptionist" maxlength="50">
@@ -245,6 +267,18 @@
                 <div class="col-md-8">
                     <input class="form-control" type="text"  id="last_name_beautician" maxlength="50">
                 </div>
+            </div>
+
+            <div class="form-group row">
+                <form>
+                    <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                    <div class="col-md-8">
+                        <input id="male_radio_button" name="gender_beautician" type="radio" name="optradio" value="Male" checked="">Male
+                    </div>
+                    <div class="col-md-8">
+                        <input id="female_radio_button" name="gender_beautician" type="radio" name="optradio" value="Female">Female
+                    </div>
+                </form>
             </div>
 
             <div class="form-group row">
