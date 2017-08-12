@@ -6,26 +6,7 @@
 <script src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 
-<script type="text/javascript">
-    function checkFormService() {
-        var formArray = [];
-        formArray.push(document.getElementById("service_name").value);
-        formArray.push(document.getElementById("service_charge").value);
-        formArray.push(document.getElementById("description").value);
-        formArray.push(document.getElementById("duration").value);
-        formArray.push(document.getElementById("commission_percentage").value);
-        var jsonString = JSON.stringify(formArray);
-        $.ajax({
-            url:"../controller/add-service-handler.php", //the page containing php script
-            type: "POST", //request type
-            data: {data : jsonString},
-            cache: false,
-            success:function(result){
-                document.getElementById("msg_service").innerHTML = result;
-            }
-        });
-    }
-</script>
+<script type="text/javascript" src="../js/check_form.js"></script>
 
 <h2>Manage Service</h2>
 
