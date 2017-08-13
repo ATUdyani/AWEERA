@@ -30,6 +30,8 @@
                 <th>Description</th>
                 <th>Duration</th>
                 <th>Percentage</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
