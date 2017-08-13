@@ -69,7 +69,7 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile dis`play -->
             <div class="navbar-header link-1">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>

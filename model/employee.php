@@ -21,6 +21,7 @@
             self::$connection = self::$db->connect();
         }
 
+        // set all the fields
         public function setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender){
             self::$first_name = $first_name;
             self::$last_name = $last_name;
@@ -68,6 +69,7 @@
 			return $errors;
 "		}*/
 
+        // add a new employee
 		function addEmployee(){
 		    $last_id=self::$db->getLastId('emp_id','employee');
 
@@ -94,6 +96,7 @@
             }
 		}
 
+		// load employee details to a table
         public function loadEmployeeDetails(){
             $employee_list ='';
 
@@ -101,10 +104,9 @@
             $query = "SELECT * FROM employee ORDER BY emp_type";
 
             try{
-                $suppliers = self::$db->executeQuery($query);
-                self::$db->verifyQuery($suppliers);
-
-                while($employee = mysqli_fetch_assoc($suppliers)){
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+                while($employee = mysqli_fetch_assoc($result_set)){
                     $employee_list.= "<tr>";
                     $employee_list.= "<td>{$employee['emp_id']}</td>";
                     $employee_list.= "<td>{$employee['first_name']}</td>";
@@ -118,7 +120,72 @@
                     $employee_list.= "</tr>";
                 }
                 return $employee_list;
+            }catch (Exception $e){
+                echo $e;
+            }
 
+        }
+
+        // search employee details
+        public function searchEmployeeDetails($field,$search_text){
+            // load all data on page ready
+            if ($field=="*"){
+                $query = "SELECT * FROM employee WHERE is_user='0'";
+            }
+            elseif ($field=="all"){
+                $query = "SELECT * FROM employee WHERE (emp_id LIKE '%".$search_text
+                    ."%' OR first_name LIKE '%".$search_text
+                    ."%' OR last_name LIKE '%".$search_text
+                    ."%' OR emp_email LIKE '%".$search_text
+                    ."%' OR emp_address LIKE '%".$search_text
+                    ."%' OR emp_phone LIKE '%".$search_text
+                    ."%' OR emp_type LIKE '%".$search_text
+                    ."%' OR emp_gender LIKE '%".$search_text."%') AND is_user='0'";
+            }
+            else{
+                $query = "SELECT * FROM employee WHERE ".$field." LIKE '%".$search_text."%' AND is_user='0'";
+            }
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $employee_list ="<table class=\"table table-hover\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Type</th>
+                                    <th>Add as User</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    while($employee = mysqli_fetch_assoc($result_set)){
+
+                        $employee_list.= "<tr>";
+                        $employee_list.= "<td>{$employee['emp_id']}</td>";
+                        $employee_list.= "<td>{$employee['first_name']}</td>";
+                        $employee_list.= "<td>{$employee['last_name']}</td>";
+                        $employee_list.= "<td>{$employee['emp_email']}</td>";
+                        $employee_list.= "<td>{$employee['emp_phone']}</td>";
+                        $employee_list.= "<td>{$employee['emp_address']}</td>";
+                        $employee_list.= "<td>{$employee['emp_type']}</td>";
+                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\">Add</a></td>";
+                        $employee_list.= "</tr>";
+                    }
+                    $employee_list .= "</tbody>
+                                    </table>";
+                    echo $employee_list;
+                }
+                else{
+                    echo "<p>No Search Results Found</p>";
+                }
             }catch (Exception $e){
                 echo $e;
             }

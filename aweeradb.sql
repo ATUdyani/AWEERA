@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 13, 2017 at 05:01 AM
+-- Generation Time: Aug 13, 2017 at 04:48 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -104,6 +104,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `password` varchar(16) DEFAULT NULL,
   `emp_type` varchar(20) DEFAULT NULL,
   `emp_gender` varchar(10) NOT NULL,
+  `is_user` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`emp_id`),
   UNIQUE KEY `emp_email_UNIQUE` (`emp_email`),
   UNIQUE KEY `emp_phone_UNIQUE` (`emp_phone`),
@@ -114,16 +115,16 @@ CREATE TABLE IF NOT EXISTS `employee` (
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`) VALUES
-('EMP0000000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0774898996', 'Moratuwa', NULL, NULL, 'Administrator', 'Male'),
-('EMP0000000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0774565456', 'Panadura', NULL, NULL, 'Receptionist', 'Female'),
-('EMP0000000003', 'Dharana', 'Weerawarna', 'dharana@gmail.com', '0774563219', 'Moratuwa', NULL, NULL, 'Beautician', 'Male'),
-('EMP0000000004', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0778987897', 'Colombo', NULL, NULL, 'Beautician', 'Male'),
-('EMP0000000005', 'Elankumaran', 'Thanga', 'elan@gmail.com', '0774565464', 'Jaffna', NULL, NULL, 'Beautician', 'Male'),
-('EMP0000000006', 'Kasun', 'Dissanayake', 'kasunprageethdissanayake@gmail.com', '0714589654', 'Panadura', NULL, NULL, 'Administrator', 'Male'),
-('EMP0000000007', 'Dushani', 'Perera', 'dushani@gmail.com', '0779898932', 'Ja Ela', NULL, NULL, 'Receptionist', 'Female'),
-('EMP0000000008', 'Vishni', 'Ganepola', 'vishni@gmail.com', '0774565465', 'Kandy', NULL, NULL, 'Beautician', 'Female'),
-('EMP0000000009', 'Hisan', 'Hunais', 'hisan.live@gmail.com', '0765589633', 'Dehiwala', NULL, NULL, 'Beautician', 'Male');
+INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`, `is_user`) VALUES
+('EMP0000000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0774898996', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
+('EMP0000000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0774565456', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 0),
+('EMP0000000003', 'Dharana', 'Weerawarna', 'dharana@gmail.com', '0774563219', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 0),
+('EMP0000000004', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0778987897', 'Colombo', NULL, NULL, 'Beautician', 'Male', 0),
+('EMP0000000005', 'Elankumaran', 'Thanga', 'elan@gmail.com', '0774565464', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 0),
+('EMP0000000006', 'Kasun', 'Dissanayake', 'kasunprageethdissanayake@gmail.com', '0714589654', 'Panadura', NULL, NULL, 'Administrator', 'Male', 0),
+('EMP0000000007', 'Dushani', 'Perera', 'dushani@gmail.com', '0779898932', 'Ja Ela', NULL, NULL, 'Receptionist', 'Female', 0),
+('EMP0000000008', 'Vishni', 'Ganepola', 'vishni@gmail.com', '0774565465', 'Kandy', NULL, NULL, 'Beautician', 'Female', 0),
+('EMP0000000009', 'Hisan', 'Hunais', 'hisan.live@gmail.com', '0765589633', 'Dehiwala', NULL, NULL, 'Beautician', 'Male', 0);
 
 -- --------------------------------------------------------
 
@@ -292,7 +293,7 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 (4, 'Suranga', 'Ranatunga', 'suranga@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
 (5, 'Amal', 'Jayawickrema', 'amal@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
 (6, 'Buddika', 'Hiripitiya', 'buddika@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(7, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', 'abc', '2017-08-12 19:56:18', 0, 'Administrator');
+(7, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', 'abc', '2017-08-13 17:33:24', 0, 'Administrator');
 
 --
 -- Constraints for dumped tables

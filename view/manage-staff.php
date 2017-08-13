@@ -13,16 +13,16 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#view-details" role="tab" aria-controls="home">View Details</a>
+        <a class="nav-link active" data-toggle="tab" href="#view-details" role="tab" aria-controls="view-details">View Details</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#add-admin" role="tab" aria-controls="profile">Add Administrator</a>
+        <a class="nav-link" data-toggle="tab" href="#add-admin" role="tab" aria-controls="add-admin">Add Administrator</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#add-recep" role="tab" aria-controls="messages">Add Receptionist</a>
+        <a class="nav-link" data-toggle="tab" href="#add-recep" role="tab" aria-controls="add-recep">Add Receptionist</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#add-beautician" role="tab" aria-controls="settings">Add Beautician</a>
+        <a class="nav-link" data-toggle="tab" href="#add-beautician" role="tab" aria-controls="add-beautician">Add Beautician</a>
     </li>
 </ul>
 
