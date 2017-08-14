@@ -187,7 +187,7 @@ body h1,h2,h3{
 .my-sidebar ul a{
 	background-color: white;
 	color: #000;
-	border-width: 5spx;
+	border-width: 5px;
 	border-style: ridge;
 	border-color: grey;
 }
@@ -197,4 +197,12 @@ body h1,h2,h3{
 	color: #000;
 	border-style: none;
 	text-align: center;
+}
+
+.result-table{
+	margin-top: 2%;
+}
+
+.my-search-panel{
+	margin-top: 2%;
 }

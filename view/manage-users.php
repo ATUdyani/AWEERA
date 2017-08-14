@@ -2,6 +2,7 @@
 <?php require_once('../model/database.php') ?>
 <?php require_once('../model/user.php') ?>
 
+
 <!-- to change the filter when clicked -->
 <script>
     $(document).ready(function(e){
@@ -76,7 +77,7 @@
 
 <div class="tab-content">
     <div class="tab-pane fade active" id="view-details" role="tabpanel">
-        <table class="table table-hover">
+        <table class="table table-hover result-table">
             <thead>
             <tr>
                 <th>User ID</th>
@@ -103,7 +104,7 @@
     <div class="tab-pane fade" id="add-user" role="tabpanel">
         <div class="row">
             <div class="col-md-12">
-                <div class="input-group">
+                <div class="input-group my-search-panel">
                     <div class="input-group-btn search-panel">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                             <span id="search_concept">Filter by</span> <span class="caret"></span>
@@ -128,7 +129,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12" id="result">
+            <div class="col-md-12 result-table" id="result">
 
             </div>
         </div>
