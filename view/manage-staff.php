@@ -9,6 +9,67 @@
 
 <script type="text/javascript" src="../js/check_form.js"></script>
 
+
+<!-- to change the filter when clicked -->
+<script>
+    $(document).ready(function(e){
+        $('.search-panel .dropdown-menu').find('a').click(function(e) {
+            e.preventDefault();
+            var param = $(this).attr("href").replace("#","");
+            var concept = $(this).text();
+            $('.search-panel span#search_concept').text(concept);
+            $('.input-group #search_param').val(param);
+        });
+    });
+
+    // load all data on page ready
+    $(document).ready(function(){
+        var dataArray = ["*"," "];
+        var jsonString = JSON.stringify(dataArray);
+        $.ajax({
+            url: "../controller/search-employee-handler.php",
+            method: "post",
+            data:{data:jsonString},
+            success: function (data) {
+                $('#result').html(data);
+            }
+        });
+    });
+
+    // load suitable results on keyup
+    $(document).ready(function(){
+        $('#search_text').keyup(function () {
+            var dataArray =[];
+            var filter = document.getElementById("search_param").value;
+            var txt = $(this).val();
+            dataArray.push(filter);
+            dataArray.push(txt);
+            var jsonString = JSON.stringify(dataArray);
+            if (txt != ''){
+                $.ajax({
+                    url: "../controller/search-employee-handler.php",
+                    method: "post",
+                    data:{data:jsonString},
+                    success: function (data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+            else{
+                //$('#result').html('');
+                $.ajax({
+                    url: "../controller/search-employee-handler.php",
+                    method: "post",
+                    data:{data:jsonString},
+                    success: function (data) {
+                        $('#result').html(data);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
 <h2>Manage Staff</h2>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -28,29 +89,60 @@
 
 <div class="tab-content">
     <div class="tab-pane fade active" id="view-details" role="tabpanel">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>Type</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            // create an object from Employee class
-            $employee = new Employee();
-            $employee_list = $employee->loadEmployeeDetails();
-            echo $employee_list;
-            ?>
-            </tbody>
-        </table>
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <div class="input-group-btn search-panel">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span id="search_concept">Filter by</span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" id="filter_select">
+                            <li><a href="#emp_id" value="emp_id">ID</a></li>
+                            <li><a href="#first_name" value="first_name">First Name</a></li>
+                            <li><a href="#last_name" value="last_name">Last Name</a></li>
+                            <li><a href="#emp_email" value="emp_email">Email</a></li>
+                            <li><a href="#emp_phone" value="emp_phone">Phone</a></li>
+                            <li><a href="#emp_address" value="emp_address">Address</a></li>
+                            <li><a href="#emp_type" value="emp_type">Type</a></li>
+                            <li><a href="#emp_gender" value="emp_gender">Gender</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#all" value="all">Anything</a></li>
+                        </ul>
+                    </div>
+                    <input type="hidden" name="search_param" value="all" id="search_param">
+                    <input type="text" class="form-control" name="x" placeholder="Search employee here..." id="search_text">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12" id="result">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <th>Type</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        // create an object from Employee class
+                        $employee = new Employee();
+                        $employee_list = $employee->loadEmployeeDetails();
+                        echo $employee_list;
+                        ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div class="tab-pane fade" id="add-admin" role="tabpanel">
