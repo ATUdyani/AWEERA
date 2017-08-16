@@ -87,3 +87,28 @@ function checkFormBeautician() {
         }
     });
 }
+
+// check employee update
+function onclickUpdate() {
+    var formArray = [];
+    formArray.push(document.getElementById("update_first_name").value);
+    formArray.push(document.getElementById("update_last_name").value);
+    formArray.push(document.getElementById("update_emp_email").value);
+    formArray.push(document.getElementById("update_emp_phone").value);
+    formArray.push(document.getElementById("update_emp_address").value);
+    formArray.push(document.getElementById("update_emp_type").value);
+    formArray.push(document.getElementById("update_emp_gender").value);
+    formArray.push(document.getElementById("update_emp_id").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/update-employee-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(data){
+            $('#insert_form')[0].reset();
+            $('#add_data_Modal').modal('hide');
+            $('#result').html(data);
+        }
+    });
+}

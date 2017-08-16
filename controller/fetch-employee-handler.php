@@ -8,6 +8,7 @@
  * Time: 11:48 AM
  */
 
+// check whether employee id is not empty
 if (isset($_POST["emp_id"])){
     $employee = new Employee();
     $row = $employee -> getEmployeeData($_POST["emp_id"]);

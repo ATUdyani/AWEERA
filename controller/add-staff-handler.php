@@ -76,7 +76,10 @@
         $employee->addEmployee();
 
         // if employee is a beautician, beautician's service list has to be inserted to the database
-		$employee ->addEmployeeServices($emp_services);
+		if ($emp_type == "Beautician"){
+            $employee ->addEmployeeServices($emp_services);
+		}
+
  	}
 
  	

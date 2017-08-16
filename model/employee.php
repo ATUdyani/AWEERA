@@ -110,6 +110,26 @@
             }
 		}
 
+		// update employee details
+        public function updateEmployee($emp_id){
+		    $query = "UPDATE employee SET first_name='".self::$first_name
+                ."', last_name = '".self::$last_name."', emp_email = '".self::$emp_email."', emp_phone = '"
+                .self::$emp_phone."', emp_address = '"
+                .self::$emp_address."', emp_gender = '".self::$emp_gender."' WHERE emp_id ='$emp_id'";
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+                if ($result_set){
+                    echo "Employee successfully updated.";
+                }
+
+            }catch (Exception $e){
+                echo $e;
+            }
+
+        }
+
 		// load employee details to a table
         public function loadEmployeeDetails(){
             $employee_list ='';
@@ -257,7 +277,7 @@
                         $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
                         $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#add_data_Modal\" class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        $employee_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                         $employee_list.= "</tr>";
                     }
                     $employee_list .= "</tbody>

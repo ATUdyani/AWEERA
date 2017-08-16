@@ -6,6 +6,10 @@
 <!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
 
+<script src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/loader.js"></script>
+
+
 
 <script>
     // to change the filter when clicked
@@ -66,6 +70,7 @@
         });
     });
 
+    // load modal to edit employee data
     $(document).ready(function (){
         $(document).on('click','.edit_data',function(){
             var emp_id = $(this).attr("id");
@@ -81,12 +86,15 @@
                     $('#update_emp_phone').val(data.emp_phone);
                     $('#update_emp_address').val(data.emp_address);
                     $('#update_emp_gender').val(data.emp_gender);
+                    $('#update_emp_type').val(data.emp_type);
                     $('#update_emp_id').val(data.emp_id);
+                    jQuery.noConflict();
                     $('#add_data_Modal').modal('show');
                 }
             });
         });
     });
+
 </script>
 
 <h2>Manage Staff</h2>
@@ -396,7 +404,6 @@
                                     <option value="Female">Female</option>
                                 </select>
                             </div>
-
                         </form>
                     </div>
 
@@ -421,9 +428,16 @@
                         </div>
                     </div>
 
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Type</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="update_type" id="update_emp_type" maxlength="50" disabled="disabled" required="">
+                        </div>
+                    </div>
+
                     <div>
                         <input type="hidden" name="update_emp_id" id="update_emp_id" />
-                        <input type="submit" name="update" id="update" value="Update" class="btn btn-success" />
+                        <input type="button" onclick="onclickUpdate()" name="update" id="update" value="Update" class="btn btn-success" />
                     </div>
                 </form>
             </div>
