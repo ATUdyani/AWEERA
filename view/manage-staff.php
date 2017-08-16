@@ -4,14 +4,11 @@
 <?php require_once('../model/service.php') ?>
 
 <!-- jQuery -->
-<script src="../js/jquery.js"></script>
-<script type="text/javascript" src="../js/loader.js"></script>
-
 <script type="text/javascript" src="../js/check_form.js"></script>
 
 
-<!-- to change the filter when clicked -->
 <script>
+    // to change the filter when clicked
     $(document).ready(function(e){
         $('.search-panel .dropdown-menu').find('a').click(function(e) {
             e.preventDefault();
@@ -66,6 +63,28 @@
                     }
                 });
             }
+        });
+    });
+
+    $(document).ready(function (){
+        $(document).on('click','.edit_data',function(){
+            var emp_id = $(this).attr("id");
+            $.ajax({
+                url:"../controller/fetch-employee-handler.php",
+                method: "post",
+                data: {emp_id:emp_id},
+                dataType: "json",
+                success:function (data) {
+                    $('#update_first_name').val(data.first_name);
+                    $('#update_last_name').val(data.last_name);
+                    $('#update_emp_email').val(data.emp_email);
+                    $('#update_emp_phone').val(data.emp_phone);
+                    $('#update_emp_address').val(data.emp_address);
+                    $('#update_emp_gender').val(data.emp_gender);
+                    $('#update_emp_id').val(data.emp_id);
+                    $('#add_data_Modal').modal('show');
+                }
+            });
         });
     });
 </script>
@@ -323,8 +342,6 @@
                 </div>
             </div>
 
-
-
             <div class="form-group row">
                 <label class="col-md-4 col-form-label">Beautician Type</label>
                 <div class="form-check col-md-8">
@@ -343,6 +360,77 @@
             </div>
         </form>
 
+    </div>
+</div>
+
+<!-- model to update data -->
+<div id="add_data_Modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Update Staff Details</h4>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="insert_form">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="update_first_name" id="update_first_name" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Last Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="update_last_name" id="update_last_name" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <form>
+                            <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                            <div class="col-md-8">
+                                <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-md-4 col-form-label">Email</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email"  id="update_emp_email" name="update_emp_email" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-tel-input" class="col-md-4 col-form-label">Phone Number</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="tel" id="update_emp_phone" name="update_emp_phone" maxlength="10" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 control-label">Address</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" type="text" rows="5" id="update_emp_address" name="update_emp_address" maxlength="60" required=""></textarea>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input type="hidden" name="update_emp_id" id="update_emp_id" />
+                        <input type="submit" name="update" id="update" value="Update" class="btn btn-success" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 

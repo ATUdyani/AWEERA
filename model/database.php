@@ -78,6 +78,7 @@
             }
         }
 
+        // returns last records id in a particular table without the string prefix
 		public function getLastId($field,$table){
             try
             {

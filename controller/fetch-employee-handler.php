@@ -1,0 +1,16 @@
+<?php require_once '../model/employee.php' ?>
+
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Wasura Dananjith
+ * Date: 16-Aug-17
+ * Time: 11:48 AM
+ */
+
+if (isset($_POST["emp_id"])){
+    $employee = new Employee();
+    $row = $employee -> getEmployeeData($_POST["emp_id"]);
+    echo json_encode($row);
+}
+?>

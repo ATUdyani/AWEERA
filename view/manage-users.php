@@ -2,9 +2,8 @@
 <?php require_once('../model/database.php') ?>
 <?php require_once('../model/user.php') ?>
 
-
-<!-- to change the filter when clicked -->
 <script>
+    // to change the filter when clicked
     $(document).ready(function(e){
         $('.search-panel .dropdown-menu').find('a').click(function(e) {
             e.preventDefault();

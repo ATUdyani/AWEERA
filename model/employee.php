@@ -33,6 +33,20 @@
 
         }
 
+        // get all employee data for a particular employee id
+        public function getEmployeeData($emp_id){
+            $query = "SELECT * FROM employee WHERE emp_id='".$emp_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo e;
+            }
+        }
+
         // add employee service list to the database
         public function addEmployeeServices($emp_services){
             self::$emp_services = $emp_services;
@@ -242,8 +256,8 @@
                         $employee_list.= "<td>{$employee['emp_phone']}</td>";
                         $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
-                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-success btn-sm\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-danger btn-sm\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
+                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#add_data_Modal\" class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                         $employee_list.= "</tr>";
                     }
                     $employee_list .= "</tbody>
