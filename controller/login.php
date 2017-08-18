@@ -3,75 +3,72 @@
 <?php 
    require_once ('../model/database.php');
 
-   class Login{
+   // making connection
+    $db = new Database();
+    $connection = $db->connect();
 
-      function Login(){
-         // making connection
-         $db = new Database();
-         $connection = $db->connect();
 
-         // check for submission
-         if (isset($_POST['submit'])){
-            $errors =array();
+    $data = json_decode(stripslashes($_POST['data']));
+    $entered_email = $data[0];
+    $entered_password = $data[1];
 
-            // check if the username and password has been entered
-            if (!isset($_POST['email']) || strlen(trim($_POST['email'])) < 1 ){
-               $errors[] = 'Username is Missing / Invalid';
-            }
-            if (!isset($_POST['password']) || strlen(trim($_POST['password'])) < 1 ){
-               $errors[] = 'Password is Missing / Invalid';
-            }
+    // check for submission
+    $errors =array();
 
-            // check if there are any errors in the form
-            if (empty($errors)){
+    // check if the username and password has been entered
+    if (!isset($entered_email) || strlen(trim($entered_email)) < 1){
+       $errors[] = 'Username is Missing / Invalid';
+    }
 
-               // save username and password into variables
-                  // in here user can enter a sql statement to damage our database (sql injection), so we must remove this risk 
+    if (!isset($entered_password) || strlen(trim($entered_password)) < 1 ){
+       $errors[] = 'Password is Missing / Invalid';
+    }
 
-               $email = mysqli_real_escape_string($connection,$_POST['email']);
-               $password = mysqli_real_escape_string($connection,$_POST['password']);
-               $hashed_password = $password;
+    // check if there are any errors in the form
+    if (empty($errors)){
 
-               //$hashed_password = sha1($password);
+       // save username and password into variables
+          // in here user can enter a sql statement to damage our database (sql injection), so we must remove this risk
 
-               // prepare database query
-               $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' LIMIT 1";
+       $email = mysqli_real_escape_string($connection,$entered_email);
+       $password = mysqli_real_escape_string($connection,$entered_password);
+       $hashed_password = $password;
 
-               $result_set = mysqli_query($connection,$query);
+       //$hashed_password = sha1($password);
 
-               $db->verifyQuery($result_set);
+       // prepare database query
+       $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' LIMIT 1";
 
-               // query successful
-               if (mysqli_num_rows($result_set) == 1){
-                  // valid user found
-                  $user =mysqli_fetch_assoc($result_set);
-                  $_SESSION['user_id'] = $user['id'];
-                  $_SESSION['first_name'] = $user['first_name'];
-                  $_SESSION['last_name'] = $user['last_name'];  
+       $result_set = $db -> executeQuery($query);
 
-                  // update last login
-                  $query = "UPDATE user SET last_login=NOW() WHERE id = {$_SESSION['user_id']} LIMIT 1";
-                  $result_set = mysqli_query($connection,$query);
+       $db -> verifyQuery($result_set);
 
-                  $db->verifyQuery($result_set);
-                  
-                  // redirect to user.php
-                  $type=$user["type"];
-                  if ($type =="Administrator"){
-                     header('Location: ../view/admin-home.php');
-                  }
-                  
-               }
-               else{
-                  // username and password invalid
-                  $errors[] = 'Invalid Username / Password';
-               }
-            }
-         }
-      }
-   }
+       // query successful
+       if ($db -> getNumRows($result_set) == 1){
+          // valid user found
+          $user = mysqli_fetch_assoc($result_set);
+          $_SESSION['user_id'] = $user['id'];
+          $_SESSION['first_name'] = $user['first_name'];
+          $_SESSION['last_name'] = $user['last_name'];
 
-      $login = new Login();
-      $login->Login();
-   
- ?>
+          // update last login
+          $query = "UPDATE user SET last_login=NOW() WHERE id = {$_SESSION['user_id']} LIMIT 1";
+          $result_set = mysqli_query($connection,$query);
+
+          $db->verifyQuery($result_set);
+
+          // redirect to userhome.php
+          $type = $user["type"];
+          if ($type == "Administrator"){
+              echo 'view/admin-home.php';
+          }
+
+       }
+       else{
+          // username and password invalid
+          $errors[] = 'Invalid Username / Password';
+          echo "error";
+       }
+     }
+
+?>

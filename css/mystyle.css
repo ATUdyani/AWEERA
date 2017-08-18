@@ -26,6 +26,10 @@ body h1,h2,h3{
 	overflow: auto
 }
 
+.container{
+	background-color: #000;
+}
+
 .navbar{
 	padding-top: 8px;
 	height: 70px;
@@ -45,6 +49,7 @@ body h1,h2,h3{
 .my-navbar .navbar-brand:hover{
 	color: #e0e0e0;
 }
+
 
 .my-navbar .my-primary-menu li a{
 	font-size: 16px;
