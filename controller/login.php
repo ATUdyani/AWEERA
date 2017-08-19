@@ -50,6 +50,7 @@
           $_SESSION['user_id'] = $user['id'];
           $_SESSION['first_name'] = $user['first_name'];
           $_SESSION['last_name'] = $user['last_name'];
+          $_SESSION['type'] = $user['type'];
 
           // update last login
           $query = "UPDATE user SET last_login=NOW() WHERE id = {$_SESSION['user_id']} LIMIT 1";

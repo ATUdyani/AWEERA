@@ -105,3 +105,8 @@ $(function() {
         }, $msgShowTime);
     }
 });
+
+// function to direct the user to user-home from main home page
+function directUser(user_id){
+    alert(user_id);
+}

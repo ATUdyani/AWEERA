@@ -9,16 +9,20 @@
 }
 
 body{
-	background: linear-gradient(#000000,#000000,#000000);
+	/*background: linear-gradient(#000000,#000000,#000000);*/
+	background-image: url("../img/panel-default-background.jpg");
 }
 
+body p,li{
+	color: #8d8d8d;
+}
 body {
 	font-family: paragraphfont;
 }
 
 body h1,h2,h3{
 	font-family: myfont;
-	color: #fff;
+	color: #eeeeee;
 }
 
 
@@ -210,4 +214,38 @@ body h1,h2,h3{
 
 .my-search-panel{
 	margin-top: 2%;
+}
+
+.main-service-box .panel-default{
+	background-image: url("../img/panel-default-background.jpg");
+}
+
+.main-service-box .panel-default p{
+	color: #bcbcbc;
+}
+
+.main-service-box .panel-heading{
+	background-image: url("../img/panel-default-header3.jpg");
+}
+
+.main-service-box .panel-heading h4{
+	color: #fff;
+}
+
+.well{
+	background-image: url("../img/panel-default-background.jpg");
+}
+
+.well a{
+	background-color: #212121;
+	color: #fff;
+	border-radius: 5px;
+}
+.well p{
+	text-align: center;
+}
+.panel-body a{
+	background-color: #212121;
+	color: #fff;
+	border-radius: 5px;
 }

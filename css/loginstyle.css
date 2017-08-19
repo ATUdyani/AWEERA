@@ -5,7 +5,7 @@
 
 .modal-content{
     background: #212121;
-    height: 500px;
+    /*height: 500px;*/
 }
 
 #login-modal input[type=text], input[type=password] {
@@ -19,20 +19,22 @@
     height: 30px;
     line-height: 28px;
     transition: all ease-in-out 500ms;
+    text-align: center;
 }
 
 #div-login-msg.success,
 #div-lost-msg.success,
 #div-register-msg.success {
     border: 1px solid #68c3a3;
-    background-color: #c8f7c5;
+    background:linear-gradient(#00600f,#003300) ;
 }
 
 #div-login-msg.error,
 #div-lost-msg.error,
 #div-register-msg.error {
     border: 1px solid #eb575b;
-    background-color: #ffcad1;
+    background:linear-gradient(#d50000,#7f0000) ;
+    text-align: center;
 }
 
 #icon-login-msg,
@@ -60,8 +62,8 @@
 }
 
 #img_logo {
-    max-height: 100px;
-    max-width: 100px;
+    max-height: 200px;
+    max-width: 200px;
 }
 
 /* #########################################
@@ -74,8 +76,8 @@
 }
 
 .modal-content {
-    background: linear-gradient(#212121,#212121,#212121);
-    /*background: linear-gradient(#000,#62727b,#000);*/
+    /*background: linear-gradient(#212121,#000);*/
+    background-image: url("../img/panel-default-background.jpg");
     border: 1px solid #bdc3c7;
     border-radius: 0px;
     outline: 0;
@@ -148,17 +150,32 @@
     border-radius: 5px;
     margin-bottom: 20px;
     border-color: #fff;
-    background-color: #1b1b1b;
+    background: linear-gradient(#1b1b1b,#000);
     font-family: paragraphfont;
 }
 
 .my-lg-button:hover{
-    background-color: #707070;
+    background: linear-gradient(#494949,#1b1b1b);
     border-color: #fff;
 }
 
-#text-login-msg{
-    color: #fff;
-    padding-left: 10%;
-    padding-right: 10%;
+.my-msg{
+    color: #8d8d8d;
+    text-align: center;
+}
+
+.my-msg p{
+    text-align: center;
+}
+.my-login-form input{
+    background-color:#212121 ;
+    border-color: #a4a4a4;
+}
+
+#icon-login-msg, #icon-lost-msg, #icon-register-msg{
+    background-color: transparent;
+}
+
+.glyphicon-chevron-right{
+    color: grey;
 }

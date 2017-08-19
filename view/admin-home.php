@@ -33,6 +33,7 @@
     <!-- Custom CSS -->
     <link href="../css/modern-business.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
+    <link href="../css/loginstyle.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -62,7 +63,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../index.php">AWEERA</a>
+                <a href="../index.php"><img class="img-circle" id="img_logo" src="../img/aweera.png"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,7 +76,7 @@
                         <a href="#">Gallery</a>
                     </li>
                     <li class="link-1">
-                        <a href="about.html">About</a>
+                        <a href="../about.php">About</a>
                     </li>
                     <li class="link-1">
                         <a href="#contact">Contact</a>
