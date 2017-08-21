@@ -1,14 +1,13 @@
 <?php session_start(); ?>
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/employee.php') ?>
-<?php require_once('../model/service.php') ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/Employee.php') ?>
+<?php require_once('../model/Service.php') ?>
 
 <!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
 
 <script src="../js/jquery.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
-
 
 
 <script>
@@ -31,6 +30,7 @@
             url: "../controller/search-employee-handler.php",
             method: "post",
             data:{data:jsonString},
+            cache: false,
             success: function (data) {
                 $('#result').html(data);
             }
@@ -51,6 +51,7 @@
                     url: "../controller/search-employee-handler.php",
                     method: "post",
                     data:{data:jsonString},
+                    cache: false,
                     success: function (data) {
                         $('#result').html(data);
                     }
@@ -62,6 +63,7 @@
                     url: "../controller/search-employee-handler.php",
                     method: "post",
                     data:{data:jsonString},
+                    cache: false,
                     success: function (data) {
                         $('#result').html(data);
                     }
@@ -79,6 +81,7 @@
                 method: "post",
                 data: {emp_id:emp_id},
                 dataType: "json",
+                cache: false,
                 success:function (data) {
                     $('#update_first_name').val(data.first_name);
                     $('#update_last_name').val(data.last_name);
@@ -376,8 +379,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Update Staff Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h3 class="modal-title">Update Staff Details</h3>
             </div>
             <div class="modal-body">
                 <form method="post" id="insert_form">
@@ -437,12 +442,9 @@
 
                     <div>
                         <input type="hidden" name="update_emp_id" id="update_emp_id" />
-                        <input type="button" onclick="onclickUpdate()" name="update" id="update" value="Update" class="btn btn-success" />
+                        <input type="button" onclick="onclickUpdate()" name="update" id="update" value="Update" class="btn btn-success my-lg-button" />
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

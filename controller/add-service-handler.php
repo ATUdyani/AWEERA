@@ -1,5 +1,5 @@
-<?php require_once '../model/database.php' ?>
-<?php require_once '../model/service.php' ?>
+<?php require_once '../model/Database.php' ?>
+<?php require_once '../model/Service.php' ?>
 
 <?php
 	$db = new Database();

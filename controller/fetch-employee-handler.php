@@ -1,4 +1,4 @@
-<?php require_once '../model/employee.php' ?>
+<?php require_once '../model/Employee.php' ?>
 
 <?php
 /**

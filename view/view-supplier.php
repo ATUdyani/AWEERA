@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/supplier.php') ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/Supplier.php') ?>
 
 <h2>View Supplier Details</h2>
 

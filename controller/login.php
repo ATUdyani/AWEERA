@@ -1,7 +1,7 @@
 <?php session_start() ?>
 
 <?php 
-   require_once ('../model/database.php');
+   require_once('../model/Database.php');
 
    // making connection
     $db = new Database();
@@ -15,11 +15,12 @@
     // check for submission
     $errors =array();
 
-    // check if the username and password has been entered
+    // check if the username has been entered
     if (!isset($entered_email) || strlen(trim($entered_email)) < 1){
        $errors[] = 'Username is Missing / Invalid';
     }
 
+    // check if the password has been entered
     if (!isset($entered_password) || strlen(trim($entered_password)) < 1 ){
        $errors[] = 'Password is Missing / Invalid';
     }
@@ -51,6 +52,8 @@
           $_SESSION['first_name'] = $user['first_name'];
           $_SESSION['last_name'] = $user['last_name'];
           $_SESSION['type'] = $user['type'];
+          $_SESSION['email'] = $user['email'];
+
 
           // update last login
           $query = "UPDATE user SET last_login=NOW() WHERE id = {$_SESSION['user_id']} LIMIT 1";

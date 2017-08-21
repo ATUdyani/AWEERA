@@ -16,11 +16,13 @@
         protected static $db;
         protected static $connection;
 
+        // default constructor
         public function __construct(){
             self::$db = new Database();
             self::$connection = self::$db->connect();
         }
 
+        // set fields
         public function setService($service_name,$service_charge,$description,$duration,$commission_percentage){
 
             self::$service_name = $service_name;
@@ -31,6 +33,7 @@
 
         }
 
+        // add a new service
         function addService(){
             $last_id=self::$db->getLastId('service_id','service');
 
@@ -75,8 +78,8 @@
                     $service_list.= "<td>{$service['description']}</td>";
                     $service_list.= "<td>{$service['duration']}</td>";
                     $service_list.= "<td>{$service['commission_percentage']}</td>";
-                    $service_list.= "<td><a href=\"modify-user.php?user_id={$service['service_id']}\">Edit</a></td>";
-                    $service_list.= "<td><a href=\"delete-user.php?user_id={$service['service_id']}\">Delete</a></td>";
+                    $service_list.= "<td><a href=\"modify-User.php?user_id={$service['service_id']}\">Edit</a></td>";
+                    $service_list.= "<td><a href=\"delete-User.php?user_id={$service['service_id']}\">Delete</a></td>";
                     $service_list.= "</tr>";
                 }
                 return $service_list;

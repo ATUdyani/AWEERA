@@ -1,4 +1,4 @@
-<?php require_once('../model/database.php') ?>
+<?php require_once('../model/Database.php') ?>
 
 <?php  
 	
@@ -149,8 +149,8 @@
                     $employee_list.= "<td>{$employee['emp_phone']}</td>";
                     $employee_list.= "<td>{$employee['emp_address']}</td>";
                     $employee_list.= "<td>{$employee['emp_type']}</td>";
-                    $employee_list.= "<td><a href=\"modify-user.php?user_id={$employee['emp_id']}\">Edit</a></td>";
-                    $employee_list.= "<td><a href=\"delete-user.php?user_id={$employee['emp_id']}\">Delete</a></td>";
+                    $employee_list.= "<td><a href=\"modify-User.php?user_id={$employee['emp_id']}\">Edit</a></td>";
+                    $employee_list.= "<td><a href=\"delete-User.php?user_id={$employee['emp_id']}\">Delete</a></td>";
                     $employee_list.= "</tr>";
                 }
                 return $employee_list;
@@ -210,7 +210,7 @@
                         $employee_list.= "<td>{$employee['emp_phone']}</td>";
                         $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
-                        $employee_list.= "<td><a href=\"add-user.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-success btn-sm\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
+                        $employee_list.= "<td><a href=\"add-User.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-success btn-sm\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
                         $employee_list.= "</tr>";
                     }
                     $employee_list .= "</tbody>

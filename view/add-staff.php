@@ -1,28 +1,6 @@
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/employee.php'); ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/Employee.php'); ?>
 
-<script type="text/javascript">
-	function checkForm() {
-		var formArray = [];
-		formArray.push(document.getElementById("first_name").value);
-		formArray.push(document.getElementById("last_name").value);
-		formArray.push(document.getElementById("emp_email").value);
-		formArray.push(document.getElementById("emp_phone").value);
-		formArray.push(document.getElementById("emp_address").value);
-		formArray.push(document.getElementById("emp_type").value);
-		var jsonString = JSON.stringify(formArray);
-	      $.ajax({
-	        url:"../controller/add-staff-handler.php", //the page containing php script
-	        type: "POST", //request type
-	        data: {data : jsonString}, 
-        	cache: false,
-	        success:function(result){
-	        	document.getElementById("errorMsg").innerHTML = result;
-	       	}
-	       });
-	      
-	  }
-</script>
 
 <h2>Add Staff</h2>
 
@@ -148,4 +126,27 @@
 	</div>
 
 </form>
+
+<script type="text/javascript">
+    function checkForm() {
+        var formArray = [];
+        formArray.push(document.getElementById("first_name").value);
+        formArray.push(document.getElementById("last_name").value);
+        formArray.push(document.getElementById("emp_email").value);
+        formArray.push(document.getElementById("emp_phone").value);
+        formArray.push(document.getElementById("emp_address").value);
+        formArray.push(document.getElementById("emp_type").value);
+        var jsonString = JSON.stringify(formArray);
+        $.ajax({
+            url:"../controller/add-staff-handler.php", //the page containing php script
+            type: "POST", //request type
+            data: {data : jsonString},
+            cache: false,
+            success:function(result){
+                document.getElementById("errorMsg").innerHTML = result;
+            }
+        });
+
+    }
+</script>
 

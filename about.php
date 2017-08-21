@@ -1,4 +1,4 @@
-<?php require_once ('model/database.php');
+<?php require_once('model/Database.php');
 $db = new Database();
 $db->connect();
 ?>
@@ -61,33 +61,14 @@ $db->connect();
                     <a href="#">Appointments</a>
                 </li>
                 <li class="link-1">
-                    <a href="#">Gallery</a>
+                    <a href="index.php#gallery">Gallery</a>
                 </li>
                 <li class="link-1">
                     <a href="about.php">About</a>
                 </li>
-                <li class="link-1">
+                <li id="contact_menu" class="link-1">
                     <a href="#contact">Contact</a>
                 </li>
-                <li class="dropdown link-1">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-2-col.html">2 Column Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-3-col.html">3 Column Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                        </li>
-                        <li>
-                            <a href="portfolio-item.html">Single Portfolio Item</a>
-                        </li>
-                    </ul>
 
                     <?php
 
@@ -97,44 +78,12 @@ $db->connect();
                     }
                     else{
                         echo "<li class=\"menu link-1\" id=\"welcome-msg\">
-                    <a href=\"controller/direct-user-handler.php\" class=\"loggedin\" ><i class=\"fa fa-unlock-alt\"></i>Welcome";
+                        <a href=\"controller/direct-user-handler.php\" class=\"loggedin\" ><span class=\"glyphicon glyphicon-user\"></span> <strong>Welcome ";
                         echo $_SESSION['first_name'];
-                        echo "</a></li>";
+                        echo "</strong></a></li>";
                     }
                     ?>
-                </li>
             </ul>
-        </div>
-
-        <div class="arrow-up"></div>
-        <div class="login-form">
-            <form method="post">
-                <h4>Log In</h4>
-
-                <div>
-                    <p id="errorMsg"></p>
-                </div>
-
-                <!-- <p class="error">Invalid Email / Password</p> -->
-                <div>
-                    <input id="email" class="my-login-text" type="text" placeholder="Email" required="" name="email">
-                </div>
-
-                <div>
-                    <input id="password" class="my-login-text" type="password" placeholder="Password" required=""  name="password">
-                </div>
-                <div class="clearfix" >
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <div>
-                    <!-- <button name="submit" onclick="checkForm()" type="button" value="submit" class="my-login-button"  method="post">Log In</button> -->
-                    <input class="my-login-button" type="submit" formaction="controller/login.php" value="Log In" name="submit">
-                </div>
-                <div>
-                    <text>Don't have an account?</text>
-                    <input class="my-login-button" type="button" value="Register">
-                </div>
-            </form>
         </div>
     </div>
     <!-- /.navbar-collapse -->
@@ -161,13 +110,13 @@ $db->connect();
     <!-- Intro Content -->
     <div class="row">
         <div class="col-md-6">
-            <img class="img-responsive" src="img/aboutus" alt="">
+            <img class="img-responsive" src="img/aboutus.jpg" alt="">
         </div>
         <div class="col-md-6">
-            <h2>Aweera - Bridal Hair & Beauty</h2>
-            <p>AWEERA BRIDAL HAIR & BEAUTY is one of the most trending salons in the Sri Lankan beauty culture industry with their salon located at. Professional hair stylist Asanka Weerasekara along with his team at AWEERA at all times and at all occasions are prepared to beautify you with their exclusive hair and beauty culture services.</p>
+            <h2>Aweera - Bridal, Hair & Beauty</h2>
+            <p>AWEERA - BRIDAL, HAIR & BEAUTY is one of the most trending salons in the Sri Lankan beauty culture industry with their salon located at. Professional hair stylist Asanka Weerasekara along with his team at AWEERA at all times and at all occasions are prepared to beautify you with their exclusive hair and beauty culture services.</p>
             <p>AWEERA is considered as an upscale full-service beauty salon offering a wide range of services including hair cuts, hair setting, hair treatments, hair coloring, face & body treatments, waxing, threading, saree draping, make-up, pedicure, manicure & nail care. The use of the highest quality cosmetics and their speciality in hair treatments makes them distinctively unique in the industry. While handling your hair firmly and very carefully AWEERA gives an entirely new look to your hair. </p>
-            <p>You can now avail yourself with AWEERA at their branch at No. 220, Solomon Peiris Avenue, Mount Lavinia. A visit to AWEERA BRIDAL HAIR & BEAUTY will make you fall in love with your hair again and again.</p>
+            <p>You can now avail yourself with AWEERA at their branch at No. 220, Solomon Peiris Avenue, Mount Lavinia. A visit to AWEERA - BRIDAL, HAIR & BEAUTY will make you fall in love with your hair again and again.</p>
 
         </div>
     </div>
@@ -175,18 +124,20 @@ $db->connect();
 
     <!--Founder-->
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-md-12">
             <h2 class="page-header">Founder</h2>
         </div>
         <div class="col-md-6">
-            <p>Asanka Weerasekara, the founder of AWEERA HAIR & BEAUTY commenced his journey as a beautician in the year 2008 joining International Academy of Beauticians (Pvt) Ltd. After successfully completing his vocational training at the institution he joined the industry as an assistant to the renowned beautician Dhananjaya Bandara.</p>
-            <p>Due to his dedication at work and his magical talent in styling hair, he succeeded in opening up a platform of his own. Accordingly, in 2010 he established AWEERA HAIR & BEAUTY making his dream a reality. With his professional speciality in hair styling he was succeeded in building up his own name in the industry and currently he is serves as the official hairdresser for most of the prominent celebrities in Sri Lanka. Asanka Weerasekara also participated in many international as well as national competitions and proved the whole nation that he is capable of bringing up change to the industry.</p>
-            <p>If you make a visit to AWEERA BRIDAL HAIR & BEAUTY, Unlike most of the others in the industry, Asanka would give you an entirely different look while treating your hair with love and care, causing no harm at all to your hair.
+            <p>Asanka Weerasekara, the founder of AWEERA - BRIDAL, HAIR & BEAUTY commenced his journey as a beautician in the year 2008 joining International Academy of Beauticians (Pvt) Ltd. After successfully completing his vocational training at the institution he joined the industry as an assistant to the renowned beautician Dhananjaya Bandara.</p>
+            <p>Due to his dedication at work and his magical talent in styling hair, he succeeded in opening up a platform of his own. Accordingly, in 2010 he established AWEERA - BRIDAL, HAIR & BEAUTY making his dream a reality. With his professional speciality in hair styling he was succeeded in building up his own name in the industry and currently he is serves as the official hairdresser for most of the prominent celebrities in Sri Lanka. Asanka Weerasekara also participated in many international as well as national competitions and proved the whole nation that he is capable of bringing up change to the industry.</p>
+            <p>If you make a visit to AWEERA - BRIDAL HAIR & BEAUTY, Unlike most of the others in the industry, Asanka would give you an entirely different look while treating your hair with love and care, causing no harm at all to your hair.
 
         </div>
-        <div class="col-md-6">
-            <img class="img-responsive" src="img/asanka1" alt="" width=50%>
-            <img class="img-responsive" src="img/asanka2" alt="" width=50%>
+        <div class="col-lg-3">
+            <img class="img-responsive" src="img/asanka1.jpg" alt="" width=100%>
+        </div>
+        <div class="col-lg-3">
+            <img class="img-responsive" src="img/asanka2.jpg" alt="" width=100%>
         </div>
     </div>
 
@@ -198,7 +149,7 @@ $db->connect();
         </div>
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/asanka" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/asanka.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Asanka Weerasekara</small>
@@ -217,7 +168,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/Tina1" alt="" width=500px height=80%>
+                <img class="img-responsive" src="img/Tina1.png" alt="" width=500px height=80%>
                 <div class="caption">
                     <h3>Tina Ishani<br>
                         <small>Tina Ishani</small>
@@ -235,7 +186,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/suneth" alt="">
+                <img class="img-responsive" src="img/suneth.jpg" alt="">
                 <div class="caption">
                     <h3>Suneth Rajapaksha<br>
                         <small>Suneth Rajapaksha</small>
@@ -253,7 +204,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/Heshan" alt="">
+                <img class="img-responsive" src="img/Heshan.png" alt="">
                 <div class="caption">
                     <h3>Heshan Fernando<br>
                         <small>Heshan Fernando</small>
@@ -271,7 +222,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/kalpani" alt="">
+                <img class="img-responsive" src="img/kalpani.jpg" alt="">
                 <div class="caption">
                     <h3>Kalpani Maheshika<br>
                         <small>Kalpani Maheshika</small>
@@ -289,7 +240,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/rj" alt="">
+                <img class="img-responsive" src="img/rj.png" alt="">
                 <div class="caption">
                     <h3>RJ Avishka<br>
                         <small>RJ Avishka</small>
@@ -316,7 +267,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/color" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/color.png" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Coloring</small>
@@ -327,7 +278,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/setting" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/setting.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Setting</small>
@@ -338,7 +289,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/cut" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/cut.png" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Cuts</small>
@@ -349,7 +300,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/treatments" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/treatments.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Treatments</small>
@@ -360,7 +311,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/brading" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/brading.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Braiding</small>
@@ -371,7 +322,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/makeup" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/makeup.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Make-Up</small>
@@ -382,7 +333,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/painting" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/painting.png" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Face Painting</small>
@@ -394,7 +345,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/bridal" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/bridal.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Bridal Dressing</small>
@@ -405,7 +356,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/body" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/body.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Face & Body Treatments</small>
@@ -416,7 +367,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/facial" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/facial.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Skin Care</small>
@@ -432,30 +383,27 @@ $db->connect();
             <h2 class="page-header">Our Customers</h2>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/lahiru" alt="">
+            <img class="img-responsive customer-img" src="img/lahiru.jpeg" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/sanuka" alt="">
+            <img class="img-responsive customer-img" src="img/sanuka.jpg" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/hemal" alt="">
+            <img class="img-responsive customer-img" src="img/hemal.png" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/dasun" alt="">
+            <img class="img-responsive customer-img" src="img/dasun.png" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/yureni" alt="">
+            <img class="img-responsive customer-img" src="img/yureni.png" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/sanjana" alt="">
+            <img class="img-responsive customer-img" src="img/sanjana.png" alt="">
         </div>
     </div>
     <!-- /.row -->
 
-    <br>
-    <br>
-    <br>
-    <br>
+
     <hr>
 
     <!-- Contact Us Section -->
@@ -479,7 +427,7 @@ $db->connect();
             <p><i class="fa fa-phone"></i>
                 <abbr title="Phone">P</abbr>: 0112727285</p>
             <p><i class="fa fa-envelope-o"></i>
-                <abbr title="Email">E</abbr>: <a href="mailto:aweerahairandbeauty@gmail.com">aweerahairandbeauty@gmail.com</a>
+                <abbr title="Email">E</abbr>: <a href="mailto:hairbyaweera@yahoo.com">hairbyaweera@yahoo.com</a>
             </p>
             <p><i class="fa fa-clock-o"></i>
                 <abbr title="Hours">H</abbr>: Monday - Saturday: 9:00 AM to 7:00 PM</p>
@@ -619,6 +567,15 @@ $db->connect();
 
 <!-- script to handle model login -->
 <script type="text/javascript" src="js/login.js"></script>
+
+<!-- Script to scroll to contact -->
+<script type="text/javascript">
+    $("#contact_menu").click(function() {
+        $('html, body').animate({
+            scrollTop: $("#contact").offset().top
+        }, 2000);
+    });
+</script>
 
 </body>
 

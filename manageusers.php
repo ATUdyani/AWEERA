@@ -18,8 +18,8 @@
 		$user_list.= "<td>{$user['last_name']}</td>";
 		$user_list.= "<td>{$user['type']}</td>";
 		$user_list.= "<td>{$user['last_login']}</td>";
-		$user_list.= "<td><a href=\"modify-user.php?user_id={$user['id']}\">Edit</a></td>";
-		$user_list.= "<td><a href=\"delete-user.php?user_id={$user['id']}\">Delete</a></td>";
+		$user_list.= "<td><a href=\"modify-User.php?user_id={$user['id']}\">Edit</a></td>";
+		$user_list.= "<td><a href=\"delete-User.php?user_id={$user['id']}\">Delete</a></td>";
 		$user_list.= "</tr>";
 	}
  ?>

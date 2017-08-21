@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/stock-item.php') ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/StockItem.php') ?>
 
 <h2>View Stock Details</h2>
 

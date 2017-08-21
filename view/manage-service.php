@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/service.php') ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/Service.php') ?>
 
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>

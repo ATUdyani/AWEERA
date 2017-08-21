@@ -1,16 +1,16 @@
 <?php session_start() ?>
 
 <?php require_once('../model/Database.php');
-    $db = new Database();
-    $db->connect();
+$db = new Database();
+$db->connect();
 ?>
 
-<?php 
-    // checking if an user is logged in
-    if(!isset($_SESSION['user_id'])){
-        header ('Location: ../index.php');
-    }
- ?>
+<?php
+// checking if an user is logged in
+if(!isset($_SESSION['user_id'])){
+    header ('Location: ../index.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,14 +41,14 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
 
 <div class="my-content">
-<body>
+    <body>
 
 
     <!-- Navigation -->
@@ -73,13 +73,13 @@
                         <a href="#">Appointments</a>
                     </li>
                     <li class="link-1">
-                        <a href="../index.php#gallery">Gallery</a>
+                        <a href="#">Gallery</a>
                     </li>
                     <li class="link-1">
                         <a href="../about.php">About</a>
                     </li>
                     <li class="link-1">
-                        <a href="../index.php#contact">Contact</a>
+                        <a href="#contact">Contact</a>
                     </li>
 
                     <li class="menu link-1" id="logout">
@@ -105,7 +105,7 @@
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <p class="text-left name-tag">
-                                                                <?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?>
+                                                            <?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?>
                                                         </p>
                                                         <p class="text-left small">
                                                             <?php echo $_SESSION['email'] ?>
@@ -139,26 +139,11 @@
                         </div>
                     </li>
                 </ul>
-
-                <!--<div class="arrow-up"></div>
-                <div class="login-form" >
-                    <form>
-                        <div>
-                            <input class="my-login-button" type="submit" value="Edit Profile" formaction="../model/users.php">
-                        </div>
-                        <div>
-                            <input class="my-login-button" type="submit" value="Log Out" formaction="../controller/logout.php">
-                        </div>
-                    </form>
-                </div>
-                -->
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container -->
     </nav>
-
-
 
     <!-- Page Content -->
     <div class="container">
@@ -166,47 +151,22 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Admin Home
+                <h1 class="page-header">Book an Appointment
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
                 </h1>
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li class="active">Appointments</li>
+                </ol>
             </div>
         </div>
         <!-- /.row -->
 
         <!-- Content Row -->
         <div class="row">
-            <!-- Sidebar Column -->
-            <div class="col-md-3">
-                <nav class="my-sidebar">
-                    <ul class="nav">
-                        <li><a href="../view/manage-users.php" class="my-sidebar-menu-item">Manage Users</a></li>
-                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
-                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
-
-                        <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
-                            <ul class="nav collapse my-sidebar-submenu" id="submenuStaff" role="menu" aria-labelledby="btnStaff">
-                                <li><a href="../view/add-staff.php" class="my-sidebar-submenu-item">Add Staff</a></li>
-                                <li><a href="#">Update Staff</a></li>
-                                <li><a href="#">Delete Staff</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
-                            <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">
-                                <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>
-                            </ul>
-                        </li>
-
-                        <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
-
-                    </ul>
-                </nav>
-            </div>
-
-            <!-- Content Column -->
-            <div id="content" class="col-md-9 loaded-content">
-                <h2>Section Heading</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, et temporibus, facere perferendis veniam beatae non debitis, numquam blanditiis necessitatibus vel mollitia dolorum laudantium, voluptate dolores iure maxime ducimus fugit.</p>
+            <div class="col-lg-12">
+                <p>Most of Start Bootstrap's unstyled templates can be directly integrated into the Modern Business template. You can view all of our unstyled templates on our website at <a href="http://startbootstrap.com/template-categories/unstyled">http://startbootstrap.com/template-categories/unstyled</a>.</p>
             </div>
         </div>
         <!-- /.row -->
@@ -226,34 +186,11 @@
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/loader.js"></script>
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="../js/bootstrap.min.js"></script>
-
-    <!-- Script to display and hide login form -->
-    <!--<script type="text/javascript">
-        $(document).ready(function(){
-            var arrow = $(".arrow-up");
-            var form = $(".login-form");
-            var status = false;
-            $("#logout").click(function(event){
-                event.preventDefault();
-                if(status==false){
-                    arrow.fadeIn();
-                    form.fadeIn();
-                    status = true;
-                }
-                else{
-                    arrow.fadeOut();
-                    form.fadeOut();
-                    status = false;
-                }
-            })
-        })
-    </script>-->
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
-</div>
+
 </html>

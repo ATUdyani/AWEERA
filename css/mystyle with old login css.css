@@ -99,6 +99,44 @@ body h1,h2,h3{
 	display: none;
 }
 
+.login-form{
+	text-align:center;
+	position: absolute;
+	width: 250px;
+	height: auto;
+	background: #212121;
+	right:60px;
+	top: 60px;
+	border-radius: 2px;
+	border-right: 3px solid grey;
+	border-left: 3px solid grey;
+	border-bottom: 3px solid grey;
+	display: none;
+}
+
+
+.login-form form h4{
+	text-align: center;
+	font-family: paragraphfont;
+}
+
+.login-form form{
+	margin: 30px auto;
+	font-size: 14px;
+	font-family: paragraphfont;
+	color: #fff;
+	letter-spacing: 0.05em;
+}
+
+.my-login-text{
+	width: 200px;
+	height: 30px;
+	margin-top: 20px;
+	padding-left:20px;
+	background-color: #1b1b1b;
+	border:none;
+	font-family: paragraphfont;
+}
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #fff;
@@ -118,6 +156,28 @@ body h1,h2,h3{
    color:    #fff;
 }
 
+.login-form a{
+	margin-top: 5px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	float: right;
+	color: #fff;
+	text-decoration: underline;
+	font-family: paragraphfont;
+}
+
+.login-form text{
+	font-family: paragraphfont;
+}
+
+.my-login-button{
+	height: 30px;
+	width: 100px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-color: #1b1b1b;
+	font-family: paragraphfont;
+}
 
 .fa-unlock-alt{
 	color: #fff;
@@ -194,3 +254,21 @@ body h1,h2,h3{
 	color:#bcbcbc;
 }
 
+.navbar-login
+{
+	width: 305px;
+	padding: 10px;
+	padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+	padding: 10px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+.icon-size
+{
+	font-size: 87px;
+}

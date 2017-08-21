@@ -1,3 +1,13 @@
+@font-face{
+    font-family: myfont;
+    src: url('../fonts/constantine.ttf');
+}
+
+@font-face{
+    font-family: paragraphfont;
+    src: url('../fonts/cantora.ttf');
+}
+
 #login-modal .modal-dialog {
     width: 350px;
     background: #000;
@@ -178,4 +188,41 @@
 
 .glyphicon-chevron-right{
     color: grey;
+}
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
+.logout-content .dropdown-menu{
+    border-color: #fff;
+    background-image: url("../img/logout-panel.jpg");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+    /*background: linear-gradient(#212121,#95a5a6);*/
+}
+
+.logout-content p{
+    color: #fff;
+    font-family: paragraphfont ;
+}
+
+.logout-content .name-tag{
+    font-size: 120%;
 }

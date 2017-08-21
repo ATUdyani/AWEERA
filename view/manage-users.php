@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require_once('../model/database.php') ?>
-<?php require_once('../model/user.php') ?>
+<?php require_once('../model/Database.php') ?>
+<?php require_once('../model/User.php') ?>
 
 <script>
     // to change the filter when clicked
@@ -22,6 +22,7 @@
             url: "../controller/search-employee-user-handler.php",
             method: "post",
             data:{data:jsonString},
+            cache: false,
             success: function (data) {
                 $('#result').html(data);
             }
@@ -42,6 +43,7 @@
                     url: "../controller/search-employee-user-handler.php",
                     method: "post",
                     data:{data:jsonString},
+                    cache: false,
                     success: function (data) {
                         $('#result').html(data);
                     }
@@ -53,6 +55,7 @@
                     url: "../controller/search-employee-user-handler.php",
                     method: "post",
                     data:{data:jsonString},
+                    cache: false,
                     success: function (data) {
                        $('#result').html(data);
                     }
