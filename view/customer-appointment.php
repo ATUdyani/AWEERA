@@ -166,10 +166,82 @@ if(!isset($_SESSION['user_id'])){
         <!-- Content Row -->
         <div class="row">
             <div class="col-lg-12">
-                <p>Most of Start Bootstrap's unstyled templates can be directly integrated into the Modern Business template. You can view all of our unstyled templates on our website at <a href="http://startbootstrap.com/template-categories/unstyled">http://startbootstrap.com/template-categories/unstyled</a>.</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label><h4>What are you looking for?</h4></p></label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                            <option value="Male">Haircut</option>
+                            <option value="Female">Cleanup</option>
+                            <option value="Female">Hairstyle</option>
+                            <option value="Female">Manicure</option>
+                            <option value="Female">Pedicure</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                            <option value="Male">Gents Haircut</option>
+                            <option value="Female">Ladies Haircut</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label><h4>With whom? (Select Stylist)</h4></p></label>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                            <option value="Male">Asanka</option>
+                            <option value="Female">Awishka</option>
+                            <option value="Female">Heshan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label><h4>When?</h4></p></label>
+                    </div>
+                    <div class="col-md-4">
+                        <form>
+                            <input type="date" name="bday"  class="form-control">
+                        </form>
+                    </div>
+                    <div class="col-md-4">
+                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                            <option value="Male">9.00am</option>
+                            <option value="Female">9.30am</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <div class="row">
+                    <!-- Call to Action Section -->
+                    <div class="well">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p>Have a great hair day with our professional in AWEERA. <br>
+                                    <strong>"Life is more beautiful when you meet the right Hairdresser"</strong></p>
+                            </div>
+                            <div class="col-md-4">
+                                <a class="btn btn-lg btn-default btn-block" href="#">Make Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- /.row -->
+
 
         <hr>
 
@@ -191,6 +263,8 @@ if(!isset($_SESSION['user_id'])){
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-</body>
+
+
+    </body>
 
 </html>
