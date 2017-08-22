@@ -35,8 +35,8 @@
 				$user_list.= "<td>{$user['last_name']}</td>";
 				$user_list.= "<td>{$user['type']}</td>";
 				$user_list.= "<td>{$user['last_login']}</td>";
-				$user_list.= "<td><a href=\"modify-User.php?user_id={$user['id']}\">Edit</a></td>";
-				$user_list.= "<td><a href=\"delete-User.php?user_id={$user['id']}\">Delete</a></td>";
+                $user_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{user['id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
+                $user_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$user['id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
 				$user_list.= "</tr>";
 			}
 			return $user_list;		

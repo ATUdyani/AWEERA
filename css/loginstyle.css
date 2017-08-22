@@ -180,6 +180,7 @@
 .my-login-form input{
     background-color:#212121 ;
     border-color: #a4a4a4;
+    color: #e0e0e0;
 }
 
 #icon-login-msg, #icon-lost-msg, #icon-register-msg{

@@ -134,11 +134,14 @@ body h1,h2,h3,h4{
 }
 
 .my-sidebar ul a{
-	background-color: white;
+	background : linear-gradient(#bdbdbd,#fff);
 	color: #000;
 	border-width: 5px;
 	border-style: ridge;
+	border-radius: 15%;
 	border-color: grey;
+	text-align: center;
+	margin-bottom: 2%;
 }
 
 .my-sidebar-submenu li a{
@@ -196,4 +199,12 @@ body h1,h2,h3,h4{
 
 .my-carousel {
 	height: 75%;
+}
+
+table{
+	background : linear-gradient(#bdbdbd,#e0e0e0);
+}
+
+.form-group label{
+	color: #e0e0e0;
 }

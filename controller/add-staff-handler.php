@@ -25,7 +25,6 @@
  		$errors[] = "Email Address is invalid.";
  	}
  	else{ // checking if email address already exists
- 		//$email = $db->removeSqlInjection($data[2]);
  		$email = $data[2];
  		$query = "SELECT * FROM employee WHERE emp_email='{$email}' LIMIT 1";
 

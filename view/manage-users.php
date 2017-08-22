@@ -68,17 +68,17 @@
 
 <h2>Manage Users</h2>
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#view-details" role="tab" aria-controls="view-details">View Details</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#add-user" role="tab" aria-controls="add-user">Add User</a>
-    </li>
-</ul>
-
-<div class="tab-content">
-    <div class="tab-pane fade active" id="view-details" role="tabpanel">
+<!--<ul class="nav nav-tabs" id="myTab" role="tablist">-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link active" data-toggle="tab" href="#view-details" role="tab" aria-controls="view-details">View Details</a>-->
+<!--    </li>-->
+<!--    <li class="nav-item">-->
+<!--        <a class="nav-link" data-toggle="tab" href="#add-user" role="tab" aria-controls="add-user">Add User</a>-->
+<!--    </li>-->
+<!--</ul>-->
+<!---->
+<!--<div class="tab-content">-->
+<!--    <div class="tab-pane fade active" id="view-details" role="tabpanel">-->
         <table class="table table-hover result-table">
             <thead>
             <tr>
@@ -103,38 +103,38 @@
     </div>
 
 
-    <div class="tab-pane fade" id="add-user" role="tabpanel">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="input-group my-search-panel">
-                    <div class="input-group-btn search-panel">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span id="search_concept">Filter by</span> <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" id="filter_select">
-                            <li><a href="#emp_id" value="emp_id">ID</a></li>
-                            <li><a href="#first_name" value="first_name">First Name</a></li>
-                            <li><a href="#last_name" value="last_name">Last Name</a></li>
-                            <li><a href="#emp_email" value="emp_email">Email</a></li>
-                            <li><a href="#emp_phone" value="emp_phone">Phone</a></li>
-                            <li><a href="#emp_address" value="emp_address">Address</a></li>
-                            <li><a href="#emp_type" value="emp_type">Type</a></li>
-                            <li><a href="#emp_gender" value="emp_gender">Gender</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#all" value="all">Anything</a></li>
-                        </ul>
-                    </div>
-                    <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Search employee here..." id="search_text">
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 result-table" id="result">
-
-            </div>
-        </div>
+<!--    <div class="tab-pane fade" id="add-user" role="tabpanel">-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12">-->
+<!--                <div class="input-group my-search-panel">-->
+<!--                    <div class="input-group-btn search-panel">-->
+<!--                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
+<!--                            <span id="search_concept">Filter by</span> <span class="caret"></span>-->
+<!--                        </button>-->
+<!--                        <ul class="dropdown-menu" role="menu" id="filter_select">-->
+<!--                            <li><a href="#emp_id" value="emp_id">ID</a></li>-->
+<!--                            <li><a href="#first_name" value="first_name">First Name</a></li>-->
+<!--                            <li><a href="#last_name" value="last_name">Last Name</a></li>-->
+<!--                            <li><a href="#emp_email" value="emp_email">Email</a></li>-->
+<!--                            <li><a href="#emp_phone" value="emp_phone">Phone</a></li>-->
+<!--                            <li><a href="#emp_address" value="emp_address">Address</a></li>-->
+<!--                            <li><a href="#emp_type" value="emp_type">Type</a></li>-->
+<!--                            <li><a href="#emp_gender" value="emp_gender">Gender</a></li>-->
+<!--                            <li class="divider"></li>-->
+<!--                            <li><a href="#all" value="all">Anything</a></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                    <input type="hidden" name="search_param" value="all" id="search_param">-->
+<!--                    <input type="text" class="form-control" name="x" placeholder="Search employee here..." id="search_text">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!---->
+<!--        <div class="row">-->
+<!--            <div class="col-md-12 result-table" id="result">-->
+<!---->
+<!--            </div>-->
+<!--        </div>-->
 
         <!-- Modal -->
         <div id="myModal" class="modal fade" role="dialog">

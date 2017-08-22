@@ -51,7 +51,6 @@ if(!is_email($rg_email)){
     $errors= 'Invalid email';
 }
 
-
 if (!isset($rg_password) || strlen(trim($rg_password)) < 1 ){
     $errors= 'Invalid user registration';
 }
