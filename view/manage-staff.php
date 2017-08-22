@@ -212,7 +212,7 @@
             <div class="form-group row">
                 <label for="example-email-input" class="col-md-4 col-form-label">Email</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="email"  id="emp_email_admin" maxlength="50">
+                    <input class="form-control" type="email"  id="emp_email_admin" maxlength="50" value="">
                 </div>
             </div>
 
@@ -231,7 +231,7 @@
             </div>
 
             <div>
-                <button name="clear" type="button" class="btn btn-primary col-md-1 my-button-action">Clear</button>
+                <button name="clear" type="reset" class="btn btn-primary col-md-1 my-button-action">Clear</button>
                 <button name="submit" id="emp_type_button_admin" onclick="checkFormAdmin()" type="button" value="Administrator" class="btn btn-primary col-md-1" method="post">Save</button>
             </div>
         </form>

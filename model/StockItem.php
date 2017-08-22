@@ -3,6 +3,34 @@
 
 class StockItem{
 
+    protected static $stock_id;
+    protected static $stock_brand;
+    protected static $type;
+    protected static $stock_count;
+    protected static $price;
+    protected static $description;
+    protected static $supplier_id;
+
+    protected static $db;
+    protected static $connection;
+
+    public function __construct(){
+        self::$db = new Database();
+        self::$connection = self::$db->connect();
+    }
+
+    public function setStock($stock_brand,$type,$stock_count,$price,$description,$supplier_id){
+        self::$first_name = $stock_brand;
+        self::$last_name = $type;
+        self::$emp_email = $stock_count;
+        self::$emp_phone = $price;
+        self::$emp_address = $description;
+        self::$emp_type = $emp_type;
+        self::$emp_gender = $supplier_id;
+
+    }
+
+
     public function loadStockDetails(){
         $db = new Database();
         $connection = $db->connect();
@@ -48,6 +76,52 @@ class StockItem{
         }
         return $stock_list;
     }
+
+    // search stock details
+    public function searchStockDetails($field,$search_text){
+
+
+
+        $query = "SELECT stock_brand , type , price FROM stock_item WHERE ".$field." LIKE '%".$search_text."%'";
+
+
+        try{
+            $result_set = self::$db->executeQuery($query);
+            self::$db->verifyQuery($result_set);
+
+            $stock_list ="<table class=\"table table-hover\">
+                                <thead>
+                                <tr>                                    
+                                    <th>Item</th>
+                                    <th>Qty</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+            if (self::$db->getNumRows($result_set)>0){
+                while($stock = mysqli_fetch_assoc($result_set)){
+
+                    $stock_list.= "<tr>";
+                    $stock_list.= "<td>{$stock['stock_brand']} {$stock['type']}</td>";
+                    $stock_list.= "<td><input type='text' id='qty' placeholder='1'></td>";
+                    $stock_list.= "<td>{$stock['price']}</td>";
+                    $stock_list.= "<td><input type='text' id='unt_Total'></td>";
+                    $stock_list.= "</tr>";
+                }
+                $stock_list .= "</tbody>
+                                    </table>";
+                echo $stock_list;
+            }
+            else{
+                echo "<p>No Search Results Found</p>";
+            }
+        }catch (Exception $e){
+            echo $e;
+        }
+    }
+
 }
 
 ?>

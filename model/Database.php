@@ -107,12 +107,12 @@
 
         public function generateId($last_id, $prefix){
 		    if ($last_id==0){
-		        $id = sprintf("%s%'.010d",$prefix,1);
+		        $id = sprintf("%s%'.07d",$prefix,1);
 		        return $id;
             }
             else{
 		        $last_id = $last_id+1;
-                $id = sprintf("%s%'.010d",$prefix,$last_id);
+                $id = sprintf("%s%'.07d",$prefix,$last_id);
                 return $id;
             }
         }

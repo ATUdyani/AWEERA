@@ -15,5 +15,9 @@ switch ($user_type){
         header('Location: ../view/admin-home.php');
         exit;
         break;
+    case 'Receptionist':
+        header('Location: ../view/receptionist-home.php');
+        exit;
+        break;
 }
 ?>

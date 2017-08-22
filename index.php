@@ -152,7 +152,7 @@ $db->connect();
 
 
 <!-- Header Carousel -->
-<header id="myCarousel" class="carousel slide">
+<header id="myCarousel" class="carousel slide my-carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -163,7 +163,7 @@ $db->connect();
     <!-- Wrapper for slides -->
     <div class="carousel-inner my-image">
         <div class="item active">
-            <div class="fill" style="background-image:url('img/image1.png');"></div>
+            <div class="fill" style="background-image:url('img/imghome/aweerabanner1.jpg');"></div>
             <div class="carousel-caption">
                 <h2></h2>
             </div>

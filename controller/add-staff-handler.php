@@ -69,7 +69,10 @@
  		$emp_address = mysqli_real_escape_string($connection,$data[4]);
         $emp_type = mysqli_real_escape_string($connection,$data[5]);
         $emp_gender = mysqli_real_escape_string($connection,$data[6]);
-        $emp_services = $data[7] ;
+        if ($emp_type == "Beautician"){
+            $emp_services = $data[7] ;
+		}
+
 
         $employee = new Employee();
         $employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender);

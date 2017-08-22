@@ -66,7 +66,9 @@
           if ($type == "Administrator"){
               echo 'view/admin-home.php';
           }
-
+          elseif ($type == "Receptionist") {
+              echo 'view/receptionist-home.php';
+          }
        }
        else{
           // username and password invalid

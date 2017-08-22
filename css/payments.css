@@ -1,0 +1,43 @@
+.my-btn{
+    color: black;
+    border-color: #000000;
+    background-color: #cfd8dc;
+    border-radius: 4px;
+    padding: 6px 12px;
+}
+.btn-mrgin{
+    margin-top: 5px;
+}
+.my-border{
+    border-bottom: solid 2px black;
+}
+.custom-background{
+    background: linear-gradient(#e0e0e0 , #efefef);
+    border: solid black 1px;
+}
+
+
+.custom-border{
+    border: solid black 1px;
+}
+.custom-space{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.new-form{
+    background: white;
+    border-radius: 10px;
+    padding: 3px  100px 3px 100px;
+}
+.space{
+    margin: 5px;
+}
+.custom-lable{
+    margin-top: 5px;
+}
+.lableline{
+    padding-left: 50px;
+}
+.custom-padding{
+    padding-top: 10px;
+}
