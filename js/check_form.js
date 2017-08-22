@@ -112,3 +112,27 @@ function onclickUpdate() {
         }
     });
 }
+
+// enter employee as a user
+function onclickAddUser() {
+    var formArray = [];
+    formArray.push(document.getElementById("add_first_name").value);
+    formArray.push(document.getElementById("add_last_name").value);
+    formArray.push(document.getElementById("add_emp_email").value);
+    formArray.push(document.getElementById("add_emp_type").value);
+    formArray.push(document.getElementById("add_password").value);
+    formArray.push(document.getElementById("add_emp_id").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/add-employee-user-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(data){
+            $('#insert_form')[0].reset();
+            $('#add_user_Modal').modal('hide');
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+        }
+    });
+}

@@ -158,6 +158,7 @@ $db->connect();
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
     </ol>
 
     <!-- Wrapper for slides -->
@@ -169,13 +170,19 @@ $db->connect();
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('img/image2.jpg');"></div>
+            <div class="fill" style="background-image:url('img/imghome/aweerabanner10.jpg');"></div>
             <div class="carousel-caption">
                 <h2></h2>
             </div>
         </div>
         <div class="item">
-            <div class="fill" style="background-image:url('img/image1.png');"></div>
+            <div class="fill" style="background-image:url('img/imghome/aweerabanner9.jpg');"></div>
+            <div class="carousel-caption">
+                <h2></h2>
+            </div>
+        </div>
+        <div class="item">
+            <div class="fill" style="background-image:url('img/imghome/aweerabanner8.jpg');"></div>
             <div class="carousel-caption">
                 <h2></h2>
             </div>
@@ -207,7 +214,8 @@ $db->connect();
                     <h4><i class="fa fa-fw fa-check"></i> Hair Styles </h4>
                 </div>
                 <div class="panel-body">
-                    <p> Let sensuous hair be yours! You can get various kind of hairstyles for men and women from our excellent hair stylists. We offer, hair cut, hair setting, hair treatments and hair coloring services.    </p>
+                    <p> Let sensuous hair be yours.Get your hair styled the way you want from our professional hair stylists!
+                        We offer you the Sri Lanka's Best hair cuts, hair settings, hair treatments and hair coloring services..</p>
                     <a href="appointments.html" class="btn btn-default">Book Now</a>
                 </div>
             </div>
@@ -218,7 +226,8 @@ $db->connect();
                     <h4><i class="fa fa-fw fa-gift"></i> Bridal Services </h4>
                 </div>
                 <div class="panel-body">
-                    <p> You and your bridal party’s hair and makeup will be completed just hours before your wedding. Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day.</p>
+                    <p>Are you ready for your big day? So are we. Get you and your bridal squad dressed from us at AWEERA!
+                        Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day.</p>
                     <a href="appointments.html" class="btn btn-default">Book Now</a>
                 </div>
             </div>
@@ -229,7 +238,7 @@ $db->connect();
                     <h4><i class="fa fa-fw fa-compass"></i> Beauty Services </h4>
                 </div>
                 <div class="panel-body">
-                    <p>Aweera is considered an upscale full-service beauty salon. We will offer a wide range of services that include: makeup, pedicure, manicure, nail care and other beauty services from our excellent team of beauticians.</p>
+                    <p>Approach all your beauty care treatments under one roof - AWEERA offers you a wide range of beauty care treatments including makeup, pedicure, manicure, nail care and much more..</p>
                     <a href="appointments.html" class="btn btn-default">Book Now</a>
                 </div>
             </div>
