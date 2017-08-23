@@ -245,7 +245,7 @@
                 <form>
                     <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
                         <div class="col-md-8">
-                            <input id="male_radio_button" name="gender_admin" type="radio" name="optradio" value="Male">Male
+                            <input id="male_radio_button" name="gender_admin" type="radio" name="optradio" value="Male" checked="">Male
                         </div>
                         <div class="col-md-8">
                             <input id="female_radio_button"  name="gender_admin" type="radio" name="optradio" value="Female">Female

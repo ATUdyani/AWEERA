@@ -33,9 +33,7 @@
 
        $email = mysqli_real_escape_string($connection,$entered_email);
        $password = mysqli_real_escape_string($connection,$entered_password);
-       $hashed_password = $password;
-
-       //$hashed_password = sha1($password);
+       $hashed_password = md5($password);
 
        // prepare database query
        $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' LIMIT 1";

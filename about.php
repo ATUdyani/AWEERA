@@ -110,7 +110,7 @@ $db->connect();
     <!-- Intro Content -->
     <div class="row">
         <div class="col-md-6">
-            <img class="img-responsive" src="img/aboutus.jpg" alt="">
+            <img class="img-responsive" src="img/aboutus/aboutus.jpg" alt="">
         </div>
         <div class="col-md-6">
             <h2>Aweera - Bridal, Hair & Beauty</h2>
@@ -134,10 +134,10 @@ $db->connect();
 
         </div>
         <div class="col-lg-3">
-            <img class="img-responsive" src="img/asanka1.jpg" alt="" width=100%>
+            <img class="img-responsive" src="img/aboutus/asanka1.jpg" alt="" width=100%>
         </div>
         <div class="col-lg-3">
-            <img class="img-responsive" src="img/asanka2.jpg" alt="" width=100%>
+            <img class="img-responsive" src="img/aboutus/asanka2.jpg" alt="" width=100%>
         </div>
     </div>
 
@@ -149,7 +149,7 @@ $db->connect();
         </div>
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/asanka.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/asanka.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Asanka Weerasekara</small>
@@ -168,7 +168,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/Tina1.png" alt="" width=500px height=80%>
+                <img class="img-responsive" src="img/aboutus/Tina1.png" alt="" width=500px height=80%>
                 <div class="caption">
                     <h3>Tina Ishani<br>
                         <small>Tina Ishani</small>
@@ -186,7 +186,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/suneth.jpg" alt="">
+                <img class="img-responsive" src="img/aboutus/suneth.jpg" alt="">
                 <div class="caption">
                     <h3>Suneth Rajapaksha<br>
                         <small>Suneth Rajapaksha</small>
@@ -204,7 +204,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/Heshan.png" alt="">
+                <img class="img-responsive" src="img/aboutus/Heshan.png" alt="">
                 <div class="caption">
                     <h3>Heshan Fernando<br>
                         <small>Heshan Fernando</small>
@@ -222,7 +222,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/kalpani.jpg" alt="">
+                <img class="img-responsive" src="img/aboutus/kalpani.jpg" alt="">
                 <div class="caption">
                     <h3>Kalpani Maheshika<br>
                         <small>Kalpani Maheshika</small>
@@ -240,7 +240,7 @@ $db->connect();
 
         <div class="col-md-4 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/rj.png" alt="">
+                <img class="img-responsive" src="img/aboutus/rj.jpg" alt="">
                 <div class="caption">
                     <h3>RJ Avishka<br>
                         <small>RJ Avishka</small>
@@ -267,7 +267,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/color.png" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/haircoloring.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Coloring</small>
@@ -278,7 +278,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/setting.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/setting.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Setting</small>
@@ -289,7 +289,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/cut.png" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/haircuts.jpg" alt="" width=800px height=800px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Cuts</small>
@@ -300,7 +300,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/treatments.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/treatments.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Treatments</small>
@@ -311,7 +311,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/brading.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/brading.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Hair Braiding</small>
@@ -322,7 +322,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/makeup.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/makeup.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Make-Up</small>
@@ -333,7 +333,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/painting.png" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/facepainting.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Face Painting</small>
@@ -345,7 +345,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/bridal.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/bridal.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Bridal Dressing</small>
@@ -356,7 +356,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/body.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/body.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Face & Body Treatments</small>
@@ -367,7 +367,7 @@ $db->connect();
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
-                <img class="img-responsive" src="img/facial.jpg" alt="" width=500px height=500px >
+                <img class="img-responsive" src="img/aboutus/facial.jpg" alt="" width=500px height=500px >
                 <div class="caption">
                     <h3><br>
                         <small>Skin Care</small>
@@ -383,22 +383,22 @@ $db->connect();
             <h2 class="page-header">Our Customers</h2>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/lahiru.jpeg" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/lahiru.jpeg" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/sanuka.jpg" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/sanuka.jpg" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/hemal.png" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/hemal.png" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/dasun.png" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/dasun.jpg" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/yureni.png" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/yureni.png" alt="">
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6">
-            <img class="img-responsive customer-img" src="img/sanjana.png" alt="">
+            <img class="img-responsive customer-img" src="img/aboutus/sanjana.jpg" alt="">
         </div>
     </div>
     <!-- /.row -->

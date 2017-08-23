@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Name</th>
       <th>Brand</th>
       <th>Stock Count</th>
       <th>Type</th>

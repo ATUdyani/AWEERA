@@ -291,23 +291,23 @@ $db->connect();
             <h2 class="page-header">Our Business Services</h2>
         </div>
         <div class="col-md-6">
-            <p>For all your Hair and Beauty treatments under one roof for both Ladies and Gents. <br>
+            <p>All your Hair and Beauty treatments under one roof for both Ladies and Gents. <br>
                 Our Business Services includes:</p>
             <ul>
-                <li>Haircut</li>
-                <li>Hair setting</li>
-                <li>Hair treatments</li>
-                <li>Hair color</li>
-                <li>Face and Body treatments</li>
+                <li>Hair Cuts</li>
+                <li>Hair Setting</li>
+                <li>Hair Treatments</li>
+                <li>Hair Color</li>
+                <li>Face and Body Treatments</li>
                 <li>Waxing</li>
                 <li>Threading</li>
                 <li>Saree Draping</li>
                 <li>Makeup</li>
                 <li>Pedicure</li>
                 <li>Manicure</li>
-                <li>Nail care</li>
+                <li>Nail Care</li>
             </ul>
-            <p> "Life is an endless struggle full of frustrations and challenges, but eventually you find a <strong>  hairstylist</strong> who understand you"</p>
+            <p> "Life is an endless struggle full of frustrations and challenges, but eventually you find a <strong>  hairstylist</strong> who understands you"</p>
         </div>
         <div class="col-md-6">
             <img class="img-responsive" src="img/imghome/h11.jpg" alt="">

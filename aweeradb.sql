@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2017 at 07:28 PM
+-- Generation Time: Aug 23, 2017 at 07:32 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`, `is_user`) VALUES
 ('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706398', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
 ('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0771236547', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
-('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 1),
+('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 0),
 ('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0);
 
 -- --------------------------------------------------------
@@ -273,6 +273,15 @@ CREATE TABLE IF NOT EXISTS `stock_item` (
   KEY `fk_Stock_Item_Supplier1` (`supplier_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `stock_item`
+--
+
+INSERT INTO `stock_item` (`stock_id`, `stock_brand`, `type`, `stock_count`, `price`, `description`, `supplier_id`) VALUES
+('STK0000001', 'Una', 'Shampo', 15, 2000.00, '500ml, Dandruff', 'SUP0000001'),
+('STK0000002', 'Una', 'Conditioner', 10, 1500.00, '500ml, Hair Fall Rescue', 'SUP0000001'),
+('STK0000003', 'Gliss', 'Shampo', 5, 1250.00, '250ml, Asia Straight', 'SUP0000002');
+
 -- --------------------------------------------------------
 
 --
@@ -291,6 +300,15 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   UNIQUE KEY `supplier_phone_UNIQUE` (`supplier_phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_phone`, `supplier_address`, `supplier_email`) VALUES
+('SUP0000001', 'Dushani Perera', '0778546932', 'Ja Ela', 'dushanimasha@gmail.com'),
+('SUP0000002', 'Nimesh Kalinga', '078965412', 'Maradana', 'nimesh@gmail.com'),
+('SUP0000003', 'Pasindu Perera', '0714526985', 'Dehiwala', 'pasindu@gmail.com');
+
 -- --------------------------------------------------------
 
 --
@@ -308,21 +326,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
-(1, 'Anushka', 'Vithana', 'anushka@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(2, 'Asanka', 'Perera', 'asanka@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(4, 'Suranga', 'Ranatunga', 'suranga@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(5, 'Amal', 'Jayawickrema', 'amal@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(6, 'Buddika', 'Hiripitiya', 'buddika@bestjobslk.com', '7f965560c9f2ce126407eda7c7dbbdb75037ef4d', '0000-00-00 00:00:00', 0, ''),
-(7, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', 'abc', '2017-08-23 00:13:14', 0, 'Administrator'),
-(8, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', 'abc', '2017-08-22 15:25:13', 0, 'Receptionist'),
-(16, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Beautician');
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Receptionist'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-08-23 12:58:13', 0, 'Administrator');
 
 --
 -- Constraints for dumped tables

@@ -43,8 +43,7 @@ class StockItem{
 
         while($stock = mysqli_fetch_assoc($stocks)){
             $stock_list.= "<tr>";
-            $stock_list.= "<td>{$stock['stock_id']}</td>";
-            $stock_list.= "<td>{$stock['stock_name']}</td>";
+            $stock_list.= "<td>{$stock['stock_id']}</td>";;
             $stock_list.= "<td>{$stock['stock_brand']}</td>";
             $stock_list.= "<td>{$stock['stock_count']}</td>";
             $stock_list.= "<td>{$stock['type']}</td>";
