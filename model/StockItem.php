@@ -20,13 +20,12 @@ class StockItem{
     }
 
     public function setStock($stock_brand,$type,$stock_count,$price,$description,$supplier_id){
-        self::$first_name = $stock_brand;
-        self::$last_name = $type;
-        self::$emp_email = $stock_count;
-        self::$emp_phone = $price;
-        self::$emp_address = $description;
-        self::$emp_type = $emp_type;
-        self::$emp_gender = $supplier_id;
+        self::$stock_brand = $stock_brand;
+        self::$type = $type;
+        self::$stock_count = $stock_count;
+        self::$price = $price;
+        self::$description = $description;
+        self::$supplier_id = $supplier_id;
 
     }
 

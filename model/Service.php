@@ -78,8 +78,8 @@
                     $service_list.= "<td>{$service['description']}</td>";
                     $service_list.= "<td>{$service['duration']}</td>";
                     $service_list.= "<td>{$service['commission_percentage']}</td>";
-                    $service_list.= "<td><a href=\"modify-User.php?user_id={$service['service_id']}\">Edit</a></td>";
-                    $service_list.= "<td><a href=\"delete-User.php?user_id={$service['service_id']}\">Delete</a></td>";
+                    $service_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
+                    $service_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $service_list.= "</tr>";
                 }
                 return $service_list;
