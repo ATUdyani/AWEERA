@@ -6,7 +6,7 @@
 <!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
 
-<script src="../js/jquery.js"></script>
+<script src="../js/jquery.js">
 <script type="text/javascript" src="../js/loader.js"></script>
 
 
@@ -592,8 +592,10 @@
 
 <script>
     $(function () {
-        $('#myTab a:last').tab('show')
+        $('#myTab a:first').tab('show')
     });
-
 </script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>
 

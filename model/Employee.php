@@ -249,7 +249,7 @@
                 $result_set = self::$db->executeQuery($query);
                 self::$db->verifyQuery($result_set);
 
-                $employee_list ="<table class=\"table table-hover\">
+                $employee_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
