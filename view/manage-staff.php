@@ -274,8 +274,10 @@
                 </div>
             </div>
 
-            <div>
+            <div class="col-md-2 col-md-offset-8">
                 <button name="clear" type="button" onclick="resetForm('admin_form','gender_admin')" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
+            </div>
+            <div class="col-md-2">
                 <button name="submit" id="emp_type_button_admin" onclick="checkFormAdmin()" type="button" value="Administrator" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
             </div>
         </form>
@@ -335,8 +337,10 @@
                 </div>
             </div>
 
-            <div>
+            <div class="col-md-2 col-md-offset-8">
                 <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
+            </div>
+            <div class="col-md-2">
                 <button name="submit" id="emp_type_button_receptionist" onclick="checkFormReceptionist()" type="button" value="Receptionist" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
             </div>
         </form>
@@ -409,9 +413,11 @@
                 </div>
             </div>
 
-            <div>
-                <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
-                <button name="submit" id="emp_type_button_beautician" onclick="checkFormBeautician()" type="button" value="Beautician" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
+            <div class="col-md-2 col-md-offset-8">
+                <button name="clear" type="button" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
+            </div>
+            <div class="col-md-2">
+                <button name="submit" id="emp_type_button_beautician" onclick="checkFormBeautician()" type="button" value="Beautician" class="btn btn-primary col-md-2 my-button-action my-lg-button" method="post">Save</button>
             </div>
         </form>
 
@@ -484,7 +490,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="col-md-offset-10">
                         <input type="hidden" name="update_emp_id" id="update_emp_id" />
                         <input type="button" onclick="onclickUpdate()" name="update" id="update" value="Update" class="btn btn-success my-lg-button" />
                     </div>
@@ -557,7 +563,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="col-md-offset-10">
                         <input type="hidden" name="add_emp_id" id="add_emp_id" />
                         <input type="button" onclick="onclickAddUser()" name="add" id="add" value="Add" class="btn btn-success my-lg-button" />
                     </div>
@@ -566,7 +572,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- model to display dialog -->
 <div id="msg_Modal" class="modal fade">

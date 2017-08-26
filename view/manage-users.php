@@ -79,28 +79,56 @@
 <!---->
 <!--<div class="tab-content">-->
 <!--    <div class="tab-pane fade active" id="view-details" role="tabpanel">-->
-        <table class="table table-hover result-table">
-            <thead>
-            <tr>
-                <th>User ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Type</th>
-                <th>Last Login</th>
-                <th>Edit</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            // create an oblject from user class
-            $user= new User();
-            $user_list = $user->loadUsers();
-            echo $user_list;
-            ?>
-            </tbody>
-        </table>
+
+<div class="row ">
+    <div class="col-md-12">
+        <div class="input-group my-search-panel">
+            <div class="input-group-btn search-panel">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <span id="search_concept">Filter by</span> <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" id="filter_select">
+                    <li><a href="#first_name" value="first_name">First Name</a></li>
+                    <li><a href="#last_name" value="last_name">Last Name</a></li>
+                    <li><a href="#email" value="email">Email</a></li>
+                    <li><a href="#last_login" value="last_login">Last Login</a></li>
+                    <li><a href="#type" value="type">Type</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#all" value="all">Anything</a></li>
+                </ul>
+            </div>
+            <input type="hidden" name="search_param" value="all" id="search_param">
+            <input type="text" class="form-control" name="x" placeholder="Search user here..." id="search_text">
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 result-table" id="result">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Type</th>
+                        <th>Last Login</th>
+                        <th>Change Password</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    // create an oblject from user class
+                    $user= new User();
+                    $user_list = $user->loadUsers();
+                    echo $user_list;
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+</div>
 
 
 <!--    <div class="tab-pane fade" id="add-user" role="tabpanel">-->

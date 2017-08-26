@@ -89,8 +89,10 @@
                 </div>
             </div>
 
-            <div>
+            <div class="col-md-2 col-md-offset-8">
                 <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
+            </div>
+            <div class="col-md-2">
                 <button name="submit" id="emp_type_button_admin" onclick="checkFormService()" type="button" value="Administrator" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
             </div>
         </form>

@@ -1,5 +1,5 @@
 <?php require_once '../model/Database.php' ?>
-<?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/User.php' ?>
 
 <?php
 /**
@@ -10,7 +10,7 @@
  */
     $data = json_decode(stripslashes($_POST['data']));
 
-    $employee = new Employee();
-    $employee -> searchEmployeeUserDetails($data[0],$data[1]);
+    $user = new User();
+    $user -> searchUserDetails($data[0],$data[1]);
 
 ?>

@@ -7,7 +7,7 @@ $db->connect();
 
 <?php
 // checking if an user is logged in
-if(!isset($_SESSION['user_id'])){
+if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     header ('Location: ../index.php');
 }
 ?>
