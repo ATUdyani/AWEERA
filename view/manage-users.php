@@ -2,6 +2,14 @@
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/User.php') ?>
 
+
+<!-- jQuery -->
+<script type="text/javascript" src="../js/check_form.js"></script>
+
+<script src="../js/jquery.js">
+</script><script type="text/javascript" src="../js/loader.js"></script>
+
+
 <script>
     // to change the filter when clicked
     $(document).ready(function(e){
@@ -62,6 +70,46 @@
                 });
             }
         });
+    });
+
+    // load modal change password
+    $(document).ready(function (){
+        $(document).on('click','.change_password',function(){
+            var user_id = $(this).attr("id");
+            $.ajax({
+                url:"../controller/fetch-user-handler.php",
+                method: "post",
+                data: {user_id:user_id},
+                dataType: "json",
+                cache: false,
+                success:function (data) {
+                    $('#add_first_name').val(data.first_name);
+                    $('#add_last_name').val(data.last_name);
+                    $('#add_emp_email').val(data.email);
+                    $('#add_emp_type').val(data.type);
+                    $('#add_password').val("");
+                    $('#add_confirm_password').val("");
+                    $('#message').html("");
+                    $('#add_emp_id').val(data.id);
+                    jQuery.noConflict();
+                    $('#change_password_Modal').modal('show');
+                }
+            });
+        });
+    });
+
+    // matching password
+    $('#add_confirm_password').on('keyup', function () {
+        if($(this).val() == ' '){
+            $('#message').html("");
+        }
+        if ($(this).val() == $('#add_password').val()) {
+            $('#message').html('Password Match').css('color', 'green');
+        }
+        else {
+            $('#message').html('Password does not match. Please Re-Enter!').css('color', 'red');
+
+        }
     });
 
 </script>
@@ -131,59 +179,96 @@
 </div>
 
 
-<!--    <div class="tab-pane fade" id="add-user" role="tabpanel">-->
-<!--        <div class="row">-->
-<!--            <div class="col-md-12">-->
-<!--                <div class="input-group my-search-panel">-->
-<!--                    <div class="input-group-btn search-panel">-->
-<!--                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">-->
-<!--                            <span id="search_concept">Filter by</span> <span class="caret"></span>-->
-<!--                        </button>-->
-<!--                        <ul class="dropdown-menu" role="menu" id="filter_select">-->
-<!--                            <li><a href="#emp_id" value="emp_id">ID</a></li>-->
-<!--                            <li><a href="#first_name" value="first_name">First Name</a></li>-->
-<!--                            <li><a href="#last_name" value="last_name">Last Name</a></li>-->
-<!--                            <li><a href="#emp_email" value="emp_email">Email</a></li>-->
-<!--                            <li><a href="#emp_phone" value="emp_phone">Phone</a></li>-->
-<!--                            <li><a href="#emp_address" value="emp_address">Address</a></li>-->
-<!--                            <li><a href="#emp_type" value="emp_type">Type</a></li>-->
-<!--                            <li><a href="#emp_gender" value="emp_gender">Gender</a></li>-->
-<!--                            <li class="divider"></li>-->
-<!--                            <li><a href="#all" value="all">Anything</a></li>-->
-<!--                        </ul>-->
-<!--                    </div>-->
-<!--                    <input type="hidden" name="search_param" value="all" id="search_param">-->
-<!--                    <input type="text" class="form-control" name="x" placeholder="Search employee here..." id="search_text">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!---->
-<!--        <div class="row">-->
-<!--            <div class="col-md-12 result-table" id="result">-->
-<!---->
-<!--            </div>-->
-<!--        </div>-->
-
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
+<!-- model change -->
+<div id="change_password_Modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h3 class="modal-title">Change Password</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="insert_form">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="add_first_name" id="add_first_name" disabled="disabled" maxlength="50" required="">
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <p></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
 
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Last Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="add_last_name" id="add_last_name" disabled="disabled" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Type</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="add_type" id="add_emp_type" maxlength="50" disabled="disabled" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-md-4 col-form-label">Email/Username</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email"  id="add_emp_email" name="add_emp_email" disabled="disabled" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Password</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="add_password" id="add_password" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Confirm Password</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="password" name="add_confirm_password" id="add_confirm_password" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label clearfix"></label>
+                        <div class="col-md-8">
+                            <p id="message" style="padding-top:5px;margin-bottom: 0px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-10">
+                        <input type="hidden" name="add_emp_id" id="add_emp_id" />
+                        <input type="button" onclick="onclickChangePassword()" name="add" id="add" value="Change" class="btn btn-success my-lg-button" />
+                    </div>
+                </form>
             </div>
         </div>
-
-
+    </div>
 </div>
+
+
+<!-- model to display dialog -->
+<div id="msg_Modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h3 class="modal-title">Message</h3>
+            </div>
+            <div class="modal-body">
+                <div id="msg_result">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="../js/bootstrap.min.js"></script>

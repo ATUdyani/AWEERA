@@ -111,8 +111,8 @@
                         $user_list.= "<td>{$user['email']}</td>";
                         $user_list.= "<td>{$user['last_login']}</td>";
                         $user_list.= "<td>{$user['type']}</td>";
-                        $user_list.= "<td><a href=\"add-User.php?user_id={$user['id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-success btn-sm\"><span class=\"glyphicon glyphicon-plus\"></span>  Change Password</a></td>";
-                        $user_list.= "<td><a href=\"add-User.php?user_id={$user['id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-danger btn-sm\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        $user_list.= "<td><a class=\"btn btn-success btn-sm change_password\" name=\"change_password\" value=\"change_password\" id=\"{$user['id']}\"><span class=\"glyphicon glyphicon-plus change_password\"></span>  Change Password</a></td>";
+                        $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
                         $user_list.= "</tr>";
                     }
                     $user_list .= "</tbody>
@@ -127,6 +127,39 @@
             }
         }
 
+        // get all user data for a particular user id
+        public function getUserData($user_id){
+            $query = "SELECT * FROM user WHERE id='".$user_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo e;
+            }
+        }
+
+        // change user password
+        public function changeUserPassword($emp_password,$user_id)
+        {
+            $hashed_password = md5($emp_password);
+            $query = "UPDATE user SET password='$hashed_password' WHERE id ='$user_id'";
+
+
+            try {
+                $result = self::$db->executeQuery($query);
+                if ($result) {
+                    echo "<h4>Password Changed Successfully.</h4>";
+                } else {
+                    echo "<h4>Failed to Change the Password.</h4>";
+                }
+            } catch (mysqli_sql_exception $e) {
+                echo $e;
+            }
+        }
 	}
+
 	
  ?>

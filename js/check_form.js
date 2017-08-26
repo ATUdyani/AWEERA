@@ -124,13 +124,34 @@ function onclickAddUser() {
     formArray.push(document.getElementById("add_emp_id").value);
     var jsonString = JSON.stringify(formArray);
     $.ajax({
-        url:"../controller/add-employee-user-handler.php", //the page containing php script
+        url: "../controller/add-employee-user-handler.php", //the page containing php script
         type: "POST", //request type
-        data: {data : jsonString},
+        data: {data: jsonString},
         cache: false,
-        success:function(data){
+        success: function (data) {
             $('#insert_form')[0].reset();
             $('#add_user_Modal').modal('hide');
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+        }
+    });
+}
+
+
+// change user password
+function onclickChangePassword() {
+    var formArray = [];
+    formArray.push(document.getElementById("add_emp_id").value);
+    formArray.push(document.getElementById("add_password").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url: "../controller/change-user-password-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data: jsonString},
+        cache: false,
+        success: function (data) {
+            $('#insert_form')[0].reset();
+            $('#change_password_Modal').modal('hide');
             $('#msg_Modal').modal('show');
             $('#msg_result').html(data);
         }

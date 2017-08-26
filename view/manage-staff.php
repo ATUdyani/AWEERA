@@ -113,7 +113,9 @@
                     $('#add_last_name').val(data.last_name);
                     $('#add_emp_email').val(data.emp_email);
                     $('#add_emp_type').val(data.emp_type);
-                    $('#add_password').val(data.emp_password);
+                    $('#add_password').val("");
+                    $('#add_confirm_password').val("");
+                    $('#message').html("");
                     $('#add_emp_id').val(data.emp_id);
                     jQuery.noConflict();
                     $('#add_user_Modal').modal('show');
@@ -132,7 +134,6 @@
         }
         else {
             $('#message').html('Password does not match. Please Re-Enter!').css('color', 'red');
-            msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove","Type your email and password.","Register an account.");
 
         }
     });
