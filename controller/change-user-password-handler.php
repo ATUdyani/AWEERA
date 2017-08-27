@@ -17,9 +17,9 @@ $emp_password = mysqli_real_escape_string($connection,$data[1]);
 $user_id = mysqli_real_escape_string($connection,$data[0]);
 
 if (!empty($errors)){
-    echo 'There were error(s) on your form.<br>';
+    echo '<h4>There were error(s) on your form.<br>';
     foreach ($errors as $error) {
-        echo $error."<br>";
+        echo $error."<br></h4>";
     }
 }
 else{

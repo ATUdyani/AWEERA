@@ -54,11 +54,11 @@ if (empty($data[4])){
 
 
 if (!empty($errors)){
-    echo 'There were error(s) on your form.<br>';
+    echo '<h4>There were error(s) on your form.<br>';
     foreach ($errors as $error) {
-        echo $error."<br>";
+        echo $error."<br></h4>";
     }
-    echo "Employee is not updated";
+    echo "<h4>Employee is not updated</h4>";
 }
 else{
     // adding a new record

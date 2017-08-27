@@ -121,7 +121,7 @@
                 $result_set = self::$db->executeQuery($query);
                 self::$db->verifyQuery($result_set);
                 if ($result_set){
-                    echo "Employee successfully updated.";
+                    echo "<h4>Employee successfully updated.</h4>";
                 }
 
             }catch (Exception $e){
@@ -201,7 +201,6 @@
 
                 if (self::$db->getNumRows($result_set)>0){
                     while($employee = mysqli_fetch_assoc($result_set)){
-
                         $employee_list.= "<tr>";
                         $employee_list.= "<td>{$employee['emp_id']}</td>";
                         $employee_list.= "<td>{$employee['first_name']}</td>";
@@ -210,7 +209,14 @@
                         $employee_list.= "<td>{$employee['emp_phone']}</td>";
                         $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
-                        $employee_list.= "<td><a href=\"add-User.php?user_id={$employee['emp_id']}\" data-toggle=\"modal\" data-target=\"#myModal\" class=\"btn btn-success btn-sm\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
+                        $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
+                        $employee_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        if ($employee['is_user']==1){
+                            $employee_list.= "<td><a class=\"btn btn-success btn-sm add_user disabled\" name=\"add\" value=\"Add\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
+                        }
+                        else{
+                            $employee_list.= "<td><a class=\"btn btn-success btn-sm add_user\" name=\"add\" value=\"Add\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
+                        }
                         $employee_list.= "</tr>";
                     }
                     $employee_list .= "</tbody>

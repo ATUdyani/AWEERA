@@ -6,37 +6,11 @@
 <!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
 
-<script src="../js/jquery.js">
-</script><script type="text/javascript" src="../js/loader.js"></script>
-
+<script src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/loader.js"></script>
+<script type="text/javascript" src="../js/search_filter_change.js"></script>
 
 <script>
-    // to change the filter when clicked
-    $(document).ready(function(e){
-        $('.search-panel .dropdown-menu').find('a').click(function(e) {
-            e.preventDefault();
-            var param = $(this).attr("href").replace("#","");
-            var concept = $(this).text();
-            $('.search-panel span#search_concept').text(concept);
-            $('.input-group #search_param').val(param);
-        });
-    });
-
-    // load all data on page ready
-    $(document).ready(function(){
-        var dataArray = ["*"," "];
-        var jsonString = JSON.stringify(dataArray);
-        $.ajax({
-            url: "../controller/search-employee-user-handler.php",
-            method: "post",
-            data:{data:jsonString},
-            cache: false,
-            success: function (data) {
-                $('#result').html(data);
-            }
-        });
-    });
-
     // load suitable results on keyup
     $(document).ready(function(){
         $('#search_text').keyup(function () {
@@ -151,28 +125,12 @@
 
         <div class="row">
             <div class="col-md-12 result-table" id="result">
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Type</th>
-                        <th>Last Login</th>
-                        <th>Change Password</th>
-                        <th>Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    // create an oblject from user class
-                    $user= new User();
-                    $user_list = $user->loadUsers();
-                    echo $user_list;
-                    ?>
-                    </tbody>
-                </table>
+                <?php
+                // create an object from user class
+                $user= new User();
+                $user_list = $user->searchUserDetails("*","");
+                echo $user_list;
+                ?>
             </div>
         </div>
     </div>
@@ -180,7 +138,7 @@
 
 
 <!-- model change -->
-<div id="change_password_Modal" class="modal fade">
+<div id="change_password_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -252,7 +210,7 @@
 
 
 <!-- model to display dialog -->
-<div id="msg_Modal" class="modal fade">
+<div id="msg_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -270,5 +228,3 @@
     </div>
 </div>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../js/bootstrap.min.js"></script>

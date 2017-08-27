@@ -108,7 +108,8 @@ function onclickUpdate() {
         success:function(data){
             $('#insert_form')[0].reset();
             $('#add_data_Modal').modal('hide');
-            $('#result').html(data);
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
         }
     });
 }

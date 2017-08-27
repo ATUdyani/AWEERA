@@ -76,10 +76,7 @@ class StockItem{
     }
 
     // search stock details
-    public function searchStockDetails($field,$search_text){
-
-
-
+    public function searchStockPaymentDetails($field,$search_text){
         $query = "SELECT stock_brand , type , price FROM stock_item WHERE ".$field." LIKE '%".$search_text."%'";
 
 

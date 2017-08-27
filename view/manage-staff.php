@@ -8,34 +8,9 @@
 
 <script src="../js/jquery.js">
 <script type="text/javascript" src="../js/loader.js"></script>
-
+<script type="text/javascript" src="../js/search_filter_change.js"></script>
 
 <script>
-    // to change the filter when clicked
-    $(document).ready(function(e){
-        $('.search-panel .dropdown-menu').find('a').click(function(e) {
-            e.preventDefault();
-            var param = $(this).attr("href").replace("#","");
-            var concept = $(this).text();
-            $('.search-panel span#search_concept').text(concept);
-            $('.input-group #search_param').val(param);
-        });
-    });
-
-    // load all data on page ready
-    $(document).ready(function(){
-        var dataArray = ["*"," "];
-        var jsonString = JSON.stringify(dataArray);
-        $.ajax({
-            url: "../controller/search-employee-handler.php",
-            method: "post",
-            data:{data:jsonString},
-            cache: false,
-            success: function (data) {
-                $('#result').html(data);
-            }
-        });
-    });
 
     // load suitable results on keyup
     $(document).ready(function(){
@@ -191,29 +166,12 @@
 
             <div class="row">
                 <div class="col-md-12 result-table" id="result">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Type</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <?php
-                        // create an object from Employee class
-                        $employee = new Employee();
-                        $employee_list = $employee->loadEmployeeDetails();
-                        echo $employee_list;
-                        ?>
-                        </tbody>
-                    </table>
+                    <?php
+                    // create an object from Employee class
+                    $employee = new Employee();
+                    $employee_list = $employee->searchEmployeeDetails("*","");
+                    echo $employee_list;
+                    ?>
                 </div>
             </div>
 
@@ -426,7 +384,7 @@
 </div>
 
 <!-- model to update data -->
-<div id="add_data_Modal" class="modal fade">
+<div id="add_data_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -504,7 +462,7 @@
 
 
 <!-- model to add user -->
-<div id="add_user_Modal" class="modal fade">
+<div id="add_user_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -575,7 +533,7 @@
 </div>
 
 <!-- model to display dialog -->
-<div id="msg_Modal" class="modal fade">
+<div id="msg_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -592,8 +550,6 @@
         </div>
     </div>
 </div>
-
-
 
 
 <script>

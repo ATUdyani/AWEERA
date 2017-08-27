@@ -30,7 +30,6 @@
 
 			while($user = mysqli_fetch_assoc($users)){
 				$user_list.= "<tr>";
-				$user_list.= "<td>{$user['id']}</td>";
 				$user_list.= "<td>{$user['first_name']}</td>";
 				$user_list.= "<td>{$user['last_name']}</td>";
 				$user_list.= "<td>{$user['email']}</td>";
@@ -71,7 +70,7 @@
         public function searchUserDetails($field,$search_text){
             // load all data on page ready
             if ($field=="*"){
-                $query = "SELECT * FROM user";
+                $query = "SELECT * FROM user ORDER BY type";
             }
             elseif ($field=="all"){
                 $query = "SELECT * FROM user WHERE first_name LIKE '%".$search_text
