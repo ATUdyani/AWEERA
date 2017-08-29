@@ -1,3 +1,5 @@
+<?php require_once('../model/Database.php') ?>
+
 <?php
 /**
  * Created by PhpStorm.
@@ -189,6 +191,23 @@
             }
             catch(Exception $e){
                 echo e;
+            }
+        }
+
+        // update service details
+        public function updateService($service_id){
+            $query = "UPDATE service SET service_name='".self::$service_name
+                ."', service_charge = '".self::$service_charge."', description = '".self::$description."', duration = '"
+                .self::$duration."', commission_percentage = '".self::$commission_percentage."' WHERE service_id ='$service_id'";
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+                if ($result_set){
+                    echo "<h4>Service successfully updated.</h4>";
+                }
+            }catch (Exception $e){
+                echo $e;
             }
         }
     }

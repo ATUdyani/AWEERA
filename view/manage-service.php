@@ -9,8 +9,6 @@
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 
-
-
 <script>
     // load suitable results on keyup
     $(document).ready(function(){
@@ -44,6 +42,30 @@
                     }
                 });
             }
+        });
+    });
+
+    // load modal to edit service data
+    $(document).ready(function (){
+        $(document).on('click','.edit_service',function(){
+            var service_id = $(this).attr("id");
+            $.ajax({
+                url:"../controller/fetch-service-handler.php",
+                method: "post",
+                data: {service_id:service_id},
+                dataType: "json",
+                cache: false,
+                success:function (data) {
+                    $('#update_service_name').val(data.service_name);
+                    $('#update_service_charge').val(data.service_charge);
+                    $('#update_service_description').val(data.description);
+                    $('#update_service_duration').val(data.duration);
+                    $('#update_commission').val(data.commission_percentage);
+                    $('#update_service_id').val(data.service_id);
+                    jQuery.noConflict();
+                    $('#add_data_Modal').modal('show');
+                }
+            });
         });
     });
 </script>
@@ -200,7 +222,7 @@
                     </div>
 
                     <div class="col-md-offset-10">
-                        <input type="hidden" name="update_emp_id" id="update_service_id" />
+                        <input type="hidden" name="update_service_id" id="update_service_id" />
                         <input type="button" onclick="onclickUpdateService()" name="update" id="update" value="Update" class="btn btn-success my-lg-button" />
                     </div>
                 </form>
@@ -219,7 +241,6 @@
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
                 <h3 class="modal-title">Message</h3>
-                <li class="divider"></li>
             </div>
             <div class="modal-body">
                 <div id="msg_result">
