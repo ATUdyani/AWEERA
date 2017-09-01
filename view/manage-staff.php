@@ -8,6 +8,7 @@
 
 <script src="../js/jquery.js">
 <script type="text/javascript" src="../js/loader.js"></script>
+
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 
 <script>
@@ -558,6 +559,5 @@
     });
 </script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../js/bootstrap.min.js"></script>
+
 
