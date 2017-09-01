@@ -33,7 +33,9 @@
 
        $email = mysqli_real_escape_string($connection,$entered_email);
        $password = mysqli_real_escape_string($connection,$entered_password);
-       $hashed_password = md5($password);
+       $hashed_password = $password;
+
+       //$hashed_password = sha1($password);
 
        // prepare database query
        $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' LIMIT 1";
@@ -62,11 +64,12 @@
           // redirect to userhome.php
           $type = $user["type"];
           if ($type == "Administrator"){
-              echo 'view/admin-home.php';
+           	echo 'view/admin-home.php';
           }
           elseif ($type == "Receptionist") {
-              echo 'view/receptionist-home.php';
+          	echo 'view/receptionist-home.php';
           }
+
        }
        else{
           // username and password invalid
