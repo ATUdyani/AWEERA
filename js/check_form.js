@@ -1,3 +1,4 @@
+// onClick save Service
 function checkFormService() {
     var formArray = [];
     formArray.push(document.getElementById("service_name").value);
@@ -19,6 +20,7 @@ function checkFormService() {
     });
 }
 
+// onClick save Admin
 function checkFormAdmin() {
     var formArray = [];
     formArray.push(document.getElementById("first_name_admin").value);
@@ -40,6 +42,7 @@ function checkFormAdmin() {
     });
 }
 
+// onClick save Receptionist
 function checkFormReceptionist() {
     var formArray = [];
     formArray.push(document.getElementById("first_name_receptionist").value);
@@ -61,6 +64,7 @@ function checkFormReceptionist() {
     });
 }
 
+// onClick save Beautician
 function checkFormBeautician() {
     var formArray = [];
     formArray.push(document.getElementById("first_name_beautician").value);
@@ -183,4 +187,35 @@ function onclickChangePassword() {
             $('#msg_result').html(data);
         }
     });
+}
+
+// reset all the fields in Add Administrator form
+function resetAdminForm() {
+    document.getElementById("first_name_admin").value = "";
+    document.getElementById("last_name_admin").value = "";
+    document.getElementById("male_radio_button").checked = true;
+    document.getElementById("emp_email_admin").value = "";
+    document.getElementById("emp_phone_admin").value = "";
+    document.getElementById("emp_address_admin").value = "";
+}
+
+// reset all the fields in Add Receptionist form
+function resetReceptionistForm() {
+    document.getElementById("first_name_receptionist").value = "";
+    document.getElementById("last_name_receptionist").value = "";
+    document.getElementById("male_radio_button2").checked = true;
+    document.getElementById("emp_email_receptionist").value = "";
+    document.getElementById("emp_phone_receptionist").value = "";
+    document.getElementById("emp_address_receptionist").value = "";
+}
+
+// reset all the fields in Add Beautician form
+function resetBeauticianForm() {
+    document.getElementById("first_name_beautician").value = "";
+    document.getElementById("last_name_beautician").value = "";
+    document.getElementById("male_radio_button3").checked = true;
+    document.getElementById("emp_email_beautician").value = "";
+    document.getElementById("emp_phone_beautician").value = "";
+    document.getElementById("emp_address_beautician").value = "";
+    $('input:checkbox').removeAttr('checked');
 }

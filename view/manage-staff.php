@@ -114,11 +114,6 @@
         }
     });
 
-    function resetForm(id,gender) {
-        $('input[name=gender]').prop('checked', false);
-        document.getElementById(id).reset();
-    }
-
 </script>
 
 <h2>Manage Staff</h2>
@@ -235,7 +230,7 @@
             </div>
 
             <div class="col-md-2 col-md-offset-8">
-                <button name="clear" type="button" onclick="resetForm('admin_form','gender_admin')" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
+                <button name="clear" type="button" onclick="resetAdminForm()" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
             </div>
             <div class="col-md-2">
                 <button name="submit" id="emp_type_button_admin" onclick="checkFormAdmin()" type="button" value="Administrator" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
@@ -268,10 +263,10 @@
                 <form>
                     <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
                     <div class="col-md-8">
-                        <input id="male_radio_button" name="gender_receptionist" type="radio" name="optradio" value="Male" checked="">Male
+                        <input id="male_radio_button2" name="gender_receptionist" type="radio" name="optradio" value="Male" checked="">Male
                     </div>
                     <div class="col-md-8">
-                        <input id="female_radio_button" name="gender_receptionist" type="radio" name="optradio" value="Female">Female
+                        <input id="female_radio_button2" name="gender_receptionist" type="radio" name="optradio" value="Female">Female
                     </div>
                 </form>
             </div>
@@ -298,7 +293,7 @@
             </div>
 
             <div class="col-md-2 col-md-offset-8">
-                <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
+                <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action" onclick="resetReceptionistForm()">Clear</button>
             </div>
             <div class="col-md-2">
                 <button name="submit" id="emp_type_button_receptionist" onclick="checkFormReceptionist()" type="button" value="Receptionist" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
@@ -332,10 +327,10 @@
                 <form>
                     <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
                     <div class="col-md-8">
-                        <input id="male_radio_button" name="gender_beautician" type="radio" name="optradio" value="Male" checked="">Male
+                        <input id="male_radio_button3" name="gender_beautician" type="radio" name="optradio" value="Male" checked="">Male
                     </div>
                     <div class="col-md-8">
-                        <input id="female_radio_button" name="gender_beautician" type="radio" name="optradio" value="Female">Female
+                        <input id="female_radio_button3" name="gender_beautician" type="radio" name="optradio" value="Female">Female
                     </div>
                 </form>
             </div>
@@ -374,7 +369,7 @@
             </div>
 
             <div class="col-md-2 col-md-offset-8">
-                <button name="clear" type="button" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
+                <button name="clear" type="button" onclick="resetBeauticianForm()" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
             </div>
             <div class="col-md-2">
                 <button name="submit" id="emp_type_button_beautician" onclick="checkFormBeautician()" type="button" value="Beautician" class="btn btn-primary col-md-2 my-button-action my-lg-button" method="post">Save</button>
