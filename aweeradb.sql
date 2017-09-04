@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 01, 2017 at 11:48 AM
+-- Generation Time: Sep 04, 2017 at 12:46 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -70,7 +70,19 @@ CREATE TABLE IF NOT EXISTS `beautician_service` (
 
 INSERT INTO `beautician_service` (`emp_id`, `service_id`) VALUES
 ('EMP0000003', 'SER0000001'),
-('EMP0000003', 'SER0000002');
+('EMP0000003', 'SER0000002'),
+('EMP0000005', 'SER0000001'),
+('EMP0000005', 'SER0000003'),
+('EMP0000006', 'SER0000002'),
+('EMP0000006', 'SER0000003'),
+('EMP0000006', 'SER0000004'),
+('EMP0000007', 'SER0000003'),
+('EMP0000007', 'SER0000004'),
+('EMP0000007', 'SER0000005'),
+('EMP0000007', 'SER0000006'),
+('EMP0000007', 'SER0000007'),
+('EMP0000008', 'SER0000001'),
+('EMP0000008', 'SER0000002');
 
 -- --------------------------------------------------------
 
@@ -118,7 +130,11 @@ INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_p
 ('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706398', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
 ('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0771236547', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
 ('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 0),
-('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0);
+('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0),
+('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', NULL, NULL, 'Beautician', 'Male', 0),
+('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', NULL, NULL, 'Beautician', 'Female', 0),
+('EMP0000007', 'Surangi', 'De Silva', 'surangi@gmail.com', '0778965412', 'Moratuwa', NULL, NULL, 'Beautician', 'Female', 0),
+('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 0);
 
 -- --------------------------------------------------------
 
@@ -250,7 +266,11 @@ CREATE TABLE IF NOT EXISTS `service` (
 INSERT INTO `service` (`service_id`, `service_name`, `service_charge`, `description`, `duration`, `commission_percentage`) VALUES
 ('SER0000001', 'Gents Haircut', 1000.00, 'Haircut', 30, 15),
 ('SER0000002', 'Ladies Haircut', 1500.00, 'Haircut', 30, 20),
-('SER0000003', 'Gold Cleanup', 2500.00, 'Cleanup', 45, 20);
+('SER0000003', 'Gold Cleanup', 2500.00, 'Cleanup', 45, 20),
+('SER0000004', 'Gold Facial', 1500.00, 'Facial', 30, 10),
+('SER0000005', 'Oil Treatment', 800.00, 'Hair Treatment', 45, 20),
+('SER0000006', 'Conditioning Treatment', 1200.00, 'Hair Treatment', 45, 20),
+('SER0000007', 'Protein Treatment', 1200.00, 'Hair Treatment', 45, 20);
 
 -- --------------------------------------------------------
 
@@ -324,7 +344,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -332,7 +352,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
 (17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-08-31 20:45:59', 0, 'Receptionist'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-08-31 20:46:40', 0, 'Administrator');
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-04 17:12:07', 0, 'Administrator'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-09-04 17:14:34', 0, 'Customer');
 
 --
 -- Constraints for dumped tables
