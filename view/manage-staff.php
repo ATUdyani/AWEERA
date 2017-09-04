@@ -452,7 +452,7 @@
 
                     <div class="col-md-offset-10">
                         <input type="hidden" name="update_emp_id" id="update_emp_id" />
-                        <input type="button" onclick="onclickUpdate()" name="update" id="update" value="Update" class="btn btn-success my-lg-button" />
+                        <input type="button" onclick="onclickUpdateEmployee()" name="update" id="update" value="Update" class="btn btn-success my-lg-button" />
                     </div>
                 </form>
             </div>

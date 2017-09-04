@@ -69,6 +69,7 @@
             });
         });
     });
+
 </script>
 
 
@@ -137,7 +138,7 @@
             <div class="form-group row">
                 <label for="example-text-input" class="col-md-4 col-form-label clearfix">Service Charge</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text"  id="service_charge" maxlength="50">
+                    <input class="form-control" type="number"  id="service_charge" maxlength="50">
                 </div>
             </div>
 
@@ -149,7 +150,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="example-time-input" class="col-md-4 col-form-label">Duration</label>
+                <label for="example-time-input" class="col-md-4 col-form-label">Duration (minutes)</label>
                 <div class="col-md-8">
                     <input class="form-control" type="number" id="duration" >
                 </div>
@@ -159,13 +160,14 @@
             <div class="form-group row">
                 <label for="example-tel-input" class="col-md-4 col-form-label">Percentage</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" id="commission_percentage" maxlength="3">
+                    <input class="form-control" type="number" id="commission_percentage" maxlength="3">
                 </div>
             </div>
 
             <div class="col-md-2 col-md-offset-8">
-                <button name="clear" type="button" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
+                <button name="clear" type="reset" class="btn btn-primary col-md-2 my-lg-button my-button-action">Clear</button>
             </div>
+
             <div class="col-md-2">
                 <button name="submit" id="emp_type_button_admin" onclick="checkFormService()" type="button" value="Administrator" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
             </div>
@@ -196,7 +198,7 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-4 col-form-label clearfix">Service Charge</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="update_service_charge" id="update_service_charge" maxlength="50" required="">
+                            <input class="form-control" type="number" name="update_service_charge" id="update_service_charge" maxlength="50" required="">
                         </div>
                     </div>
 
@@ -257,5 +259,3 @@
         $('#myTab a:first').tab('show')
     });
 </script>
-
-

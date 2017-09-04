@@ -12,7 +12,9 @@ function checkFormService() {
         data: {data : jsonString},
         cache: false,
         success:function(result){
-            document.getElementById("msg_service").innerHTML = result;
+            jQuery.noConflict();
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
         }
     });
 }
@@ -89,7 +91,7 @@ function checkFormBeautician() {
 }
 
 // check employee update
-function onclickUpdate() {
+function onclickUpdateEmployee() {
     var formArray = [];
     formArray.push(document.getElementById("update_first_name").value);
     formArray.push(document.getElementById("update_last_name").value);

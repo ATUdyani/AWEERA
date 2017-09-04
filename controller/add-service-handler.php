@@ -30,9 +30,9 @@
 	}
 
 	if (!empty($errors)){
- 		echo 'There were error(s) on your form.<br>';
+ 		echo '<h4>There were error(s) on your form.</h4><br>';
  		foreach ($errors as $error) {
- 			echo $error."<br>";
+ 			echo "<h4>".$error."<br></h4>";
  		}
  	}
  	else{
@@ -46,8 +46,7 @@
 
  		$service = new Service();
  		$service ->setService($service_name,$service_charge,$description,$duration,$commission_percentage);
- 		$service->addService();
-
+ 		$result = $service->addService();
 
  	}
  	

@@ -41,8 +41,6 @@
 
             $id = self::$db->generateId($last_id,"SER");
 
-            echo $id;
-
             $query = "INSERT INTO service (service_id, service_name, service_charge, description, duration, commission_percentage) VALUES ('".
                 $id."', '".self::$service_name."', '".self::$service_charge."', '".self::$description."', '".self::$duration."', '".self::$commission_percentage."')";
 
@@ -51,13 +49,13 @@
             try{
                 $result = self::$db->executeQuery($query);
                 if ($result){
-                    echo "Service successfully added.";
+                    echo "<h4>Service successfully added.</h4>";
                 }
                 else{
-                    echo "Failed to add the new record.";
+                    echo "<h4>Failed to add the new record.</h4>";
                 }
             }catch (mysqli_sql_exception $e){
-                echo $e;
+                echo "<h4>".$e."</h4>";
             }
         }
 
