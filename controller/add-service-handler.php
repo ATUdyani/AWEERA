@@ -32,7 +32,7 @@
 	if (!empty($errors)){
  		echo '<h4>There were error(s) on your form.</h4><br>';
  		foreach ($errors as $error) {
- 			echo "<h4>".$error."<br></h4>";
+ 			echo "<h4>".$error."</h4><br>";
  		}
  	}
  	else{

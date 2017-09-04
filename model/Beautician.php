@@ -23,7 +23,7 @@ class Beautician extends Employee
             try{
                 $result = self::$db->executeQuery($query);
                 if (!$result){
-                    echo "Failed to add the new record to the beautician_service table.";
+                    echo "<h4>Failed to add the new record to the beautician_service table.</h4>";
                 }
             }catch (mysqli_sql_exception $e){
                 echo $e;

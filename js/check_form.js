@@ -37,7 +37,9 @@ function checkFormAdmin() {
         data: {data : jsonString},
         cache: false,
         success:function(result){
-            document.getElementById("msg_admin").innerHTML = result;
+            jQuery.noConflict();
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
         }
     });
 }
@@ -59,7 +61,9 @@ function checkFormReceptionist() {
         data: {data: jsonString},
         cache: false,
         success: function (result) {
-            document.getElementById("msg_receptionist").innerHTML = result;
+            jQuery.noConflict();
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
         }
     });
 }
@@ -89,7 +93,9 @@ function checkFormBeautician() {
         data: {data: jsonString},
         cache: false,
         success: function (result) {
-            document.getElementById("msg_beautician").innerHTML = result;
+            jQuery.noConflict();
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
         }
     });
 }

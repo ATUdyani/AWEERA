@@ -55,9 +55,9 @@
 	}
 
 	if (!empty($errors)){
- 		echo 'There were error(s) on your form.<br>';
+ 		echo '<h4>There were error(s) on your form.</h4><br>';
  		foreach ($errors as $error) {
- 			echo $error."<br>";
+ 			echo "<h4>".$error."</h4><br>";
  		}
  	}
  	else{

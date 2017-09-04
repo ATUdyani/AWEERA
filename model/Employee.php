@@ -79,10 +79,10 @@
             try{
                 $result = self::$db->executeQuery($query);
                 if ($result){
-                    echo "Employee successfully added.";
+                    echo "<h4>Employee successfully added.</h4>";
                 }
                 else{
-                    echo "Failed to add the new record.";
+                    echo "<h4>Failed to add the new record.</h4>";
                 }
             }catch (mysqli_sql_exception $e){
 			    echo $e;
