@@ -1,9 +1,12 @@
 <?php session_start() ?>
 
 <?php require_once('../model/Database.php');
+
 $db = new Database();
 $db->connect();
 ?>
+
+<?php require_once('../model/Service.php'); ?>
 
 <?php
 // checking if an user is logged in
@@ -44,6 +47,10 @@ if(!isset($_SESSION['user_id'])){
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/customer_appointment.js"></script>
 
 </head>
 
@@ -171,19 +178,17 @@ if(!isset($_SESSION['user_id'])){
                         <label><h4>What are you looking for?</h4></p></label>
                     </div>
                     <div class="col-md-4">
-                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
-                            <option value="Male">Haircut</option>
-                            <option value="Female">Cleanup</option>
-                            <option value="Female">Hairstyle</option>
-                            <option value="Female">Manicure</option>
-                            <option value="Female">Pedicure</option>
+                        <select name="select_service_type" id="select_service_type" class="form-control" onchange="loadServiceNames(this.value)">
+                            <option value="">Select a Service</option>
+                            <?php
+                                $service = new Service();
+                                echo $service->viewAllServiceTypes();
+                            ?>
                         </select>
                     </div>
 
                     <div class="col-md-4">
-                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
-                            <option value="Male">Gents Haircut</option>
-                            <option value="Female">Ladies Haircut</option>
+                        <select name="select_service_name" id="select_service_name" class="form-control" onchange="loadBeauticianNames(this.value)" disabled="disabled">
                         </select>
                     </div>
                 </div>
@@ -195,10 +200,7 @@ if(!isset($_SESSION['user_id'])){
                         <label><h4>With whom? (Select Stylist)</h4></p></label>
                     </div>
                     <div class="col-md-4">
-                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
-                            <option value="Male">Asanka</option>
-                            <option value="Female">Awishka</option>
-                            <option value="Female">Heshan</option>
+                        <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled">
                         </select>
                     </div>
                 </div>
@@ -211,11 +213,11 @@ if(!isset($_SESSION['user_id'])){
                     </div>
                     <div class="col-md-4">
                         <form>
-                            <input type="date" name="bday"  class="form-control">
+                            <input type="date" name="bday"  class="form-control" disabled="disabled">
                         </form>
                     </div>
                     <div class="col-md-4">
-                        <select name="update_emp_gender" id="update_emp_gender" class="form-control">
+                        <select name="update_emp_gender" id="update_emp_gender" class="form-control" disabled="disabled">
                             <option value="Male">9.00am</option>
                             <option value="Female">9.30am</option>
                         </select>
@@ -257,11 +259,9 @@ if(!isset($_SESSION['user_id'])){
     </div>
     <!-- /.container -->
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+
 
 
 

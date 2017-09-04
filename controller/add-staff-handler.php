@@ -1,6 +1,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/Beautician.php' ?>
 
 <?php
 	$db = new Database();
@@ -79,7 +80,8 @@
 
         // if employee is a beautician, beautician's service list has to be inserted to the database
 		if ($emp_type == "Beautician"){
-            $employee ->addEmployeeServices($emp_services);
+			$beautician = new Beautician();
+            $beautician ->addBeauticianServices($emp_services);
 		}
 
  	}

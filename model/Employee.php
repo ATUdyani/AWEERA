@@ -47,27 +47,6 @@
             }
         }
 
-        // add employee service list to the database
-        public function addEmployeeServices($emp_services){
-            self::$emp_services = $emp_services;
-
-            $last_id=self::$db->getLastRecordId('emp_id','employee');
-
-            foreach ( self::$emp_services as $service) {
-                $query = "INSERT INTO beautician_service (emp_id, service_id) VALUES ('".$last_id."', '"
-                    .$service."')";
-
-                try{
-                    $result = self::$db->executeQuery($query);
-                    if (!$result){
-                        echo "Failed to add the new record to the beautician_service table.";
-                    }
-                }catch (mysqli_sql_exception $e){
-                    echo $e;
-                }
-            }
-        }
-
         /*
 		function checkErrors(){
 			$errors = array();

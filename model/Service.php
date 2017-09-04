@@ -96,7 +96,7 @@
         public function loadServiceNames(){
             $service_names ='';
 
-            //getting list of service names
+            //get list of service names
             $query = "SELECT * FROM service ORDER BY service_name ASC";
 
             try{
@@ -206,6 +206,46 @@
                 if ($result_set){
                     echo "<h4>Service successfully updated.</h4>";
                 }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+        // fetch all service types to appointment page
+        public function viewAllServiceTypes(){
+            $service_types ='';
+
+            $query="SELECT DISTINCT description from service";
+            try{
+                $services = self::$db->executeQuery($query);
+                self::$db->verifyQuery($services);
+                while($service = mysqli_fetch_assoc($services)){
+                    $service_types .= "<option value=\"{$service['description']}\">{$service['description']}</option>";
+                }
+                return $service_types;
+
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+        // fetch suitable service names to appointment page for a particular service type/description
+        public function fetchServiceNames($description){
+            $service_names ='';
+
+            $query="SELECT * FROM service WHERE description='$description'";
+
+            $service_names.="<select name=\"select_service_name\" id=\"select_service_name\" class=\"form-control\"><option value=\"\">Select a Service Type</option>";
+
+            try{
+                $services = self::$db->executeQuery($query);
+                self::$db->verifyQuery($services);
+                while($service = mysqli_fetch_assoc($services)){
+                    $service_names .= "<option value=\"{$service['service_id']}\">{$service['service_name']}</option>";
+                }
+                $service_names.="</select>";
+                return $service_names;
+
             }catch (Exception $e){
                 echo $e;
             }

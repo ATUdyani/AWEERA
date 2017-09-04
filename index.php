@@ -103,6 +103,65 @@ $db->connect();
                 if(!isset($_SESSION['user_id'])){
                     echo "<li class=\"menu link-1\" id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" ><i class=\"fa fa-unlock-alt\"></i>Log In</a></li>";
                 }
+                // if the user is a registered customer, set the logout panel
+                elseif ($_SESSION['type']=="Customer"){
+                    echo "<li class=\"menu link-1\" id=\"logout\">
+                        <div class=\"logout-content\">
+                            <ul class=\"nav navbar-nav navbar-right\">
+                                <li class=\"dropdown\">
+                                    <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\">
+                                        <span class=\"glyphicon glyphicon-user\"></span> 
+                                        <strong>Welcome
+                                            {$_SESSION['first_name']}
+                                        </strong>
+                                        <i class=\"fa fa-chevron-down\" aria-hidden=\"true\"></i>
+                                    </a>
+
+                                    <ul class=\"dropdown-menu\">
+                                        <li>
+                                            <div class=\"navbar-login\">
+                                                <div class=\"row\">
+                                                    <div class=\"col-lg-4\">
+                                                        <p class=\"text-center\">
+                                                            <span class=\"glyphicon glyphicon-user icon-size\"></span>
+                                                        </p>
+                                                    </div>
+                                                    <div class=\"col-lg-8\">
+                                                        <p class=\"text-left name-tag\">"
+                                                                .$_SESSION['first_name']." ".$_SESSION['last_name'].
+                                                        "</p>
+                                                        <p class=\"text-left small\">
+                                                            {$_SESSION['email']}
+                                                        </p>
+                                                        <p class=\"text-left\">
+                                                        <form>
+                                                            <input class=\"btn btn-primary btn-block btn-sm\" type=\"submit\" value=\"Edit Profile\" formaction=\"model/users.php\">
+                                                        </form>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class=\"divider\"></li>
+                                        <li>
+                                            <div class=\"navbar-login navbar-login-session\">
+                                                <div class=\"row\">
+                                                    <div class=\"col-lg-12\">
+                                                        <p>
+                                                        <form>
+                                                            <input class=\"btn btn-danger btn-block\" type=\"submit\" value=\"Log Out\" formaction=\"controller/logout.php\">
+                                                        </form>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>";
+                }
                 else{
                     echo "<li class=\"menu link-1\" id=\"welcome-msg\">
                         <a href=\"controller/direct-user-handler.php\" class=\"loggedin\" ><span class=\"glyphicon glyphicon-user\"></span> <strong>Welcome ";

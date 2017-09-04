@@ -83,6 +83,7 @@
                         <a href="../index.php#contact">Contact</a>
                     </li>
 
+                    <!-- logout panel -->
                     <li class="menu link-1" id="logout">
                         <div class="logout-content">
                             <ul class="nav navbar-nav navbar-right">
@@ -138,8 +139,9 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li> <!-- end logout panel -->
                 </ul>
+
 
                 <!--<div class="arrow-up"></div>
                 <div class="login-form" >
