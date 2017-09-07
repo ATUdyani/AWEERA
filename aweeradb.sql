@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2017 at 10:22 AM
+-- Generation Time: Sep 07, 2017 at 06:26 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -218,11 +218,11 @@ INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_p
 -- --------------------------------------------------------
 
 --
--- Table structure for table `register_user`
+-- Table structure for table `register_request`
 --
 
-DROP TABLE IF EXISTS `register_user`;
-CREATE TABLE IF NOT EXISTS `register_user` (
+DROP TABLE IF EXISTS `register_request`;
+CREATE TABLE IF NOT EXISTS `register_request` (
   `reg_id` int(20) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -232,13 +232,13 @@ CREATE TABLE IF NOT EXISTS `register_user` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `register_user`
+-- Dumping data for table `register_request`
 --
 
-INSERT INTO `register_user` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
+INSERT INTO `register_request` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
 (1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '202cb962ac59075b964b07152d234b70'),
 (2, 'Vishni', 'Ganepola', '0774896547', 'Moratuwa', 'vishnxvi@gmail.com', '900150983cd24fb0d6963f7d28e17f72'),
 (3, 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'ama@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
@@ -352,7 +352,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 15:45:38', 0, 'Receptionist'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 21:38:07', 0, 'Receptionist'),
 (18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 15:29:11', 0, 'Administrator'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 14:42:55', 0, 'Customer');
 

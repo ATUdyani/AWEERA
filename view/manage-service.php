@@ -16,7 +16,7 @@
         $('#search_text').keyup(function () {
             var dataArray =[];
             var filter = document.getElementById("search_param").value;
-            var txt = $(this).val();
+            var txt = $(this).val().trim();
             dataArray.push(filter);
             dataArray.push(txt);
             var jsonString = JSON.stringify(dataArray);

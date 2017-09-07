@@ -10,7 +10,7 @@
 
             var dataArray =[];
             var filter = "stock_id";
-            var txt = $(this).val();
+            var txt = $(this).val().trim();
             dataArray.push(filter);
             dataArray.push(txt);
             var jsonString = JSON.stringify(dataArray);

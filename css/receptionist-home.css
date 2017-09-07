@@ -1,0 +1,15 @@
+.request-icon{
+    float: right;
+}
+
+.request-icon .envelop:hover{
+    color: #4cae4c;
+
+}
+.badge{
+    background-color: #2e6da4;
+}
+
+.badge:hover{
+    background-color: #4cae4c;
+}

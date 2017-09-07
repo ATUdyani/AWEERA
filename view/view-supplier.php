@@ -16,7 +16,7 @@
         $('#search_text').keyup(function () {
             var dataArray =[];
             var filter = document.getElementById("search_param").value;
-            var txt = $(this).val();
+            var txt = $(this).val().trim();
             dataArray.push(filter);
             dataArray.push(txt);
             var jsonString = JSON.stringify(dataArray);
@@ -58,11 +58,11 @@
                     <span id="search_concept">Filter by</span> <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu" id="filter_select">
-                    <li><a href="#supplier_id" value="emp_id">ID</a></li>
-                    <li><a href="#supplier_name" value="first_name">Supplier Name</a></li>
-                    <li><a href="#supplier_phone" value="last_name">Supplier Phone</a></li>
-                    <li><a href="#supplier_address" value="emp_email">Supplier Address</a></li>
-                    <li><a href="#supplier_email" value="emp_phone">Supplier Email</a></li>
+                    <li><a href="#supplier_id" value="supplier_id">ID</a></li>
+                    <li><a href="#supplier_name" value="supplier_name">Supplier Name</a></li>
+                    <li><a href="#supplier_phone" value="supplier_phone">Supplier Phone</a></li>
+                    <li><a href="#supplier_address" value="supplier_email">Supplier Address</a></li>
+                    <li><a href="#supplier_email" value="supplier_email">Supplier Email</a></li>
                     <li class="divider"></li>
                     <li><a href="#all" value="all">Anything</a></li>
                 </ul>

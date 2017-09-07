@@ -12,20 +12,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
 }
 ?>
 
-<script>
-    setInterval(function(){
-        $.ajax({
-            url:'../controller/request-count-handler.php',
-            type: "POST",
-            data : "",
-            success: function(data)
-            {
-                $('#request_count').html(data+" NEW");
-                //alert(data);
-            }
-        });
-    },3000);
-</script>
+<script type="text/javascript" src="../js/receptionist_functions.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,7 +35,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <!-- Custom CSS -->
     <link href="../css/modern-business.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
-    <link href="../css/payments.css" rel="stylesheet">
+    <link href="../css/receptionist-home.css" rel="stylesheet">
     <link href="../css/loginstyle.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -184,8 +171,11 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-lg-12">
                 <h1 class="page-header">Receptionist Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
-                    <i class="fa fa-envelope-o envelop" aria-hidden="true"></i>
-                    <span class="badge badge-pill badge-warning" id="request_count"></span>
+                    <div class="request-icon">
+                        <span class="badge badge-pill badge-info" id="request_count" onclick="displayRegisterRequests()"></span>
+                        <i class="fa fa-envelope-o envelop" aria-hidden="true" onclick="displayRegisterRequests()"></i>
+                    </div>
+
                 </h1>
 
             </div>

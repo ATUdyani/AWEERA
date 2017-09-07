@@ -81,7 +81,7 @@ if ($errors == null){
     //$hashed_password = sha1($password);
 
     // prepare database query
-    $query = "INSERT INTO register_user(first_name,last_name,cust_phone,cust_address,cust_email,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$hashed_password')";
+    $query = "INSERT INTO register_request(first_name,last_name,cust_phone,cust_address,cust_email,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$hashed_password')";
     //echo $query;
     //$result_set = mysql_query(query);
 
