@@ -36,6 +36,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <link href="../css/modern-business.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
     <link href="../css/receptionist-home.css" rel="stylesheet">
+    <link href="../css/payments.css" rel="stylesheet">
     <link href="../css/loginstyle.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
