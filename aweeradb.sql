@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2017 at 12:46 PM
+-- Generation Time: Sep 07, 2017 at 10:22 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -232,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `register_user` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_user`
@@ -240,7 +240,8 @@ CREATE TABLE IF NOT EXISTS `register_user` (
 
 INSERT INTO `register_user` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
 (1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(2, 'Vishni', 'Ganepola', '0774896547', 'Moratuwa', 'vishnxvi@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
+(2, 'Vishni', 'Ganepola', '0774896547', 'Moratuwa', 'vishnxvi@gmail.com', '900150983cd24fb0d6963f7d28e17f72'),
+(3, 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'ama@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -351,9 +352,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-08-31 20:45:59', 0, 'Receptionist'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-04 17:12:07', 0, 'Administrator'),
-(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-09-04 17:14:34', 0, 'Customer');
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 15:45:38', 0, 'Receptionist'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 15:29:11', 0, 'Administrator'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 14:42:55', 0, 'Customer');
 
 --
 -- Constraints for dumped tables

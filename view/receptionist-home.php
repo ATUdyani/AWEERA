@@ -12,6 +12,21 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
 }
 ?>
 
+<script>
+    setInterval(function(){
+        $.ajax({
+            url:'../controller/request-count-handler.php',
+            type: "POST",
+            data : "",
+            success: function(data)
+            {
+                $('#request_count').html(data+" NEW");
+                //alert(data);
+            }
+        });
+    },3000);
+</script>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -169,7 +184,10 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-lg-12">
                 <h1 class="page-header">Receptionist Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
+                    <i class="fa fa-envelope-o envelop" aria-hidden="true"></i>
+                    <span class="badge badge-pill badge-warning" id="request_count"></span>
                 </h1>
+
             </div>
         </div>
         <!-- /.row -->

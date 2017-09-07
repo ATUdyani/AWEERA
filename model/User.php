@@ -158,6 +158,25 @@
                 echo $e;
             }
         }
+
+        // count number of new register requests
+        public function countRequest(){
+            $query = "SELECT COUNT(*) FROM register_user";
+
+
+            try {
+                $result = self::$db->executeQuery($query);
+
+                if ($result) {
+                    $req = mysqli_fetch_assoc($result);
+                    echo $req['COUNT(*)'];
+                } else {
+                    echo 0;
+                }
+            } catch (mysqli_sql_exception $e) {
+                echo $e;
+            }
+        }
 	}
 
 	
