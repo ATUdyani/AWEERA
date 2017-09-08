@@ -46,6 +46,30 @@
         });
     });
 
+    // load modal to edit customer register data
+    $(document).ready(function (){
+        $(document).on('click','.edit_data',function(){
+            var reg_id = $(this).attr("id");
+            $.ajax({
+                url:"../controller/fetch-unregistered-customer-handler.php",
+                method: "post",
+                data: {reg_id:reg_id},
+                dataType: "json",
+                cache: false,
+                success:function (data) {
+                    $('#update_first_name').val(data.first_name);
+                    $('#update_last_name').val(data.last_name);
+                    $('#update_email').val(data.cust_email);
+                    $('#update_phone').val(data.cust_phone);
+                    $('#update_address').val(data.cust_address);
+                    $('#update_id').val(data.reg_id);
+                    jQuery.noConflict();
+                    $('#add_data_Modal').modal('show');
+                }
+            });
+        });
+    });
+
 </script>
 
 <h2>New Register Requests</h2>
@@ -83,3 +107,101 @@
         </div>
     </div>
 </div>
+
+
+<!-- model to handle register requests -->
+<div id="add_data_Modal" class="modal fade text-center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h3 class="modal-title">Handle Register Request</h3>
+            </div>
+            <div class="modal-body">
+                <form method="post" id="insert_form">
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="update_first_name" id="update_first_name" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Last Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" name="update_last_name" id="update_last_name" maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-md-4 col-form-label">Email/Username</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="email"  id="update_email" name="update_email"  maxlength="50" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="example-email-input" class="col-md-4 col-form-label">Phone</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="number"  id="update_phone" name="update_phone"  maxlength="12" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 control-label">Address</label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" type="text" rows="5" id="update_address" name="update_address" maxlength="100" required=""></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label clearfix"></label>
+                        <div class="col-md-8">
+                            <p id="message" style="padding-top:5px;margin-bottom: 0px;"></p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="hidden" name="update_id" id="update_id" />
+                            <input type="button" onclick="onClickAccept()" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="button" onclick="onClickReject()" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button" />
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- model to display dialog -->
+<div id="msg_Modal" class="modal fade text-center">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                </button>
+                <h3 class="modal-title">Message</h3>
+            </div>
+            <div class="modal-body">
+                <div id="msg_result">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $('#myTab a:first').tab('show')
+    });
+</script>

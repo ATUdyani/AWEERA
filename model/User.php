@@ -235,6 +235,20 @@
                 echo $e;
             }
         }
+
+        // get all register request data for a particular reg id
+        function getUnregisteredCustomerData($reg_id){
+            $query = "SELECT * FROM register_request WHERE reg_id='".$reg_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo e;
+            }
+        }
 	}
 
 	
