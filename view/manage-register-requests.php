@@ -62,6 +62,7 @@
                     $('#update_email').val(data.cust_email);
                     $('#update_phone').val(data.cust_phone);
                     $('#update_address').val(data.cust_address);
+                    $('#password').val(data.password);
                     $('#update_id').val(data.reg_id);
                     jQuery.noConflict();
                     $('#add_data_Modal').modal('show');
@@ -168,6 +169,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" name="update_id" id="update_id" />
+                            <input type="hidden" name="password" id="password" />
                             <input type="button" onclick="onClickAcceptReject('Accepted')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
                         </div>
                         <div class="col-md-6">

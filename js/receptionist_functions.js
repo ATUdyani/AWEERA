@@ -26,6 +26,7 @@ function onClickAcceptReject(status){
     formArray.push(document.getElementById("update_phone").value);
     formArray.push(document.getElementById("update_address").value);
     formArray.push(document.getElementById("update_email").value);
+    formArray.push(document.getElementById("password").value);
     var jsonString = JSON.stringify(formArray);
     $.ajax({
         url:'../controller/register-request-confirm-mail-handler.php',
