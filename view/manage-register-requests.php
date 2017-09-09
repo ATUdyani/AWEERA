@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php require_once('../model/Database.php') ?>
-<?php require_once('../model/User.php') ?>
+<?php require_once('../model/RegisterRequest.php') ?>
 
 <!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
@@ -70,6 +70,7 @@
         });
     });
 
+
 </script>
 
 <h2>New Register Requests</h2>
@@ -99,9 +100,9 @@
     <div class="row">
         <div class="col-md-12 result-table" id="result">
             <?php
-            // create an object from StockItem class
-            $user= new User();
-            $request_list = $user->searchRegisterRequests("*","");
+            // create an object from RegisterRequest class
+            $register_request= new RegisterRequest();
+            $request_list = $register_request->searchRegisterRequests("*","");
             echo $request_list;
             ?>
         </div>
@@ -167,10 +168,10 @@
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" name="update_id" id="update_id" />
-                            <input type="button" onclick="onClickAccept()" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
+                            <input type="button" onclick="onClickAcceptReject('Accepted')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" onclick="onClickReject()" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button" />
+                            <input type="button" onclick="onClickAcceptReject('Rejected')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button" />
                         </div>
                     </div>
 

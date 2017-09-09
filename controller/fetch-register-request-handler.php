@@ -1,5 +1,5 @@
 <?php require_once '../model/Database.php' ?>
-<?php require_once '../model/User.php' ?>
+<?php require_once '../model/RegisterRequest.php' ?>
 
 
 <?php
@@ -12,6 +12,6 @@
 
 $data = json_decode(stripslashes($_POST['data']));
 
-$user = new User();
-$user -> searchRegisterRequests($data[0],$data[1]);
+$register_request = new RegisterRequest();
+$register_request -> searchRegisterRequests($data[0],$data[1]);
 ?>

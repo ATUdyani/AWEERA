@@ -2,10 +2,10 @@
 <?php 
 	class User{
 
-        protected static $emp_id;
+        protected static $id;
         protected static $first_name;
         protected static $last_name;
-        protected static $emp_email;
+        protected static $email;
         protected static $emp_type;
         protected static $last_login;
         protected static $password;
@@ -43,16 +43,16 @@
 		}
 
 		// add an employee as a user
-		public function addEmployeeUser($first_name,$last_name,$emp_email,$emp_type,$emp_password,$emp_id){
+		public function addEmployeeUser($first_name,$last_name,$email,$emp_type,$emp_password,$id){
             $hashed_password = md5($emp_password);
-            $query = "INSERT INTO user (first_name, last_name, email, password, type) VALUES ('".$first_name."', '".$last_name."', '".$emp_email."', '"
+            $query = "INSERT INTO user (first_name, last_name, email, password, type) VALUES ('".$first_name."', '".$last_name."', '".$email."', '"
                 .$hashed_password."', '".$emp_type."')";
 
 
             try{
                 $result = self::$db->executeQuery($query);
                 if ($result){
-                    $query = "UPDATE employee SET is_user = 1 WHERE emp_id ='$emp_id'";
+                    $query = "UPDATE employee SET is_user = 1 WHERE emp_id ='$id'";
                     $result_next = self::$db->executeQuery($query);
                     if ($result){
                         echo "<h4>User successfully added.</h4>";
@@ -178,77 +178,7 @@
             }
         }
 
-        // to view/search all new register requests
-        public function searchRegisterRequests($field,$search_text){
-            // load all data on page ready
-            if ($field=="*"){
-                $query = "SELECT * FROM register_request";
-            }
-            elseif ($field=="all"){
-                $query = "SELECT * FROM register_request WHERE first_name LIKE '%".$search_text
-                    ."%' OR last_name LIKE '%".$search_text
-                    ."%' OR cust_phone LIKE '%".$search_text
-                    ."%' OR cust_address LIKE '%".$search_text
-                    ."%' OR cust_email LIKE '%".$search_text."%'";
-            }
-            else{
-                $query = "SELECT * FROM register_request WHERE ".$field." LIKE '%".$search_text."%'";
-            }
 
-            try{
-                $result_set = self::$db->executeQuery($query);
-                self::$db->verifyQuery($result_set);
-
-                $request_list ="<table class=\"table table-hover col-md-12\">
-                                <thead>
-                                <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Phone</th>
-                                    <th>Address</th>
-                                    <th>Email</th>
-                                    <th>Check Request</th>
-                                </tr>
-                                </thead>
-                                <tbody>";
-
-                if (self::$db->getNumRows($result_set)>0){
-                    while($user = mysqli_fetch_assoc($result_set)){
-
-                        $request_list.= "<tr>";
-                        $request_list.= "<td>{$user['first_name']}</td>";
-                        $request_list.= "<td>{$user['last_name']}</td>";
-                        $request_list.= "<td>{$user['cust_phone']}</td>";
-                        $request_list.= "<td>{$user['cust_address']}</td>";
-                        $request_list.= "<td>{$user['cust_email']}</td>";
-                        $request_list.= "<td><a class=\"btn btn-primary btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$user['reg_id']}\"><span class=\"glyphicon glyphicon-edit\"></span> Check</a></td>";
-                        $request_list.= "</tr>";
-                    }
-                    $request_list .= "</tbody>
-                                    </table>";
-                    echo $request_list;
-                }
-                else{
-                    echo "<p>No Search Results Found</p>";
-                }
-            }catch (Exception $e){
-                echo $e;
-            }
-        }
-
-        // get all register request data for a particular reg id
-        function getUnregisteredCustomerData($reg_id){
-            $query = "SELECT * FROM register_request WHERE reg_id='".$reg_id."'";
-            try{
-                $result = self::$db->executeQuery($query);
-                $row = mysqli_fetch_array($result);
-                return $row;
-
-            }
-            catch(Exception $e){
-                echo e;
-            }
-        }
 	}
 
 	
