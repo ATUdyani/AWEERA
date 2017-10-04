@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 07, 2017 at 06:26 PM
+-- Generation Time: Oct 04, 2017 at 05:40 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -30,9 +30,12 @@ DROP TABLE IF EXISTS `appointment`;
 CREATE TABLE IF NOT EXISTS `appointment` (
   `appointment_id` varchar(20) NOT NULL,
   `appointment_date` date NOT NULL,
-  `appointment_time` time NOT NULL,
+  `start_time` int(11) NOT NULL,
+  `end_time` int(11) NOT NULL,
   `payment_id` varchar(20) NOT NULL,
   `cust_id` varchar(20) NOT NULL,
+  `service_id` varchar(20) NOT NULL,
+  `emp_id` varchar(20) NOT NULL,
   PRIMARY KEY (`appointment_id`,`payment_id`,`cust_id`),
   KEY `fk_Appointment_Payment1` (`payment_id`),
   KEY `fk_Appointment_Customer1` (`cust_id`)
@@ -83,6 +86,19 @@ INSERT INTO `beautician_service` (`emp_id`, `service_id`) VALUES
 ('EMP0000007', 'SER0000007'),
 ('EMP0000008', 'SER0000001'),
 ('EMP0000008', 'SER0000002');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `choice`
+--
+
+DROP TABLE IF EXISTS `choice`;
+CREATE TABLE IF NOT EXISTS `choice` (
+  `choice_id` int(255) NOT NULL AUTO_INCREMENT,
+  `choice_name` varchar(20) NOT NULL,
+  PRIMARY KEY (`choice_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -213,7 +229,9 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
 --
 
 INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`) VALUES
-('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72');
+('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000002', 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'wasurawattearachchi@gmail.com', '2017-09-09', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000003', 'Peter', 'Pan', '0775478965', 'Moratuwa', 'wasuradananjith@gmail.com', '2017-09-25', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -232,16 +250,14 @@ CREATE TABLE IF NOT EXISTS `register_request` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_request`
 --
 
 INSERT INTO `register_request` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
-(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '202cb962ac59075b964b07152d234b70'),
-(2, 'Vishni', 'Ganepola', '0774896547', 'Moratuwa', 'vishnxvi@gmail.com', '900150983cd24fb0d6963f7d28e17f72'),
-(3, 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'ama@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
+(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 -- --------------------------------------------------------
 
@@ -345,16 +361,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 21:38:07', 0, 'Receptionist'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 15:29:11', 0, 'Administrator'),
-(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-09-07 14:42:55', 0, 'Customer');
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-26 12:14:00', 0, 'Receptionist'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-09 20:04:30', 0, 'Administrator'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-10-04 19:37:07', 0, 'Customer'),
+(24, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer'),
+(25, 'Peter', 'Pan', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer');
 
 --
 -- Constraints for dumped tables

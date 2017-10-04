@@ -200,7 +200,7 @@ if(!isset($_SESSION['user_id'])){
                         <label><h4>With whom? (Select Stylist)</h4></p></label>
                     </div>
                     <div class="col-md-4">
-                        <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled">
+                        <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalender()">
                         </select>
                     </div>
                 </div>
@@ -213,13 +213,13 @@ if(!isset($_SESSION['user_id'])){
                     </div>
                     <div class="col-md-4">
                         <form>
-                            <input type="date" name="bday"  class="form-control" disabled="disabled">
+                            <input type="date" name="appointment_date" id="appointment_date" class="form-control" disabled="disabled" onchange="loadSlots()">
                         </form>
                     </div>
                     <div class="col-md-4">
-                        <select name="update_emp_gender" id="update_emp_gender" class="form-control" disabled="disabled">
-                            <option value="Male">9.00am</option>
-                            <option value="Female">9.30am</option>
+                        <select name="time_slots" id="time_slots" class="form-control" disabled="disabled">
+                            <option value="1">9.00am</option>
+                            <option value="2">9.30am</option>
                         </select>
                     </div>
                 </div>
