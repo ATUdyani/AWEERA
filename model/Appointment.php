@@ -162,7 +162,7 @@
                     if(strlen($begin_time_minutes)!=2){
                         $begin_time_minutes="0".$begin_time_minutes;
                     }
-                    $slots[] = $begin_time_hour."".$begin_time_minutes;
+                    $slots[] = $begin_time_hour."".$begin_time_minutes."h";
                     $gap_minutes-=self::$MIN_DURATION;
                 }
             }
