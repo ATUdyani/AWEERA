@@ -53,6 +53,7 @@
           $_SESSION['last_name'] = $user['last_name'];
           $_SESSION['type'] = $user['type'];
           $_SESSION['email'] = $user['email'];
+          $_SESSION['user_reg_id'] = $user['user_reg_id'];
 
 
           // update last login

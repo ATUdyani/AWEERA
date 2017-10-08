@@ -45,8 +45,8 @@
 		// add an employee as a user
 		public function addEmployeeUser($first_name,$last_name,$email,$emp_type,$emp_password,$id){
             $hashed_password = md5($emp_password);
-            $query = "INSERT INTO user (first_name, last_name, email, password, type) VALUES ('".$first_name."', '".$last_name."', '".$email."', '"
-                .$hashed_password."', '".$emp_type."')";
+            $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".$first_name."', '".$last_name."', '".$email."', '"
+                .$hashed_password."', '".$emp_type."', '".$id."')";
 
 
             try{

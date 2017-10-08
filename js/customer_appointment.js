@@ -52,9 +52,9 @@ function enableCalender() {
 function loadSlots(){
     var appointmentDate = document.getElementById("appointment_date").value;
     var beauticianId = document.getElementById("select_beautician_name").value;
+    var serviceId = document.getElementById("select_service_name").value;
     var dataArray = [];
-    dataArray.push(beauticianId);
-    dataArray.push(appointmentDate);
+    dataArray.push(beauticianId,appointmentDate,serviceId);
     var jsonString = JSON.stringify(dataArray);
     $.ajax({
         url:"../controller/fetch-time-slots.php",
@@ -69,4 +69,30 @@ function loadSlots(){
     });
 }
 
+// make an appointment
+function makeAppointment() {
+    var serviceId = document.getElementById("select_service_name").value;
+    var beauticianId = document.getElementById("select_beautician_name").value;
+    var appointmentDate = document.getElementById("appointment_date").value;
+
+    // extracting hours and minutes separately from start time and concatenate them
+    var hoursSTime = document.getElementById('time_slots').value.substring(0,2);
+    var minutesSTime = document.getElementById('time_slots').value.substring(2,5);
+    var appointmentTime = hoursSTime.concat(minutesSTime);
+
+    var dataArray = [];
+    dataArray.push(serviceId,beauticianId,appointmentDate,appointmentTime);
+    var jsonString = JSON.stringify(dataArray);
+    $.ajax({
+        url:"../controller/add-appointment-handler.php",
+        method: "post",
+        data: {data:jsonString},
+        cache:false,
+        success: function( data ) {
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+        }
+    });
+    
+}
 

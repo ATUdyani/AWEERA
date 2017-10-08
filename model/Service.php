@@ -248,4 +248,19 @@
                 echo $e;
             }
         }
+
+        // fetch service duration for a particular service_id
+        public function fetchServiceDuration($service_id){
+            $query="SELECT duration FROM service WHERE service_id='$service_id'";
+
+            try{
+                $result = self::$db->executeQuery($query);
+                $duration =mysqli_fetch_assoc($result);
+                self::$db->verifyQuery($result);
+                return $duration['duration'];
+
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
     }

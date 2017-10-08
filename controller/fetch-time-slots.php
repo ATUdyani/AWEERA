@@ -10,6 +10,6 @@
  */
 $data = json_decode(stripslashes($_POST['data']));
 $appointment = new Appointment();
-$free_slots = $appointment -> getFreeSlots($data[0],$data[1]);
+$free_slots = $appointment -> getFreeSlots($data[0],$data[1],$data[2]);
 echo json_encode($free_slots);
 ?>

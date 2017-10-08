@@ -91,11 +91,10 @@
                     return $last_id;
                 }
                 else{
-                    echo $number_of_rows;
+                    //echo $number_of_rows;
                     //$result_set->data_seek($number_of_rows-1);
                     $last_id_row = $result_set->fetch_row();
                     $last_id = $last_id_row[0];
-                    echo $last_id;
                     $last_id_no = substr($last_id,3,strlen($last_id)-1);
                     return $last_id_no;
                 }

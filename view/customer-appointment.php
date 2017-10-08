@@ -218,8 +218,6 @@ if(!isset($_SESSION['user_id'])){
                     </div>
                     <div class="col-md-4">
                         <select name="time_slots" id="time_slots" class="form-control" disabled="disabled">
-                            <option value="1">9.00am</option>
-                            <option value="2">9.30am</option>
                         </select>
                     </div>
                 </div>
@@ -227,17 +225,11 @@ if(!isset($_SESSION['user_id'])){
                 <br>
                 <br>
                 <br>
-                <div class="row">
-                    <!-- Call to Action Section -->
-                    <div class="well">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <p>Have a great hair day with our professional in AWEERA. <br>
-                                    <strong>"Life is more beautiful when you meet the right Hairdresser"</strong></p>
-                            </div>
-                            <div class="col-md-4">
-                                <a class="btn btn-lg btn-default btn-block" href="#">Make Appointment</a>
-                            </div>
+
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-4 col-md-offset-4">
+                            <a class="btn btn-lg btn-default btn-block" onclick="makeAppointment()">Make Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -258,6 +250,26 @@ if(!isset($_SESSION['user_id'])){
 
     </div>
     <!-- /.container -->
+
+    <!-- model to display dialog -->
+    <div id="msg_Modal" class="modal fade text-center">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    </button>
+                    <h3 class="modal-title">Message</h3>
+                </div>
+                <div class="modal-body">
+                    <div id="msg_result">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
