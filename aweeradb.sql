@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 04, 2017 at 05:40 PM
+-- Generation Time: Oct 08, 2017 at 09:08 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -30,8 +30,8 @@ DROP TABLE IF EXISTS `appointment`;
 CREATE TABLE IF NOT EXISTS `appointment` (
   `appointment_id` varchar(20) NOT NULL,
   `appointment_date` date NOT NULL,
-  `start_time` int(11) NOT NULL,
-  `end_time` int(11) NOT NULL,
+  `start_time` varchar(11) NOT NULL,
+  `end_time` varchar(11) NOT NULL,
   `payment_id` varchar(20) NOT NULL,
   `cust_id` varchar(20) NOT NULL,
   `service_id` varchar(20) NOT NULL,
@@ -40,6 +40,14 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   KEY `fk_Appointment_Payment1` (`payment_id`),
   KEY `fk_Appointment_Customer1` (`cust_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `appointment`
+--
+
+INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `end_time`, `payment_id`, `cust_id`, `service_id`, `emp_id`) VALUES
+('APP0000001', '2017-10-12', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
+('APP0000002', '2017-10-10', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003');
 
 -- --------------------------------------------------------
 
@@ -145,7 +153,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`, `is_user`) VALUES
 ('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706398', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
 ('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0771236547', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
-('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 0),
+('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 1),
 ('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0),
 ('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', NULL, NULL, 'Beautician', 'Male', 0),
 ('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', NULL, NULL, 'Beautician', 'Female', 0),
@@ -169,6 +177,13 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `type` varchar(20) NOT NULL,
   PRIMARY KEY (`payment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `payment_date`, `payment_time`, `payment_mode`, `paid_amount`, `balance`, `type`) VALUES
+('none', '2017-10-09', '00:00:00', '', 0.00, 0.00, '');
 
 -- --------------------------------------------------------
 
@@ -231,7 +246,9 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
 INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`) VALUES
 ('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72'),
 ('REG0000002', 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'wasurawattearachchi@gmail.com', '2017-09-09', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000003', 'Peter', 'Pan', '0775478965', 'Moratuwa', 'wasuradananjith@gmail.com', '2017-09-25', '900150983cd24fb0d6963f7d28e17f72');
+('REG0000003', 'Peter', 'Pan', '0775478965', 'Moratuwa', 'wasuradananjith@gmail.com', '2017-09-25', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisan.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -250,14 +267,15 @@ CREATE TABLE IF NOT EXISTS `register_request` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_request`
 --
 
 INSERT INTO `register_request` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
-(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '202cb962ac59075b964b07152d234b70');
+(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '900150983cd24fb0d6963f7d28e17f72'),
+(2, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -360,19 +378,24 @@ CREATE TABLE IF NOT EXISTS `user` (
   `last_login` datetime DEFAULT NULL,
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(15) NOT NULL,
+  `user_reg_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-26 12:14:00', 0, 'Receptionist'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-09-09 20:04:30', 0, 'Administrator'),
-(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-10-04 19:37:07', 0, 'Customer'),
-(24, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer'),
-(25, 'Peter', 'Pan', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:35:46', 0, 'Receptionist', 'EMP0000002'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:02:00', 0, 'Administrator', 'EMP0000001'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:26:16', 0, 'Customer', 'REG0000001'),
+(24, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', ''),
+(25, 'Peter', 'Pan', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', ''),
+(26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Beautician', 'EMP0000003'),
+(28, 'Aruna', 'Jayathilake', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000004'),
+(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:37:48', 0, 'Customer', 'REG0000004'),
+(30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005');
 
 --
 -- Constraints for dumped tables
@@ -382,7 +405,6 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 -- Constraints for table `appointment`
 --
 ALTER TABLE `appointment`
-  ADD CONSTRAINT `fk_Appointment_Customer1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Appointment_Payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
