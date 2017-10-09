@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 08, 2017 at 09:08 PM
+-- Generation Time: Oct 09, 2017 at 09:22 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -46,8 +46,12 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 --
 
 INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `end_time`, `payment_id`, `cust_id`, `service_id`, `emp_id`) VALUES
-('APP0000001', '2017-10-12', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
-('APP0000002', '2017-10-10', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003');
+('APP0000001', '2017-10-10', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
+('APP0000002', '2017-10-10', '1130', '1200', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
+('APP0000003', '2017-10-10', '1400', '1430', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
+('APP0000004', '2017-10-11', '1000', '1045', 'none', 'REG0000004', 'SER0000003', 'EMP0000005'),
+('APP0000005', '2017-10-11', '0930', '1000', 'none', 'REG0000004', 'SER0000001', 'EMP0000005'),
+('APP0000006', '2017-10-11', '1315', '1345', 'none', 'REG0000004', 'SER0000001', 'EMP0000005');
 
 -- --------------------------------------------------------
 
@@ -394,7 +398,7 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 (25, 'Peter', 'Pan', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', ''),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Beautician', 'EMP0000003'),
 (28, 'Aruna', 'Jayathilake', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000004'),
-(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:37:48', 0, 'Customer', 'REG0000004'),
+(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-09 11:38:33', 0, 'Customer', 'REG0000004'),
 (30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005');
 
 --
