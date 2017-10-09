@@ -46,18 +46,13 @@
                     return $free_slots;
                 }
                 else {
-                    // seek the first appointment for the day
-                    mysqli_data_seek($result, 1);
-                    $row = mysqli_fetch_array($result);
 
-                    // select first time slot of the day
-                    $firstTime = $row['start_time'];
-                    $dividedSlots="";
-                    $result = $this->divideSlotsFromOpen($firstTime,$duration);
-                    foreach ($result as $value) {
-                        $dividedSlots.="<option value=\"{$value}\">".$value."</option>";
+                    $result_set = $this->chooseTimeSlots($result,$duration);
+                    //$free_slots.="<option value=\"\">".$result_set."</option>";
+                    foreach ($result_set as $value) {
+                        $free_slots.="<option value=\"{$value}\">".$value."</option>";
                     }
-                    return $dividedSlots;
+                    return $free_slots;
                 }
             } catch (Exception $e) {
                 echo $e;
@@ -135,18 +130,24 @@
                 $hours+=1;
                 $minutes-=60;
             }
+            if (strlen($minutes)!=2){
+                $minutes = $minutes."0";
+            }
+            if (strlen($hours)!=2){
+                $hours = "0".$minutes;
+            }
             return $hours."".$minutes;
         }
 
         // divide slots from opening time to the given time
         public function divideSlotsFromOpen($time,$duration){
             $slots = array();
-            $time_minutes = substr($time,2,2); // 00
-            $time_hour = substr($time,0,2); // 12
+            $time_minutes = substr($time,2,2);
+            $time_hour = substr($time,0,2);
 
-            $gap_hour = ($time_hour-self::$OPEN_TIME); // 3
+            $gap_hour = ($time_hour-self::$OPEN_TIME);
             $gap_minutes = $gap_hour*60+$time_minutes-self::$MIN_DURATION; // first 30 minutes of the day won't be allocated for appointments
-            $begin_time_hour = self::$OPEN_TIME; // 9
+            $begin_time_hour = self::$OPEN_TIME;
             $begin_time_minutes = "00";
 
             if ($gap_minutes>=$duration){
@@ -169,5 +170,75 @@
             return $slots;
         }
 
+
+        // divide slots from the given time to the closing time
+        public function divideSlotsToClose($time,$duration){
+            $slots = array();
+            $time_minutes = substr($time,2,2);
+            $time_hour = substr($time,0,2);
+
+            if ($time_minutes>0){
+                $gap_hour = (self::$CLOSE_TIME-$time_hour)-1;
+                $gap_minutes = 60-$time_minutes;
+            }
+            else{
+                $gap_hour = (self::$CLOSE_TIME-$time_hour);
+                $gap_minutes=0;
+            }
+
+            $gap_minutes = $gap_minutes + $gap_hour*60+$time_minutes-60; // last 60 minutes of the day won't be allocated for appointments
+            $begin_time_hour = $time_hour; // slot allocation starting from the given time_hour
+            $begin_time_minutes = $time_minutes; // slot allocation starting from the given time_minutes
+
+            if ($gap_minutes>=$duration){
+                while($gap_minutes>=$duration){
+
+                    if ($begin_time_minutes>=60){
+                        $begin_time_hour+=1;
+                        $begin_time_minutes-=60;
+                    }
+                    if(strlen($begin_time_hour)!=2){
+                        $begin_time_hour="0".$begin_time_hour;
+                    }
+                    if(strlen($begin_time_minutes)!=2){
+                        $begin_time_minutes="0".$begin_time_minutes;
+                    }
+                    $slots[] = $begin_time_hour."".$begin_time_minutes."h";
+                    $begin_time_minutes += self::$MIN_DURATION;
+                    $gap_minutes-=self::$MIN_DURATION;
+                }
+            }
+            return $slots;
+        }
+
+        // time slot choosing algorithm
+        public function chooseTimeSlots($result,$duration){
+            // seek the first appointment for the day until now
+            mysqli_data_seek($result, 0);
+            $row = mysqli_fetch_array($result);
+
+            // select first time slot of the day until now
+            $first_time = $row['start_time'];
+
+            $divided_slots= array();
+            $divided_slots_from_start = $this->divideSlotsFromOpen($first_time,$duration);
+            foreach ($divided_slots_from_start as $slot) {
+                $divided_slots[]=$slot;
+            }
+
+            // seek the last appointment for the day until now
+            $num_rows = self::$db->getNumRows($result);
+            mysqli_data_seek($result, $num_rows-1);
+            $row = mysqli_fetch_array($result);
+
+            // select last time slot of the day until now
+            $last_time = $row['end_time'];
+
+            $divided_slots_till_end = $this->divideSlotsToClose($last_time,$duration);
+            foreach ($divided_slots_till_end as $slot) {
+                $divided_slots[]=$slot;
+            }
+            return $divided_slots;
+        }
     }
 ?>

@@ -76,8 +76,8 @@ function makeAppointment() {
     var appointmentDate = document.getElementById("appointment_date").value;
 
     // extracting hours and minutes separately from start time and concatenate them
-    var hoursSTime = document.getElementById('time_slots').value.substring(0,2);
-    var minutesSTime = document.getElementById('time_slots').value.substring(2,5);
+    var hoursSTime = document.getElementById('time_slots').value.substr(0,2);
+    var minutesSTime = document.getElementById('time_slots').value.substr(2,2);
     var appointmentTime = hoursSTime.concat(minutesSTime);
 
     var dataArray = [];
