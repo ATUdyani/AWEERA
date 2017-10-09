@@ -29,7 +29,7 @@
         // get free time slots for a particular beautician for a particular date
         public function getFreeSlots($beautician_id, $date, $service_id)
         {
-            $query = "SELECT * FROM appointment WHERE emp_id=" . "'$beautician_id'" . " AND appointment_date=" . "'$date' ORDER BY 'start_time'";
+            $query = "SELECT * FROM appointment WHERE emp_id=" . "'$beautician_id'" . " AND appointment_date=" . "'$date' ORDER BY start_time ASC";
 
             try {
                 $result = self::$db->executeQuery($query);
@@ -211,8 +211,98 @@
             return $slots;
         }
 
+        // divide slots in a particular range
+        public function divideSlotsInRange($start_time,$duration,$end_tme){
+            $slots = array();
+
+            $start_time_minutes = substr($start_time,2,2);
+            $start_time_hour = substr($start_time,0,2);
+
+            $end_time_minutes = substr($end_tme,2,2);
+            $end_time_hour = substr($end_tme,0,2);
+
+            if ($start_time_minutes>0){
+                $gap_hour = ($end_time_hour-$start_time_hour)-1;
+                $gap_minutes = 60-$start_time_minutes+$end_time_minutes;
+            }
+            else{
+                $gap_hour = ($end_time_hour-$start_time_hour);
+                $gap_minutes = $end_time_minutes;
+            }
+
+            $gap_minutes = $gap_minutes + $gap_hour*60;
+            $begin_time_hour = $start_time_hour; // slot allocation starting from the given time_hour
+            $begin_time_minutes = $start_time_minutes; // slot allocation starting from the given time_minutes
+
+            if ($gap_minutes>=$duration){
+                while($gap_minutes>=$duration){
+
+                    if ($begin_time_minutes>=60){
+                        $begin_time_hour+=1;
+                        $begin_time_minutes-=60;
+                    }
+                    if(strlen($begin_time_hour)!=2){
+                        $begin_time_hour="0".$begin_time_hour;
+                    }
+                    if(strlen($begin_time_minutes)!=2){
+                        $begin_time_minutes="0".$begin_time_minutes;
+                    }
+                    $slots[] = $begin_time_hour."".$begin_time_minutes."h";
+                    $begin_time_minutes += self::$MIN_DURATION;
+                    $gap_minutes-=self::$MIN_DURATION;
+                }
+            }
+            return $slots;
+        }
+
+        // divide time slots in between the starting time and last time for a particular employee for a particular day
+        public function divideSlotsInBetween($result,$duration){
+            $slots = array();
+
+            // seek the first appointment for the day until now
+            mysqli_data_seek($result, 0);
+            $first_row = mysqli_fetch_array($result);
+
+            // get the appointment end time of the first appointment
+            $end_time = $first_row['end_time'];
+            $end_time_minutes = substr($end_time,2,2);
+            $end_time_hour = substr($end_time,0,2);
+            $end_minutes_total =$end_time_hour*60+$end_time_minutes;
+
+            while($slot = mysqli_fetch_assoc($result)){
+
+                $next_end_time = $slot['end_time']; // end_time time to be considered in the next iteration
+
+                $start_time = $slot['start_time']; // start_time of the next appointment
+                $start_time_minutes = substr($start_time,2,2);
+                $start_time_hour = substr($start_time,0,2);
+                $start_minutes_total =$start_time_hour*60+$start_time_minutes;
+
+                $difference = $start_minutes_total - $end_minutes_total;
+                if ($difference>=$duration){
+                    $slots_in_range = $this->divideSlotsInRange($end_time,$duration,$start_time); // previous end_time and current start_time and duration
+                    foreach ($slots_in_range as $slot) {
+                        $slots[] = $slot;
+                    }
+
+                }
+                $end_time = $next_end_time;
+                $end_time_minutes = substr($end_time,2,2);
+                $end_time_hour = substr($end_time,0,2);
+                $end_minutes_total =$end_time_hour*60+$end_time_minutes;
+            }
+            return $slots;
+
+
+        }
+
+
         // time slot choosing algorithm
         public function chooseTimeSlots($result,$duration){
+            $divided_slots= array(); // to store the slots to return
+
+            /* slots from opening time to the first appointment*/
+
             // seek the first appointment for the day until now
             mysqli_data_seek($result, 0);
             $row = mysqli_fetch_array($result);
@@ -220,11 +310,21 @@
             // select first time slot of the day until now
             $first_time = $row['start_time'];
 
-            $divided_slots= array();
             $divided_slots_from_start = $this->divideSlotsFromOpen($first_time,$duration);
             foreach ($divided_slots_from_start as $slot) {
                 $divided_slots[]=$slot;
             }
+
+
+            /* slots from in between appointments*/
+
+            $divided_slots_in_between = $this->divideSlotsInBetween($result,$duration);
+            foreach ($divided_slots_in_between as $slot) {
+                $divided_slots[]=$slot;
+            }
+
+
+            /* slots from last appointment time to the closing time*/
 
             // seek the last appointment for the day until now
             $num_rows = self::$db->getNumRows($result);
