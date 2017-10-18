@@ -1,3 +1,4 @@
+<?php require_once('../model/Employee.php') ?>
 <?php
 /**
  * Created by PhpStorm.
@@ -31,13 +32,18 @@ class Beautician extends Employee
         }
     }
 
-    // fetch suitable Beautician names to appointment page for a particular service id
+    // fetch suitable Beautician names for a particular service id
     public function fetchBeauticianNames($service_id){
+        // if all beauticians have to be loaded for all services
+        if($service_id=="*"){
+            $query="SELECT * FROM employee WHERE emp_type='Beautician'";
+        }
+        else{
+            $query="SELECT * FROM beautician_service b,employee e WHERE b.service_id='$service_id' AND b.emp_id=e.emp_id";
+        }
         $beautician_names ='';
 
-        $query="SELECT * FROM beautician_service b,employee e WHERE b.service_id='$service_id' AND b.emp_id=e.emp_id";
-
-        $beautician_names.="<select name=\"select_beautician_name\" id=\"select_beautician_name\" class=\"form-control\"> <option value=\"\">Select a Beautician</option>";
+        $beautician_names.="<option value=\"\">Select a Beautician</option>";
 
         try{
             $services = self::$db->executeQuery($query);
@@ -45,7 +51,6 @@ class Beautician extends Employee
             while($beautician = mysqli_fetch_assoc($services)){
                 $beautician_names .= "<option value=\"{$beautician['emp_id']}\">{$beautician['first_name']}</option>";
             }
-            $beautician_names.="</select>";
             return $beautician_names;
 
         }catch (Exception $e){
