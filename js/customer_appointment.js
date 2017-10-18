@@ -93,6 +93,5 @@ function makeAppointment() {
             $('#msg_result').html(data);
         }
     });
-    
 }
 

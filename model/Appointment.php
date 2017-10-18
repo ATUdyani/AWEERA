@@ -298,8 +298,9 @@
 
 
         // time slot choosing algorithm
-        public function chooseTimeSlots($result,$duration){
-            $divided_slots= array(); // to store the slots to return
+        public function chooseTimeSlots($result,$duration)
+        {
+            $divided_slots = array(); // to store the slots to return
 
             /* slots from opening time to the first appointment*/
 
@@ -310,17 +311,17 @@
             // select first time slot of the day until now
             $first_time = $row['start_time'];
 
-            $divided_slots_from_start = $this->divideSlotsFromOpen($first_time,$duration);
+            $divided_slots_from_start = $this->divideSlotsFromOpen($first_time, $duration);
             foreach ($divided_slots_from_start as $slot) {
-                $divided_slots[]=$slot;
+                $divided_slots[] = $slot;
             }
 
 
             /* slots from in between appointments*/
 
-            $divided_slots_in_between = $this->divideSlotsInBetween($result,$duration);
+            $divided_slots_in_between = $this->divideSlotsInBetween($result, $duration);
             foreach ($divided_slots_in_between as $slot) {
-                $divided_slots[]=$slot;
+                $divided_slots[] = $slot;
             }
 
 
@@ -328,17 +329,78 @@
 
             // seek the last appointment for the day until now
             $num_rows = self::$db->getNumRows($result);
-            mysqli_data_seek($result, $num_rows-1);
+            mysqli_data_seek($result, $num_rows - 1);
             $row = mysqli_fetch_array($result);
 
             // select last time slot of the day until now
             $last_time = $row['end_time'];
 
-            $divided_slots_till_end = $this->divideSlotsToClose($last_time,$duration);
+            $divided_slots_till_end = $this->divideSlotsToClose($last_time, $duration);
             foreach ($divided_slots_till_end as $slot) {
-                $divided_slots[]=$slot;
+                $divided_slots[] = $slot;
             }
             return $divided_slots;
         }
+
+
+        // search appointment details
+        public function searchAppointmentDetails($date,$emp_id){
+            // load all data on page ready
+            if ($emp_id=="*"){
+                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.appointment_date='".$date."' 
+                AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.start_time";
+            }
+            else{
+                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE emp_id='".$emp_id."' AND appointment_date='".$date."' 
+                AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY start_time";
+            }
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $appointment_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Beautician</th>
+                                    <th>Cancel</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    while($appointment = mysqli_fetch_assoc($result_set)){
+
+                        $appointment_list.= "<tr>";
+                        $appointment_list.= "<td>{$appointment['appointment_id']}</td>";
+                        $appointment_list.= "<td>{$appointment['appointment_date']}</td>";
+                        $appointment_list.= "<td>{$appointment['start_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['end_time']}h</td>";
+                        $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment['cust_id']}</a></td>";
+                        $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
+                        $appointment_list.= "<td><a class='customer_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
+                        $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        $appointment_list.= "</tr>";
+                    }
+                    $appointment_list .= "</tbody>
+                                    </table>";
+                    echo $appointment_list;
+                }
+                else{
+                    echo "<p>No Search Results Found</p>";
+                }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
     }
+
+
+
 ?>

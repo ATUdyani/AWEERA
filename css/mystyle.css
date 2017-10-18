@@ -208,3 +208,8 @@ table{
 .form-group label{
 	color: #e0e0e0;
 }
+
+.view-all{
+	font-size: 70%;
+	font-weight: bold;
+}
