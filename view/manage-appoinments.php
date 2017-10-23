@@ -1,6 +1,35 @@
 <?php require_once('../model/Appointment.php') ?>
 <?php require_once('../model/Beautician.php') ?>
 
+<script>
+    // load modal to view employee data
+    $(document).ready(function (){
+        $(document).on('click','.emp_check',function(){
+            var emp_id = $(this).attr("id");
+            $.ajax({
+                url:"../controller/fetch-employee-handler.php",
+                method: "post",
+                data: {emp_id:emp_id},
+                dataType: "json",
+                cache: false,
+                success:function (data) {
+                    $('#update_first_name').val(data.first_name);
+                    $('#update_last_name').val(data.last_name);
+                    $('#update_emp_email').val(data.emp_email);
+                    $('#update_emp_phone').val(data.emp_phone);
+                    $('#update_emp_address').val(data.emp_address);
+                    $('#update_emp_gender').val(data.emp_gender);
+                    $('#update_emp_type').val(data.emp_type);
+                    $('#update_emp_id').val(data.emp_id);
+                    $('#add_data_Modal').modal('show');
+                }
+            });
+        });
+    });
+
+</script>
+
+
 <h2>Appointments</h2>
 <h2><small>
         <input id="date_picker" type="date" name="appointment_date" onchange="getAppointments('')"
@@ -40,10 +69,9 @@
     </div>
 </div>
 
-
+<?php include('view-staff-details-modal.php'); ?>
 
 <script type="text/javascript">
-
     // load modal to view customer details
     function loadCustomerModal(customerDetails){
         customerDetails = customerDetails.split(",");

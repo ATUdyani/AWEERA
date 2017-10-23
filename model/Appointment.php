@@ -395,7 +395,7 @@
                         $appointment_list.= "<td>{$appointment['end_time']}h</td>";
                         $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment['cust_id']}</a></td>";
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
-                        $appointment_list.= "<td><a class='customer_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
+                        $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
                         $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         $appointment_list.= "</tr>";
                     }

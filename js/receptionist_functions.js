@@ -79,5 +79,4 @@ function getAppointments(decision) {
             $('#table_results').html(result);
         }
     });
-
 }
