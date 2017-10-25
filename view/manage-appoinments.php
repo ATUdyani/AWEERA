@@ -118,7 +118,7 @@
 <?php include('modals/view-service-details-modal.php'); ?>
 <?php include('modals/view-customer-details-modal.php'); ?>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
     // load modal to view customer details
     function loadCustomerModal(customerDetails){
         customerDetails = customerDetails.split(",");
@@ -134,15 +134,15 @@
     // to change the appointment status to 'accepted' or 'rejected'
     function statusChange(status,appointmentId) {
         $.ajax({
-            url:'<?php echo site_url('appointments/updateAppointmentStatus'); ?>',
+            url:'<?php /*echo site_url('appointments/updateAppointmentStatus'); */?>',
             method: "post",
             data: {status:status,appointmentId:appointmentId},
             success: function( data ) {
                 $('#msg_Modal').modal('show');
                 $('#msg_result').html(data);
-                $('#content').load("<?php echo base_url();?>index.php/appointments/appointmentRequests");
+                $('#content').load("<?php /*echo base_url();*/?>index.php/appointments/appointmentRequests");
             }
         });
     }
 
-</script>
+</script>-->
