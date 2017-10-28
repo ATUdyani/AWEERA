@@ -161,13 +161,10 @@ if(!isset($_SESSION['user_id'])){
                 <h1 class="page-header">Book an Appointment
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
-                    </li>
-                    <li class="active">Appointments</li>
-                </ol>
             </div>
         </div>
+
+        <br>
         <!-- /.row -->
 
         <!-- Content Row -->
@@ -178,6 +175,7 @@ if(!isset($_SESSION['user_id'])){
                         <label><h4>What are you looking for?</h4></p></label>
                     </div>
                     <div class="col-md-4">
+                        <input type="hidden" id="cust_id" name="cust_id" value="<?php echo $_SESSION['user_reg_id']; ?>">
                         <select name="select_service_type" id="select_service_type" class="form-control" onchange="loadServiceNames(this.value)">
                             <option value="">Select a Service</option>
                             <?php

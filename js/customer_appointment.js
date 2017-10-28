@@ -74,6 +74,7 @@ function makeAppointment() {
     var serviceId = document.getElementById("select_service_name").value;
     var beauticianId = document.getElementById("select_beautician_name").value;
     var appointmentDate = document.getElementById("appointment_date").value;
+    var customerId = document.getElementById("cust_id").value;
 
     // extracting hours and minutes separately from start time and concatenate them
     var hoursSTime = document.getElementById('time_slots').value.substr(0,2);
@@ -81,7 +82,7 @@ function makeAppointment() {
     var appointmentTime = hoursSTime.concat(minutesSTime);
 
     var dataArray = [];
-    dataArray.push(serviceId,beauticianId,appointmentDate,appointmentTime);
+    dataArray.push(serviceId,beauticianId,appointmentDate,appointmentTime,customerId);
     var jsonString = JSON.stringify(dataArray);
     $.ajax({
         url:"../controller/add-appointment-handler.php",

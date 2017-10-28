@@ -20,6 +20,7 @@
 	$emp_id = mysqli_real_escape_string($connection,$data[1]);
 	$appointment_date = mysqli_real_escape_string($connection,$data[2]);
 	$appointment_time = mysqli_real_escape_string($connection,$data[3]);
+	$cust_id = mysqli_real_escape_string($connection,$data[4]);
 
 	if ($service_id==""){
 	    $errors[] = "Please Select a Service";
@@ -51,7 +52,7 @@ else{
     $service = new Service();
     $duration = $service->fetchServiceDuration($service_id);
     $appointment = new Appointment();
-    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration);
+    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id);
 }
 
  ?>

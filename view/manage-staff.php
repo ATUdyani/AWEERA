@@ -379,7 +379,7 @@
     </div>
 </div>
 
-<!-- model to update data -->
+<!-- modal to update data -->
 <div id="add_data_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">

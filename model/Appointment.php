@@ -87,11 +87,10 @@
         }
 
         // make an appointment
-        public function makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration){
+        public function makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id){
             session_start();
             $start_time = $appointment_time;
             $end_time = $this->getEndTime($start_time,$duration);
-            $cust_id = $_SESSION['user_reg_id'];
 
             $last_id=self::$db->getLastId('appointment_id','appointment');
 
