@@ -2,7 +2,7 @@
 <?php require_once('../model/Service.php');?>
 <script type="text/javascript" src="../js/customer_appointment.js"></script>
 
-<h2>Book an Appointment</h2>
+<h2>Book an Appointment<span><small><?php echo "  - ".$_POST['cust_id']?></small></span></h2>
 <br>
 <!-- Content Row -->
 <div class="row">
@@ -12,7 +12,7 @@
                 <label><h4>What are you looking for?</h4></p></label>
             </div>
             <div class="col-md-4">
-                <input type="hidden" id="cust_id" name="cust_id" value="REG0000004">
+                <input type="hidden" id="cust_id" name="cust_id" value="<?php echo $_POST['cust_id']?>">
                 <select name="select_service_type" id="select_service_type" class="form-control" onchange="loadServiceNames(this.value)">
                     <option value="">Select a Service</option>
                     <?php

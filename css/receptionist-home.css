@@ -13,3 +13,7 @@
 .badge:hover{
     background-color: #4cae4c;
 }
+
+.my-large-modal{
+    width:80%;
+}

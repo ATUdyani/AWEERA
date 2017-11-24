@@ -42,5 +42,5 @@ $("ul li a").filter(".add-link").click(function(){
 
 // load modal to select a customer before making an appointment by receptionist
 function loadSelectCustomerModal(){
-    $('#msg_Modal').modal('show');
+    $('#select_customer_Modal').modal('show');
 }
