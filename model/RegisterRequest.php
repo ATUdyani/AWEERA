@@ -166,7 +166,7 @@ class RegisterRequest
                         $date = date("Y-m-d");
 
                         // insert the new registered customer details
-                        $query = "INSERT INTO registered_customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ('$new_id', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
+                        $query = "INSERT INTO registered_customer (cust_id,first_name,last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ("."'$new_id'".", '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
                             .self::$cust_address."', '$date', '".self::$password."')";
 
                         echo $query;
@@ -181,6 +181,9 @@ class RegisterRequest
                             if ($result_next_next) {
                                 echo "<h4>User successfully added.</h4>";
                             }
+                        }
+                        else{
+                            echo "<h4>Failed to add the new registered customer.</h4>";
                         }
                     }
                     else{
