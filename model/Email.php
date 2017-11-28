@@ -107,7 +107,7 @@ class Email{
             }
         }
         else{
-            $bodyContent = "<h1>Sorry you request is rejected.</h1>";
+            $bodyContent = "<h1>Sorry your request is rejected.</h1>";
             $bodyContent .= "<p>Your register request is rejected by AWEERA.<br>
             Name : ".$first_name." ".$last_name."<br>
             Phone : ".$cust_phone."<br>
@@ -140,5 +140,55 @@ class Email{
         }
     }
 
+    // send an email when appointment has been made successfully
+    function sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id){
+        // query to retrieve customer email
+        $query_customer = "SELECT cust_email FROM registered_customer WHERE cust_id='".$cust_id."'";
+
+        // query to retrieve beautician name
+        $query_employee = "SELECT first_name,last_name FROM employee WHERE emp_id='".$emp_id."'";
+
+        // query to retrieve service name
+        $query_service = "SELECT service_name FROM service WHERE service_id='".$service_id."'";
+
+        try{
+            // execute the query and extract the email address of the customer
+            $result_customer= self::$db->executeQuery($query_customer);
+            $row = mysqli_fetch_assoc($result_customer);
+            self::$mail->addAddress($row['cust_email']);
+
+            // execute the query and extract the beautician name
+            $result_employee= self::$db->executeQuery($query_employee);
+            $row = mysqli_fetch_assoc($result_employee);
+            $emp_first_name = $row['first_name'];
+            $emp_last_name = $row['last_name'];
+
+            // execute the query and extract the service name
+            $result_service= self::$db->executeQuery($query_service);
+            $row = mysqli_fetch_assoc($result_service);
+            $service_name = $row['service_name'];
+
+            $bodyContent = "<h1>Your appointment has been made successfully.</h1>";
+            $bodyContent .= "
+            Appointment Date : ".$appointment_date."<br>
+            Appointment Time: ".$start_time." to".$end_time."<br>
+            Service : ".$service_name."<br>
+            Beautician : ".$emp_first_name." ".$emp_last_name."<br>
+            Please contact us if there are any changes have to be done. 
+            <br><br>Thank you!
+            <br>AWEERA - Hair and Beauty</p>";
+
+            self::$mail->Subject = 'Email from AWEERA by TeamScorp';
+            self::$mail->Body    = $bodyContent;
+            if(!self::$mail->send()) {
+                echo "<h4>Mail NOT sent</h4>";
+            } else {
+                echo "<h4>Mail has been sent successfully.</h4>";
+            }
+        }
+        catch (Exception $ex){
+            echo $ex;
+        }
+    }
 
 }

@@ -1,5 +1,6 @@
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/Service.php') ?>
+<?php require_once('../model/Email.php') ?>
 
 <?php  
 
@@ -108,6 +109,9 @@
                     echo "<h4>Thank You!"." ".$_SESSION['first_name']." ".$_SESSION['last_name'].".</h4>";
                     echo "<h4>Have a great day!</h4><br>";
 
+                    // send email confirmation
+                    $email = new Email();
+                    $email -> sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id);
                 }
                 else{
                     echo "<h4>Sorry! Failed to make the Appointment.</h4>";

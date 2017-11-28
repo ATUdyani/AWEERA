@@ -46,7 +46,6 @@
 
     // load customer appointment book page with cust_id auto loaded
     function loadBookCustomerAppointment(cust_id) {
-        alert(cust_id);
         $('#select_customer_Modal').modal('hide');
         $('#content').load("receptionist-appointment.php",{'cust_id': cust_id});
         //$('#cust_id').val(cust_id);
@@ -64,7 +63,7 @@
                 <h3 class="modal-title">Select Customer</h3>
             </div>
             <div class="modal-body">
-                <div id="msg_result">
+                <div id="msg_result_customer">
 
                     <div class="row ">
                         <div class="col-md-12">
