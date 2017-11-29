@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2017 at 07:54 AM
+-- Generation Time: Nov 29, 2017 at 04:24 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `cust_id` varchar(20) NOT NULL,
   `service_id` varchar(20) NOT NULL,
   `emp_id` varchar(20) NOT NULL,
+  `comment` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`appointment_id`,`payment_id`,`cust_id`),
   KEY `fk_Appointment_Payment1` (`payment_id`),
   KEY `fk_Appointment_Customer1` (`cust_id`)
@@ -45,22 +46,22 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 -- Dumping data for table `appointment`
 --
 
-INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `end_time`, `payment_id`, `cust_id`, `service_id`, `emp_id`) VALUES
-('APP0000002', '2017-10-10', '1130', '1200', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
-('APP0000003', '2017-10-10', '1400', '1430', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
-('APP0000004', '2017-10-11', '1000', '1045', 'none', 'REG0000004', 'SER0000003', 'EMP0000005'),
-('APP0000005', '2017-10-11', '0930', '1000', 'none', 'REG0000004', 'SER0000001', 'EMP0000005'),
-('APP0000006', '2017-10-11', '1315', '1345', 'none', 'REG0000004', 'SER0000001', 'EMP0000005'),
-('APP0000007', '2017-10-17', '0930', '1000', 'none', 'REG0000004', 'SER0000002', 'EMP0000006'),
-('APP0000008', '2017-10-17', '1300', '1345', 'none', 'REG0000004', 'SER0000006', 'EMP0000007'),
-('APP0000009', '2017-10-18', '1200', '1230', 'none', 'REG0000001', 'SER0000002', 'EMP0000008'),
-('APP0000010', '2017-10-18', '1030', '1115', 'none', 'REG0000001', 'SER0000006', 'EMP0000007'),
-('APP0000011', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000003'),
-('APP0000012', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000006'),
-('APP0000013', '2017-10-20', '1400', '1430', 'none', 'REG0000001', 'SER0000004', 'EMP0000006'),
-('APP0000014', '2017-10-29', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
-('APP0000015', '2017-11-03', '1230', '1300', 'none', 'REG0000001', 'SER0000001', 'EMP0000003'),
-('APP0000016', '2017-11-29', '1200', '1230', 'none', 'REG0000006', 'SER0000002', 'EMP0000003');
+INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `end_time`, `payment_id`, `cust_id`, `service_id`, `emp_id`, `comment`) VALUES
+('APP0000002', '2017-10-10', '1130', '1200', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', ''),
+('APP0000003', '2017-10-10', '1400', '1430', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', ''),
+('APP0000004', '2017-10-11', '1000', '1045', 'none', 'REG0000004', 'SER0000003', 'EMP0000005', ''),
+('APP0000005', '2017-10-11', '0930', '1000', 'none', 'REG0000004', 'SER0000001', 'EMP0000005', ''),
+('APP0000006', '2017-10-11', '1315', '1345', 'none', 'REG0000004', 'SER0000001', 'EMP0000005', ''),
+('APP0000007', '2017-10-17', '0930', '1000', 'none', 'REG0000004', 'SER0000002', 'EMP0000006', ''),
+('APP0000008', '2017-10-17', '1300', '1345', 'none', 'REG0000004', 'SER0000006', 'EMP0000007', ''),
+('APP0000009', '2017-10-18', '1200', '1230', 'none', 'REG0000001', 'SER0000002', 'EMP0000008', ''),
+('APP0000010', '2017-10-18', '1030', '1115', 'none', 'REG0000001', 'SER0000006', 'EMP0000007', ''),
+('APP0000011', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000003', ''),
+('APP0000012', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000006', ''),
+('APP0000013', '2017-10-20', '1400', '1430', 'none', 'REG0000001', 'SER0000004', 'EMP0000006', ''),
+('APP0000014', '2017-10-29', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', ''),
+('APP0000015', '2017-11-03', '1230', '1300', 'none', 'REG0000001', 'SER0000001', 'EMP0000003', ''),
+('APP0000016', '2017-11-30', '1330', '1400', 'none', 'REG0000006', 'SER0000001', 'EMP0000003', 'Great Work\n                        ');
 
 -- --------------------------------------------------------
 
@@ -399,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-29 10:58:10', 0, 'Receptionist', 'EMP0000002'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-29 20:07:46', 0, 'Receptionist', 'EMP0000002'),
 (18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-25 07:44:26', 0, 'Administrator', 'EMP0000001'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Beautician', 'EMP0000003'),

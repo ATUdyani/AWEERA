@@ -243,4 +243,59 @@ class Email{
         }
     }
 
+    // send email with the commenting link
+    public function sendCommentEmail($appointment_id){
+        try{
+
+            // execute the query and extract the details of the particular appointment
+            $appointment = new Appointment();
+            $row = $appointment->getAppointmentData($appointment_id);
+
+            $appointment_date = $row['appointment_date'];
+            $start_time = $row['start_time'];
+            $end_time = $row['end_time'];
+
+            $emp_id = $row['emp_id'];
+            $service_id = $row['service_id'];
+            $cust_id = $row['cust_id'];
+
+            // execute the query and extract the beautician name
+            $beautician = new Employee();
+            $row = $beautician->getEmployeeData($emp_id);
+            $emp_first_name = $row['first_name'];
+            $emp_last_name = $row['last_name'];
+
+            // execute the query and extract the service name
+            $service = new Service();
+            $row = $service->getServiceData($service_id);
+            $service_name = $row['description'];
+
+            // execute the query and extract the email address of the customer
+            $customer = new RegisteredCustomer();
+            $row = $customer->getCustomerData($cust_id);
+            self::$mail->addAddress($row['cust_email']);
+
+            // unique link to comment
+            $comment_link = "http://localhost/AWEERA/customer-comment.php?appointment_id=".$appointment_id."&start_time=".$start_time."&end_time=".$end_time."&appointment_date=".$appointment_date."&service_name=".$service_name."&first_name=".$emp_first_name."&last_name=".$emp_last_name."";
+
+            $bodyContent = "<h1>Thank you for using our services.</h1>";
+            $bodyContent .= "
+            Please visit the below link and comment about the service you received.<br>
+            $comment_link
+            <br><br>Thank you!
+            <br>AWEERA - Hair and Beauty</p>";
+
+            self::$mail->Subject = 'Email from AWEERA by TeamScorp';
+            self::$mail->Body    = $bodyContent;
+            if(!self::$mail->send()) {
+                echo "<h4>Mail NOT sent</h4>";
+            } else {
+                echo "<h4>Mail has been sent successfully.</h4>";
+            }
+
+        }
+        catch (Exception $ex){
+            echo $ex;
+        }
+    }
 }

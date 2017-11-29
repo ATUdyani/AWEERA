@@ -1,4 +1,6 @@
-<?php 
+<?php require_once('../model/Database.php') ?>
+
+<?php
 	
 	class Supplier{
         protected static $supplier_id;

@@ -220,6 +220,12 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <!-- Content Column -->
             <div id="content" class="col-md-9 loaded-content">
                 <h2>My Profile</h2>
+                <div>
+                    <p>Enter Appointment Number : </p>
+                    <input type="text" id="app_id" name="app_id">
+                    <button type="button" onclick="sendTestCommentEmail()">Send Email</button>
+                </div>
+
                 <p></p>
             </div>
         </div>

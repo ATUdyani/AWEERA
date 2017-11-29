@@ -80,3 +80,21 @@ function getAppointments(decision) {
         }
     });
 }
+
+// test comment email
+function sendTestCommentEmail(){
+    appointment_id = document.getElementById('app_id').value;
+    var formArray = [];
+    formArray.push(appointment_id);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:'../controller/send-comment-email-handler.php',
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(result){
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
+        }
+    });
+}
