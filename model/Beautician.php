@@ -11,6 +11,7 @@ class Beautician extends Employee
 {
     protected static $emp_services =[];
 
+
     // add Beautician service list to the database
     public function addBeauticianServices($emp_services){
         self::$emp_services = $emp_services;
@@ -57,4 +58,5 @@ class Beautician extends Employee
             echo $e;
         }
     }
+
 }

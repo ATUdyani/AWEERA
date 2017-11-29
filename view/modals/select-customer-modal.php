@@ -48,7 +48,6 @@
     function loadBookCustomerAppointment(cust_id) {
         $('#select_customer_Modal').modal('hide');
         $('#content').load("receptionist-appointment.php",{'cust_id': cust_id});
-        //$('#cust_id').val(cust_id);
     }
 
 </script>

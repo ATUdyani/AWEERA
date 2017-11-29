@@ -27,6 +27,20 @@
             self::$connection = self::$db->connect();
         }
 
+        // get all appointment data for a particular appointment id
+        public function getAppointmentData($appointment_id){
+            $query = "SELECT * FROM appointment WHERE appointment_id='".$appointment_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo e;
+            }
+        }
+
         // get free time slots for a particular beautician for a particular date
         public function getFreeSlots($beautician_id, $date, $service_id)
         {
@@ -121,6 +135,29 @@
                 echo "<h4>".$e."</h4>";
             }
         }
+
+
+        // delete the appointment when appointment is cancelled
+        public function cancelAppointment($appointment_id){
+            // send email confirmation
+            $email = new Email();
+            $email -> sendAppointmentCancelEmail($appointment_id);
+
+            $query = "DELETE FROM appointment WHERE appointment_id='".$appointment_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                if ($result){
+                    echo "<h4>Appointment ".$appointment_id." is Cancelled!</h4>";
+                }
+                else{
+                    echo "<h4>Sorry! Failed to cancel the Appointment.</h4>";
+                }
+
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
 
         // returns appointment end_time based on the start_time and the duration
         public function getEndTime($start_time,$duration){
@@ -399,7 +436,12 @@
                         $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment[9]} {$appointment[10]}</a></td>";
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
                         $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
-                        $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        if ($appointment['appointment_date']>=date("Y-m-d")){
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        }
+                        else{
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' disabled='disabled' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        }
                         $appointment_list.= "</tr>";
                     }
                     $appointment_list .= "</tbody>
@@ -413,6 +455,7 @@
                 echo $e;
             }
         }
+
     }
 
 

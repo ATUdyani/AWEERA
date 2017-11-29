@@ -38,7 +38,7 @@
             $query = "SELECT * FROM employee WHERE emp_id='".$emp_id."'";
             try{
                 $result = self::$db->executeQuery($query);
-                $row = mysqli_fetch_array($result);
+                $row = mysqli_fetch_assoc($result);
                 return $row;
 
             }

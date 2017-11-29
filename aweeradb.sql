@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 09, 2017 at 09:22 AM
+-- Generation Time: Nov 29, 2017 at 07:54 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -46,12 +46,21 @@ CREATE TABLE IF NOT EXISTS `appointment` (
 --
 
 INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `end_time`, `payment_id`, `cust_id`, `service_id`, `emp_id`) VALUES
-('APP0000001', '2017-10-10', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
 ('APP0000002', '2017-10-10', '1130', '1200', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
 ('APP0000003', '2017-10-10', '1400', '1430', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
 ('APP0000004', '2017-10-11', '1000', '1045', 'none', 'REG0000004', 'SER0000003', 'EMP0000005'),
 ('APP0000005', '2017-10-11', '0930', '1000', 'none', 'REG0000004', 'SER0000001', 'EMP0000005'),
-('APP0000006', '2017-10-11', '1315', '1345', 'none', 'REG0000004', 'SER0000001', 'EMP0000005');
+('APP0000006', '2017-10-11', '1315', '1345', 'none', 'REG0000004', 'SER0000001', 'EMP0000005'),
+('APP0000007', '2017-10-17', '0930', '1000', 'none', 'REG0000004', 'SER0000002', 'EMP0000006'),
+('APP0000008', '2017-10-17', '1300', '1345', 'none', 'REG0000004', 'SER0000006', 'EMP0000007'),
+('APP0000009', '2017-10-18', '1200', '1230', 'none', 'REG0000001', 'SER0000002', 'EMP0000008'),
+('APP0000010', '2017-10-18', '1030', '1115', 'none', 'REG0000001', 'SER0000006', 'EMP0000007'),
+('APP0000011', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000003'),
+('APP0000012', '2017-10-20', '1300', '1330', 'none', 'REG0000001', 'SER0000002', 'EMP0000006'),
+('APP0000013', '2017-10-20', '1400', '1430', 'none', 'REG0000001', 'SER0000004', 'EMP0000006'),
+('APP0000014', '2017-10-29', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003'),
+('APP0000015', '2017-11-03', '1230', '1300', 'none', 'REG0000001', 'SER0000001', 'EMP0000003'),
+('APP0000016', '2017-11-29', '1200', '1230', 'none', 'REG0000006', 'SER0000002', 'EMP0000003');
 
 -- --------------------------------------------------------
 
@@ -162,7 +171,7 @@ INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_p
 ('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', NULL, NULL, 'Beautician', 'Male', 0),
 ('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', NULL, NULL, 'Beautician', 'Female', 0),
 ('EMP0000007', 'Surangi', 'De Silva', 'surangi@gmail.com', '0778965412', 'Moratuwa', NULL, NULL, 'Beautician', 'Female', 0),
-('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 0);
+('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 1);
 
 -- --------------------------------------------------------
 
@@ -249,10 +258,10 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
 
 INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`) VALUES
 ('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000002', 'Ama', 'Gamage', '0714562389', 'Wadduwa', 'wasurawattearachchi@gmail.com', '2017-09-09', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000003', 'Peter', 'Pan', '0775478965', 'Moratuwa', 'wasuradananjith@gmail.com', '2017-09-25', '900150983cd24fb0d6963f7d28e17f72'),
 ('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisan.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72');
+('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000006', 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'wasuradananjith@gmail.com', '2017-11-24', '900150983cd24fb0d6963f7d28e17f72'),
+('REG0000007', 'Ama', 'Gamage', '0776325654', 'Panadura', 'wasurawattearachchi@gmail.com', '2017-11-28', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -271,15 +280,14 @@ CREATE TABLE IF NOT EXISTS `register_request` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_request`
 --
 
 INSERT INTO `register_request` (`reg_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `password`) VALUES
-(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '900150983cd24fb0d6963f7d28e17f72'),
-(2, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
+(1, 'Aruna', 'Jayathilake', '0774589658', 'Panadura', 'arunajaya@gmail.com', '900150983cd24fb0d6963f7d28e17f72');
 
 -- --------------------------------------------------------
 
@@ -384,22 +392,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   `type` varchar(15) NOT NULL,
   `user_reg_id` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:35:46', 0, 'Receptionist', 'EMP0000002'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:02:00', 0, 'Administrator', 'EMP0000001'),
-(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-10-08 23:26:16', 0, 'Customer', 'REG0000001'),
-(24, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', ''),
-(25, 'Peter', 'Pan', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', ''),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-29 10:58:10', 0, 'Receptionist', 'EMP0000002'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-25 07:44:26', 0, 'Administrator', 'EMP0000001'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Beautician', 'EMP0000003'),
-(28, 'Aruna', 'Jayathilake', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000004'),
-(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-09 11:38:33', 0, 'Customer', 'REG0000004'),
-(30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005');
+(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-10-28 21:55:40', 0, 'Customer', 'REG0000004'),
+(30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005'),
+(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-28 23:16:26', 0, 'Customer', 'REG0000007');
 
 --
 -- Constraints for dumped tables

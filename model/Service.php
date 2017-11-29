@@ -35,6 +35,20 @@
 
         }
 
+        // get all service data for a particular service id
+        public function getServiceData($service_id){
+            $query = "SELECT * FROM service WHERE service_id='".$service_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_assoc($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo e;
+            }
+        }
+
         // add a new service
         function addService(){
             $last_id=self::$db->getLastId('service_id','service');
@@ -178,19 +192,6 @@
             }
         }
 
-        // get all service data for a particular service id
-        public function getServiceData($service_id){
-            $query = "SELECT * FROM service WHERE service_id='".$service_id."'";
-            try{
-                $result = self::$db->executeQuery($query);
-                $row = mysqli_fetch_array($result);
-                return $row;
-
-            }
-            catch(Exception $e){
-                echo e;
-            }
-        }
 
         // update service details
         public function updateService($service_id){

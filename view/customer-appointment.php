@@ -50,7 +50,7 @@ if(!isset($_SESSION['user_id'])){
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/customer_appointment.js"></script>
+    <script type="text/javascript" src="../js/appointment.js"></script>
 
 </head>
 

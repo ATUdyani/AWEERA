@@ -96,3 +96,21 @@ function makeAppointment() {
     });
 }
 
+// cancel appointment - only the rececptionist can invoke this
+function cancelAppointment(appointementId){
+    var dataArray = [];
+    dataArray.push(appointementId);
+    var jsonString = JSON.stringify(dataArray);
+    $.ajax({
+        url:"../controller/cancel-appointment-handler.php",
+        method: "post",
+        data: {data:jsonString},
+        cache:false,
+        success: function( data ) {
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+            $('#content').load("manage-appointments.php");
+        }
+    });
+}
+

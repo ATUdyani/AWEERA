@@ -1,5 +1,6 @@
 <?php require_once('../model/Appointment.php') ?>
 <?php require_once('../model/Beautician.php') ?>
+<script type="text/javascript" src="../js/appointment.js"></script>
 
 <script>
     // load modal to view customer data

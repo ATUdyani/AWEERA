@@ -1,5 +1,9 @@
-<?php require_once('../model/Database.php') ?>
-<?php require('../email/PHPMailer/PHPMailerAutoload.php') ?>
+<?php require_once('../model/Database.php')?>
+<?php require_once('../model/Service.php')?>
+<?php require_once('../model/Employee.php')?>
+<?php require_once('../model/RegisteredCustomer.php')?>
+<?php require_once('../model/Appointment.php')?>
+<?php require_once('../email/PHPMailer/PHPMailerAutoload.php') ?>
 
 <?php
 /**
@@ -142,30 +146,22 @@ class Email{
 
     // send an email when appointment has been made successfully
     function sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id){
-        // query to retrieve customer email
-        $query_customer = "SELECT cust_email FROM registered_customer WHERE cust_id='".$cust_id."'";
-
-        // query to retrieve beautician name
-        $query_employee = "SELECT first_name,last_name FROM employee WHERE emp_id='".$emp_id."'";
-
-        // query to retrieve service name
-        $query_service = "SELECT service_name FROM service WHERE service_id='".$service_id."'";
 
         try{
             // execute the query and extract the email address of the customer
-            $result_customer= self::$db->executeQuery($query_customer);
-            $row = mysqli_fetch_assoc($result_customer);
+            $customer = new RegisteredCustomer();
+            $row = $customer->getCustomerData($cust_id);
             self::$mail->addAddress($row['cust_email']);
 
             // execute the query and extract the beautician name
-            $result_employee= self::$db->executeQuery($query_employee);
-            $row = mysqli_fetch_assoc($result_employee);
+            $beautician = new Employee();
+            $row = $beautician->getEmployeeData($emp_id);
             $emp_first_name = $row['first_name'];
             $emp_last_name = $row['last_name'];
 
             // execute the query and extract the service name
-            $result_service= self::$db->executeQuery($query_service);
-            $row = mysqli_fetch_assoc($result_service);
+            $service = new Service();
+            $row = $service->getServiceData($service_id);
             $service_name = $row['service_name'];
 
             $bodyContent = "<h1>Your appointment has been made successfully.</h1>";
@@ -185,6 +181,62 @@ class Email{
             } else {
                 echo "<h4>Mail has been sent successfully.</h4>";
             }
+        }
+        catch (Exception $ex){
+            echo $ex;
+        }
+    }
+
+    // send an email when appointment has been cancelled
+    function sendAppointmentCancelEmail($appointment_id){
+
+        try{
+            // execute the query and extract the details of the particular appointment
+            $appointment = new Appointment();
+            $row = $appointment->getAppointmentData($appointment_id);
+
+            $appointment_date = $row['appointment_date'];
+            $start_time = $row['start_time'];
+            $end_time = $row['end_time'];
+
+            $emp_id = $row['emp_id'];
+            $service_id = $row['service_id'];
+            $cust_id = $row['cust_id'];
+
+            // execute the query and extract the beautician name
+            $beautician = new Employee();
+            $row = $beautician->getEmployeeData($emp_id);
+            $emp_first_name = $row['first_name'];
+            $emp_last_name = $row['last_name'];
+
+            // execute the query and extract the service name
+            $service = new Service();
+            $row = $service->getServiceData($service_id);
+            $service_name = $row['service_name'];
+
+            // execute the query and extract the email address of the customer
+            $customer = new RegisteredCustomer();
+            $row = $customer->getCustomerData($cust_id);
+            self::$mail->addAddress($row['cust_email']);
+
+            $bodyContent = "<h1>Your appointment has been cancelled.</h1>";
+            $bodyContent .= "
+            Appointment Date : ".$appointment_date."<br>
+            Appointment Time: ".$start_time." to".$end_time."<br>
+            Service : ".$service_name."<br>
+            Beautician : ".$emp_first_name." ".$emp_last_name."<br>
+            Please contact us immediately, if this is a mistake. 
+            <br><br>Thank you!
+            <br>AWEERA - Hair and Beauty</p>";
+
+            self::$mail->Subject = 'Email from AWEERA by TeamScorp';
+            self::$mail->Body    = $bodyContent;
+            if(!self::$mail->send()) {
+                echo "<h4>Mail NOT sent</h4>";
+            } else {
+                echo "<h4>Mail has been sent successfully.</h4>";
+            }
+
         }
         catch (Exception $ex){
             echo $ex;
