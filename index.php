@@ -172,6 +172,9 @@ $db->connect();
     <!-- /.row -->
 
     <br>
+
+    <?php include ('view/comment-slider.php');?>
+
     <!-- Contact Us Section -->
     <div id="contact" class="row">
         <hr>

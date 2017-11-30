@@ -1,4 +1,4 @@
-<?php require_once('../model/Database.php') ?>
+<?php require_once('Database.php') ?>
 <?php
 	
 	class Comment{
@@ -35,6 +35,22 @@
             }
             catch(Exception $e){
                 echo e;
+            }
+        }
+
+        // get latest comments to display on home page
+        public function getComments(){
+
+            // query to retrieve latest comments
+            $query = "SELECT a.comment,s.service_name,c.first_name,c.last_name FROM appointment a,registered_customer c,service s WHERE a.cust_id=c.cust_id 
+AND a.service_id=s.service_id AND a.comment IS NOT NULL ORDER BY a.appointment_date DESC LIMIT 9";
+
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+            }
+            catch(Exception $e){
+                echo $e;
             }
         }
 	}
