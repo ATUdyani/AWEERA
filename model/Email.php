@@ -1,9 +1,9 @@
-<?php require_once('../model/Database.php')?>
-<?php require_once('../model/Service.php')?>
-<?php require_once('../model/Employee.php')?>
-<?php require_once('../model/RegisteredCustomer.php')?>
-<?php require_once('../model/Appointment.php')?>
-<?php require_once('../email/PHPMailer/PHPMailerAutoload.php') ?>
+<?php require_once('Database.php')?>
+<?php require_once('Service.php')?>
+<?php require_once('Employee.php')?>
+<?php require_once('RegisteredCustomer.php')?>
+<?php require_once('Appointment.php')?>
+<?php include('../email/PHPMailer/PHPMailerAutoload.php') ?>
 
 <?php
 /**

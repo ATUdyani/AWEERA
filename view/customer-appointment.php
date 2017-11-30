@@ -51,6 +51,8 @@ if(!isset($_SESSION['user_id'])){
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/appointment.js"></script>
+    <script type="text/javascript" src="../js/customer_functions.js"></script>
+
 
 </head>
 
@@ -155,85 +157,101 @@ if(!isset($_SESSION['user_id'])){
     <!-- Page Content -->
     <div class="container">
 
-        <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Book an Appointment
+                <h1 class="page-header">My Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
                 </h1>
             </div>
         </div>
-
-        <br>
         <!-- /.row -->
 
         <!-- Content Row -->
         <div class="row">
-            <div class="col-lg-12">
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+                <nav class="my-sidebar">
+                    <ul class="nav">
+                        <li><a href="#" onclick="bookAppointment()" class="my-sidebar-menu-item">Book Appointment</a></li>
+                        <li><a href="customer/upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
+                        <li><a href="customer/appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Content Column -->
+            <div id="content" class="col-md-9 loaded-content">
+                <h2>Book Appointment</h2>
+                <br>
+
+                <!-- Content Row -->
                 <div class="row">
-                    <div class="col-md-4">
-                        <label><h4>What are you looking for?</h4></p></label>
-                    </div>
-                    <div class="col-md-4">
-                        <input type="hidden" id="cust_id" name="cust_id" value="<?php echo $_SESSION['user_reg_id']; ?>">
-                        <select name="select_service_type" id="select_service_type" class="form-control" onchange="loadServiceNames(this.value)">
-                            <option value="">Select a Service</option>
-                            <?php
-                                $service = new Service();
-                                echo $service->viewAllServiceTypes();
-                            ?>
-                        </select>
-                    </div>
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label><h4>What are you looking for?</h4></p></label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="hidden" id="cust_id" name="cust_id" value="<?php echo $_SESSION['user_reg_id']; ?>">
+                                <select name="select_service_type" id="select_service_type" class="form-control" onchange="loadServiceNames(this.value)">
+                                    <option value="">Select a Service</option>
+                                    <?php
+                                    $service = new Service();
+                                    echo $service->viewAllServiceTypes();
+                                    ?>
+                                </select>
+                            </div>
 
-                    <div class="col-md-4">
-                        <select name="select_service_name" id="select_service_name" class="form-control" onchange="loadBeauticianNames(this.value)" disabled="disabled">
-                        </select>
-                    </div>
-                </div>
+                            <div class="col-md-4">
+                                <select name="select_service_name" id="select_service_name" class="form-control" onchange="loadBeauticianNames(this.value)" disabled="disabled">
+                                </select>
+                            </div>
+                        </div>
 
-                <br>
+                        <br>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label><h4>With whom? (Select Stylist)</h4></p></label>
-                    </div>
-                    <div class="col-md-4">
-                        <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalender()">
-                        </select>
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label><h4>With whom? (Select Stylist)</h4></p></label>
+                            </div>
+                            <div class="col-md-4">
+                                <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalender()">
+                                </select>
+                            </div>
+                        </div>
 
-                <br>
+                        <br>
 
-                <div class="row">
-                    <div class="col-lg-4">
-                        <label><h4>When?</h4></p></label>
-                    </div>
-                    <div class="col-md-4">
-                        <form>
-                            <input type="date" name="appointment_date" id="appointment_date" class="form-control" disabled="disabled" onchange="loadSlots()">
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <select name="time_slots" id="time_slots" class="form-control" disabled="disabled">
-                        </select>
-                    </div>
-                </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label><h4>When?</h4></p></label>
+                            </div>
+                            <div class="col-md-4">
+                                <form>
+                                    <input type="date" name="appointment_date" id="appointment_date" class="form-control" disabled="disabled" onchange="loadSlots()">
+                                </form>
+                            </div>
+                            <div class="col-md-4">
+                                <select name="time_slots" id="time_slots" class="form-control" disabled="disabled">
+                                </select>
+                            </div>
+                        </div>
 
-                <br>
-                <br>
-                <br>
+                        <br>
+                        <br>
+                        <br>
 
-                <div class="well">
-                    <div class="row">
-                        <div class="col-md-4 col-md-offset-4">
-                            <a class="btn btn-lg btn-default btn-block" onclick="makeAppointment()">Make Appointment</a>
+                        <div class="well">
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4">
+                                    <a class="btn btn-lg btn-default btn-block" onclick="makeAppointment()">Make Appointment</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
 
         <hr>
 
@@ -251,9 +269,13 @@ if(!isset($_SESSION['user_id'])){
 
     <?php include('modals/message-modal.php'); ?>
 
+        <script type="text/javascript" src="../js/loader.js"></script>
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
+
+
 
 
 

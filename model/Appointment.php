@@ -1,6 +1,6 @@
-<?php require_once('../model/Database.php') ?>
-<?php require_once('../model/Service.php') ?>
-<?php require_once('../model/Email.php') ?>
+<?php require_once('Database.php') ?>
+<?php require_once('Service.php') ?>
+<?php require_once('Email.php') ?>
 
 <?php  
 
@@ -455,7 +455,6 @@
                 echo $e;
             }
         }
-
     }
 
 

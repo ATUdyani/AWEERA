@@ -1,4 +1,4 @@
-<?php require_once('../model/Database.php') ?>
+<?php require_once('Database.php') ?>
 
 <?php  
 	

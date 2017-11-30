@@ -1,4 +1,4 @@
-<?php require_once('../model/Database.php') ?>
+<?php require_once('Database.php') ?>
 
 
 <?php
@@ -158,6 +158,100 @@
                 }
                 else{
                     echo "<p>No Search Results Found</p>";
+                }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+        // load upcoming appointments for a particular customer
+        public function loadUpcomingAppointments($cust_id){
+            // query to retrieve upcoming appointments
+            $query = "SELECT * FROM appointment a,employee e,service s WHERE cust_id='".$cust_id."'
+             AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND appointment_date>='".date("Y-m-d")."'";
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $appointment_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Service</th>
+                                    <th>Beautician</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    while($appointment = mysqli_fetch_array($result_set)){
+
+                        $appointment_list.= "<tr>";
+                        $appointment_list.= "<td>{$appointment['appointment_id']}</td>";
+                        $appointment_list.= "<td>{$appointment['appointment_date']}</td>";
+                        $appointment_list.= "<td>{$appointment['start_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['end_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['service_name']}</td>";
+                        $appointment_list.= "<td>{$appointment['first_name']} {$appointment['last_name']}</td>";
+                    }
+                    $appointment_list .= "</tbody>
+                                    </table>";
+                    echo $appointment_list;
+                }
+                else{
+                    echo "<p>No Upcoming Appointments</p>";
+                }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+
+        // load appointment history for a particular customer
+        public function loadAppointmentHistory($cust_id){
+            // query to retrieve upcoming appointments
+            $query = "SELECT * FROM appointment a,employee e,service s WHERE cust_id='".$cust_id."'
+             AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND appointment_date<'".date("Y-m-d")."'
+             ORDER BY appointment_date DESC LIMIT 20";
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $appointment_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Service</th>
+                                    <th>Beautician</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    while($appointment = mysqli_fetch_array($result_set)){
+
+                        $appointment_list.= "<tr>";
+                        $appointment_list.= "<td>{$appointment['appointment_id']}</td>";
+                        $appointment_list.= "<td>{$appointment['appointment_date']}</td>";
+                        $appointment_list.= "<td>{$appointment['start_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['end_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['service_name']}</td>";
+                        $appointment_list.= "<td>{$appointment['first_name']} {$appointment['last_name']}</td>";
+                    }
+                    $appointment_list .= "</tbody>
+                                    </table>";
+                    echo $appointment_list;
+                }
+                else{
+                    echo "<p>No Previous Appointments</p>";
                 }
             }catch (Exception $e){
                 echo $e;
