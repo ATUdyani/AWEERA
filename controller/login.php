@@ -73,7 +73,9 @@
           elseif ($type == "Customer") {
           	echo 'index.php';
           }
-
+          elseif ($type=="Beautician"){
+              echo 'view/beautician-home.php';
+          }
        }
        else{
           // username and password invalid

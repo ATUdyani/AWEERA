@@ -19,5 +19,13 @@ switch ($user_type){
         header('Location: ../view/receptionist-home.php');
         exit;
         break;
+    case 'Beautician':
+        header('Location: ../view/beautician-home.php');
+        exit;
+        break;
+    case 'Customer':
+        header('Location: ../view/customer-home.php');
+        exit;
+        break;
 }
 ?>

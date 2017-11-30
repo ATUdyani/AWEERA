@@ -16,7 +16,7 @@
         <div class= "collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right my-primary-menu">
                 <li class="link-1">
-                    <a href="view/customer-appointment.php">Appointments</a>
+                    <a href="controller/direct-user-handler.php">Appointments</a>
                 </li>
                 <li id="gallery_menu" class="link-1">
                     <a href="#">Gallery</a>
@@ -55,7 +55,7 @@
                     echo "<li class=\"menu link-1\" id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" ><i class=\"fa fa-unlock-alt\"></i>Log In</a></li>";
                 }
                 // if the user is a registered customer, set the logout panel
-                elseif ($_SESSION['type']=="Customer"){
+               /* elseif ($_SESSION['type']=="Customer"){
                     echo "<li class=\"menu link-1\" id=\"logout\">
                         <div class=\"logout-content\">
                             <ul class=\"nav navbar-nav navbar-right\">
@@ -112,7 +112,7 @@
                             </ul>
                         </div>
                     </li>";
-                }
+                }*/
                 else{
                     echo "<li class=\"menu link-1\" id=\"welcome-msg\">
                         <a href=\"controller/direct-user-handler.php\" class=\"loggedin\" ><span class=\"glyphicon glyphicon-user\"></span> <strong>Welcome ";

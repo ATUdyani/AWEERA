@@ -167,7 +167,7 @@
         // load upcoming appointments for a particular customer
         public function loadUpcomingAppointments($cust_id){
             // query to retrieve upcoming appointments
-            $query = "SELECT * FROM appointment a,employee e,service s WHERE cust_id='".$cust_id."'
+            $query = "SELECT * FROM appointment a,employee e,service s WHERE a.cust_id='".$cust_id."'
              AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND appointment_date>='".date("Y-m-d")."'";
 
             try{
@@ -214,7 +214,7 @@
         // load appointment history for a particular customer
         public function loadAppointmentHistory($cust_id){
             // query to retrieve upcoming appointments
-            $query = "SELECT * FROM appointment a,employee e,service s WHERE cust_id='".$cust_id."'
+            $query = "SELECT * FROM appointment a,employee e,service s WHERE a.cust_id='".$cust_id."'
              AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND appointment_date<'".date("Y-m-d")."'
              ORDER BY appointment_date DESC LIMIT 20";
 

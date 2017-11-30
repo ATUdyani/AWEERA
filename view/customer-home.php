@@ -159,7 +159,7 @@ if(!isset($_SESSION['user_id'])){
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">My Home
+                <h1 class="page-header">Customer Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
                 </h1>
             </div>
@@ -173,8 +173,8 @@ if(!isset($_SESSION['user_id'])){
                 <nav class="my-sidebar">
                     <ul class="nav">
                         <li><a href="#" onclick="bookAppointment()" class="my-sidebar-menu-item">Book Appointment</a></li>
-                        <li><a href="customer/upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
-                        <li><a href="customer/appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
+                        <li><a href="customer/customer-upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
+                        <li><a href="customer/customer-appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
                     </ul>
                 </nav>
             </div>
