@@ -114,3 +114,73 @@ function cancelAppointment(appointementId){
     });
 }
 
+// load modal to view customer data
+$(document).ready(function (){
+    $(document).on('click','.customer_check',function(){
+        var cust_id = $(this).attr("id");
+        $.ajax({
+            url:"../controller/fetch-registered-customer-handler.php",
+            method: "post",
+            data: {cust_id:cust_id},
+            dataType: "json",
+            cache: false,
+            success:function (data) {
+                $('#view_cust_first_name').val(data.first_name);
+                $('#view_cust_last_name').val(data.last_name);
+                $('#view_cust_email').val(data.cust_email);
+                $('#view_cust_phone').val(data.cust_phone);
+                $('#view_cust_address').val(data.cust_address);
+                $('#view_date_joined').val(data.date_joined);
+                $('#view_customer_Modal').modal('show');
+            }
+        });
+    });
+});
+
+// load modal to view service data
+$(document).ready(function (){
+    $(document).on('click','.service_check',function(){
+        var service_id = $(this).attr("id");
+        $.ajax({
+            url:"../controller/fetch-service-handler.php",
+            method: "post",
+            data: {service_id:service_id},
+            dataType: "json",
+            cache: false,
+            success:function (data) {
+                $('#view_service_name').val(data.service_name);
+                $('#view_service_charge').val(data.service_charge);
+                $('#view_service_description').val(data.description);
+                $('#view_service_duration').val(data.duration);
+                $('#view_commission').val(data.commission_percentage);
+                $('#view_service_id').val(data.service_id);
+                $('#view_service_Modal').modal('show');
+            }
+        });
+    });
+});
+
+// load modal to view employee data
+$(document).ready(function (){
+    $(document).on('click','.emp_check',function(){
+        var emp_id = $(this).attr("id");
+        $.ajax({
+            url:"../controller/fetch-employee-handler.php",
+            method: "post",
+            data: {emp_id:emp_id},
+            dataType: "json",
+            cache: false,
+            success:function (data) {
+                $('#view_emp_first_name').val(data.first_name);
+                $('#view_emp_last_name').val(data.last_name);
+                $('#view_emp_email').val(data.emp_email);
+                $('#view_emp_phone').val(data.emp_phone);
+                $('#view_emp_address').val(data.emp_address);
+                $('#view_emp_gender').val(data.emp_gender);
+                $('#view_emp_type').val(data.emp_type);
+                $('#view_emp_id').val(data.emp_id);
+                $('#view_staff_Modal').modal('show');
+            }
+        });
+    });
+});

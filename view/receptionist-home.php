@@ -189,7 +189,11 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
-                        <li><a href="../view/manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
+                        <li><a href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
+                        <li>
+                            <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
+                                  <span class="badge badge-pill badge-info" id="comment_count"></span></a>
+                        </li>
                         <li><a href="." onclick="loadSelectCustomerModal()" class="my-sidebar-menu-item">New Appointments</a></li>
                         <li><a href="../view/manage-purchase.php" class="my-sidebar-menu-item">Purchase</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>

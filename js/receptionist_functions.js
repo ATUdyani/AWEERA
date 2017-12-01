@@ -12,6 +12,21 @@ setInterval(function(){
     });
 },3000);
 
+// load new comments count
+setInterval(function(){
+    $.ajax({
+        url:'../controller/comment-count-handler.php',
+        type: "POST",
+        data : "",
+        success: function(data)
+        {
+            $('#comment_count').html(data+" NEW");
+            //alert(data);
+        }
+    });
+},3000);
+
+
 // load register requests
 function displayRegisterRequests() {
     $('#content').load("../view/manage-register-requests.php");

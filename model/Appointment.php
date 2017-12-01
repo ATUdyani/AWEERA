@@ -433,7 +433,7 @@
                         $appointment_list.= "<td>{$appointment['appointment_date']}</td>";
                         $appointment_list.= "<td>{$appointment['start_time']}h</td>";
                         $appointment_list.= "<td>{$appointment['end_time']}h</td>";
-                        $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment[9]} {$appointment[10]}</a></td>";
+                        $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment[11]} {$appointment[12]}</a></td>";
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
                         $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
                         if ($appointment['appointment_date']>=date("Y-m-d")){

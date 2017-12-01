@@ -1,11 +1,11 @@
 <?php require_once('../model/RegisteredCustomer.php') ?>
 
-<!-- jQuery -->
 <script type="text/javascript" src="../js/check_form.js"></script>
 
 <script type="text/javascript" src="../js/loader.js"></script>
 
-<script type="text/javascript" src="../js/search_filter_change.js"></script>
+<!-- jQuery -->
+<script src="../js/jquery.js"></script>
 
 
 <script>
@@ -47,10 +47,14 @@
     // load customer appointment book page with cust_id auto loaded
     function loadBookCustomerAppointment(cust_id) {
         $('#select_customer_Modal').modal('hide');
-        $('#content').load("receptionist-appointment.php",{'cust_id': cust_id});
+        $('#content').load("receptionist-book-appointment.php",{'cust_id': cust_id});
     }
 
 </script>
+
+<script type="text/javascript" src="../js/search_filter_change.js"></script>
+
+
 <!-- model to display dialog -->
 <div id="select_customer_Modal" class="modal fade text-center">
     <div class="modal-dialog my-large-modal">
@@ -62,8 +66,7 @@
                 <h3 class="modal-title">Select Customer</h3>
             </div>
             <div class="modal-body">
-                <div id="msg_result_customer">
-
+                <div id="msg_result_customer" style="margin:2%;">
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="input-group my-search-panel">

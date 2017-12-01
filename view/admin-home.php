@@ -12,6 +12,7 @@
     }
  ?>
 
+<script type="text/javascript" src="../js/receptionist_functions.js"></script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -183,6 +184,10 @@
                 <nav class="my-sidebar">
                     <ul class="nav">
                         <li><a href="../view/manage-users.php" class="my-sidebar-menu-item">Manage Users</a></li>
+                        <li>
+                            <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
+                                <span class="badge badge-pill badge-info" id="comment_count"></span></a>
+                        </li>
                         <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
                         <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
