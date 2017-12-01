@@ -71,3 +71,8 @@
     </div>
 </div>
 
+<script>
+    $('#msg_Modal').on('hidden.bs.modal', function () {
+        window.location.href = "receptionist-home.php";
+    });
+</script>

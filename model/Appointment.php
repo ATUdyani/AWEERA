@@ -78,7 +78,6 @@
         public function originalTimeSlots()
         {
             $slots = "";
-            $slots .= "<option value=\"0900\">0900h</option>";
             $slots .= "<option value=\"0930\">0930h</option>";
             $slots .= "<option value=\"1000\">1000h</option>";
             $slots .= "<option value=\"1030\">1030h</option>";

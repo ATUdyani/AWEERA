@@ -1,4 +1,4 @@
-<?php require_once ('model/database.php');
+<?php require_once ('model/Database.php');
 $db = new Database();
 $db->connect();
 ?>

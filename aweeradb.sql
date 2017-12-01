@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2017 at 12:11 PM
+-- Generation Time: Dec 01, 2017 at 02:56 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -63,7 +63,10 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 ('APP0000014', '2017-10-29', '1100', '1130', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', 'Nice haircut with professional touch!', 1),
 ('APP0000015', '2017-11-03', '1230', '1300', 'none', 'REG0000001', 'SER0000001', 'EMP0000003', 'Got very good advices, Like to come again!', 1),
 ('APP0000016', '2017-11-30', '1330', '1400', 'none', 'REG0000006', 'SER0000001', 'EMP0000003', NULL, -1),
-('APP0000017', '2017-12-01', '1200', '1245', 'none', 'REG0000007', 'SER0000003', 'EMP0000005', 'Best cleanup I''ve ever had, thanks AWEERA!', 1);
+('APP0000017', '2017-12-01', '1200', '1245', 'none', 'REG0000007', 'SER0000003', 'EMP0000005', 'Best cleanup I''ve ever had, thanks AWEERA!', 1),
+('APP0000018', '2017-12-02', '1430', '1500', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000021', '2017-12-02', '1100', '1145', 'none', 'REG0000007', 'SER0000003', 'EMP0000006', NULL, -1),
+('APP0000022', '2017-12-02', '1445', '1515', 'none', 'REG0000007', 'SER0000004', 'EMP0000006', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -402,13 +405,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 12:36:35', 0, 'Receptionist', 'EMP0000002'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 18:54:41', 0, 'Receptionist', 'EMP0000002'),
 (18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 12:52:18', 0, 'Administrator', 'EMP0000001'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-30 18:58:05', 0, 'Beautician', 'EMP0000003'),
 (29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-30 17:34:53', 0, 'Customer', 'REG0000004'),
 (30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005'),
-(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 12:10:07', 0, 'Customer', 'REG0000007');
+(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 17:51:36', 0, 'Customer', 'REG0000007');
 
 --
 -- Constraints for dumped tables

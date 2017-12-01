@@ -271,6 +271,13 @@ if(!isset($_SESSION['user_id'])){
 
         <script type="text/javascript" src="../js/loader.js"></script>
 
+    <script>
+        $('#msg_Modal').on('hidden.bs.modal', function () {
+            window.location.href = "customer-home.php";
+        });
+    </script>
+
+
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
