@@ -1,3 +1,5 @@
+<?php require_once '../model/Gallery.php'?>
+
 <?php
 
 if(isset($_FILES["file"]["type"]))
@@ -25,11 +27,17 @@ if(isset($_FILES["file"]["type"]))
             }
             else
             {
+
+
                 $sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
                 $targetPath = "../img/uploads/".$file_name_new; // Target path where file is to be stored
                 move_uploaded_file($sourcePath,$targetPath) ; // Moving Uploaded file
 
-                echo "<span id='success'>Image Uploaded Successfully...!!</span><br/>";
+                // insert image path to database
+                $gallery = new Gallery();
+                $result = $gallery ->addImage($file_name_new);
+
+                echo "<span id='success'>Image Uploaded Successfully...!!'$result'</span><br/>";
                 echo "<br/><b>New File Name:</b> " . $file_name_new . "<br>";
                 echo "<b>Type:</b> " . $_FILES["file"]["type"] . "<br>";
                 echo "<b>Size:</b> " . ($_FILES["file"]["size"] / 1024) . " kB<br>";

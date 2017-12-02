@@ -163,7 +163,25 @@
     background: linear-gradient(#1b1b1b,#000);
 }
 
-.my-lg-button:hover{
+.my-lg-button-danger{
+    /*height: 30px;*/
+    width:100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-color: #fff;
+    background: linear-gradient(#ac1500, #f00011);
+}
+
+.my-lg-button-success{
+    /*height: 30px;*/
+    width:100%;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-color: #fff;
+    background: linear-gradient(#067f3e, #16d15c);
+}
+
+.my-lg-button-danger:hover,.my-lg-button-success:hover, .my-lg-button:hover{
     background: linear-gradient(#494949,#1b1b1b);
     border-color: #fff;
 }

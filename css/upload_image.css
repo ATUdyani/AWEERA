@@ -15,8 +15,6 @@
 
 #image_preview{
     margin: auto;
-    width: 65%;
-    height: 35%;
     text-align: center;
     font-weight: bold;
     color: #C0C0C0;
@@ -62,8 +60,6 @@
 #loading
 {
     display:none;
-    position:absolute;
-    top:50px;
-    left:850px;
+    color: white;
     font-size:25px;
 }

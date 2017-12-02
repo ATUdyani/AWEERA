@@ -103,43 +103,8 @@ $db->connect();
     <!-- /.row -->
 
     <br>
-    <!-- Portfolio Section -->
-    <div id="gallery" class="row">
-        <div class="col-lg-12">
-            <h2 class="page-header"> Gallery </h2>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h2.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h3.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h1.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h12.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h6.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="portfolio-item.html">
-                <img class="img-responsive img-portfolio img-hover" src="img/imghome/h14.jpg" alt="">
-            </a>
-        </div>
-    </div>
-    <!-- /.row -->
+
+    <?php include ('view/gallery.php');?>
 
     <!-- Features Section -->
     <div class="row">

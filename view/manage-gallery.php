@@ -7,9 +7,11 @@
 <!-- jQuery -->
 <script src="../js/jquery.js"></script>
 
-<script src="../js/upload_image.js"></script>
+<script src="../js/gallery_handler.js"></script>
 
-<h2>Manage Gallery</h2>
+<h2>Manage Gallery<div class="request-icon" onclick="editGallery()">
+    <a class="btn view-all">Edit Gallery <i class="fa fa-table" aria-hidden="true"></i></a>
+</div></h2>
 
 <div class="row">
     <div class="main col-md-4">
@@ -26,7 +28,7 @@
             </div>
         </form>
     </div>
-    <h4 id='loading' >loading..</h4>
+    <h4 id='loading' class="col-md-4" >loading..</h4>
     <div id="message" class="col-md-4"></div>
 </div>
 
