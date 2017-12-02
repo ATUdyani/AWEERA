@@ -184,6 +184,7 @@
                 <nav class="my-sidebar">
                     <ul class="nav">
                         <li><a href="../view/manage-users.php" class="my-sidebar-menu-item">Manage Users</a></li>
+                        <li><a href="manage-gallery.php" class="my-sidebar-menu-item">Manage Gallery</a></li>
                         <li>
                             <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
                                 <span class="badge badge-pill badge-info" id="comment_count"></span></a>
