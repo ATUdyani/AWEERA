@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 01, 2017 at 02:56 PM
+-- Generation Time: Dec 02, 2017 at 05:45 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -178,6 +178,36 @@ INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_p
 ('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', NULL, NULL, 'Beautician', 'Female', 0),
 ('EMP0000007', 'Surangi', 'De Silva', 'surangi@gmail.com', '0778965412', 'Moratuwa', NULL, NULL, 'Beautician', 'Female', 0),
 ('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `path` varchar(100) NOT NULL,
+  `date_added` datetime(6) NOT NULL,
+  PRIMARY KEY (`image_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`image_id`, `path`, `date_added`) VALUES
+(14, '5a22e23488c252.72833552.jpg', '2017-12-02 17:26:12.000000'),
+(13, '5a22e22668b2c0.04614764.jpg', '2017-12-02 17:32:26.000000'),
+(15, '5a22e23cbdd1f9.81109506.jpg', '2017-12-02 17:36:29.000000'),
+(16, '5a22e241b7bfe1.08574175.jpg', '2017-12-02 17:36:35.000000'),
+(17, '5a22e2461fa328.00562190.jpg', '2017-12-02 17:26:30.000000'),
+(18, '5a22e24f182d91.57808924.jpg', '2017-12-02 17:26:39.000000'),
+(19, '5a22e261603ec5.10481279.jpg', '2017-12-02 17:26:57.000000'),
+(20, '5a22e37ea4bde7.07960825.jpg', '2017-12-02 17:31:42.000000'),
+(21, '5a22e4f8bfd295.32807720.jpg', '2017-12-02 17:38:00.000000'),
+(22, '5a22e552cf2bb8.47819109.jpg', '2017-12-02 17:39:30.000000');
 
 -- --------------------------------------------------------
 
@@ -405,8 +435,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 18:54:41', 0, 'Receptionist', 'EMP0000002'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-01 12:52:18', 0, 'Administrator', 'EMP0000001'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-02 11:22:52', 0, 'Receptionist', 'EMP0000002'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-02 16:41:50', 0, 'Administrator', 'EMP0000001'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-30 18:58:05', 0, 'Beautician', 'EMP0000003'),
 (29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-30 17:34:53', 0, 'Customer', 'REG0000004'),
