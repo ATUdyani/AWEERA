@@ -1,3 +1,4 @@
+<link href="css/ninja-slider.css" rel="stylesheet">
 
 
 <div id="ninja-slider" class="my-ninja-slider">
@@ -30,3 +31,5 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="js/ninja-slider.js"></script>

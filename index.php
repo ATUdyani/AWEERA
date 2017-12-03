@@ -32,7 +32,7 @@ $db->connect();
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="css/mystyle.css" rel="stylesheet">
     <link href="css/loginstyle.css" rel="stylesheet">
-    <link href="css/ninja-slider.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -105,7 +105,7 @@ $db->connect();
 
     <br>
 
-    <?php include ('view/gallery.php');?>
+    <?php include ('view/gallery2.php');?>
 
     <!-- Features Section -->
     <div class="row">
@@ -230,8 +230,6 @@ $db->connect();
 <script type="text/javascript" src="js/login.js"></script>
 
 
-<script type="text/javascript" src="js/ninja-slider.js"></script>
-
 <!-- Script to Activate the Carousel -->
 <script>
     $('.carousel').carousel({
@@ -257,6 +255,8 @@ $db->connect();
             scrollTop: $("#gallery").offset().top
         }, 1000);
     });
+
+
 </script>
 
 
