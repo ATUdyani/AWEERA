@@ -358,7 +358,6 @@ $db->connect();
     <?php include('view/modals/login-modal.php'); ?>
 
     <?php include('footer.php'); ?>
-
 </div>
 <!-- /.container -->
 

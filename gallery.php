@@ -1,6 +1,6 @@
 <?php require_once "model/Gallery.php"; ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+<link rel="stylesheet" href="css/baguetteBox.min.css">
 
 <?php
 

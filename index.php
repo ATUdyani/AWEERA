@@ -105,7 +105,7 @@ $db->connect();
 
     <br>
 
-    <?php include('view/gallery-section.php');?>
+    <?php include('gallery-section.php');?>
 
     <!-- Features Section -->
     <div class="row">
