@@ -32,31 +32,6 @@ function displayRegisterRequests() {
     $('#content').load("../view/manage-register-requests.php");
 }
 
-// accept register request
-function onClickAcceptReject(status){
-    var formArray = [];
-    formArray.push(status);
-    formArray.push(document.getElementById("update_first_name").value);
-    formArray.push(document.getElementById("update_last_name").value);
-    formArray.push(document.getElementById("update_phone").value);
-    formArray.push(document.getElementById("update_address").value);
-    formArray.push(document.getElementById("update_email").value);
-    formArray.push(document.getElementById("password").value);
-    var jsonString = JSON.stringify(formArray);
-    $.ajax({
-        url:'../controller/register-request-confirm-mail-handler.php',
-        type: "POST", //request type
-        data: {data : jsonString},
-        cache: false,
-        success:function(result){
-            jQuery.noConflict();
-            $('#add_data_Modal').modal('hide');
-            $('#msg_Modal').modal('show');
-            $('#msg_result').html(result);
-        }
-    });
-}
-
 // get appointment details for a particular date/for a particular beautician
 function getAppointments(decision) {
     var formArray = [];

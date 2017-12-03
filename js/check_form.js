@@ -13,7 +13,6 @@ function checkFormService() {
         data: {data : jsonString},
         cache: false,
         success:function(result){
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
         }
@@ -37,7 +36,6 @@ function checkFormAdmin() {
         data: {data : jsonString},
         cache: false,
         success:function(result){
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
         }
@@ -61,7 +59,6 @@ function checkFormReceptionist() {
         data: {data: jsonString},
         cache: false,
         success: function (result) {
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
         }
@@ -93,7 +90,6 @@ function checkFormBeautician() {
         data: {data: jsonString},
         cache: false,
         success: function (result) {
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
         }

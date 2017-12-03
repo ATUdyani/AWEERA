@@ -71,3 +71,8 @@ $('#add_confirm_password').on('keyup', function () {
 
     }
 });
+
+$('#msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-users.php');
+});
+

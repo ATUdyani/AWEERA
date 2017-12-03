@@ -36,7 +36,7 @@ if (!isset($rg_contact_number) || strlen(trim($rg_contact_number)) < 1 ){
 }
 
 if(!isValidPhoneNumber($rg_contact_number)){
-    $errors = 'invalid phone number';
+    $errors = 'Invalid phone number';
 }
 
 if (!isset($rg_address) || strlen(trim($rg_address)) < 1 ){
@@ -92,12 +92,12 @@ if ($errors == null){
 
     if($result_set){
         array_push($result,"success");
-        array_push($result, "successfully registered");
+        array_push($result, "Successfully registered");
         echo json_encode($result);
         //echo "done";
     }
     else{
-        array_push($result,"failure", "not successfully registered,db error");
+        array_push($result,"failure", "Not successfully registered,db error");
         echo json_encode($result);
         //echo "undone";
     }

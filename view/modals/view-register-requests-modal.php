@@ -57,10 +57,10 @@
                         <div class="col-md-6">
                             <input type="hidden" name="update_id" id="update_id" />
                             <input type="hidden" name="password" id="password" />
-                            <input type="button" onclick="onClickAcceptReject('Accepted')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
+                            <input type="button" onclick="onClickAcceptReject('Accepted')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button-success" />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" onclick="onClickAcceptReject('Rejected')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button" />
+                            <input type="button" onclick="onClickAcceptReject('Rejected')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button-danger" />
                         </div>
                     </div>
 

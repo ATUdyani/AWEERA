@@ -1,12 +1,7 @@
 <?php require_once('../model/RegisteredCustomer.php') ?>
 
 <script type="text/javascript" src="../js/check_form.js"></script>
-
 <script type="text/javascript" src="../js/loader.js"></script>
-
-<!-- jQuery -->
-<script src="../js/jquery.js"></script>
-
 
 <script>
     // load suitable results on keyup
