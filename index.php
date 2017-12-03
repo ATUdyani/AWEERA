@@ -32,6 +32,7 @@ $db->connect();
     <link href="css/modern-business.css" rel="stylesheet">
     <link href="css/mystyle.css" rel="stylesheet">
     <link href="css/loginstyle.css" rel="stylesheet">
+    <link href="css/ninja-slider.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -50,7 +51,7 @@ $db->connect();
 
 <?php include ("view/homepage/home-navbar.php");?>
 
-<?php include ("view/homepage/home-carousel.php");?>
+<?php include ("view/homepage/ninja-slider.php");?>
 
 
 
@@ -227,6 +228,9 @@ $db->connect();
 
 <!-- script to handle model login -->
 <script type="text/javascript" src="js/login.js"></script>
+
+
+<script type="text/javascript" src="js/ninja-slider.js"></script>
 
 <!-- Script to Activate the Carousel -->
 <script>
