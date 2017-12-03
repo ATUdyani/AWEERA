@@ -17,15 +17,15 @@
                             <textarea class="form-control" type="text" rows="5" id="comment" name="comment" maxlength="100" disabled="disabled" required=""></textarea>
                         </div>
                     </div>
-
+                    <br>
                     <div class="row">
                         <div class="col-md-6">
                             <input type="hidden" name="update_id" id="update_id" />
                             <input type="hidden" name="password" id="password" />
-                            <input type="button" onclick="commentStatus('1')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button" />
+                            <input type="button" onclick="commentStatus('1')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button-success" />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" onclick="commentStatus('0')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button" />
+                            <input type="button" onclick="commentStatus('0')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button-danger" />
                         </div>
                     </div>
 

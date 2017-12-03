@@ -3,10 +3,6 @@
 <?php require_once('../model/User.php') ?>
 
 <link rel="stylesheet" href="../css/upload_image.css" />
-
-<!-- jQuery -->
-<script src="../js/jquery.js"></script>
-
 <script src="../js/gallery_handler.js"></script>
 
 <h2>Manage Gallery<div class="request-icon" onclick="editGallery()">

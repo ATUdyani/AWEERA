@@ -11,6 +11,7 @@
             <div class="modal-body">
                 <div class="row">
                     <h4>What do you want to do?</h4>
+                    <br>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
@@ -25,25 +26,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // change comment status
-    function commentStatus(status){
-        var appointmentId = document.getElementById('appointment_id').value;
-        $.ajax({
-            url:'../controller/update-comment-status-handler.php',
-            type: "POST", //request type
-            data: {appointment_id: appointmentId, status : status},
-            cache: false,
-            success:function(result){
-                $('#view_comments_Modal').modal('hide');
-                $('#msg_Modal').modal('show');
-                $('#msg_result').html(result);
-            }
-        });
-    }
-
-    $('#msg_Modal').on('hidden.bs.modal', function () {
-        $('#content').load('manage-comments.php');
-    });
-</script>

@@ -47,6 +47,10 @@ $(document).ready(function (e) {
         $('#previewing').attr('width', '350px');
         $('#previewing').attr('height', '263px');
     };
+
+    $('#msg_Modal').on('hidden.bs.modal', function () {
+        $('#content').load('edit-gallery.php');
+    });
 });
 
 // load edit gallery page
@@ -61,7 +65,6 @@ function newUpload(){
 
 // load a modal to delete or edit images
 function loadEditImageModal(imageId) {
-    jQuery.noConflict();
     $('#edit_image_Modal').modal('show');
     $('#image_id').val(imageId);
 }
@@ -76,12 +79,8 @@ function deleteImage(){
         data: {image_id : imageId},
         cache: false,
         success:function(result){
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
-            $('#msg_Modal').on('hidden.bs.modal', function () {
-                $('#content').load('edit-gallery.php');
-            });
         }
     });
 }
@@ -97,12 +96,8 @@ function setPriority(){
         data: {image_id : imageId},
         cache: false,
         success:function(result){
-            jQuery.noConflict();
             $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
-            $('#msg_Modal').on('hidden.bs.modal', function () {
-                $('#content').load('edit-gallery.php');
-            });
         }
     });
 }

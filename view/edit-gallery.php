@@ -9,6 +9,9 @@ require_once "../model/Gallery.php";
 $gallery = new Gallery();
 $result = $gallery->getImages();
 ?>
+
+<script src="../js/gallery_handler.js"></script>
+
 <h2>Manage Gallery<div class="request-icon" onclick="newUpload()">
         <a class="btn view-all">New Upload <i class="fa fa-upload" aria-hidden="true"></i></a>
     </div></h2>
