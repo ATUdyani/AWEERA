@@ -40,55 +40,7 @@ $db->connect();
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top my-navbar" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile dis`play -->
-        <div class="navbar-header link-1">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="index.php"><img class="img-circle" id="img_logo" src="img/aweera.png"></a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class= "collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav navbar-right my-primary-menu">
-                <li class="link-1">
-                    <a href="#">Appointments</a>
-                </li>
-                <li class="link-1">
-                    <a href="index.php#gallery">Gallery</a>
-                </li>
-                <li class="link-1">
-                    <a href="about.php">About</a>
-                </li>
-                <li id="contact_menu" class="link-1">
-                    <a href="#contact">Contact</a>
-                </li>
-
-                    <?php
-
-                    // checking if an user is logged in
-                    if(!isset($_SESSION['user_id'])){
-                        echo "<li class=\"menu link-1\" id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" ><i class=\"fa fa-unlock-alt\"></i>Log In</a></li>";
-                    }
-                    else{
-                        echo "<li class=\"menu link-1\" id=\"welcome-msg\">
-                        <a href=\"controller/direct-user-handler.php\" class=\"loggedin\" ><span class=\"glyphicon glyphicon-user\"></span> <strong>Welcome ";
-                        echo $_SESSION['first_name'];
-                        echo "</strong></a></li>";
-                    }
-                    ?>
-            </ul>
-        </div>
-    </div>
-    <!-- /.navbar-collapse -->
-    <!-- /.container -->
-</nav>
+<?php include ("view/homepage/home-navbar.php");?>
 
 <!-- Page Content -->
 <div class="container">
@@ -98,11 +50,6 @@ $db->connect();
         <div class="col-lg-12">
             <h1 class="page-header">About Us
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.php">Home</a>
-                </li>
-                <li class="active">About Us</li>
-            </ol>
         </div>
     </div>
     <!-- /.row -->
@@ -406,157 +353,14 @@ $db->connect();
 
     <hr>
 
-    <!-- Contact Us Section -->
-    <div id="contact" class="row">
-        <!-- Map Column -->
-        <div class="col-md-8">
-            <!-- Embedded Google Map -->
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7922.799465866995!2d79.86442985177537!3d6.842588651401578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe6c7a3bf6e043a48!2sAweera+Hair+%26+Beauty!5e0!3m2!1sen!2slk!4v1500347822377" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <!-- Contact Details Column -->
-        <div class="col-md-4">
-            <h2>Contact Details</h2>
-            <br>
-            <br>
-            <p>
-                Hair Care & Beauty Treatments & Dressing by AWEERA<br>
-                No. 220,<br>
-                Solomon Peiris Avenue,<br>
-                Mount Lavinia<br>
-            </p>
-            <p><i class="fa fa-phone"></i>
-                <abbr title="Phone">P</abbr>: 0112727285</p>
-            <p><i class="fa fa-envelope-o"></i>
-                <abbr title="Email">E</abbr>: <a href="mailto:hairbyaweera@yahoo.com">hairbyaweera@yahoo.com</a>
-            </p>
-            <p><i class="fa fa-clock-o"></i>
-                <abbr title="Hours">H</abbr>: Monday - Saturday: 9:00 AM to 7:00 PM</p>
-            <ul class="list-unstyled list-inline list-social-icons">
-                <li>
-                    <a href="https://www.facebook.com/AweeraBeauty/"><i class="fa fa-facebook-square fa-2x"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!-- Contact Us Section -->
+    <?php include ('contact-us.php');?>
 
+    <?php include('view/modals/login-modal.php'); ?>
 
-    <!-- Footer -->
-    <footer>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright &copy; TeamScorp 2017</p>
-            </div>
-        </div>
-    </footer>
+    <?php include('footer.php'); ?>
+
 </div>
 <!-- /.container -->
-
-<!-- BEGIN # MODAL LOGIN -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" align="center">
-                <img class="img-circle" id="img_logo" src="img/aweera.png">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-            </div>
-
-            <!-- Begin # DIV Form -->
-            <div id="div-forms" class="my-login-form">
-
-                <!-- Begin # Login Form -->
-                <form id="login-form">
-                    <div class="modal-body">
-                        <div id="div-login-msg">
-                            <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
-                            <span id="text-login-msg" class="my-msg"><p>Type your email and password.</p></span>
-                        </div>
-                        <input id="login_username" class="form-control" type="text" placeholder="Email" required>
-                        <input id="login_password" class="form-control" type="password" placeholder="Password" required>
-                        <div class="checkbox">
-                            <label>
-                                <!--                                    <input type="checkbox"> Remember me-->
-                            </label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Login</button>
-                        </div>
-                        <div>
-                            <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
-                            <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- End # Login Form -->
-
-                <!-- Begin | Lost Password Form -->
-                <form id="lost-form" style="display:none;">
-                    <div class="modal-body">
-                        <div id="div-lost-msg">
-                            <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
-                            <span id="text-lost-msg" class="my-msg"><p>Type your e-mail.</p></span>
-                        </div>
-                        <input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required>
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Send</button>
-                        </div>
-                        <div>
-                            <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="lost_register_btn" type="button" class="btn btn-link">Register</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- End | Lost Password Form -->
-
-                <!-- Begin | Register Form -->
-                <form id="register-form" style="display:none;">
-                    <div class="modal-body">
-                        <div id="div-register-msg">
-                            <div id="icon-register-msg" class="glyphicon glyphicon-chevron-right"></div>
-                            <span id="text-register-msg" class="my-msg"><p>Register an account.</p></span>
-                        </div>
-                        <input id="first_name" class="form-control" type="text" placeholder="First Name" required>
-                        <input id="last_name" class="form-control" type="text" placeholder="Last Name" required>
-                        <input id="contact_number" class="form-control" type="text" placeholder="Contact Number" required>
-                        <input id="address" class="form-control" type="text" placeholder="Address" required>
-                        <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
-                        <input id="register_password" class="form-control" type="password" placeholder="Password" required>
-                        <input id="register_cpassword" class="form-control" type="password" placeholder="Confirm Password" required>
-
-                    </div>
-                    <div class="modal-footer">
-                        <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Register</button>
-                        </div>
-                        <div>
-                            <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
-                        </div>
-                    </div>
-                </form>
-                <!-- End | Register Form -->
-
-            </div>
-            <!-- End # DIV Form -->
-        </div>
-    </div>
-</div>
-<!-- END # MODAL LOGIN -->
 
 
 <!-- jQuery -->

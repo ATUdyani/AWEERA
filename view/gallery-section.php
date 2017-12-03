@@ -16,7 +16,9 @@ $result = $gallery->getImages();
 
 <div id="gallery" class="row">
     <div class="col-lg-12">
-        <h2 class="page-header"> Gallery </h2>
+        <h2 class="page-header"> Gallery <div class="request-icon" onclick="getAppointments('all')">
+                <a href="gallery.php" class="btn view-all">View More   <i class="fa fa-table" aria-hidden="true"></i></a>
+            </div></h2>
     </div>
 
     <div class="tz-gallery">
