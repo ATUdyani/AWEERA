@@ -67,8 +67,8 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
                 <h1 class="page-header">Receptionist Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
                     <div class="request-icon">
-                        <span class="badge badge-pill badge-info" id="request_count" onclick="displayRegisterRequests()"></span>
-                        <i class="fa fa-envelope-o envelop" aria-hidden="true" onclick="displayRegisterRequests()"></i>
+                        <span role="button" class="badge badge-pill badge-info" id="request_count" onclick="displayRegisterRequests()"></span>
+                        <i role="button" class="fa fa-envelope-o envelop" aria-hidden="true" onclick="displayRegisterRequests()"></i>
                     </div>
 
                 </h1>
@@ -83,16 +83,16 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
-                        <li><a onclick="clickSingleA(this)" href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
+                        <li><a href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
                         <li>
-                            <a onclick="clickSingleA(this)" href="manage-comments.php" class="my-sidebar-menu-item">Comments
+                            <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
                                   <span class="badge badge-pill badge-info" id="comment_count"></span></a>
                         </li>
                         <li><a href="." onclick="loadSelectCustomerModal()" class="my-sidebar-menu-item">New Appointments</a></li>
                         <li><a href="../view/manage-purchase.php" class="my-sidebar-menu-item">Purchase</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>
                         <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
-                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
+                        <li><a href="../view/manage-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
 
                         <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>

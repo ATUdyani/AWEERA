@@ -69,16 +69,16 @@
 </head>
 
 <body style="background-color:#FFF6;background-size: 100% 100%;">
-		
-		<?php 
+
+		<?php
 		if(isset($_SESSION['er']) && $_SESSION['er']=="true"){$_SESSION['er1']="true";}
 		else{$_SESSION['er1']="false";}?>
 		<?php include 'template/menu.php' ?>
-		
-		<?php include 'template/headnav.php';?> 
-                
+
+		<?php include 'template/headnav.php';?>
+
     <!-- Navigation -->
-    
+
             <?php include("alert.php"); ?>
     <!-- Page Content -->
     <div class="container">
@@ -181,7 +181,7 @@
        
     </div>
     <footer class="container1">
-	<?php include 'template/footer.php';?>		
+	<?php include 'template/footer.php';?>
     </footer>
         <!-- Footer 
         <footer class="container1">

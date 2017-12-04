@@ -1,3 +1,7 @@
+<?php include ('model/Database.php');
+$database = new Database();
+?>
+<?php session_start() ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +38,6 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    <script type="text/javascript" src="../js/appointment.js"></script>
 
 </head>
 
@@ -59,11 +62,8 @@
         <br>
         <!-- /.row -->
 
-        <!-- Page Content -->
-        <div class="container">
-
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-6">
 
                     <div id="panel"class="panel panel-default" style="height:380px; margin-top:20px; background-color: rgba(230,238,255,0.5);">
                         <div class="panel-body">
@@ -75,7 +75,9 @@
                                                            z-index: 2;
                                                            width: 90%;
                                                            height:85%;" />
-                            <canvas height=350 width=715 id="photo" style=" top:0; bottom: 0; left: 0; right: 0; position:absolute; width: 90%;height: 85%;"></canvas>
+                            <canvas height=350 width=500 id="photo" style="margin-top: 5%;
+    margin-left: 5%; top:0; bottom: 0; left: 0; right: 0; position:absolute; margin:auto
+                            height: 85%;"></canvas>
 
                             <div class="text-right">
 
@@ -84,57 +86,26 @@
 
                     </div>
                 </div>
+
+
                 <div class="col-md-1 ">
+                    <a role="button" title="capture" class="btn btn-primary btn-sm center-block" id="takePhoto" value="Click"><i class="fa fa-camera" aria-hidden="true"></i></a>
 
+                    <a role="button" title="back" class="btn btn-primary btn-sm center-block" id="takePhoto2" value="Click"><i class="fa fa-refresh" aria-hidden="true"></i></a>
 
-
-                    <a role="button" title="capture" class="btn btn-primary btn-sm center-block" style="margin-top:80px;" id="takePhoto" value="Click"><img class="img1" src="./img/camera.png" alt="" style=""></a>
-
-                    <a role="button" title="back" class="btn btn-primary btn-sm center-block" style="margin-top:10px;" id="takePhoto2" value="Click"><img class="img1" src="./img/back.png" alt="" style=""></a>
-
-                    <a role="button" title="download" class="btn btn-primary btn-sm center-block" style="margin-top:10px;" id="download" value="Click" onclick="downloadCanvas();"><img class="img1" src="./img/download.png" alt="" style=""></a>
+                    <a role="button" title="download" class="btn btn-primary btn-sm center-block" id="download" value="Click" onclick="downloadCanvas();"><i class="fa fa-download" aria-hidden="true"></i></a>
 
                 </div>
-                <div class="col-md-3">
+
+                <div class="col-md-4">
                     <div class="panel panel-default" style="height:380px; margin-top:20px; background-color: rgba(230,238,255,0.5);">
                         <div class="panel-body" id="jtype" style="height:380px; overflow-y: scroll; overflow-x: hidden; white-space:nowrap;">
-                            <div id="f4">
-                                <div style="text-align:center;">
 
-                                    <select class="form-control" id="jewelleryType" onchange='' style="margin-bottom:5px;">
-                                        <option value="jeweltype">Jewellery Type</option>
-                                        <option name="frame" value="necklace" >Necklace </option>
-                                        <option  name="hand" value="ring" >Ring </option>
-                                        <option   name="earface" value="earring"  >Earring </option>
+                        </div>
 
-
-                                    </select>
-
-                                    <select class="form-control" id="vendorType" onchange='' style="margin-bottom:5px;">
-                                        <option value="vendor">Select Vendor</option>
-                                        <?php
-                                        $sql3q2=mysqli_query($link,"SELECT * FROM vendor");
-                                        while($row=mysqli_fetch_array($sql3q2)){
-                                            $vendors[]=$row;
-                                        }
-
-                                        ?>
-                                        <?php foreach($vendors as $vendor):?>
-                                            <option name="jType" value="<?php echo $vendor['vendor_username'];?>" ><?php echo $vendor['vendor_name'];?> </option>
-
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <!--<div class="thumbnail text-center" style="height:auto; width:100px; display:inline-block; margin: 2px 5px 5px 5px;">-->
-
-
-
-
-
-                            </div>
                             <div id="vritem">
                                 <?php
-                                $sql3q2=mysqli_query($link,"SELECT * FROM vr");
+                                $sql3q2=$database->executeQuery("SELECT * FROM vr");
                                 while($row=mysqli_fetch_array($sql3q2)){
                                     $vrs[]=$row;
                                 }
@@ -150,20 +121,12 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
 
         <hr>
 
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; TeamScorp 2017</p>
-                </div>
-            </div>
-        </footer>
+        <?php include('footer.php'); ?>
 
     </div>
     <!-- /.container -->
@@ -176,31 +139,8 @@
 
     <!-- script to handle model login -->
     <script type="text/javascript" src="js/login.js"></script>
-    <script type="text/javascript" src="js/script1.js"></script>
-
-    <script>
-        function  submitComment() {
-            var appointment_id = document.getElementById("appointment_id").value;
-            var comment = document.getElementById("comment").value;
-            var formArray = [];
-            formArray.push(appointment_id,comment);
-            var jsonString = JSON.stringify(formArray);
-            $.ajax({
-                url:'controller/submit-comment-handler.php',
-                type: "POST", //request type
-                data: {data : jsonString},
-                cache: false,
-                success:function(result){
-                    $('#msg_Modal').modal('show');
-                    $('#msg_result').html(result);
-                }
-            });
-
-            $('#msg_Modal').on('hidden.bs.modal', function () {
-                window.location.href = "index.php";
-            });
-        }
-    </script>
+    <script type="text/javascript" src="js/mirror_handler.js"></script>
+    <script src="js/fabric.min.js"></script>
 
 
     </body>
