@@ -1,5 +1,4 @@
 // webrtc script file
-
 var img1;
 var imagefirst=$('#jtype a').first().attr('value');
 $('#jtype a').parent('.thumbnail').first().addClass("active1");
@@ -8,7 +7,7 @@ var canvas;
 base1 = new Image();
 base1.src = 'img/frame.png';
 var panelw= $( '#panel' ).width();
-/*$('#photo').width('100');*/
+//$('#photo').width('100');
 
 var webrtc = (function() {
 
@@ -62,6 +61,12 @@ var webrtc = (function() {
             video.autoplay = true;
             video.src = videoSource;
 
+            //display.width = 220;
+            //display.height=260;
+
+            //display canvas
+            displayContext.translate(display.width,0);
+            displayContext.scale(-1,1);
             //get into dispaly canvas
             streamFeed();
         }
@@ -76,8 +81,6 @@ var webrtc = (function() {
     function onError() {
         alert('There has been a problem retreiving the streams - are you running on file:/// or did you disallow access?');
     }
-
-
     function back(){
         location.reload();
         //context.clearRect(0, 0, photo.width, photo.height);
@@ -86,8 +89,6 @@ var webrtc = (function() {
 
 
     }
-
-
     function convertCanvasToImage(canvas) {
         //var image = new Image();
 
@@ -96,8 +97,16 @@ var webrtc = (function() {
 
         return image;
         //}
+
     }
 
+
+    //download image in photo canvas
+    function downloadCanvas(link,canvasId,filename) {
+        link.href = document.getElementById(canvasId).toDataURL();
+        link.download = filename;
+
+    }
     //add event to download button
     document.getElementById('download').addEventListener('click',function(){
         (this,'photo','test.png');
@@ -118,8 +127,6 @@ var webrtc = (function() {
             canvas.add(img1.set({ left:panelw/2-100, top: 150, angle:0 }).scale(0.15));
         });
     }
-
-
     //take photos
     function takePhoto() {
 
@@ -156,8 +163,6 @@ var webrtc = (function() {
         canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
 
     }
-
-
     //get stream
     function requestStreams() {
         if (navigator.getUserMedia) {
@@ -191,16 +196,20 @@ var webrtc = (function() {
         //window.addEventListener("resize", handleResize);
     }
 
-
+    /*function handleResize(){
+       //var panelw= $( '#panel' ).width();
+       panelw=panelw-30;
+      // var panelh=(350/715)*panelw;
+       //canvas.setWidth(panelw);
+       $('#photo').width(panelw);
+    }*/
     //initially happen function
     (function init() {
         //get stream
         requestStreams();
-        //initialling click events
+        //initialling cliick events
         initEvents();
     }());
-
-
     function activeitem(){
         $('#jtype a').on('click',function(){
             var value=$(this).attr('value');
@@ -215,6 +224,29 @@ var webrtc = (function() {
     //jewellery filtering
     $('#jewelleryType').on('change',selectitem);
     $('#vendorType').on('change',selectitem);
+    function selectitem(){
+        var jeweltype=$("option:selected",'#jewelleryType').val();
+        var vendor=$("option:selected",'#vendorType').val();
+        var maskimg="img/"+$("option:selected",'#jewelleryType').attr('name')+".png";
+        //alert(vendor);
+        $('#mask').attr('src',maskimg);
+        $.ajax({
+
+            url : "vrimagefilter.php",  //change it with your own adress to the code
+            method:'POST',
+            data:{jeweltype:jeweltype,vendor:vendor},
+            success:function(data){
+                $('#vritem').html(data);
+                activeitem();
+                imagefirst=$('#jtype a').first().attr('value');
+                $('#jtype a').parent('.thumbnail').first().addClass("active1");
+                // alert("done");
+            }
+        });
+
+    }
+
+
 
 })();
 

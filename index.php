@@ -200,12 +200,12 @@ $db->connect();
 
 
 <!-- Script to scroll to gallery -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
     $("#gallery_menu").click(function() {
         $('html, body').animate({
             scrollTop: $("#gallery").offset().top
         }, 1000);
-    });
+    });-->
 
 
 </script>

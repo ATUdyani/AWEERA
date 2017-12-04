@@ -100,8 +100,40 @@ $database = new Database();
                 <div class="col-md-4">
                     <div class="panel panel-default" style="height:380px; margin-top:20px; background-color: rgba(230,238,255,0.5);">
                         <div class="panel-body" id="jtype" style="height:380px; overflow-y: scroll; overflow-x: hidden; white-space:nowrap;">
+                            <div id="f4">
+                                <div style="text-align:center;">
 
-                        </div>
+                                    <select class="form-control" id="jewelleryType" onchange='' style="margin-bottom:5px;">
+                                        <option value="jeweltype">Jewellery Type</option>
+                                        <option name="frame" value="necklace" >Necklace </option>
+                                        <option  name="hand" value="ring" >Ring </option>
+                                        <option   name="earface" value="earring"  >Earring </option>
+
+
+                                    </select>
+
+                                    <select class="form-control" id="vendorType" onchange='' style="margin-bottom:5px;">
+                                        <option value="vendor">Select Vendor</option>
+                                        <?php
+                                        $sql3q2=$database->executeQuery("SELECT * FROM vendor");
+                                        while($row=mysqli_fetch_array($sql3q2)){
+                                            $vendors[]=$row;
+                                        }
+
+                                        ?>
+                                        <?php foreach($vendors as $vendor):?>
+                                            <option name="jType" value="<?php echo $vendor['vendor_username'];?>" ><?php echo $vendor['vendor_name'];?> </option>
+
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <!--<div class="thumbnail text-center" style="height:auto; width:100px; display:inline-block; margin: 2px 5px 5px 5px;">-->
+
+
+
+
+
+                            </div>
 
                             <div id="vritem">
                                 <?php
@@ -140,7 +172,6 @@ $database = new Database();
     <!-- script to handle model login -->
     <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="js/mirror_handler.js"></script>
-    <script src="js/fabric.min.js"></script>
 
 
     </body>
