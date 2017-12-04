@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2017 at 01:14 PM
+-- Generation Time: Dec 04, 2017 at 03:39 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -66,7 +66,14 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 ('APP0000018', '2017-12-02', '1430', '1500', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
 ('APP0000021', '2017-12-02', '1100', '1145', 'none', 'REG0000007', 'SER0000003', 'EMP0000006', NULL, -1),
 ('APP0000022', '2017-12-02', '1445', '1515', 'none', 'REG0000007', 'SER0000004', 'EMP0000006', NULL, -1),
-('APP0000023', '2017-12-04', '1230', '1300', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1);
+('APP0000023', '2017-12-04', '1230', '1300', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000024', '2017-12-05', '1230', '1300', 'none', 'REG0000007', 'SER0000001', 'EMP0000005', NULL, -1),
+('APP0000025', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1),
+('APP0000026', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1),
+('APP0000027', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1),
+('APP0000028', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1),
+('APP0000029', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1),
+('APP0000030', '2017-12-04', '1200', '1230', 'none', 'REG0000004', 'SER0000004', 'EMP0000006', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -196,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `path` varchar(100) NOT NULL,
   `date_added` datetime(6) NOT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -206,14 +213,42 @@ INSERT INTO `gallery` (`image_id`, `path`, `date_added`) VALUES
 (14, '5a22e23488c252.72833552.jpg', '2017-12-02 17:26:12.000000'),
 (13, '5a22e22668b2c0.04614764.jpg', '2017-12-02 17:32:26.000000'),
 (15, '5a22e23cbdd1f9.81109506.jpg', '2017-12-03 06:02:12.000000'),
-(16, '5a22e241b7bfe1.08574175.jpg', '2017-12-03 06:03:13.000000'),
+(16, '5a22e241b7bfe1.08574175.jpg', '2017-12-04 02:56:01.000000'),
 (17, '5a22e2461fa328.00562190.jpg', '2017-12-03 06:19:28.000000'),
 (18, '5a22e24f182d91.57808924.jpg', '2017-12-02 17:26:39.000000'),
-(19, '5a22e261603ec5.10481279.jpg', '2017-12-03 06:21:03.000000'),
+(19, '5a22e261603ec5.10481279.jpg', '2017-12-04 06:19:12.000000'),
 (20, '5a22e37ea4bde7.07960825.jpg', '2017-12-02 17:31:42.000000'),
-(21, '5a22e4f8bfd295.32807720.jpg', '2017-12-03 06:04:01.000000'),
+(21, '5a22e4f8bfd295.32807720.jpg', '2017-12-04 02:55:56.000000'),
 (22, '5a22e552cf2bb8.47819109.jpg', '2017-12-03 06:20:58.000000'),
-(23, '5a238b2263aa21.00655776.jpg', '2017-12-03 06:13:29.000000');
+(23, '5a238b2263aa21.00655776.jpg', '2017-12-03 06:13:29.000000'),
+(24, '5a24b930e1e7c0.29680482.jpg', '2017-12-04 02:55:44.000000'),
+(29, '5a24e8a044b827.13201223.jpg', '2017-12-04 06:18:08.000000'),
+(28, '5a24ddd5d4f564.03945929.jpg', '2017-12-04 05:32:05.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mirror`
+--
+
+DROP TABLE IF EXISTS `mirror`;
+CREATE TABLE IF NOT EXISTS `mirror` (
+  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(256) NOT NULL,
+  PRIMARY KEY (`image_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mirror`
+--
+
+INSERT INTO `mirror` (`image_id`, `image`) VALUES
+(1, 'img\\mirror\\hairstyle1.png'),
+(2, 'img\\mirror\\hairstyle2.png'),
+(3, 'img\\mirror\\hairstyle3.png'),
+(4, 'img\\mirror\\hairstyle4.png'),
+(5, 'img\\mirror\\hairstyle5.png'),
+(6, 'img\\mirror\\hairstyle6.png');
 
 -- --------------------------------------------------------
 
@@ -440,13 +475,13 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-03 18:40:00', 0, 'Receptionist', 'EMP0000002'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-03 18:16:40', 0, 'Administrator', 'EMP0000001'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 21:02:12', 0, 'Receptionist', 'EMP0000002'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 13:03:20', 0, 'Administrator', 'EMP0000001'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-03 18:18:40', 0, 'Beautician', 'EMP0000003'),
-(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-11-30 17:34:53', 0, 'Customer', 'REG0000004'),
+(29, 'Hisan', 'Hunais', 'hisan.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 12:29:36', 0, 'Customer', 'REG0000004'),
 (30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005'),
-(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-03 18:17:37', 0, 'Customer', 'REG0000007');
+(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 21:03:14', 0, 'Customer', 'REG0000007');
 
 --
 -- Constraints for dumped tables
