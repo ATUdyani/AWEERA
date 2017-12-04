@@ -1,8 +1,8 @@
+
+
 <!-- Contact Us Section -->
 <div id="contact" class="row">
     <hr>
-    <br>
-    <br>
 
     <!-- Map Column -->
     <div class="col-md-8">
@@ -42,3 +42,4 @@
     </div>
 </div>
 <!-- Contact Us Section -->
+

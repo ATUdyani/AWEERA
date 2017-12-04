@@ -28,6 +28,9 @@
                 <li class="link-1">
                     <a href="../index.php#contact">Contact</a>
                 </li>
+                <li class="link-1">
+                    <a href="../aweera-mirror.php">AWEERA-Mirror</a>
+                </li>
 
                 <li class="menu link-1" id="logout">
                     <div class="logout-content">

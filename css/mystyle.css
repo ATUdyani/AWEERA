@@ -268,3 +268,7 @@ table{
 	background: linear-gradient(#494949,#1b1b1b);
 	border-color: #fff;
 }
+
+.special-tag{
+	color: red;
+}

@@ -71,7 +71,7 @@
           	echo 'view/receptionist-home.php';
           }
           elseif ($type == "Customer") {
-          	echo 'index.php';
+          	echo 'view/customer-home.php';
           }
           elseif ($type=="Beautician"){
               echo 'view/beautician-home.php';

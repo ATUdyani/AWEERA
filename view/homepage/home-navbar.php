@@ -19,7 +19,7 @@
 
                     <?php
                     if(!isset($_SESSION['user_id'])){
-                        echo "<a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" >Appointments</a>";}
+                        echo "<a class='special-tag' href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" >Appointments</a>";}
                     else {
                         echo "<a href=\"controller/direct-user-handler.php\">Appointments</a>";
                     }
@@ -34,6 +34,9 @@
                 </li>
                 <li id="contact_menu" class="link-1">
                     <a href="#contact">Contact</a>
+                </li>
+                <li class="link-1">
+                    <a href="aweera-mirror.php">AWEERA-Mirror</a>
                 </li>
 
                 <?php

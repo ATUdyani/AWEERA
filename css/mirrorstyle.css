@@ -1,0 +1,58 @@
+.mirror-row{
+    margin-left: 10%
+}
+
+.mirror-button{
+    margin-top: 10%;
+}
+
+.mirror-panel{
+    height:380px;
+    margin-top:2%;
+    background-image: url("../img/panel-default-background.jpg");
+}
+
+.mirror-display{
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+    position:absolute;
+    width: 90%;
+    height: 90%;
+}
+
+.mirror-mask{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin:auto;
+    z-index: 2;
+    width: 90%;
+    height: 90%;
+}
+
+.mirror-photo{
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position:absolute;
+    width: 90%;
+    height: 110%;
+}
+
+.thumbnail-panel{
+    height:380px;
+    margin-top:10px;
+    background-image: url("../img/panel-default-background.jpg");
+}
+
+.my-thumbnail{
+    height:380px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

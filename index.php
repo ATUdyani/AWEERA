@@ -73,7 +73,13 @@ $db->connect();
                 <div class="panel-body">
                     <p> Let sensuous hair be yours.Get your hair styled the way you want from our professional hair stylists!
                         We offer you the Sri Lanka's Best hair cuts, hair settings, hair treatments and hair coloring services..</p>
-                    <a href="appointments.html" class="btn btn-default">Book Now</a>
+                    <?php
+                    if(!isset($_SESSION['user_id'])){
+                        echo "<a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\"class=\"btn btn-default\" >Book Now</a>";}
+                    else {
+                        echo "<a href=\"controller/direct-user-handler.php\" class=\"btn btn-default\">Book Now</a>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -85,7 +91,13 @@ $db->connect();
                 <div class="panel-body">
                     <p>Are you ready for your big day? So are we. Get you and your bridal squad dressed from us at AWEERA!
                         Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day.</p>
-                    <a href="appointments.html" class="btn btn-default">Book Now</a>
+                    <?php
+                    if(!isset($_SESSION['user_id'])){
+                        echo "<a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\"class=\"btn btn-default\" >Book Now</a>";}
+                    else {
+                        echo "<a href=\"controller/direct-user-handler.php\" class=\"btn btn-default\">Book Now</a>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -96,7 +108,13 @@ $db->connect();
                 </div>
                 <div class="panel-body">
                     <p>Approach all your beauty care treatments under one roof - AWEERA offers you a wide range of beauty care treatments including makeup, pedicure, manicure, nail care and much more..</p>
-                    <a href="appointments.html" class="btn btn-default">Book Now</a>
+                    <?php
+                    if(!isset($_SESSION['user_id'])){
+                        echo "<a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\"class=\"btn btn-default\" >Book Now</a>";}
+                    else {
+                        echo "<a href=\"controller/direct-user-handler.php\" class=\"btn btn-default\">Book Now</a>";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -205,11 +223,9 @@ $db->connect();
         $('html, body').animate({
             scrollTop: $("#gallery").offset().top
         }, 1000);
-    });-->
-
-
+    })
 </script>
-
+-->
 
 </body>
 

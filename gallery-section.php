@@ -1,6 +1,6 @@
 <?php require_once "model/Gallery.php"; ?>
 
-<link rel="stylesheet" href="css/baguetteBox.min.css">
+<link rel="stylesheet" href="baguettebox/baguetteBox.min.css">
 
 <?php
 
@@ -39,7 +39,7 @@ $result = $gallery->getImages();
 </div>
 <!-- /.row -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script src="baguettebox/baguetteBox.min.js"></script>
 <script>
     baguetteBox.run('.tz-gallery');
 </script>
