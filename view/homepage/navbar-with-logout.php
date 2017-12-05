@@ -17,7 +17,7 @@
         <div class= "collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right my-primary-menu">
                 <li class="link-1">
-                    <a href="#">Appointments</a>
+                    <a class='book-now-button' href="#">Book Now</a>
                 </li>
                 <li class="link-1">
                     <a href="../gallery.php">Gallery</a>
@@ -89,19 +89,6 @@
                     </div>
                 </li>
             </ul>
-
-            <!--<div class="arrow-up"></div>
-            <div class="login-form" >
-                <form>
-                    <div>
-                        <input class="my-login-button" type="submit" value="Edit Profile" formaction="../model/users.php">
-                    </div>
-                    <div>
-                        <input class="my-login-button" type="submit" value="Log Out" formaction="../controller/logout.php">
-                    </div>
-                </form>
-            </div>
-            -->
         </div>
         <!-- /.navbar-collapse -->
     </div>

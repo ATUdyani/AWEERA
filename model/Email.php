@@ -6,19 +6,6 @@
 <?php include('../email/PHPMailer/PHPMailerAutoload.php') ?>
 
 <?php
-/*use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-//Load composer's autoloader
-require '../email/PHPMailer3/src/PHPMailer.php';
-require '../email/PHPMailer3/src/Exception.php';
-require '../email/PHPMailer3/src/OAuth.php';
-require '../email/PHPMailer3/src/POP3.php';
-require '../email/PHPMailer3/src/SMTP.php';*/
-?>
-
-
-<?php
 /**
  * Created by PhpStorm.
  * User: Wasura Dananjith
@@ -40,10 +27,14 @@ class Email{
         self::$mail = new PHPMailer;
 
         self::$mail->isSMTP();                                   // Set mailer to use SMTP
-        self::$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+        self::$mail->Host = 'smtp.mailgun.org';                    // Specify main and backup SMTP servers
+        //self::$mail->Host = 'smtp.mail.yahoo.com';                    // Specify main and backup SMTP servers
         self::$mail->SMTPAuth = true;                            // Enable SMTP authentication
-        self::$mail->Username = 'aweerateamscorp@gmail.com';          // SMTP username
-        self::$mail->Password = 'aweera123'; // SMTP password
+        //self::$mail->SMTPDebug = 2;
+        self::$mail->Username = 'postmaster@sandbox8613477be73f4a0da45310d80d9c905c.mailgun.org';          // SMTP username
+        //self::$mail->Username = '';          // SMTP username
+        self::$mail->Password = '4de7e17a838519171424fe202230b122'; // SMTP password
+        //self::$mail->Password = ''; // SMTP password
         self::$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
         self::$mail->Port = 587;                                 // TCP port to connect to
 
@@ -137,7 +128,7 @@ class Email{
             self::$mail->Subject = 'Email from AWEERA by TeamScorp';
             self::$mail->Body    = $bodyContent;
             if(!self::$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>";
+                echo "<h4>Mail NOT sent</h4>".self::$mail->ErrorInfo;
             } else {
                 echo "<h4>Request Rejected.</h4>";
                 echo "<h4>Mail has been sent successfully.</h4>";

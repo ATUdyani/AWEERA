@@ -75,6 +75,7 @@
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
+                        <li><a id="menudefault" href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
                         <li><a href="../view/manage-users.php" class="my-sidebar-menu-item">Manage Users</a></li>
                         <li><a href="manage-gallery.php" class="my-sidebar-menu-item">Manage Gallery</a></li>
                         <li>
@@ -119,6 +120,8 @@
     </div>
     <!-- /.container -->
 
+    <?php include('modals/message-modal.php'); ?>
+
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
 
@@ -127,27 +130,11 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <!-- Script to display and hide login form -->
-    <!--<script type="text/javascript">
-        $(document).ready(function(){
-            var arrow = $(".arrow-up");
-            var form = $(".login-form");
-            var status = false;
-            $("#logout").click(function(event){
-                event.preventDefault();
-                if(status==false){
-                    arrow.fadeIn();
-                    form.fadeIn();
-                    status = true;
-                }
-                else{
-                    arrow.fadeOut();
-                    form.fadeOut();
-                    status = false;
-                }
-            })
-        })
-    </script>-->
+    <script>
+        $( document ).ready(function() {
+            $('#content').load('manage-appointments.php');
+        });
+    </script>
 
 </body>
 </div>

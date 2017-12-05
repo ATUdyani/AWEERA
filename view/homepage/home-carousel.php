@@ -1,3 +1,10 @@
+<!-- Script to Activate the Carousel -->
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>
+
 <!-- Header Carousel -->
 <header id="myCarousel" class="carousel slide my-carousel">
     <!-- Indicators -->
@@ -44,3 +51,6 @@
         <span class="icon-next"></span>
     </a>
 </header>
+
+
+

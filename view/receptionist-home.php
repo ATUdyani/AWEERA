@@ -36,7 +36,6 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <!-- Custom CSS -->
     <link href="../css/modern-business.css" rel="stylesheet">
     <link href="../css/mystyle.css" rel="stylesheet">
-    <link href="../css/receptionist-home.css" rel="stylesheet">
     <link href="../css/payments.css" rel="stylesheet">
     <link href="../css/loginstyle.css" rel="stylesheet">
 
@@ -83,7 +82,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
-                        <li><a href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
+                        <li><a id="menudefault" href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
                         <li>
                             <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
                                   <span class="badge badge-pill badge-info" id="comment_count"></span>
@@ -141,6 +140,11 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
+    <script>
+        $( document ).ready(function() {
+            $('#content').load('manage-appointments.php');
+        });
+    </script>
 
     </body>
 </div>
