@@ -86,22 +86,16 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
                         <li><a href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
                         <li>
                             <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
-                                  <span class="badge badge-pill badge-info" id="comment_count"></span></a>
+                                  <span class="badge badge-pill badge-info" id="comment_count"></span>
+                            </a>
                         </li>
-                        <li><a href="." onclick="loadSelectCustomerModal()" class="my-sidebar-menu-item">New Appointments</a></li>
                         <li><a href="../view/manage-purchase.php" class="my-sidebar-menu-item">Purchase</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>
                         <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
                         <li><a href="../view/manage-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
 
-                        <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
-                            <ul class="nav collapse my-sidebar-submenu" id="submenuStaff" role="menu" aria-labelledby="btnStaff">
-                                <li><a href="../view/add-staff.php" class="my-sidebar-submenu-item">Add Staff</a></li>
-                                <li><a href="#">Update Staff</a></li>
-                                <li><a href="#">Delete Staff</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a></li>
 
                         <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
                             <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">

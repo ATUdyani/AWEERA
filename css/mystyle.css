@@ -133,16 +133,19 @@ body h1,h2,h3,h4{
 	background-color: white;
 }
 
-.my-sidebar ul a{
+.my-sidebar ul li a{
 	color: #fff;
 	font-size: 120%;
 }
 
-.my-sidebar-submenu li a{
-	background-color: white;
+.my-sidebar ul li a:hover{
 	color: #000;
-	border-style: none;
-	text-align: center;
+	font-size: 120%;
+}
+
+.my-sidebar ul li a:focus{
+	color: #000;
+	font-size: 120%;
 }
 
 .result-table{

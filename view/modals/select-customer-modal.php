@@ -61,6 +61,7 @@
                 <h3 class="modal-title">Select Customer</h3>
             </div>
             <div class="modal-body">
+
                 <div id="msg_result_customer" style="margin:2%;">
                     <div class="row ">
                         <div class="col-md-12">

@@ -6,6 +6,19 @@
 <?php include('../email/PHPMailer/PHPMailerAutoload.php') ?>
 
 <?php
+/*use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+//Load composer's autoloader
+require '../email/PHPMailer3/src/PHPMailer.php';
+require '../email/PHPMailer3/src/Exception.php';
+require '../email/PHPMailer3/src/OAuth.php';
+require '../email/PHPMailer3/src/POP3.php';
+require '../email/PHPMailer3/src/SMTP.php';*/
+?>
+
+
+<?php
 /**
  * Created by PhpStorm.
  * User: Wasura Dananjith

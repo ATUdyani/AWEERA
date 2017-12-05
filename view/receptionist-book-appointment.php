@@ -74,6 +74,6 @@
 
 <script>
     $('#msg_Modal').on('hidden.bs.modal', function () {
-        window.location.href = "receptionist-home.php";
+        $('#content').load("manage-appointments.php");
     });
 </script>
