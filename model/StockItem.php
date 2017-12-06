@@ -3,7 +3,7 @@
 
 class StockItem{
 
-    protected static $stock_id;
+    // protected static $stock_id;
     protected static $stock_brand;
     protected static $type;
     protected static $stock_count;
@@ -29,17 +29,15 @@ class StockItem{
 
     }
 
-
+    // load stock details for viewing
     public function loadStockDetails(){
-        $db = new Database();
-        $connection = $db->connect();
         $stock_list ='';
 
         //getting list of stock items
         $query = "SELECT * FROM stock_item ORDER BY type";
-        $stocks = $db->executeQuery($query);
+        $stocks = self::$db->executeQuery($query);
 
-        $db->verifyQuery($stocks);
+        self::$db->verifyQuery($stocks);
 
         while($stock = mysqli_fetch_assoc($stocks)){
             $stock_list.= "<tr>";
@@ -55,15 +53,14 @@ class StockItem{
         return $stock_list;
     }
 
-    public function getprducts($productID){
-        $db = new Database();
-        $connection = $db->connect();
+    //
+    public function getprducts($product_id){
         $stock_list = '';
 
-        $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$productID$'";
-        $stocks = $db->executeQuery($query);
+        $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$product_id$'";
+        $stocks = self::$db->executeQuery($query);
 
-        $db->verifyQuery($stocks);
+        self::$db->verifyQuery($stocks);
 
         while ($stock = mysqli_fetch_assoc($stocks)){
             $stock_list.= "<tr>";

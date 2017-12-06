@@ -4,8 +4,8 @@
 	
 	class Gallery{
 
-	    protected static $path;
-		protected static $date_added;
+	    //protected static $path;
+		//protected static $date_added;
         protected static $db;
         protected static $connection;
 

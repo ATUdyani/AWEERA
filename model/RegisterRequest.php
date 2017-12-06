@@ -10,12 +10,12 @@
 
 class RegisterRequest
 {
-    protected static $first_name;
-    protected static $last_name;
-    protected static $cust_phone;
-    protected static $cust_address;
-    protected static $cust_email;
-    protected static $password;
+    //protected static $first_name;
+    //protected static $last_name;
+    //protected static $cust_phone;
+    //protected static $cust_address;
+    //protected static $cust_email;
+    //protected static $password;
 
     protected static $db;
     protected static $connection;
@@ -116,7 +116,7 @@ class RegisterRequest
     }
 
     // get all register request data for a particular reg id
-    function getUnregisteredCustomerData($reg_id){
+    function getRegisterRequestData($reg_id){
         $query = "SELECT * FROM register_request WHERE reg_id='".$reg_id."'";
         try{
             $result = self::$db->executeQuery($query);
@@ -125,6 +125,25 @@ class RegisterRequest
 
         }
         catch(Exception $e){
+            echo $e;
+        }
+    }
+
+    // count number of new register requests
+    public function countRequest(){
+        $query = "SELECT COUNT(*) FROM register_request";
+
+
+        try {
+            $result = self::$db->executeQuery($query);
+
+            if ($result) {
+                $req = mysqli_fetch_assoc($result);
+                echo $req['COUNT(*)'];
+            } else {
+                echo 0;
+            }
+        } catch (mysqli_sql_exception $e) {
             echo $e;
         }
     }

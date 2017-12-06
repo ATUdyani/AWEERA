@@ -42,7 +42,7 @@
         }
 
 
-        // get all customer data for a particular customer id
+        // get all customer data for a particular registered customer id
         public function getCustomerData($cust_id){
             $query = "SELECT * FROM registered_customer WHERE cust_id='".$cust_id."'";
             try{

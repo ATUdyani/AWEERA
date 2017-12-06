@@ -1,8 +1,8 @@
 <?php require_once '../model/Database.php' ?>
-<?php require_once '../model/User.php' ?>
+<?php require_once '../model/RegisterRequest.php' ?>
 
 <?php
-    $user = new User();
-    $count = $user ->countRequest();
+    $register_request = new RegisterRequest();
+    $count = $register_request ->countRequest();
     echo $count
 ?>

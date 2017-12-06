@@ -9,7 +9,7 @@ $(document).ready(function(){
         var jsonString = JSON.stringify(dataArray);
         if (txt != ''){
             $.ajax({
-                url: "../controller/fetch-register-request-handler.php",
+                url: "../controller/search-register-request-handler.php",
                 method: "post",
                 data:{data:jsonString},
                 cache: false,
@@ -21,7 +21,7 @@ $(document).ready(function(){
         else{
             //$('#result').html('');
             $.ajax({
-                url: "../controller/fetch-register-request-handler.php",
+                url: "../controller/search-register-request-handler.php",
                 method: "post",
                 data:{data:jsonString},
                 cache: false,
@@ -38,7 +38,7 @@ $(document).ready(function (){
     $(document).on('click','.edit_data',function(){
         var reg_id = $(this).attr("id");
         $.ajax({
-            url:"../controller/fetch-unregistered-customer-handler.php",
+            url:"../controller/fetch-register-request-handler.php",
             method: "post",
             data: {reg_id:reg_id},
             dataType: "json",

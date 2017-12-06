@@ -2,13 +2,13 @@
 <?php 
 	class User{
 
-        protected static $id;
-        protected static $first_name;
-        protected static $last_name;
-        protected static $email;
-        protected static $emp_type;
-        protected static $last_login;
-        protected static $password;
+        //protected static $id;
+        //protected static $first_name;
+        //protected static $last_name;
+        //protected static $email;
+        //protected static $emp_type;
+        //protected static $last_login;
+        //protected static $password;
 
         protected static $db;
         protected static $connection;
@@ -157,9 +157,9 @@
         }
 
         // change user password
-        public function changeUserPassword($emp_password,$user_id)
+        public function changeUserPassword($password,$user_id)
         {
-            $hashed_password = md5($emp_password);
+            $hashed_password = md5($password);
             $query = "UPDATE user SET password='$hashed_password' WHERE id ='$user_id'";
 
 
@@ -174,27 +174,6 @@
                 echo $e;
             }
         }
-
-        // count number of new register requests
-        public function countRequest(){
-            $query = "SELECT COUNT(*) FROM register_request";
-
-
-            try {
-                $result = self::$db->executeQuery($query);
-
-                if ($result) {
-                    $req = mysqli_fetch_assoc($result);
-                    echo $req['COUNT(*)'];
-                } else {
-                    echo 0;
-                }
-            } catch (mysqli_sql_exception $e) {
-                echo $e;
-            }
-        }
-
-
 	}
 
 	
