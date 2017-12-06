@@ -119,7 +119,7 @@ $(document).ready(function (){
     $(document).on('click','.customer_check',function(){
         var cust_id = $(this).attr("id");
         $.ajax({
-            url:"../controller/fetch-registered-customer-handler.php",
+            url:"../controller/fetch-customer-handler.php",
             method: "post",
             data: {cust_id:cust_id},
             dataType: "json",
@@ -229,6 +229,39 @@ $(document).ready(function(){
 
 // load customer appointment book page with cust_id auto loaded
 function loadBookCustomerAppointment(cust_id) {
-    $('#select_customer_Modal').modal('hide');
     $('#content').load("receptionist-book-appointment.php",{'cust_id': cust_id});
+}
+
+// onClick save Unregistered Customer
+function checkFormCust() {
+    var formArray = [];
+    formArray.push(document.getElementById("first_name_cust").value);
+    formArray.push(document.getElementById("last_name_cust").value);
+    formArray.push(document.getElementById("cust_phone").value);
+    formArray.push(document.querySelector('input[name = "gender_cust"]:checked').value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/add-unregistered-customer-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        dataType: "json",
+        cache: false,
+        success:function(result){
+            if (result[0]=="<h4>Unregistered Customer added.</h4>"){
+                loadBookCustomerAppointment(result[1]);
+            }
+            else{
+                $('#msg_Modal').modal('show');
+                $('#msg_result').html(result[0]);
+            }
+        }
+    });
+}
+
+// reset all the fields in Add Unregistered Customer form
+function resetCustForm() {
+    document.getElementById("first_name_cust").value = "";
+    document.getElementById("last_name_cust").value = "";
+    document.getElementById("male_radio_button").checked = true;
+    document.getElementById("cust_phone").value = "";
 }

@@ -26,14 +26,34 @@ class RegisterRequest
         self::$connection = self::$db->connect();
     }
 
-    // set email
-    function setData($first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password){
-        self::$first_name = $first_name;
-        self::$last_name = $last_name;
-        self::$cust_phone = $cust_phone;
-        self::$cust_address = $cust_address;
-        self::$cust_email = $cust_email;
-        self::$password = $password;
+
+    // add new register request
+    public function addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$hashed_password){
+
+        // query to add new register request
+        $query = "INSERT INTO register_request(first_name,last_name,cust_phone,cust_address,cust_email,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$hashed_password')";
+
+        try {
+            $result = self::$db->executeQuery($query);
+            return $result;
+        } catch (Exception $e) {
+            echo $e;
+        }
+    }
+
+    // delete register request
+    public function deleteRegisterRequest($cust_email){
+        // query to delete the particular register request
+        $query = "DELETE FROM register_request WHERE cust_email='".$cust_email."'";
+
+        try{
+            $result = self::$db->executeQuery($query);
+            return $result;
+
+        }
+        catch(Exception $e){
+            echo $e;
+        }
     }
 
     // to view/search all new register requests
@@ -104,129 +124,8 @@ class RegisterRequest
 
         }
         catch(Exception $e){
-            echo e;
+            echo $e;
         }
     }
 
-    // send confirmation mail for register requests
-    function sendRegisterConfirmationMail($status){
-            require '../email/PHPMailer/PHPMailerAutoload.php';
-            $mail = new PHPMailer;
-
-            $mail->isSMTP();                                   // Set mailer to use SMTP
-            $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
-            $mail->SMTPAuth = true;                            // Enable SMTP authentication
-            $mail->Username = 'aweerateamscorp@gmail.com';          // SMTP username
-            $mail->Password = 'aweera123'; // SMTP password
-            $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
-            $mail->Port = 587;                                 // TCP port to connect to
-
-            $mail->setFrom('aweerateamscorp@gmail.com', 'AWEERA');
-            $mail->addReplyTo('aweerateamscorp@gmail.com', 'AWEERA');
-            $mail->addAddress(self::$cust_email);   // Add a recipient
-            //$mail->addCC('cc@example.com');
-            //$mail->addBCC('bcc@example.com');
-
-            $mail->isHTML(true);  // Set email format to HTML
-
-        if ($status == "Accepted"){
-            $bodyContent = "<h1>Thank you for registering with us.</h1>";
-            $bodyContent .= "<p>Your register request is accepted by AWEERA.<br>
-            Name : ".self::$first_name." ".self::$last_name."<br>
-            Phone : ".self::$cust_phone."<br>
-            Address : ".self::$cust_address."<br>
-            Email : ".self::$cust_email."<br><br>
-            Above are your recorded details, please contact us if there are any changes have to be done. 
-            <br><br>Thank you!
-            <br>AWEERA - Hair and Beauty</p>";
-
-            $mail->Subject = 'Email from AWEERA by TeamScorp';
-            $mail->Body    = $bodyContent;
-            if(!$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>";
-            } else {
-                echo "<h4>Request Accepted.</h4>";
-                echo "<h4>Mail has been sent successfully.</h4>";
-
-                // get last registered customer id
-                $last_id = self::$db->getLastId('cust_id','registered_customer');
-
-                // generate new registered customer id
-                $new_id = self::$db ->generateId($last_id,'REG');
-
-                // insert the new record to user table
-                $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".self::$first_name."', '".self::$last_name."', '".self::$cust_email."', '"
-                    .self::$password."', 'Customer','".$new_id."')";
-
-                try{
-                    $result = self::$db->executeQuery($query);
-                    if ($result){
-
-                        // get current date to be inserted as joined date
-                        $date = date("Y-m-d");
-
-                        // insert the new registered customer details
-                        $query = "INSERT INTO registered_customer (cust_id,first_name,last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ("."'$new_id'".", '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
-                            .self::$cust_address."', '$date', '".self::$password."')";
-
-                        $result_next = self::$db->executeQuery($query);
-
-                        if ($result_next){
-
-                            // delete the register request
-                            $query = "DELETE FROM register_request WHERE cust_email='".self::$cust_email."'";
-
-                            $result_next_next= self::$db->executeQuery($query);
-                            if ($result_next_next) {
-                                echo "<h4>User successfully added.</h4>";
-                            }
-                        }
-                        else{
-                            echo "<h4>Failed to add the new registered customer.</h4>";
-                        }
-                    }
-                    else{
-                        echo "<h4>Failed to add the new registered customer.</h4>";
-                    }
-                }catch (mysqli_sql_exception $e){
-                    echo $e;
-                }
-
-            }
-        }
-        else{
-            $bodyContent = "<h1>Sorry you request is rejected.</h1>";
-            $bodyContent .= "<p>Your register request is rejected by AWEERA.<br>
-            Name : ".self::$first_name." ".self::$last_name."<br>
-            Phone : ".self::$cust_phone."<br>
-            Address : ".self::$cust_address."<br>
-            Email : ".self::$cust_email."<br><br>
-            If you want further clarifications, please contact us if there are any changes have to be done. 
-            <br><br>Thank you!
-            <br>AWEERA - Hair and Beauty</p>";
-
-            $mail->Subject = 'Email from AWEERA by TeamScorp';
-            $mail->Body    = $bodyContent;
-            if(!$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>";
-            } else {
-                echo "<h4>Request Accepted.</h4>";
-                echo "<h4>Mail has been sent successfully.</h4>";
-
-                // delete the register request
-                $query = "DELETE FROM register_request WHERE cust_email='".self::$cust_email."'";
-                try{
-                    $result_next_next= self::$db->executeQuery($query);
-                    if ($result_next_next) {
-                        echo "<h4>Request Deleted Successfully.</h4>";
-                    }
-                }
-                catch (Exception $ex){
-                    echo $ex;
-                }
-            }
-        }
-
-
-    }
 }

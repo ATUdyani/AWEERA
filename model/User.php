@@ -19,6 +19,22 @@
             self::$connection = self::$db->connect();
         }
 
+        // add a new user - $new_id is the user_reg_id which can be used to link with other tables
+        public function addUser($first_name,$last_name,$cust_email,$password,$new_id){
+
+            // insert the new record to user table
+            $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".$first_name."', '".$last_name."', '".$cust_email."', '"
+                .$password."', 'Customer','".$new_id."')";
+
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+
+            }catch (mysqli_sql_exception $e){
+                return $e;
+            }
+        }
+
         // load user details to a page
         public function loadUsers(){
 		    $user_list ='';

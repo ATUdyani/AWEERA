@@ -13,35 +13,35 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="update_first_name" id="update_first_name" maxlength="50" required="">
+                            <input class="form-control" type="text" name="update_first_name" id="update_first_name" maxlength="50" required="" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-4 col-form-label clearfix">Last Name</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="text" name="update_last_name" id="update_last_name" maxlength="50" required="">
+                            <input class="form-control" type="text" name="update_last_name" id="update_last_name" maxlength="50" required="" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="example-email-input" class="col-md-4 col-form-label">Email/Username</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="email"  id="update_email" name="update_email"  maxlength="50" required="">
+                            <input class="form-control" type="email"  id="update_email" name="update_email"  maxlength="50" required="" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="example-email-input" class="col-md-4 col-form-label">Phone</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="number"  id="update_phone" name="update_phone"  maxlength="12" required="">
+                            <input class="form-control" type="number"  id="update_phone" name="update_phone"  maxlength="12" required="" disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label class="col-md-4 control-label">Address</label>
                         <div class="col-md-8">
-                            <textarea class="form-control" type="text" rows="5" id="update_address" name="update_address" maxlength="100" required=""></textarea>
+                            <textarea class="form-control" type="text" rows="5" id="update_address" name="update_address" maxlength="100" required="" disabled></textarea>
                         </div>
                     </div>
 

@@ -386,22 +386,22 @@
         public function searchAppointmentDetails($date,$emp_id){
             // all dates, all beauticians
             if ($date=="*" && $emp_id=="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
             }
             // date is specified, for all beauticians
             elseif ($date!="*" && $emp_id=="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.appointment_date='".$date."' 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.appointment_date='".$date."' 
                 AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.start_time";
             }
             // beautician is specified, all dates
             elseif ($date=="*" && $emp_id!="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e 
                           WHERE a.emp_id='".$emp_id."' AND a.emp_id=e.emp_id 
                           AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
             }
             // date is specified, beautician is specified
             else{
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.emp_id='".$emp_id."' AND a.appointment_date='".$date."' 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id='".$emp_id."' AND a.appointment_date='".$date."' 
                 AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.start_time";
             }
 
