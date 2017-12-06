@@ -11,10 +11,11 @@
         protected static $appointment_date;
         protected static $start_time;
         protected static $end_time;
-        protected static $payment_id;
-        protected static $cust_id;
-        protected static $service_id;
-        protected static $emp_id;
+        //protected static $payment_id;
+        //protected static $cust_id;
+        //protected static $service_id;
+        //protected static $emp_id;
+
         protected static $db;
         protected static $connection;
         protected static $OPEN_TIME = "9"; // opening time of the salon 0900
@@ -29,6 +30,8 @@
 
         // get all appointment data for a particular appointment id
         public function getAppointmentData($appointment_id){
+
+            // query to get all data for a particular appointment
             $query = "SELECT * FROM appointment WHERE appointment_id='".$appointment_id."'";
             try{
                 $result = self::$db->executeQuery($query);
@@ -37,7 +40,7 @@
 
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 

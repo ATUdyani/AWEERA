@@ -3,6 +3,7 @@
 <?php require_once '../model/UnregisteredCustomer.php' ?>
 
 <?php
+
 	$db = new Database();
 	$connection = $db->connect();
 
@@ -12,10 +13,6 @@
 	// checking required fields
 	if (empty($data[0])){
 		$errors[] = 'First Name is required.';
-	}
-
-	if (empty($data[1])){
-		$errors[] = 'Last Name is required.';
 	}
 
 	if (empty($data[2])){
@@ -39,6 +36,4 @@
         $result = $unregistered_customer ->addUnregisteredCustomer($first_name,$last_name,$cust_phone,$cust_gender);
         echo json_encode($result);
  	}
-
- 	
  ?>

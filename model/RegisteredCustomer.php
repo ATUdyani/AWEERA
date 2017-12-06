@@ -5,6 +5,7 @@
 <?php
     class RegisteredCustomer extends Customer
     {
+        protected static $password;
 
         // add a registered customer
         public function addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date_joined,$password){
@@ -16,6 +17,7 @@
             self::$cust_address = $cust_address;
             self::$date_joined = $date_joined;
             self::$password = $password;
+            self::$cust_gender = NULL;
 
             // get last registered customer id
             $last_id = self::$db->getLastId('cust_id','registered_customer');

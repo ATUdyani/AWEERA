@@ -1,0 +1,37 @@
+<html>
+<head>
+</head>
+
+<body>
+  <header>
+
+    <h1 align='center'> Aweera Salon </h1>
+
+  </header>
+  <section align='center'>
+    <h2> Daily Collection Report </h2>
+      <form action="daily_collection.php" method="post">
+        <p>
+          <label>Date of the Report :</label>
+          <input type="date" name="rdate"/>
+        </p>
+        <p>
+          <label>Total appointments :</label>
+          <input type="number" name="total_appointments"/>
+        </p>
+        <p>
+          <label>Total income :</label>
+          <input type="number" name="total_income"/>
+        </p>
+        <p>
+          <label>Total commission :</label>
+          <input type="number" name="total_commission"/>
+        </p>
+        <p>
+          <input type="submit" value="Print" name="submit"/>
+        </p>
+      </form>
+  </section>
+</body>
+
+</html>

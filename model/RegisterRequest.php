@@ -43,6 +43,7 @@ class RegisterRequest
 
     // delete register request
     public function deleteRegisterRequest($cust_email){
+
         // query to delete the particular register request
         $query = "DELETE FROM register_request WHERE cust_email='".$cust_email."'";
 

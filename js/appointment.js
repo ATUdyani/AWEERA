@@ -232,27 +232,41 @@ function loadBookCustomerAppointment(cust_id) {
     $('#content').load("receptionist-book-appointment.php",{'cust_id': cust_id});
 }
 
-// onClick save Unregistered Customer
+// onClick save Unregistered Customer (with front end validation)
 function checkFormCust() {
+    var first_name = document.getElementById("first_name_cust").value;
+    var last_name = document.getElementById("last_name_cust").value;
+    var cust_phone = document.getElementById("cust_phone").value;
+    var cust_gender = document.querySelector('input[name = "gender_cust"]:checked').value;
+
+    if (first_name ==""){
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>First Name is required.</h4>");
+        return;
+    }
+    if (cust_phone ==""){
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>Phone Number is required.</h4>");
+        return;
+    }
+
     var formArray = [];
-    formArray.push(document.getElementById("first_name_cust").value);
-    formArray.push(document.getElementById("last_name_cust").value);
-    formArray.push(document.getElementById("cust_phone").value);
-    formArray.push(document.querySelector('input[name = "gender_cust"]:checked').value);
+    formArray.push(first_name,last_name,cust_phone,cust_gender);
+
     var jsonString = JSON.stringify(formArray);
     $.ajax({
         url:"../controller/add-unregistered-customer-handler.php", //the page containing php script
         type: "POST", //request type
         data: {data : jsonString},
-        dataType: "json",
+        dataType:'json',
         cache: false,
         success:function(result){
-            if (result[0]=="<h4>Unregistered Customer added.</h4>"){
-                loadBookCustomerAppointment(result[1]);
+            if (result==0){
+                $('#msg_Modal').modal('show');
+                $('#msg_result').html("<h4>Failed to add the new record.</h4>");
             }
             else{
-                $('#msg_Modal').modal('show');
-                $('#msg_result').html(result[0]);
+                loadBookCustomerAppointment(result);
             }
         }
     });

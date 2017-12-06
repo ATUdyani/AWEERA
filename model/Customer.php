@@ -11,7 +11,8 @@
         protected static $cust_phone;
         protected static $cust_address;
         protected static $date_joined;
-        protected static $password;
+        protected static $cust_gender;
+
         protected static $db;
         protected static $connection;
 
@@ -24,8 +25,8 @@
         public function addCustomer()
         {
             // insert the new customer details
-            $query = "INSERT INTO customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ('".self::$cust_id."', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
-                .self::$cust_address."', '".self::$date_joined."', '".self::$password."')";
+            $query = "INSERT INTO customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,cust_gender) VALUES ('".self::$cust_id."', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
+                .self::$cust_address."', '".self::$date_joined."', '".self::$cust_gender."')";
 
             try {
                 $result = self::$db->executeQuery($query);
