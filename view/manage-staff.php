@@ -273,5 +273,5 @@
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-staff-modal.php'); ?>
 <?php include('modals/add-user-modal.php'); ?>
-
+<?php include('modals/update-message-modal.php'); ?>
 

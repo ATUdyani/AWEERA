@@ -200,8 +200,8 @@ function onclickUpdateEmployee() {
         success:function(data){
             $('#insert_form')[0].reset();
             $('#add_data_Modal').modal('hide');
-            $('#msg_Modal').modal('show');
-            $('#msg_result').html(data);
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(data);
         }
     });
 }
@@ -261,4 +261,8 @@ function resetBeauticianForm() {
     $('input:checkbox').removeAttr('checked');
 }
 
+
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-staff.php');
+});
 

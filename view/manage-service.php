@@ -112,3 +112,4 @@
 
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-service-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>

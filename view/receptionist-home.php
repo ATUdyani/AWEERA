@@ -136,9 +136,9 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <script src="../js/bootstrap.min.js"></script>
 
     <script>
-        /*$( document ).ready(function() {
+        $( document ).ready(function() {
             $('#content').load('manage-appointments.php');
-        });*/
+        });
     </script>
 
     </body>
