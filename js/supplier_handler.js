@@ -74,6 +74,29 @@ function checkFormSupplier() {
     });
 }
 
+// check employee update
+function onclickUpdateSupplier() {
+    var formArray = [];
+    formArray.push(document.getElementById("update_supplier_name").value);
+    formArray.push(document.getElementById("update_supplier_phone").value);
+    formArray.push(document.getElementById("update_supplier_address").value);
+    formArray.push(document.getElementById("update_supplier_email").value);
+    formArray.push(document.getElementById("update_supplier_id").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/update-supplier-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(data){
+            $('#insert_form')[0].reset();
+            $('#update_supplier_Modal').modal('hide');
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+        }
+    });
+}
+
 /*// add supplier
 $(document).ready(function (){
     $(document).on('click','.add_user1',function(){
