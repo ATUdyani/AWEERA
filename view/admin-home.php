@@ -75,14 +75,14 @@
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
+                        <li><a id="menudefault" href="manage-appointments.php" class="my-sidebar-menu-item">Appointments</a></li>
                         <li><a href="../view/manage-users.php" class="my-sidebar-menu-item">Manage Users</a></li>
                         <li><a href="manage-gallery.php" class="my-sidebar-menu-item">Manage Gallery</a></li>
                         <li>
                             <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
                                 <span class="badge badge-pill badge-info" id="comment_count"></span></a>
                         </li>
-                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
-                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
+                        <li><a href="../view/view-customer.php" class="my-sidebar-menu-item">Customer</a></li>
 
                         <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
 <!--                            <ul class="nav collapse my-sidebar-submenu" id="submenuStaff" role="menu" aria-labelledby="btnStaff">-->
@@ -92,6 +92,8 @@
 <!--                            </ul>-->
                         </li>
 
+                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
+                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
                         <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
 <!--                            <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">-->
 <!--                                <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>-->
@@ -119,6 +121,8 @@
     </div>
     <!-- /.container -->
 
+    <?php include('modals/message-modal.php'); ?>
+
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
 
@@ -127,27 +131,11 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
-    <!-- Script to display and hide login form -->
-    <!--<script type="text/javascript">
-        $(document).ready(function(){
-            var arrow = $(".arrow-up");
-            var form = $(".login-form");
-            var status = false;
-            $("#logout").click(function(event){
-                event.preventDefault();
-                if(status==false){
-                    arrow.fadeIn();
-                    form.fadeIn();
-                    status = true;
-                }
-                else{
-                    arrow.fadeOut();
-                    form.fadeOut();
-                    status = false;
-                }
-            })
-        })
-    </script>-->
+    <script>
+        $( document ).ready(function() {
+            $('#content').load('manage-appointments.php');
+        });
+    </script>
 
 </body>
 </div>

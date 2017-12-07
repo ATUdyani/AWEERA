@@ -119,7 +119,7 @@ $(document).ready(function (){
     $(document).on('click','.customer_check',function(){
         var cust_id = $(this).attr("id");
         $.ajax({
-            url:"../controller/fetch-registered-customer-handler.php",
+            url:"../controller/fetch-customer-handler.php",
             method: "post",
             data: {cust_id:cust_id},
             dataType: "json",
@@ -194,36 +194,88 @@ $(function () {
 
 // load suitable results on keyup
 $(document).ready(function(){
-$('#search_text').keyup(function (){
-    var dataArray =[];
-    var filter = document.getElementById("search_param").value;
-    var txt = $(this).val().trim();
-    dataArray.push(filter);
-    dataArray.push(txt);
-    var jsonString = JSON.stringify(dataArray);
-    if (txt != ''){
-        $.ajax({
-            url: "../controller/search-customer-handler.php",
-            method: "post",
-            data:{data:jsonString},
-            cache: false,
-            success: function (data) {
-                $('#result').html(data);
-            }
-        });
-    }
-    else{
-        //$('#result').html('');
-        $.ajax({
-            url: "../controller/search-customer-handler.php",
-            method: "post",
-            data:{data:jsonString},
-            cache: false,
-            success: function (data) {
-                $('#result').html(data);
-            }
-        });
-    }
-});
+    $('#search_text').keyup(function (){
+        var dataArray =[];
+        var filter = document.getElementById("search_param").value;
+        var txt = $(this).val().trim();
+        dataArray.push(filter);
+        dataArray.push(txt);
+        var jsonString = JSON.stringify(dataArray);
+        if (txt != ''){
+            $.ajax({
+                url: "../controller/search-customer-handler.php",
+                method: "post",
+                data:{data:jsonString},
+                cache: false,
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        }
+        else{
+            //$('#result').html('');
+            $.ajax({
+                url: "../controller/search-customer-handler.php",
+                method: "post",
+                data:{data:jsonString},
+                cache: false,
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        }
+    });
 });
 
+// load customer appointment book page with cust_id auto loaded
+function loadBookCustomerAppointment(cust_id) {
+    $('#content').load("receptionist-book-appointment.php",{'cust_id': cust_id});
+}
+
+// onClick save Unregistered Customer (with front end validation)
+function checkFormCust() {
+    var first_name = document.getElementById("first_name_cust").value;
+    var last_name = document.getElementById("last_name_cust").value;
+    var cust_phone = document.getElementById("cust_phone").value;
+    var cust_gender = document.querySelector('input[name = "gender_cust"]:checked').value;
+
+    if (first_name ==""){
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>First Name is required.</h4>");
+        return;
+    }
+    if (cust_phone ==""){
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>Phone Number is required.</h4>");
+        return;
+    }
+
+    var formArray = [];
+    formArray.push(first_name,last_name,cust_phone,cust_gender);
+
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/add-unregistered-customer-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        dataType:'json',
+        cache: false,
+        success:function(result){
+            if (result==0){
+                $('#msg_Modal').modal('show');
+                $('#msg_result').html("<h4>Failed to add the new record.</h4>");
+            }
+            else{
+                loadBookCustomerAppointment(result);
+            }
+        }
+    });
+}
+
+// reset all the fields in Add Unregistered Customer form
+function resetCustForm() {
+    document.getElementById("first_name_cust").value = "";
+    document.getElementById("last_name_cust").value = "";
+    document.getElementById("male_radio_button").checked = true;
+    document.getElementById("cust_phone").value = "";
+}

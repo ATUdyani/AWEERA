@@ -3,7 +3,7 @@
 <!-- Contact Us Section -->
 <div id="contact" class="row">
     <hr>
-
+    <br>
     <!-- Map Column -->
     <div class="col-md-8">
         <!-- Embedded Google Map -->

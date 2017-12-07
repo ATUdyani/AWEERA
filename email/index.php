@@ -32,18 +32,18 @@
 				//$mail->addBCC('bcc@example.com');
 
 				$mail->isHTML(true);  // Set email format to HTML
-
 				$bodyContent = '<h1>How to Send HTML Email using PHP in Localhost by Weidea4u</h1>';
 				$bodyContent .= '<p>This is the HTML email sent from localhost using PHP script by <b>Weidea4u</b></p>';
 
 				$mail->Subject = 'Email from Localhost by Weidea4u';
 				$mail->Body    = $bodyContent;
 
+
 				if(!$mail->send()) {
 				    ?>
 				    <div class="alert alert-danger alert-dismissable fade in">
 				   	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-				   		Message could not be sent.
+				   		Message could not be sent.<?php echo $mail->ErrorInfo;?>
 				   	</div>
 				    <?php
 				} else {

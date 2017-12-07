@@ -1,8 +1,3 @@
-<?php require_once ('model/Database.php');
-$db = new Database();
-$db->connect();
-?>
-
 <?php session_start() ?>
 
 <!DOCTYPE html>
@@ -121,8 +116,6 @@ $db->connect();
     </div>
     <!-- /.row -->
 
-    <br>
-
     <?php include('gallery-section.php');?>
 
     <!-- Features Section -->
@@ -155,8 +148,6 @@ $db->connect();
     </div>
     <!-- /.row -->
 
-    <br>
-
     <?php include ('comment-slider.php');?>
 
     <?php include ('contact-us.php');?>
@@ -173,7 +164,13 @@ $db->connect();
                     <strong>"Life is more beautiful when you meet the right Hairdresser"</strong></p>
             </div>
             <div class="col-md-4">
-                <a class="btn btn-lg btn-default btn-block" href="appointments.html">Book an Appointment</a>
+                <?php
+                if(!isset($_SESSION['user_id'])){
+                    echo "<a class=\"btn btn-lg btn-default btn-block\" href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" >Book Now</a>";}
+                else {
+                    echo "<a class=\"btn btn-lg btn-default btn-block\" href=\"controller/direct-user-handler.php\">Book Now</a>";
+                }
+                ?>
             </div>
         </div>
     </div>
@@ -197,14 +194,6 @@ $db->connect();
 
 <!-- script to handle model login -->
 <script type="text/javascript" src="js/login.js"></script>
-
-
-<!-- Script to Activate the Carousel -->
-<script>
-    $('.carousel').carousel({
-        interval: 5000 //changes the speed
-    })
-</script>
 
 
 <!-- Script to scroll to contact -->

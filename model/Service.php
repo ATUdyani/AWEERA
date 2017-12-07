@@ -58,7 +58,6 @@
             $query = "INSERT INTO service (service_id, service_name, service_charge, description, duration, commission_percentage) VALUES ('".
                 $id."', '".self::$service_name."', '".self::$service_charge."', '".self::$description."', '".self::$duration."', '".self::$commission_percentage."')";
 
-            echo $query;
 
             try{
                 $result = self::$db->executeQuery($query);

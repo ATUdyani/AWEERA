@@ -22,10 +22,10 @@
                         <div class="col-md-6">
                             <input type="hidden" name="update_id" id="update_id" />
                             <input type="hidden" name="password" id="password" />
-                            <input type="button" onclick="commentStatus('1')" name="accept" id="accept" value="Accept" class="btn btn-success my-lg-button-success" />
+                            <input type="button" onclick="commentStatus('1')" name="accept" id="accept" value="OK" class="btn btn-success my-lg-button-success" />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" onclick="commentStatus('0')" name="reject" id="reject" value="Reject" class="btn btn-danger my-lg-button-danger" />
+                            <input type="button" onclick="commentStatus('0')" name="reject" id="reject" value="Review" class="btn btn-danger my-lg-button-danger" />
                         </div>
                     </div>
 

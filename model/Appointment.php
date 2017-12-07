@@ -11,10 +11,11 @@
         protected static $appointment_date;
         protected static $start_time;
         protected static $end_time;
-        protected static $payment_id;
-        protected static $cust_id;
-        protected static $service_id;
-        protected static $emp_id;
+        //protected static $payment_id;
+        //protected static $cust_id;
+        //protected static $service_id;
+        //protected static $emp_id;
+
         protected static $db;
         protected static $connection;
         protected static $OPEN_TIME = "9"; // opening time of the salon 0900
@@ -29,6 +30,8 @@
 
         // get all appointment data for a particular appointment id
         public function getAppointmentData($appointment_id){
+
+            // query to get all data for a particular appointment
             $query = "SELECT * FROM appointment WHERE appointment_id='".$appointment_id."'";
             try{
                 $result = self::$db->executeQuery($query);
@@ -37,7 +40,7 @@
 
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 
@@ -386,22 +389,22 @@
         public function searchAppointmentDetails($date,$emp_id){
             // all dates, all beauticians
             if ($date=="*" && $emp_id=="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
             }
             // date is specified, for all beauticians
             elseif ($date!="*" && $emp_id=="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.appointment_date='".$date."' 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.appointment_date='".$date."' 
                 AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.start_time";
             }
             // beautician is specified, all dates
             elseif ($date=="*" && $emp_id!="*"){
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e 
                           WHERE a.emp_id='".$emp_id."' AND a.emp_id=e.emp_id 
                           AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
             }
             // date is specified, beautician is specified
             else{
-                $query = "SELECT * FROM appointment a,registered_customer c,service s,employee e WHERE a.emp_id='".$emp_id."' AND a.appointment_date='".$date."' 
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id='".$emp_id."' AND a.appointment_date='".$date."' 
                 AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.start_time";
             }
 

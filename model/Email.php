@@ -1,22 +1,11 @@
 <?php require_once('Database.php')?>
 <?php require_once('Service.php')?>
 <?php require_once('Employee.php')?>
+<?php require_once('User.php')?>
 <?php require_once('RegisteredCustomer.php')?>
+<?php require_once('RegisterRequest.php')?>
 <?php require_once('Appointment.php')?>
 <?php include('../email/PHPMailer/PHPMailerAutoload.php') ?>
-
-<?php
-/*use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-//Load composer's autoloader
-require '../email/PHPMailer3/src/PHPMailer.php';
-require '../email/PHPMailer3/src/Exception.php';
-require '../email/PHPMailer3/src/OAuth.php';
-require '../email/PHPMailer3/src/POP3.php';
-require '../email/PHPMailer3/src/SMTP.php';*/
-?>
-
 
 <?php
 /**
@@ -40,10 +29,14 @@ class Email{
         self::$mail = new PHPMailer;
 
         self::$mail->isSMTP();                                   // Set mailer to use SMTP
-        self::$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+        self::$mail->Host = 'smtp.mailgun.org';                    // Specify main and backup SMTP servers
+        //self::$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
         self::$mail->SMTPAuth = true;                            // Enable SMTP authentication
-        self::$mail->Username = 'aweerateamscorp@gmail.com';          // SMTP username
-        self::$mail->Password = 'aweera123'; // SMTP password
+        //self::$mail->SMTPDebug = 2;
+        self::$mail->Username = 'postmaster@sandbox8613477be73f4a0da45310d80d9c905c.mailgun.org';          // SMTP username
+        //self::$mail->Username = 'aweerateamscorp@gmail.com';          // SMTP username
+        self::$mail->Password = '4de7e17a838519171424fe202230b122'; // SMTP password
+        //self::$mail->Password = 'aweera123'; // SMTP password
         self::$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
         self::$mail->Port = 587;                                 // TCP port to connect to
 
@@ -85,30 +78,25 @@ class Email{
                 // generate new registered customer id
                 $new_id = self::$db ->generateId($last_id,'REG');
 
-                // insert the new record to user table
-                $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".$first_name."', '".$last_name."', '".$cust_email."', '"
-                    .$password."', 'Customer','".$new_id."')";
-
                 try{
-                    $result = self::$db->executeQuery($query);
+
+                    $user = new User();
+                    $result = $user -> addUser($first_name,$last_name,$cust_email,$password,$new_id);
+
                     if ($result){
 
                         // get current date to be inserted as joined date
                         $date = date("Y-m-d");
 
-                        // insert the new registered customer details
-                        $query = "INSERT INTO registered_customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ('$new_id', '".$first_name."','".$last_name."', '".$cust_phone."', '".$cust_email."', '"
-                            .$cust_address."', '$date', '".$password."')";
-
-                        echo $query;
-                        $result_next = self::$db->executeQuery($query);
+                        $registered_customer = new RegisteredCustomer();
+                        $result_next = $registered_customer ->addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date,$password);
 
                         if ($result_next){
 
                             // delete the register request
-                            $query = "DELETE FROM register_request WHERE cust_email='".$cust_email."'";
+                            $register_request = new RegisterRequest();
+                            $result_next_next = $register_request ->deleteRegisterRequest($cust_email);
 
-                            $result_next_next= self::$db->executeQuery($query);
                             if ($result_next_next) {
                                 echo "<h4>User successfully added.</h4>";
                             }
@@ -137,15 +125,16 @@ class Email{
             self::$mail->Subject = 'Email from AWEERA by TeamScorp';
             self::$mail->Body    = $bodyContent;
             if(!self::$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>";
+                echo "<h4>Mail NOT sent</h4>".self::$mail->ErrorInfo;
             } else {
                 echo "<h4>Request Rejected.</h4>";
                 echo "<h4>Mail has been sent successfully.</h4>";
 
-                // delete the register request
-                $query = "DELETE FROM register_request WHERE cust_email='".$cust_email."'";
                 try{
-                    $result_next_next= self::$db->executeQuery($query);
+                    // delete the register request
+                    $register_request = new RegisterRequest();
+                    $result_next_next = $register_request ->deleteRegisterRequest($cust_email);
+
                     if ($result_next_next) {
                         echo "<h4>Request Deleted Successfully.</h4>";
                     }

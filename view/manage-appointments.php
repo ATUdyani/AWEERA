@@ -13,7 +13,10 @@
         <a class="nav-link active" data-toggle="tab" href="#schedule-details" role="tab" aria-controls="schedule-details">Schedule</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#book-now" role="tab" aria-controls="book-now">Book Now</a>
+        <a class="nav-link" data-toggle="tab" href="#book-now-registered" role="tab" aria-controls="book-now">Book Now (Registered)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#book-now-unregistered" role="tab" aria-controls="book-now">Book Now (Unregistered)</a>
     </li>
 </ul>
 
@@ -63,7 +66,7 @@
         </div>
     </div>
 
-    <div class="tab-pane fade active" id="book-now" role="tabpanel">
+    <div class="tab-pane fade active" id="book-now-registered" role="tabpanel">
         <div class="row ">
             <div class="col-md-12">
                 <div class="input-group my-search-panel">
@@ -72,14 +75,14 @@
                             <span id="search_concept">Filter by</span> <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" role="menu" id="filter_select">
-                            <li><a href="#cust_id" value="emp_id">ID</a></li>
+                            <li><a href="#cust_id" value="cust_id">ID</a></li>
                             <li><a href="#first_name" value="first_name">First Name</a></li>
                             <li><a href="#last_name" value="last_name">Last Name</a></li>
-                            <li><a href="#cust_email" value="emp_email">Email</a></li>
-                            <li><a href="#cust_phone" value="emp_phone">Phone</a></li>
-                            <li><a href="#cust_address" value="emp_address">Address</a></li>
-                            <li><a href="#cust_type" value="emp_type">Date Joined</a></li>
-                            <li><a href="#cust_gender" value="emp_gender">Gender</a></li>
+                            <li><a href="#cust_email" value="cust_email">Email</a></li>
+                            <li><a href="#cust_phone" value="cust_phone">Phone</a></li>
+                            <li><a href="#cust_address" value="cust_address">Address</a></li>
+                            <li><a href="#date_joined" value="date_joined">Date Joined</a></li>
+                            <li><a href="#cust_gender" value="cust_gender">Gender</a></li>
                             <li class="divider"></li>
                             <li><a href="#all" value="all">Anything</a></li>
                         </ul>
@@ -100,6 +103,55 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="tab-pane fade active" id="book-now-unregistered" role="tabpanel">
+        <div class="form-errors disabled">
+            <p id="msg_admin"></p>
+        </div>
+
+
+        <form class="userform" method="post" id="unregistered_cust_form">
+            <div class="form-group row">
+                <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text"  id="first_name_cust" maxlength="50">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-text-input" class="col-md-4 col-form-label clearfix">Last Name</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="text"  id="last_name_cust" maxlength="50">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <form>
+                    <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                    <div class="col-md-8">
+                        <input id="male_radio_button" name="gender_cust" type="radio" name="optradio" value="Male" checked="">Male
+                    </div>
+                    <div class="col-md-8">
+                        <input id="female_radio_button"  name="gender_cust" type="radio" name="optradio" value="Female">Female
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-group row">
+                <label for="example-tel-input" class="col-md-4 col-form-label">Phone Number</label>
+                <div class="col-md-8">
+                    <input class="form-control" type="tel" id="cust_phone" maxlength="10">
+                </div>
+            </div>
+
+            <div class="col-md-2 col-md-offset-8">
+                <button name="clear" type="button" onclick="resetCustForm()" class="btn btn-primary col-md-2 my-button-action my-lg-button">Clear</button>
+            </div>
+            <div class="col-md-2">
+                <button name="submit" id="button_cust" onclick="checkFormCust()" type="button" value="Unregistered Customer" class="btn btn-primary col-md-2 my-lg-button" method="post">Save</button>
+            </div>
+        </form>
     </div>
 
 </div>

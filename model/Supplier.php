@@ -2,7 +2,7 @@
 <?php
 
 class Supplier{
-    protected static $supplier_id;
+    // protected static $supplier_id;
     protected static $supplier_name;
     protected static $supplier_phone;
     protected static $supplier_address;
@@ -38,7 +38,8 @@ class Supplier{
         }
     }
 
-    function addSupplier(){
+    // add new supplier
+    public function addSupplier(){
         $last_id=self::$db->getLastId('supplier_id','supplier');
 
         $id = self::$db->generateId($last_id,"SUP");

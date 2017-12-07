@@ -12,7 +12,7 @@
 		protected static $emp_address;
         protected static $emp_type;
         protected static $emp_gender;
-        protected static $emp_services =[];
+        //protected static $emp_services =[];
 		protected static $db;
 		protected static $connection;
 

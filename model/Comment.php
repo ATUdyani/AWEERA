@@ -2,7 +2,7 @@
 <?php
 	
 	class Comment{
-        protected static $comment;
+        //protected static $comment;
 
         protected static $db;
         protected static $connection;

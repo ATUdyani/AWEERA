@@ -1,7 +1,8 @@
 <?php session_start() ?>
 
 <?php
-require_once ('../model/database.php');
+require_once ('../model/Database.php');
+require_once ('../model/RegisterRequest.php');
 require_once ('functions.php');
 
 // making connection
@@ -80,15 +81,9 @@ if ($errors == null){
 
     //$hashed_password = sha1($password);
 
-    // prepare database query
-    $query = "INSERT INTO register_request(first_name,last_name,cust_phone,cust_address,cust_email,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$hashed_password')";
-    //echo $query;
-    //$result_set = mysql_query(query);
-
-    //$result_set = $db -> executeQuery($query);
-    $result_set = mysqli_query($connection,$query);
-    $db->verifyQuery($result_set);
-
+    // insert new register request
+    $register_request = new RegisterRequest();
+    $result_set = $register_request ->addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$hashed_password);
 
     if($result_set){
         array_push($result,"success");

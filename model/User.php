@@ -2,13 +2,13 @@
 <?php 
 	class User{
 
-        protected static $id;
-        protected static $first_name;
-        protected static $last_name;
-        protected static $email;
-        protected static $emp_type;
-        protected static $last_login;
-        protected static $password;
+        //protected static $id;
+        //protected static $first_name;
+        //protected static $last_name;
+        //protected static $email;
+        //protected static $emp_type;
+        //protected static $last_login;
+        //protected static $password;
 
         protected static $db;
         protected static $connection;
@@ -17,6 +17,22 @@
         function __construct(){
             self::$db = new Database();
             self::$connection = self::$db->connect();
+        }
+
+        // add a new user - $new_id is the user_reg_id which can be used to link with other tables
+        public function addUser($first_name,$last_name,$cust_email,$password,$new_id){
+
+            // insert the new record to user table
+            $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".$first_name."', '".$last_name."', '".$cust_email."', '"
+                .$password."', 'Customer','".$new_id."')";
+
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+
+            }catch (mysqli_sql_exception $e){
+                return $e;
+            }
         }
 
         // load user details to a page
@@ -141,9 +157,9 @@
         }
 
         // change user password
-        public function changeUserPassword($emp_password,$user_id)
+        public function changeUserPassword($password,$user_id)
         {
-            $hashed_password = md5($emp_password);
+            $hashed_password = md5($password);
             $query = "UPDATE user SET password='$hashed_password' WHERE id ='$user_id'";
 
 
@@ -158,27 +174,6 @@
                 echo $e;
             }
         }
-
-        // count number of new register requests
-        public function countRequest(){
-            $query = "SELECT COUNT(*) FROM register_request";
-
-
-            try {
-                $result = self::$db->executeQuery($query);
-
-                if ($result) {
-                    $req = mysqli_fetch_assoc($result);
-                    echo $req['COUNT(*)'];
-                } else {
-                    echo 0;
-                }
-            } catch (mysqli_sql_exception $e) {
-                echo $e;
-            }
-        }
-
-
 	}
 
 	

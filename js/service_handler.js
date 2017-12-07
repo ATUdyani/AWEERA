@@ -60,3 +60,48 @@ $(document).ready(function (){
 $(function () {
     $('#myTab a:first').tab('show')
 });
+
+// onClick save Service
+function checkFormService() {
+    var formArray = [];
+    formArray.push(document.getElementById("service_name").value);
+    formArray.push(document.getElementById("service_charge").value);
+    formArray.push(document.getElementById("description").value);
+    formArray.push(document.getElementById("duration").value);
+    formArray.push(document.getElementById("commission_percentage").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/add-service-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(result){
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(result);
+        }
+    });
+}
+
+// check service update
+function onclickUpdateService() {
+    var formArray = [];
+    formArray.push(document.getElementById("update_service_name").value);
+    formArray.push(document.getElementById("update_service_charge").value);
+    formArray.push(document.getElementById("update_service_description").value);
+    formArray.push(document.getElementById("update_service_duration").value);
+    formArray.push(document.getElementById("update_commission").value);
+    formArray.push(document.getElementById("update_service_id").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/update-service-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(data){
+            $('#insert_form')[0].reset();
+            $('#add_data_Modal').modal('hide');
+            $('#msg_Modal').modal('show');
+            $('#msg_result').html(data);
+        }
+    });
+}

@@ -69,7 +69,7 @@
                         </div>
                         <input id="first_name" class="form-control" type="text" placeholder="First Name" required>
                         <input id="last_name" class="form-control" type="text" placeholder="Last Name" required>
-                        <input id="contact_number" class="form-control" type="text" placeholder="Contact Number" required>
+                        <input id="contact_number" class="form-control" type="text" placeholder="Contact Number" maxlength="12" required>
                         <input id="address" class="form-control" type="text" placeholder="Address" required>
                         <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
                         <input id="register_password" class="form-control" type="password" placeholder="Password" required>

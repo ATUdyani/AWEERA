@@ -10,7 +10,7 @@
 
 class Mirror{
 
-    protected static $image;
+    //protected static $image;
     protected static $db;
     protected static $connection;
 

@@ -51,7 +51,7 @@
         <!-- Page Heading/Breadcrumbs -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Rate and Comment
+                <h1 class="page-header">Comment and Review
                 </h1>
             </div>
         </div>
@@ -90,9 +90,7 @@
 
                 <div class="row">
                     <!--<input type="hidden" id="cust_id" name="cust_id" value="<?php /*echo $_SESSION['user_reg_id']; */?>">-->
-                    <textarea id="comment" name="comment" cols="50" rows="10" required="required">
-
-                        </textarea>
+                    <textarea id="comment" name="comment" cols="50" rows="10" required="required"></textarea>
                 </div>
 
                 <br>
@@ -136,7 +134,7 @@
             var appointment_id = document.getElementById("appointment_id").value;
             var comment = document.getElementById("comment").value;
             var formArray = [];
-            formArray.push(appointment_id,comment);
+            formArray.push(appointment_id,comment.trim());
             var jsonString = JSON.stringify(formArray);
             $.ajax({
                 url:'controller/submit-comment-handler.php',

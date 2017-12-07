@@ -38,13 +38,6 @@
             }
         });
     });
-
-    // load customer appointment book page with cust_id auto loaded
-    function loadBookCustomerAppointment(cust_id) {
-        $('#select_customer_Modal').modal('hide');
-        $('#content').load("receptionist-book-appointment.php",{'cust_id': cust_id});
-    }
-
 </script>
 
 <script type="text/javascript" src="../js/search_filter_change.js"></script>

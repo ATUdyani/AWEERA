@@ -3,10 +3,6 @@
 	class Database{
 		protected static $connection;
 
-		function Database(){
-
-		}
-
 		public function connect(){
 			$dbhost = 'localhost';
 			$dbuser = 'root';
@@ -23,6 +19,7 @@
 			return self::$connection;
 		}
 
+		// function to execute a SQL query
 		public function executeQuery($query) {
 		    try{
                 // make the connection
@@ -36,7 +33,8 @@
             }
     	}
 
-    	public function select($query) {
+        // function to execute a SQL query
+    	/*public function select($query) {
 	        $rows = array();
 	        $result = $this -> executeQuery($query);
 	        if($result === false) {
@@ -46,18 +44,20 @@
 	            $rows[] = $row;
 	        }
 	        return $rows;
-	    }
+	    }*/
 
+    	// verify a result set
     	public function verifyQuery($result_set){
 			if (!$result_set){
 				die ("Database query failed. ".mysqli_error(self::$connection));
 			}
 		}
 
-		public function removeSqlInjection($field){
+		/*public function removeSqlInjection($field){
 			mysqli_real_escape_string(self::$connection,$field);
-		}
+		}*/
 
+		// get the number of rows in a particular result set
 		public function getNumRows($result_set){
 			return mysqli_num_rows($result_set);
 		}
@@ -104,6 +104,7 @@
 
         }
 
+        // generate a new key value for a table
         public function generateId($last_id, $prefix){
 		    if ($last_id==0){
 		        $id = sprintf("%s%'.07d",$prefix,1);

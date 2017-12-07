@@ -1,25 +1,48 @@
 <?php require_once('Database.php') ?>
+<?php require_once('Customer.php') ?>
 
 
 <?php
-    class RegisteredCustomer
+    class RegisteredCustomer extends Customer
     {
-        protected static $cust_id;
-        protected static $first_name;
-        protected static $last_name;
-        protected static $cust_email;
-        protected static $cust_phone;
-        protected static $cust_address;
-        protected static $date_joined;
-        protected static $db;
-        protected static $connection;
+        protected static $password;
 
-        public function __construct(){
-            self::$db = new Database();
-            self::$connection = self::$db->connect();
+        // add a registered customer
+        public function addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date_joined,$password){
+
+            self::$first_name = $first_name;
+            self::$last_name = $last_name;
+            self::$cust_phone = $cust_phone;
+            self::$cust_email = $cust_email;
+            self::$cust_address = $cust_address;
+            self::$date_joined = $date_joined;
+            self::$password = $password;
+            self::$cust_gender = NULL;
+
+            // get last registered customer id
+            $last_id = self::$db->getLastId('cust_id','registered_customer');
+
+            // generate new registered customer id
+            self::$cust_id = self::$db ->generateId($last_id,'REG');
+
+            // insert the new registered customer details
+            $query = "INSERT INTO registered_customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ('".self::$cust_id."', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
+                .self::$cust_address."', '".self::$date_joined."', '".self::$password."')";
+
+            try{
+                $result = self::$db->executeQuery($query);
+                if ($result){
+                    $result_customer = $this -> addCustomer();
+                    return $result_customer;
+                }
+            }
+            catch(Exception $e){
+                echo $e;
+            }
         }
 
-        // get all customer data for a particular customer id
+
+        // get all customer data for a particular registered customer id
         public function getCustomerData($cust_id){
             $query = "SELECT * FROM registered_customer WHERE cust_id='".$cust_id."'";
             try{
@@ -28,7 +51,7 @@
                 return $row;
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 
