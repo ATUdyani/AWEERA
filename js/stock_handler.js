@@ -74,11 +74,39 @@ $(document).ready(function (){
                 $('#update_price').val(data.price);
                 $('#update_description').val(data.description);
                 $('#update_supplier_id').val(data.supplier_id);
+                $('#update_stock_id').val(data.stock_id);
                 $('#update_stock_Modal').modal('show');
             }
         });
     });
 });
+
+// check supplier update
+function onclickUpdateStock() {
+    var formArray = [];
+    formArray.push(document.getElementById("update_stock_brand").value);
+    formArray.push(document.getElementById("update_type").value);
+    formArray.push(document.getElementById("update_stock_count").value);
+    formArray.push(document.getElementById("update_price").value);
+    formArray.push(document.getElementById("update_description").value);
+    formArray.push(document.getElementById("update_supplier_id").value);
+    formArray.push(document.getElementById("update_stock_id").value);
+    var jsonString = JSON.stringify(formArray);
+
+    $.ajax({
+
+        url:"../controller/update-stock-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(data){
+            $('#insert_form')[0].reset();
+            $('#update_stock_Modal').modal('hide');
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(data);
+        }
+    });
+}
 
 /*// add stock
 $(document).ready(function (){
@@ -106,4 +134,8 @@ $(document).ready(function (){
 // function to activate the first tab
 $(function () {
     $('#myTab a:first').tab('show');
+});
+
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-stock.php');
 });

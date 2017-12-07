@@ -74,7 +74,7 @@ function checkFormSupplier() {
     });
 }
 
-// check employee update
+// check supplier update
 function onclickUpdateSupplier() {
     var formArray = [];
     formArray.push(document.getElementById("update_supplier_name").value);
@@ -91,8 +91,8 @@ function onclickUpdateSupplier() {
         success:function(data){
             $('#insert_form')[0].reset();
             $('#update_supplier_Modal').modal('hide');
-            $('#msg_Modal').modal('show');
-            $('#msg_result').html(data);
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(data);
         }
     });
 }
@@ -121,4 +121,8 @@ $(document).ready(function (){
 // function to activate the first tab
 $(function () {
     $('#myTab a:first').tab('show');
+});
+
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-supplier.php');
 });

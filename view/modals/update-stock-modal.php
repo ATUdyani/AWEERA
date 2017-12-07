@@ -18,16 +18,23 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="example-tel-input" class="col-md-4 col-form-label">Type</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" id="update_type" name="update_type" maxlength="10" required="">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="example-tel-input" class="col-md-4 col-form-label">Count</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="tel" id="update_type" name="update_type" maxlength="10" required="">
+                            <input class="form-control" type="number" id="update_stock_count" name="update_stock_count" maxlength="10" required="">
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <label for="example-tel-input" class="col-md-4 col-form-label">Price</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="tel" id="update_price" name="update_price" maxlength="10" required="">
+                            <input class="form-control" type="number" id="update_price" name="update_price" maxlength="10" required="">
                         </div>
                     </div>
 

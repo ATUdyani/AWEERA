@@ -38,6 +38,7 @@ if (!empty($errors)){
     }
     echo "<h4>Stock is not updated</h4>";
 }
+
 else{
     // update record
     $stock_brand = mysqli_real_escape_string($connection,$data[0]);
@@ -50,11 +51,7 @@ else{
 
     $stock = new StockItem();
     $stock ->setStock($stock_brand,$type,$stock_count,$price,$description,$supplier_id);
-    $stock->updateStock();
-
-
-
+    $stock->updateStock($stock_id);
 }
-
 
 ?>

@@ -116,6 +116,5 @@
 <?php include('modals/update-supplier-modal.php'); ?>
 
 <?php include('modals/message-modal.php'); ?>
-
-
+<?php include('modals/update-message-modal.php'); ?>
 

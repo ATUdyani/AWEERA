@@ -131,6 +131,7 @@
 <?php include('modals/update-stock-modal.php'); ?>
 
 <?php include('modals/message-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>
 
 
 
