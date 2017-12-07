@@ -91,7 +91,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
                         </li>
                         <li><a href="../view/manage-purchase.php" class="my-sidebar-menu-item">Purchase</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>
-                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
+                        <li><a href="../view/manage-stock.php" class="my-sidebar-menu-item">Stock</a></li>
                         <li><a href="../view/manage-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
 

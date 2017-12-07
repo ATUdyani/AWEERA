@@ -34,7 +34,7 @@ class Supplier{
 
         }
         catch(Exception $e){
-            echo e;
+            echo $e;
         }
     }
 
@@ -62,6 +62,22 @@ class Supplier{
         }catch (mysqli_sql_exception $e){
             echo $e;
         }
+    }
+
+    public  function loadSuppilerNameList() {
+        $db = new Database();
+        $connection = $db->connect();
+        $arrSupplier =array();
+
+        //getting list of stock items
+        $query = "SELECT supplier_name, supplier_id FROM supplier ORDER BY supplier_name";
+        $supplierNames = $db->executeQuery($query);
+        $db->verifyQuery($supplierNames);
+
+        while($supplierName = mysqli_fetch_assoc($supplierNames)) {
+            array_push($arrSupplier,$supplierName);
+        }
+        return $arrSupplier;
     }
 
     public function loadSupplierDetails(){
@@ -206,6 +222,24 @@ class Supplier{
         }catch (Exception $e){
             echo $e;
         }
+    }
+
+    public function updateSupplier($supplier_id){
+        $query = "UPDATE supplier SET supplier_name='".self::$supplier_name
+            ."', supplier_phone = '".self::$supplier_phone."', supplier_address = '".self::$supplier_address
+            ."', supplier_email = '".self::$supplier_email."' WHERE supplier_id ='$supplier_id'";
+
+        try{
+            $result_set = self::$db->executeQuery($query);
+            self::$db->verifyQuery($result_set);
+            if ($result_set){
+                echo "<h4>Supplier details successfully updated.</h4>";
+            }
+
+        }catch (Exception $e){
+            echo $e;
+        }
+
     }
 
 }
