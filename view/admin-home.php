@@ -82,8 +82,7 @@
                             <a href="manage-comments.php" class="my-sidebar-menu-item">Comments
                                 <span class="badge badge-pill badge-info" id="comment_count"></span></a>
                         </li>
-                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
-                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
+                        <li><a href="../view/view-customer.php" class="my-sidebar-menu-item">Customer</a></li>
 
                         <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a>
 <!--                            <ul class="nav collapse my-sidebar-submenu" id="submenuStaff" role="menu" aria-labelledby="btnStaff">-->
@@ -93,6 +92,8 @@
 <!--                            </ul>-->
                         </li>
 
+                        <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
+                        <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
                         <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
 <!--                            <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">-->
 <!--                                <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>-->

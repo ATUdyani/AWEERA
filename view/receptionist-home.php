@@ -1,10 +1,5 @@
 <?php session_start() ?>
 
-<?php require_once('../model/Database.php');
-$db = new Database();
-$db->connect();
-?>
-
 <?php
 // checking if an user is logged in
 if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
@@ -141,9 +136,9 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <script src="../js/bootstrap.min.js"></script>
 
     <script>
-        $( document ).ready(function() {
+        /*$( document ).ready(function() {
             $('#content').load('manage-appointments.php');
-        });
+        });*/
     </script>
 
     </body>

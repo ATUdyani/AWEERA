@@ -1,5 +1,7 @@
 <html>
 <head>
+
+
 </head>
 
 <body>
@@ -10,12 +12,16 @@
   </header>
   <section align='center'>
     <h2> Daily Collection Report </h2>
-      <form action="daily_collection.php" method="post">
+      <form action="pdf.php" method="get">
         <p>
           <label>Date of the Report :</label>
-          <input type="date" name="rdate"/>
+          <input type="date" name="rdate" value="2017-12-10">
         </p>
-        <p>
+
+
+
+
+      <!-- <p>
           <label>Total appointments :</label>
           <input type="number" name="total_appointments"/>
         </p>
@@ -26,7 +32,7 @@
         <p>
           <label>Total commission :</label>
           <input type="number" name="total_commission"/>
-        </p>
+        </p>-->
         <p>
           <input type="submit" value="Print" name="submit"/>
         </p>
