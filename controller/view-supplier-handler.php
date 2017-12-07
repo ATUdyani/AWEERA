@@ -15,3 +15,4 @@ $data = json_decode(stripslashes($_POST['data']));
 $supplier = new Supplier();
 $supplier -> viewSupplierDetails($data[0],$data[1]);
 ?>
+

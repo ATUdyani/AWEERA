@@ -1,12 +1,12 @@
 <!-- model to update data -->
-<div id="update-supplier-Modal" class="modal fade text-center">
+<div id="update_supplier_Modal" class="modal fade text-center">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                 </button>
-                <h3 class="modal-title">Update Staff Details</h3>
+                <h3 class="modal-title">Update Supplier Details</h3>
             </div>
             <div class="modal-body">
                 <form method="post" id="insert_form">
