@@ -30,13 +30,13 @@ class Email{
 
         self::$mail->isSMTP();                                   // Set mailer to use SMTP
         self::$mail->Host = 'smtp.mailgun.org';                    // Specify main and backup SMTP servers
-        //self::$mail->Host = 'smtp.mail.yahoo.com';                    // Specify main and backup SMTP servers
+        //self::$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
         self::$mail->SMTPAuth = true;                            // Enable SMTP authentication
         //self::$mail->SMTPDebug = 2;
         self::$mail->Username = 'postmaster@sandbox8613477be73f4a0da45310d80d9c905c.mailgun.org';          // SMTP username
-        //self::$mail->Username = '';          // SMTP username
+        //self::$mail->Username = 'aweerateamscorp@gmail.com';          // SMTP username
         self::$mail->Password = '4de7e17a838519171424fe202230b122'; // SMTP password
-        //self::$mail->Password = ''; // SMTP password
+        //self::$mail->Password = 'aweera123'; // SMTP password
         self::$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
         self::$mail->Port = 587;                                 // TCP port to connect to
 
