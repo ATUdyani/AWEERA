@@ -10,6 +10,6 @@
 
 $data = json_decode($_POST['data']);
 $comment = new Comment();
-$result = $comment ->submitComment($data[0],stripcslashes($data[1]));
+$result = $comment ->submitComment($data[0],$data[1]);
 echo $result;
 ?>

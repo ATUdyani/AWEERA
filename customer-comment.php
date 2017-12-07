@@ -134,7 +134,7 @@
             var appointment_id = document.getElementById("appointment_id").value;
             var comment = document.getElementById("comment").value;
             var formArray = [];
-            formArray.push(appointment_id,comment.trim());
+            formArray.push(appointment_id,comment);
             var jsonString = JSON.stringify(formArray);
             $.ajax({
                 url:'controller/submit-comment-handler.php',
