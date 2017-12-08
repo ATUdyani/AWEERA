@@ -83,6 +83,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
                                   <span class="badge badge-pill badge-info" id="comment_count"></span>
                             </a>
                         </li>
+                        <li><a href="../view/view-customer.php" class="my-sidebar-menu-item">Customer</a></li>
                         <li><a href="../view/manage-purchase.php" class="my-sidebar-menu-item">Purchase</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>
                         <li><a href="../view/manage-stock.php" class="my-sidebar-menu-item">Stock</a></li>
@@ -90,14 +91,13 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
 
 
                         <li><a href="../view/manage-staff.php" class="my-sidebar-menu-item" id=" btnStaff" data-toggle="collapse" data-target="#submenuStaff" aria-expanded="false">Staff</a></li>
-
-                        <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
+                        <!--<li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
                             <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">
                                 <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>
                             </ul>
-                        </li>
-
+                        </li>-->
                         <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
+                        <li><a href="../view/generate-reports.php" class="my-sidebar-menu-item">Reports</a></li>
 
                     </ul>
                 </nav>

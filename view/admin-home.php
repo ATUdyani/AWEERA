@@ -94,13 +94,13 @@
 
                         <li><a href="../view/view-stock.php" class="my-sidebar-menu-item">Stock</a></li>
                         <li><a href="../view/view-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
-                        <li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
-<!--                            <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">-->
-<!--                                <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>-->
-<!--                            </ul>-->
-                        </li>
-
+                        <!--<li><a href="#" id="btnReports" data-toggle="collapse" data-target="#submenuReports" aria-expanded="false">Reports</a>
+                            <ul class="nav collapse my-sidebar-submenu" id="submenuReports" role="menu" aria-labelledby="btnReports">
+                                <li><a href="#" class="my-sidebar-submenu-item">Daily Collection</a></li>
+                           </ul>
+                        </li>-->
                         <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
+                        <li><a href="../view/generate-reports.php" class="my-sidebar-menu-item">Reports</a></li>
 
                     </ul>
                 </nav>

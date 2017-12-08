@@ -457,6 +457,40 @@
                 echo $e;
             }
         }
+
+        // get appointment count for a particular date
+        public function getAppointmentCount($date){
+
+            // query to count appointments for a particular day
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date='".$date."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
+
+        // get appointment commission sum for a particular date
+        public function getAppointmentCommissionSumByDate($date){
+
+            // query to count appointments for a particular day
+            $query = "SELECT SUM(service_charge*commission_percentage/100) AS commission_sum 
+FROM appointment a,service s WHERE appointment_date='".$date."' AND a.service_id=s.service_id";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
     }
 
 

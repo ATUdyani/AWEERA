@@ -228,6 +228,14 @@ table{
 	background-color: #4cae4c;
 }
 
+.top-buffer {
+	margin-top:2%;
+}
+
+.right-buffer {
+	margin-right:20px;
+}
+
 .my-large-modal{
 	width:80%;
 }
