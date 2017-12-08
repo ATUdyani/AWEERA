@@ -84,7 +84,7 @@
                     <h4><i class="fa fa-fw fa-gift"></i> Bridal Services </h4>
                 </div>
                 <div class="panel-body">
-                    <p>Are you ready for your big day? So are we. Get you and your bridal squad dressed from us at AWEERA!
+                    <p>Are you ready for your big day? So are we. 
                         Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day.</p>
                     <?php
                     if(!isset($_SESSION['user_id'])){
