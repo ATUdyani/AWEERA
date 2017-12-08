@@ -30,7 +30,7 @@
                 <a href="https://www.facebook.com/AweeraBeauty/"><i class="fa fa-facebook-square fa-2x"></i></a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+                <a href="https://www.instagram.com/aweera_hairandbeauty/"><i class="fa fa-instagram fa-2x"></i></a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-twitter-square fa-2x"></i></a>
