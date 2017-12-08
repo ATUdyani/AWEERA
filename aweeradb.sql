@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2017 at 10:33 AM
+-- Generation Time: Dec 08, 2017 at 02:27 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -32,11 +32,11 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `appointment_date` date NOT NULL,
   `start_time` varchar(11) NOT NULL,
   `end_time` varchar(11) NOT NULL,
-  `payment_id` varchar(20) NOT NULL,
+  `payment_id` varchar(20) NOT NULL DEFAULT 'none',
   `cust_id` varchar(20) NOT NULL,
   `service_id` varchar(20) NOT NULL,
   `emp_id` varchar(20) NOT NULL,
-  `comment` varchar(100) DEFAULT NULL,
+  `comment` varchar(1000) DEFAULT NULL,
   `is_approved` tinyint(4) NOT NULL DEFAULT '-1',
   PRIMARY KEY (`appointment_id`,`payment_id`,`cust_id`),
   KEY `fk_Appointment_Payment1` (`payment_id`),
@@ -66,8 +66,7 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 ('APP0000019', '2017-12-05', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
 ('APP0000020', '2017-12-06', '1300', '1345', 'none', 'REG0000007', 'SER0000003', 'EMP0000005', NULL, -1),
 ('APP0000021', '2017-12-06', '1200', '1230', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
-('APP0000022', '2017-12-06', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
-('APP0000023', '2017-12-07', '1400', '1430', 'none', 'UNR0000002', 'SER0000001', 'EMP0000003', NULL, -1);
+('APP0000022', '2017-12-06', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -194,8 +193,8 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`, `is_user`) VALUES
-('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706398', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
-('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0771236547', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
+('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706396', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
+('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0713132431', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
 ('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 1),
 ('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0),
 ('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', NULL, NULL, 'Beautician', 'Male', 0),
@@ -285,7 +284,10 @@ CREATE TABLE IF NOT EXISTS `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `payment_date`, `payment_time`, `payment_mode`, `paid_amount`, `balance`, `type`) VALUES
-('none', '2017-10-09', '00:00:00', '', 0.00, 0.00, '');
+('PAY0000001', '2017-12-06', '03:00:00', 'Cash', 1500.00, 250.00, 'Appointment'),
+('PAY0000002', '2017-12-06', '08:00:00', 'Cash', 3000.00, 1000.00, 'Appointment'),
+('PAY0000003', '2017-12-06', '12:00:00', 'Card', 1000.00, 0.00, 'Purchase'),
+('PAY0000004', '2017-12-06', '18:00:00', 'Cash', 1500.00, 150.00, 'Purchase');
 
 -- --------------------------------------------------------
 
@@ -297,12 +299,18 @@ DROP TABLE IF EXISTS `purchase`;
 CREATE TABLE IF NOT EXISTS `purchase` (
   `purchase_id` varchar(20) NOT NULL,
   `purchase_date` date NOT NULL,
-  `cust_id` varchar(20) NOT NULL,
   `payment_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`purchase_id`,`cust_id`,`payment_id`),
-  KEY `fk_Purchase_Payment1` (`payment_id`),
-  KEY `fk_Purchase_Customer1` (`cust_id`)
+  PRIMARY KEY (`purchase_id`,`payment_id`),
+  KEY `fk_Purchase_Payment1` (`payment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `purchase`
+--
+
+INSERT INTO `purchase` (`purchase_id`, `purchase_date`, `payment_id`) VALUES
+('PUR0000001', '2017-12-06', 'PAY0000003'),
+('PUR0000002', '2017-12-06', 'PAY0000004');
 
 -- --------------------------------------------------------
 
@@ -432,7 +440,7 @@ CREATE TABLE IF NOT EXISTS `stock_item` (
 --
 
 INSERT INTO `stock_item` (`stock_id`, `stock_brand`, `type`, `stock_count`, `price`, `description`, `supplier_id`) VALUES
-('STK0000001', 'Una', 'Shampo', 15, 2000.00, '500ml, Dandruff', 'SUP0000001'),
+('STK0000001', 'Una', 'Shampo', 20, 2000.00, '500ml, Dandruff', 'SUP0000001'),
 ('STK0000002', 'Una', 'Conditioner', 10, 1500.00, '500ml, Hair Fall Rescue', 'SUP0000001'),
 ('STK0000003', 'Gliss', 'Shampo', 5, 1250.00, '250ml, Asia Straight', 'SUP0000002');
 
@@ -459,7 +467,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
 --
 
 INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_phone`, `supplier_address`, `supplier_email`) VALUES
-('SUP0000001', 'Dushani Perera', '0778546932', 'Ja Ela', 'dushanimasha@gmail.com'),
+('SUP0000001', 'Dushani Perera', '0778546933', 'Ja Ela', 'dushanimasha@gmail.com'),
 ('SUP0000002', 'Nimesh Kalinga', '078965412', 'Maradana', 'nimesh@gmail.com'),
 ('SUP0000003', 'Pasindu Perera', '0714526985', 'Dehiwala', 'pasindu@gmail.com');
 
@@ -513,8 +521,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-07 15:46:28', 0, 'Receptionist', 'EMP0000002'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-07 10:17:29', 0, 'Administrator', 'EMP0000001'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-08 07:57:09', 0, 'Receptionist', 'EMP0000002'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-08 05:10:49', 0, 'Administrator', 'EMP0000001'),
 (19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
 (26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-05 10:24:13', 0, 'Beautician', 'EMP0000003'),
 (29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 12:29:36', 0, 'Customer', 'REG0000004'),
@@ -528,16 +536,9 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 --
 
 --
--- Constraints for table `appointment`
---
-ALTER TABLE `appointment`
-  ADD CONSTRAINT `fk_Appointment_Payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Constraints for table `purchase`
 --
 ALTER TABLE `purchase`
-  ADD CONSTRAINT `fk_Purchase_Customer1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_Purchase_Payment1` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
