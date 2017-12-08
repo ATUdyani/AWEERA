@@ -71,6 +71,7 @@ function loadSlots(){
 
 // make an appointment
 function makeAppointment() {
+    $('#make_appointment_button').prop("disabled",true);
     var serviceId = document.getElementById("select_service_name").value;
     var beauticianId = document.getElementById("select_beautician_name").value;
     var appointmentDate = document.getElementById("appointment_date").value;

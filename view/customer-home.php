@@ -151,7 +151,7 @@ if(!isset($_SESSION['user_id'])){
                         <div class="well">
                             <div class="row">
                                 <div class="col-md-4 col-md-offset-4">
-                                    <a class="btn btn-lg btn-default btn-block" onclick="makeAppointment()">Make Appointment</a>
+                                    <button id="make_appointment_button" class="btn btn-lg btn-default btn-block" onclick="makeAppointment()">Make Appointment</button>
                                 </div>
                             </div>
                         </div>
