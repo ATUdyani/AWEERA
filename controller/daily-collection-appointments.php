@@ -48,15 +48,15 @@ if(!empty($_POST['submit'])){
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line
     $pdf->Cell(69 ,10,'Total Income',0,0,'L');
-    $pdf->Cell(80 ,10,number_format($payment_sum, 2, '.', ''),0,1,'C');//end of line
+    $pdf->Cell(80 ,10,"Rs. ".number_format($payment_sum, 2, '.', ''),0,1,'C');//end of line
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line
     $pdf->Cell(69 ,10,'Total Commission',0,0,'L');
-    $pdf->Cell(80 ,10,number_format($commission_sum, 2, '.', ''),0,1,'C');//end of line
+    $pdf->Cell(80 ,10,"Rs. ".number_format($commission_sum, 2, '.', ''),0,1,'C');//end of line
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line
     $pdf->Cell(69 ,10,'PROFIT',0,0,'L');
-    $pdf->Cell(80 ,10,number_format($profit, 2, '.', ''),0,1,'C');//end of line
+    $pdf->Cell(80 ,10,"Rs. ".number_format($profit, 2, '.', ''),1,1,'C');//end of line
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line
     //$pdf->Cell(69 ,10,'Total Commission',0,0,'L');
