@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 02:27 AM
+-- Generation Time: Dec 08, 2017 at 02:45 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -298,7 +298,6 @@ INSERT INTO `payment` (`payment_id`, `payment_date`, `payment_time`, `payment_mo
 DROP TABLE IF EXISTS `purchase`;
 CREATE TABLE IF NOT EXISTS `purchase` (
   `purchase_id` varchar(20) NOT NULL,
-  `purchase_date` date NOT NULL,
   `payment_id` varchar(20) NOT NULL,
   PRIMARY KEY (`purchase_id`,`payment_id`),
   KEY `fk_Purchase_Payment1` (`payment_id`)
@@ -308,9 +307,9 @@ CREATE TABLE IF NOT EXISTS `purchase` (
 -- Dumping data for table `purchase`
 --
 
-INSERT INTO `purchase` (`purchase_id`, `purchase_date`, `payment_id`) VALUES
-('PUR0000001', '2017-12-06', 'PAY0000003'),
-('PUR0000002', '2017-12-06', 'PAY0000004');
+INSERT INTO `purchase` (`purchase_id`, `payment_id`) VALUES
+('PUR0000001', 'PAY0000003'),
+('PUR0000002', 'PAY0000004');
 
 -- --------------------------------------------------------
 
