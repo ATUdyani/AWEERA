@@ -296,3 +296,7 @@ table{
 	background: linear-gradient(#000000, #000000);
 	border-color: #fff;
 }
+
+.profile-image{
+	height: 120%; width: 120%
+}

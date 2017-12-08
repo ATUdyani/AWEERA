@@ -1,7 +1,7 @@
 <?php require_once('../model/Database.php');?>
 <?php require_once('../model/Service.php');?>
 
-<script type="text/javascript" src="../js/appointment.js"></script>
+<script type="text/javascript" src="../js/appointment_handler.js"></script>
 
 <h2>Book an Appointment<span><small><?php echo "  - ".$_POST['cust_id']?></small></span></h2>
 <br>

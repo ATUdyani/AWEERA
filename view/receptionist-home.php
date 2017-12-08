@@ -7,9 +7,6 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
 }
 ?>
 
-
-<script type="text/javascript" src="../js/receptionist_functions.js"></script>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +40,9 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="../js/receptionist_functions.js"></script>
+    <script type="text/javascript" src="../js/profile_handler.js"></script>
 
 </head>
 

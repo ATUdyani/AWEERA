@@ -48,9 +48,9 @@
                                     <li>
                                         <div class="navbar-login">
                                             <div class="row">
-                                                <div class="col-lg-4">
+                                                <div class="col-md-4">
                                                     <p class="text-center">
-                                                        <span class="glyphicon glyphicon-user icon-size"></span>
+                                                        <img src="../img/profiles/<?php echo $_SESSION['user_profile_pic'];?>" class="avatar img-circle profile-image"  alt="avatar">
                                                     </p>
                                                 </div>
                                                 <div class="col-lg-8">
@@ -62,7 +62,8 @@
                                                     </p>
                                                     <p class="text-left">
                                                     <form>
-                                                        <input class="btn btn-primary btn-block btn-sm" type="submit" value="Edit Profile" formaction="../model/users.php">
+                                                        <input type="hidden" id="user_type" value="<?php echo $_SESSION['type'];?>">
+                                                        <input id="<?php echo $_SESSION['user_reg_id'];?>" class="btn btn-primary btn-block btn-sm" type="button" value="Edit Profile" onclick="handleProfile(this.id)">
                                                     </form>
                                                     </p>
                                                 </div>

@@ -1,5 +1,7 @@
 <?php require_once('../model/Database.php') ?>
-<?php 
+<?php require_once('../model/RegisteredCustomer.php') ?>
+<?php require_once('../model/Employee.php') ?>
+<?php
 	class User{
 
         //protected static $id;
@@ -152,7 +154,7 @@
 
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 
@@ -171,6 +173,50 @@
                     echo "<h4>Failed to Change the Password.</h4>";
                 }
             } catch (mysqli_sql_exception $e) {
+                echo $e;
+            }
+        }
+
+        // update user details
+        public function updateUser($id,$first_name,$last_name,$email){
+
+            $query = "UPDATE user SET first_name='".$first_name
+                ."', last_name = '".$last_name."',email = '".$email."' WHERE user_reg_id='".$id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
+        // update the profile picture
+        public function updateUserProfilePicture($id,$type,$file_name){
+
+            $query = "UPDATE user SET profile_pic='".$file_name."' WHERE user_reg_id='".$id."'";
+
+            try{
+                $result1= self::$db->executeQuery($query);
+                if ($type=='Customer'){
+
+                    $customer = new RegisteredCustomer();
+                    $result2 = $customer->updateCustomerProfilePicture($id,$file_name);
+
+                }
+                else{
+                    $employee = new Employee();
+                    $result2 = $employee->updateEmployeeProfilePicture($id,$file_name);
+                }
+
+                if ($result1 AND $result2){
+                    return $result1;
+                }
+                else{
+                    return 0;
+                }
+            }catch (Exception $e){
                 echo $e;
             }
         }

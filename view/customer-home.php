@@ -1,14 +1,8 @@
-<?php session_start() ?>
+<?php session_start();
 
-<?php require_once('../model/Database.php');
+require_once('../model/Database.php');
+require_once('../model/Service.php');
 
-$db = new Database();
-$db->connect();
-?>
-
-<?php require_once('../model/Service.php'); ?>
-
-<?php
 // checking if an user is logged in
 if(!isset($_SESSION['user_id'])){
     header ('Location: ../index.php');
@@ -50,8 +44,9 @@ if(!isset($_SESSION['user_id'])){
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/appointment.js"></script>
+    <script type="text/javascript" src="../js/appointment_handler.js"></script>
     <script type="text/javascript" src="../js/customer_functions.js"></script>
+    <script type="text/javascript" src="../js/profile_handler.js"></script>
 
 
 </head>

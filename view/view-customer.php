@@ -44,3 +44,6 @@
         </div>
     </div>
 </div>
+
+<?php include('modals/message-modal.php'); ?>
+<?php include('modals/view-customer-modal.php'); ?>

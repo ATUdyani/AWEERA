@@ -32,45 +32,6 @@ function displayRegisterRequests() {
     $('#content').load("../view/manage-register-requests.php");
 }
 
-// get appointment details for a particular date/for a particular beautician
-function getAppointments(decision) {
-    var formArray = [];
-    date = document.getElementById("date_picker").value;
-    beautician = document.getElementById("select_beautician_name").value;
-    if (decision=="all"){
-        formArray.push("*"); // all dates
-        formArray.push("*"); // all beauticians
-        document.getElementById("date_picker").value = "";
-    }
-    else if (date=="" && beautician==""){
-        formArray.push("*"); // all dates
-        formArray.push("*"); // all beauticians
-    }
-    else if (date=="" && beautician!=""){
-        formArray.push("*"); // all dates
-        formArray.push(beautician); // beautician is specified
-    }
-    else if (date!="" && beautician==""){
-        formArray.push(date); // date is specified
-        formArray.push("*"); // all beauticians
-    }
-    else{
-        formArray.push(date);  // date is specified
-        formArray.push(beautician); // beautician is specified
-    }
-
-    var jsonString = JSON.stringify(formArray);
-    $.ajax({
-        url:'../controller/fetch-appointment-details-handler.php',
-        type: "POST", //request type
-        data: {data : jsonString},
-        cache: false,
-        success:function(result){
-            $('#table_results').html(result);
-        }
-    });
-}
-
 // test comment email
 function sendTestCommentEmail(){
     appointment_id = document.getElementById('app_id').value;

@@ -1,18 +1,12 @@
-<?php session_start() ?>
+<?php session_start();
 
-<?php require_once('../model/Database.php');
-    $db = new Database();
-    $db->connect();
-?>
-
-<?php 
     // checking if an user is logged in
     if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Administrator")){
         header ('Location: ../index.php');
     }
  ?>
 
-<script type="text/javascript" src="../js/receptionist_functions.js"></script>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +42,8 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script type="text/javascript" src="../js/profile_handler.js"></script>
 
 </head>
 

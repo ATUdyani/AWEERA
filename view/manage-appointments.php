@@ -2,7 +2,7 @@
 <?php require_once('../model/Beautician.php') ?>
 <?php require_once('../model/RegisteredCustomer.php') ?>
 
-<script type="text/javascript" src="../js/appointment.js"></script>
+<script type="text/javascript" src="../js/appointment_handler.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 
 <h2>Appointments</h2>

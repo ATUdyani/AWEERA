@@ -45,6 +45,9 @@ $(document).ready(function (){
             dataType: "json",
             cache: false,
             success:function (data) {
+                var img = '../img/profiles/'+data.profile_pic; // get image
+                $('#profile_pic').attr('src' , img);
+
                 $('#update_first_name').val(data.first_name);
                 $('#update_last_name').val(data.last_name);
                 $('#update_emp_email').val(data.emp_email);

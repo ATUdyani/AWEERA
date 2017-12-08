@@ -2,7 +2,7 @@
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/Comment.php') ?>
 
-<script type="text/javascript" src="../js/appointment.js"></script>
+<script type="text/javascript" src="../js/appointment_handler.js"></script>
 
 <script>
     // load modal to handle comment

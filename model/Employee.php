@@ -1,4 +1,5 @@
 <?php require_once('Database.php') ?>
+<?php require_once('User.php') ?>
 
 <?php  
 	
@@ -72,15 +73,19 @@
 
 		// update employee details
         public function updateEmployee($emp_id){
+
 		    $query = "UPDATE employee SET first_name='".self::$first_name
                 ."', last_name = '".self::$last_name."', emp_email = '".self::$emp_email."', emp_phone = '"
                 .self::$emp_phone."', emp_address = '"
                 .self::$emp_address."', emp_gender = '".self::$emp_gender."' WHERE emp_id ='$emp_id'";
 
             try{
-                $result_set = self::$db->executeQuery($query);
-                self::$db->verifyQuery($result_set);
-                if ($result_set){
+                $result_employee = self::$db->executeQuery($query);
+
+                $user = new User();
+                $result_user = $user ->updateUser($emp_id,self::$first_name,self::$last_name,self::$emp_email);
+
+                if ($result_employee AND $result_user){
                     echo "<h4>Employee successfully updated.</h4>";
                 }
 
@@ -262,6 +267,18 @@
                 }
             }catch (Exception $e){
                 echo $e;
+            }
+        }
+
+        // update profile picture of the employee
+        public function updateEmployeeProfilePicture($id,$file_name){
+            $query = "UPDATE employee SET profile_pic='".$file_name."' WHERE emp_id='".$id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+            }catch (Exception $e){
+                return $e;
             }
         }
 	}

@@ -280,5 +280,17 @@
                 echo $e;
             }
         }
+
+        // update profile picture of the customer
+        public function updateCustomerProfilePicture($id,$file_name){
+            $query = "UPDATE registered_customer SET profile_pic='".$file_name."' WHERE cust_id='".$id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+            }catch (Exception $e){
+                return $e;
+            }
+        }
     }
 ?>

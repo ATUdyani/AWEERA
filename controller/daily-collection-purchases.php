@@ -29,7 +29,7 @@ if(!empty($_POST['submit'])){
     $pdf->SetFont('Arial','B',16);
 
     $txt = $date; //access the variable
-    $pdf->Cell(189 ,15,$txt,0,1,'C');//end of line
+    $pdf->Cell(189 ,5,$txt,0,1,'C');//end of line
 
     $pdf->Cell(189 ,10,'',0,1,'C');//end of line
     $pdf->Cell(189 ,10,'',0,1,'C');//end of line
