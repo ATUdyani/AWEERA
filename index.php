@@ -85,7 +85,7 @@
                 </div>
                 <div class="panel-body">
                     <p>Are you ready for your big day? So are we. 
-                        Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day.</p>
+                        Our professionals will make sure your look holds up and carries you through the rest of your long, exciting day. Feel beautiful and have the wedding of your dreams! </p>
                     <?php
                     if(!isset($_SESSION['user_id'])){
                         echo "<a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\"class=\"btn btn-default\" >Book Now</a>";}
