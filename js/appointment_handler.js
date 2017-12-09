@@ -10,6 +10,9 @@ function loadServiceNames(val) {
         success: function( data ) {
             $('#select_service_name').html(data);
             document.getElementById("select_service_name").disabled=false;
+            document.getElementById("select_beautician_name").disabled=true;
+            document.getElementById("appointment_date").disabled=true;
+            document.getElementById("time_slots").disabled=true;
         }
     });
 }
@@ -26,6 +29,7 @@ function loadBeauticianNames(val) {
         success: function( data ) {
             $('#select_beautician_name').html(data);
             document.getElementById("select_beautician_name").disabled=false;
+            document.getElementById("appointment_date").valueAsDate = null;
         }
     });
 }
@@ -33,6 +37,7 @@ function loadBeauticianNames(val) {
 // enable calender
 function enableCalender() {
     document.getElementById("appointment_date").disabled=false;
+    document.getElementById("time_slots").disabled=true;
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!

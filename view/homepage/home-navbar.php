@@ -21,7 +21,7 @@
                     if(!isset($_SESSION['user_id'])){
                         echo "<a class='book-now-button' href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" >Make Appointment</a>";}
                     else {
-                        echo "<a class='book-now-button' href=\"controller/direct-user-handler.php\">Book Now</a>";
+                        echo "<a class='book-now-button' href=\"controller/direct-user-handler.php\">Make Appointment</a>";
                     }
                     ?>
 

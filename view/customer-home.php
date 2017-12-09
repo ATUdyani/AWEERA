@@ -63,6 +63,7 @@ if(!isset($_SESSION['user_id'])){
             <div class="col-lg-12">
                 <h1 class="page-header">Customer Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
+                    <input type="hidden" id="user_reg_id" name="user_reg_id" value="<?php echo $_SESSION['user_reg_id']; ?>">
                 </h1>
             </div>
         </div>
@@ -75,7 +76,7 @@ if(!isset($_SESSION['user_id'])){
                 <nav class="my-sidebar">
                     <ul class="nav">
                         <li><a href="#" onclick="bookAppointment()" class="my-sidebar-menu-item">Book Appointment</a></li>
-                        <li><a href="customer/customer-upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
+                        <li><a href="customer/customer-upcoming-appointments.php" class="my-sidebar-menu-item">New Appointments <span class="badge badge-pill badge-info" id="appointment_count"></span></a></li>
                         <li><a href="customer/customer-appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
                     </ul>
                 </nav>
