@@ -19,14 +19,17 @@ if(!empty($_POST['submit'])){
 
 
     $pdf=new FPDF();
+    $pdf->AddFont('Gadugi','','gadugi.php');
     $pdf->AddPage();
+
+    $pdf->Rect(5, 5, 200, 287, 'D');
 
     $report = new Report();
     $report ->setHeader($pdf);
 
     $pdf->Cell(189 ,15,'Daily Collection Report - Purchases',0,1,'C');//end of line
 
-    $pdf->SetFont('Arial','B',16);
+    $pdf->SetFont('Gadugi','',16);
 
     $txt = $date; //access the variable
     $pdf->Cell(189 ,5,$txt,0,1,'C');//end of line
@@ -35,7 +38,7 @@ if(!empty($_POST['submit'])){
     $pdf->Cell(189 ,10,'',0,1,'C');//end of line
 
 
-    $pdf->SetFont('Arial','',14);
+    $pdf->SetFont('Gadugi','',14);
 
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line

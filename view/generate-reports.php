@@ -17,6 +17,18 @@
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#daily_total" role="tab" aria-controls="add-recep">Daily Collection (Total)</a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#monthly_collection" role="tab" aria-controls="add-recep">Monthly Collection</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#daily_commissions" role="tab" aria-controls="add-recep">Daily Commissions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#monthly_commissions" role="tab" aria-controls="add-recep">Monthlly Commissions</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#customer_history" role="tab" aria-controls="add-recep">Customer History</a>
+    </li>
 </ul>
 
 <div class="tab-content">
@@ -26,7 +38,8 @@
                 <form action="../controller/daily-collection-appointments.php" target="_blank" method="post" class="userform" id="daily_appointments_form">
                     <div class="form-group row">
                         <h4 class="col-md-4">
-                            Date
+                            Select Date
+                            <hr>
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -48,7 +61,8 @@
                 <form action="../controller/daily-collection-purchases.php" target="_blank" method="post" class="userform" id="daily_purchases_form">
                     <div class="form-group row">
                         <h4 class="col-md-4">
-                            Date
+                            Select Date
+                            <hr>
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -70,7 +84,8 @@
                 <form action="../controller/daily-collection-total.php" target="_blank" method="post" class="userform" id="daily_total_form">
                     <div class="form-group row">
                         <h4 class="col-md-4">
-                            Date
+                            Select Date
+                            <hr>
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -86,7 +101,109 @@
         </div>
     </div>
 
+    <div class="tab-pane fade active" id="monthly_collection" role="tabpanel">
+        <div class="row">
+            <div class="main col-md-10">
+                <form action="../controller/monthly-collection.php" target="_blank" method="post" class="userform" id="monthly_collection_form">
+                    <div class="form-group row">
+                        <h4 class="col-md-4">
+                            Select Month
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="month"  id="rdate" name="rdate"
+                                        value="<?php echo month("m-Y");?>">
+                            </small>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade active" id="daily_commissions" role="tabpanel">
+        <div class="row">
+            <div class="main col-md-10">
+                <form action="../controller/daily-commissions.php" target="_blank" method="post" class="userform" id="daily_commissions_form">
+                    <div class="form-group row">
+                        <h4 class="col-md-4">
+                            Select a Beautician
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="date"  id="rdate" name="rdate"
+                                        value="<?php echo date("m-Y");?>">
+                            </small>
+                            <br>
+                            Select Date
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="date"  id="rdate" name="rdate"
+                                        value="<?php echo date("m-Y");?>">
+                            </small>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade active" id="monthly_commissions" role="tabpanel">
+        <div class="row">
+            <div class="main col-md-10">
+                <form action="../controller/monthly-commissions.php" target="_blank" method="post" class="userform" id="monthly_commissions_form">
+                    <div class="form-group row">
+                        <h4 class="col-md-4">
+                            Select Employee
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="date"  id="rdate" name="rdate"
+                                        value="<?php echo month("m-Y");?>">
+                            </small>
+                            <br>
+                            Select Month
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="date"  id="rdate" name="rdate"
+                                        value="<?php echo month("m-Y");?>">
+                            </small>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade active" id="customer_history" role="tabpanel">
+        <div class="row">
+            <div class="main col-md-10">
+                <form action="../controller/customer-history.php" target="_blank" method="post" class="userform" id="customer_history_form">
+                    <div class="form-group row">
+                        <h4 class="col-md-4">
+                            Select Customer
+                            <hr>
+                            <small>
+                                <input  class="form-control" type="month"  id="rdate" name="rdate"
+                                        value="<?php echo month("m-Y");?>">
+                            </small>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-

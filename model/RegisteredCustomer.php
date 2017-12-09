@@ -8,16 +8,17 @@
         protected static $password;
 
         // add a registered customer
-        public function addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date_joined,$password){
+        public function addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date_joined,$password,$gender){
 
             self::$first_name = $first_name;
             self::$last_name = $last_name;
+            self::$cust_gender = $gender;
             self::$cust_phone = $cust_phone;
             self::$cust_email = $cust_email;
             self::$cust_address = $cust_address;
             self::$date_joined = $date_joined;
             self::$password = $password;
-            self::$cust_gender = NULL;
+            self::$cust_gender = $gender;
 
             // get last registered customer id
             $last_id = self::$db->getLastId('cust_id','registered_customer');
@@ -26,8 +27,8 @@
             self::$cust_id = self::$db ->generateId($last_id,'REG');
 
             // insert the new registered customer details
-            $query = "INSERT INTO registered_customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password) VALUES ('".self::$cust_id."', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
-                .self::$cust_address."', '".self::$date_joined."', '".self::$password."')";
+            $query = "INSERT INTO registered_customer (cust_id, first_name, last_name,cust_phone,cust_email,cust_address,date_joined,password,cust_gender) VALUES ('".self::$cust_id."', '".self::$first_name."','".self::$last_name."', '".self::$cust_phone."', '".self::$cust_email."', '"
+                .self::$cust_address."', '".self::$date_joined."', '".self::$password."', '".self::$cust_gender."')";
 
             try{
                 $result = self::$db->executeQuery($query);

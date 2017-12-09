@@ -1,3 +1,27 @@
+// load suitable results on keyup
+$(document).ready(function(){
+    $('#search_text_appointment').keyup(function () {
+        var dataArray =[];
+        var emp_id = document.getElementById('select_beautician_name').value;
+        var date = document.getElementById('date_picker').value;
+        var txt = $(this).val().trim();
+        dataArray.push(emp_id,date,txt);
+        var jsonString = JSON.stringify(dataArray);
+        //$('#result').html('');
+        $.ajax({
+            url: "../controller/search-appointment-handler.php",
+            method: "post",
+            data:{data:jsonString},
+            cache: false,
+            success: function (data) {
+                $('#table_results').html(data);
+            }
+        });
+    });
+});
+
+
+
 // load service names for a particular service
 function loadServiceNames(val) {
     var passedVal = val;
@@ -122,39 +146,26 @@ function cancelAppointment(appointementId){
 
 // get appointment details for a particular date/for a particular beautician
 function getAppointments(decision) {
-    var formArray = [];
-    date = document.getElementById("date_picker").value;
-    beautician = document.getElementById("select_beautician_name").value;
-    if (decision=="all"){
-        formArray.push("*"); // all dates
-        formArray.push("*"); // all beauticians
+    var dataArray =[];
+    var emp_id = document.getElementById('select_beautician_name').value;
+    var date = document.getElementById('date_picker').value;
+    var txt = document.getElementById('search_text_appointment').value;
+    if (decision=='all'){
+        dataArray.push("*","","");
         document.getElementById("date_picker").value = "";
     }
-    else if (date=="" && beautician==""){
-        formArray.push("*"); // all dates
-        formArray.push("*"); // all beauticians
-    }
-    else if (date=="" && beautician!=""){
-        formArray.push("*"); // all dates
-        formArray.push(beautician); // beautician is specified
-    }
-    else if (date!="" && beautician==""){
-        formArray.push(date); // date is specified
-        formArray.push("*"); // all beauticians
-    }
     else{
-        formArray.push(date);  // date is specified
-        formArray.push(beautician); // beautician is specified
+        dataArray.push(emp_id,date,txt);
     }
-
-    var jsonString = JSON.stringify(formArray);
+    var jsonString = JSON.stringify(dataArray);
+    //$('#result').html('');
     $.ajax({
-        url:'../controller/fetch-appointment-details-handler.php',
-        type: "POST", //request type
-        data: {data : jsonString},
+        url: "../controller/search-appointment-handler.php",
+        method: "post",
+        data: {data: jsonString},
         cache: false,
-        success:function(result){
-            $('#table_results').html(result);
+        success: function (data) {
+            $('#table_results').html(data);
         }
     });
 }

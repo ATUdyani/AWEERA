@@ -35,6 +35,18 @@
                     </div>
 
                     <div class="form-group row">
+                        <form>
+                            <label for="example-text-input" class="col-md-4 col-form-label clearfix">Gender</label>
+                            <div class="col-md-8">
+                                <select name="view_cust_gender" id="view_cust_gender" class="form-control" disabled="disabled">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="example-tel-input" class="col-md-4 col-form-label">Phone Number</label>
                         <div class="col-md-8">
                             <input class="form-control" type="tel" id="view_cust_phone" name="view_cust_phone" maxlength="10" required="" disabled="disabled">

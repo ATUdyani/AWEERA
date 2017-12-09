@@ -19,8 +19,9 @@ $cust_phone = $data[3];
 $cust_address = $data[4];
 $cust_email = $data[5];
 $password = $data[6];
+$gender = $data[7];
 
-$result = $register_request_confirm_mail->sendRegisterConfirmationMail($status,$first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password);
+$result = $register_request_confirm_mail->sendRegisterConfirmationMail($status,$first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password,$gender);
 
 
 echo $result;

@@ -385,7 +385,7 @@
         }
 
 
-        // search appointment details
+        // search appointment details - filter by date and emp id
         public function searchAppointmentDetails($date,$emp_id){
             // all dates, all beauticians
             if ($date=="*" && $emp_id=="*"){
@@ -457,6 +457,110 @@
                 echo $e;
             }
         }
+
+        // search appointment extended search
+        public function searchAppointments($emp_id,$date,$search_text){
+
+            // any beautician, any date, no search text
+            if ($emp_id=="*" AND $date=="" AND $search_text==""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // any beautician, any date, with search text
+            elseif ($emp_id=="*" AND $date=="" AND $search_text!=""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
+                    ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
+                    ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // any beautician, date specified, with search text
+            elseif ($emp_id=="*" AND $date!="" AND $search_text!=""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
+                    ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
+                    ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND a.appointment_date='".$date
+                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // beautician specified, date specified, with search text
+            elseif ($emp_id!="*" AND $date!="" AND $search_text!=""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
+                    ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
+                    ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND a.appointment_date='".$date
+                    ."' AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // beautician specified, any date, with search text
+            elseif ($emp_id!="*" AND $date=="" AND $search_text!=""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
+                    ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
+                    ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // beautician specified, date specified, no search text
+            elseif ($emp_id!="*" AND $date!="" AND $search_text==""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE e.emp_id='".$emp_id
+                    ."' AND a.appointment_date='".$date."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // any beautician, date specified, no search text
+            elseif ($emp_id=="*" AND $date!="" AND $search_text==""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.appointment_date='".$date
+                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+            // beautician specified, any date, no search text
+            elseif ($emp_id!="*" AND $date=="" AND $search_text==""){
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE e.emp_id='".$emp_id
+                    ."' AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+            }
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $appointment_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Start Time</th>
+                                    <th>End Time</th>
+                                    <th>Customer</th>
+                                    <th>Service</th>
+                                    <th>Beautician</th>
+                                    <th>Cancel</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    while($appointment = mysqli_fetch_array($result_set)){
+
+                        $appointment_list.= "<tr>";
+                        $appointment_list.= "<td>{$appointment['appointment_id']}</td>";
+                        $appointment_list.= "<td>{$appointment['appointment_date']}</td>";
+                        $appointment_list.= "<td>{$appointment['start_time']}h</td>";
+                        $appointment_list.= "<td>{$appointment['end_time']}h</td>";
+                        $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment[11]} {$appointment[12]}</a></td>";
+                        $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
+                        $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
+                        if ($appointment['appointment_date']>=date("Y-m-d")){
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        }
+                        else{
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' disabled='disabled' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                        }
+                        $appointment_list.= "</tr>";
+                    }
+                    $appointment_list .= "</tbody>
+                                    </table>";
+                    echo $appointment_list;
+                }
+                else{
+                    echo "<p>No Search Results Found</p>";
+                }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
+
 
         // get appointment count for a particular date
         public function getAppointmentCount($date){

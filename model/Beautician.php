@@ -44,7 +44,7 @@ class Beautician extends Employee
         }
         $beautician_names ='';
 
-        $beautician_names.="<option value=\"\">Select a Beautician</option>";
+        $beautician_names.="<option value=\"*\">Select a Beautician</option>";
 
         try{
             $services = self::$db->executeQuery($query);

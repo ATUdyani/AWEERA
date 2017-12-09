@@ -16,7 +16,7 @@
         <a class="nav-link" data-toggle="tab" href="#book-now-registered" role="tab" aria-controls="book-now">Book Now (Registered)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#book-now-unregistered" role="tab" aria-controls="book-now">Book Now (Unregistered)</a>
+        <a class="nav-link" data-toggle="tab" href="#book-now-unregistered" role="tab" aria-controls="book-now">Book Now (Walk in Customer)</a>
     </li>
 </ul>
 
@@ -25,12 +25,14 @@
         <div class="row ">
             <div class="col-md-12">
                 <h2><small>
-                        <input id="date_picker" type="date" name="appointment_date" onchange="getAppointments('')"
-                               value="<?php echo date("Y-m-d");?>">
+                        <div class="col-md-4 top-buffer">
+                            <input class="paragraph-font" id="date_picker" type="date" name="appointment_date" onchange="getAppointments('')"
+                                   value="<?php echo date("Y-m-d");?>">
+                        </div>
                     </small>
 
-                    <div class="col-md-4 ">
-                        <select name="select_beautician_name" id="select_beautician_name" class="form-control" onchange="getAppointments()">
+                    <div class="col-md-4 top-buffer">
+                        <select name="select_beautician_name" id="select_beautician_name" class="form-control paragraph-font" onchange="getAppointments('')">
                             <?php
                             $beautician = new Beautician();
                             $beautician_names = $beautician -> fetchBeauticianNames("*");
@@ -39,6 +41,9 @@
                         </select>
                     </div>
 
+                    <div class="col-md-4 top-buffer">
+                        <input type="text" class="form-control paragraph-font" placeholder="Search customer by name ..." id="search_text_appointment">
+                    </div>
 
                     <div class="request-icon" onclick="getAppointments('all')">
                         <a class="btn view-all">View All   <i class="fa fa-table" aria-hidden="true"></i></a>
@@ -49,15 +54,12 @@
                 <div class="row">
                     <div class="row ">
                         <div class="col-md-12 result-table" id="table_results">
-                            <table class="table table-hover col-md-12">
-                                <?php
-                                // create an object from Appointment class
-                                $appointment = new Appointment();
-                                $appointment_list = $appointment->searchAppointmentDetails(date("Y-m-d"),"*");
-                                echo $appointment_list;
-                                ?>
-                                </tbody>
-                            </table>
+                            <?php
+                            // create an object from Appointment class
+                            $appointment = new Appointment();
+                            $appointment_list = $appointment->searchAppointmentDetails(date("Y-m-d"),"*");
+                            echo $appointment_list;
+                            ?>
                         </div>
                     </div>
                 </div>

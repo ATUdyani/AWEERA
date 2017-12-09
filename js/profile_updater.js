@@ -30,6 +30,37 @@ function updateProfile() {
             }
         });
     }
+
+    if(type=='Customer'){
+        var formArray = [];
+        formArray.push(document.getElementById("first_name").value);
+        formArray.push(document.getElementById("last_name").value);
+        formArray.push(document.getElementById("gender").value);
+        formArray.push(document.getElementById("phone").value);
+        formArray.push(document.getElementById("address").value);
+        formArray.push(document.getElementById("email").value);
+        formArray.push(document.getElementById("date_joined").value);
+        formArray.push(document.querySelector('input[name = "gender"]:checked').value);
+        formArray.push(document.getElementById("id").value);
+        var jsonString = JSON.stringify(formArray);
+        $.ajax({
+            url:"../controller/update-customer-handler.php", //the page containing php script
+            type: "POST", //request type
+            data: {data : jsonString},
+            cache: false,
+            success:function(data){
+                if (data.trim()=="<h4>Customer successfully updated.</h4>"){
+                    $('#update_msg_Modal').modal('show');
+                    $('#update_msg_result').html("<h4>Successfully updated.</h4>");
+                }
+                else{
+                    $('#msg_Modal').modal('show');
+                    $('#msg_result').html(data);
+                }
+
+            }
+        });
+    }
 }
 
 $('#update_msg_Modal').on('hidden.bs.modal', function () {

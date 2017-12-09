@@ -50,6 +50,7 @@ $(document).ready(function (){
                 $('#view_cust_id').val(data.cust_id);
                 $('#view_first_name').val(data.first_name);
                 $('#view_last_name').val(data.last_name);
+                $('#view_cust_name').val(data.last_name);
                 $('#view_cust_phone').val(data.cust_phone);
                 $('#view_cust_address').val(data.cust_address);
                 $('#view_cust_email').val(data.cust_email);

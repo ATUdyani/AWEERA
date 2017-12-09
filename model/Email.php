@@ -47,7 +47,7 @@ class Email{
     }
 
     // send confirmation mail for register requests
-    function sendRegisterConfirmationMail($status,$first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password){
+    function sendRegisterConfirmationMail($status,$first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password,$gender){
 
         self::$mail->addAddress($cust_email);   // Add a recipient
         //self::$mail->addCC('cc@example.com');
@@ -89,7 +89,7 @@ class Email{
                         $date = date("Y-m-d");
 
                         $registered_customer = new RegisteredCustomer();
-                        $result_next = $registered_customer ->addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date,$password);
+                        $result_next = $registered_customer ->addRegisteredCustomer($first_name,$last_name,$cust_phone,$cust_email,$cust_address,$date,$password,$gender);
 
                         if ($result_next){
 

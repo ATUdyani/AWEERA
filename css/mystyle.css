@@ -13,6 +13,10 @@
 	src: url('../fonts/cantora.ttf');
 }
 
+.paragraph-font{
+	font-family: bodyfont;
+}
+
 body{
 	/*background: linear-gradient(#000000,#000000,#000000);*/
 	background-image: url("../img/panel-default-background.jpg");
@@ -139,19 +143,23 @@ body h1,h2,h3,h4{
 	background-color: white;
 }
 
+.my-sidebar{
+	border-right: solid;
+	color: white;
+
+}
 .my-sidebar ul li a{
 	color: #fff;
-	font-size: 120%;
+	font-size: 110%;
+	border-width: thin;
 }
 
 .my-sidebar ul li a:hover{
 	color: #000;
-	font-size: 120%;
 }
 
 .my-sidebar ul li a:focus{
 	color: #000;
-	font-size: 120%;
 }
 
 .result-table{
