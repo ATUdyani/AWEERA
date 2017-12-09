@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2017 at 02:45 AM
+-- Generation Time: Dec 09, 2017 at 04:50 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -66,7 +66,10 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 ('APP0000019', '2017-12-05', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
 ('APP0000020', '2017-12-06', '1300', '1345', 'none', 'REG0000007', 'SER0000003', 'EMP0000005', NULL, -1),
 ('APP0000021', '2017-12-06', '1200', '1230', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
-('APP0000022', '2017-12-06', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1);
+('APP0000022', '2017-12-06', '1500', '1530', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000023', '2017-12-08', '1430', '1500', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000024', '2017-12-08', '1400', '1430', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000025', '2017-12-09', '1230', '1300', 'none', 'REG0000007', 'SER0000001', 'EMP0000003', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -160,7 +163,6 @@ INSERT INTO `customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cus
 ('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', NULL),
 ('REG0000007', 'Ama', 'Gamage', '0776325654', 'Panadura', 'wasurawattearachchi@gmail.com', '2017-11-28', NULL),
 ('UNR0000001', 'Anne ', 'Fernando', '0778956565', NULL, NULL, NULL, 'Female'),
-('UNR0000003', 'fhdfh', 'fhdh', 'fdhdh', NULL, NULL, NULL, 'Male'),
 ('UNR0000002', 'Shanilka', 'Soyza', '0714554412', NULL, NULL, NULL, 'Male');
 
 -- --------------------------------------------------------
@@ -177,31 +179,29 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `emp_email` varchar(50) NOT NULL,
   `emp_phone` varchar(12) NOT NULL,
   `emp_address` varchar(60) NOT NULL,
-  `username` varchar(30) DEFAULT NULL,
-  `password` varchar(16) DEFAULT NULL,
   `emp_type` varchar(20) DEFAULT NULL,
   `emp_gender` varchar(10) NOT NULL,
   `is_user` tinyint(1) NOT NULL DEFAULT '0',
+  `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
   PRIMARY KEY (`emp_id`),
   UNIQUE KEY `emp_email_UNIQUE` (`emp_email`),
-  UNIQUE KEY `emp_phone_UNIQUE` (`emp_phone`),
-  UNIQUE KEY `username_UNIQUE` (`username`)
+  UNIQUE KEY `emp_phone_UNIQUE` (`emp_phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `employee`
 --
 
-INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `username`, `password`, `emp_type`, `emp_gender`, `is_user`) VALUES
-('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0775706396', 'Moratuwa', NULL, NULL, 'Administrator', 'Male', 1),
-('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0713132431', 'Panadura', NULL, NULL, 'Receptionist', 'Female', 1),
-('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', NULL, NULL, 'Beautician', 'Male', 1),
-('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', NULL, NULL, 'Administrator', 'Male', 0),
-('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', NULL, NULL, 'Beautician', 'Male', 0),
-('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', NULL, NULL, 'Beautician', 'Female', 0),
-('EMP0000007', 'Surangi', 'De Silva', 'surangi@gmail.com', '0778965412', 'Moratuwa', NULL, NULL, 'Beautician', 'Female', 0),
-('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', NULL, NULL, 'Beautician', 'Male', 1),
-('EMP0000009', 'Aruna', 'Silva', 'aruna@gmail.com', '0714556656', 'Mt. Lavania', NULL, NULL, 'Beautician', 'Male', 0);
+INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `emp_type`, `emp_gender`, `is_user`, `profile_pic`) VALUES
+('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0713888888', 'Moratuwa', 'Administrator', 'Male', 1, '5a2ad93694d070.65134330.jpg'),
+('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0713132431', 'Panadura', 'Receptionist', 'Female', 1, '5a2add240a3460.91513380.jpg'),
+('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', 'Beautician', 'Male', 1, '5a2ade7c916ff8.20644714.jpg'),
+('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', 'Administrator', 'Male', 0, 'none.jpg'),
+('EMP0000005', 'Avishka', 'Perera', 'avishka@gmail.com', '0774589653', 'Rathmalana', 'Beautician', 'Male', 0, 'none.jpg'),
+('EMP0000006', 'Sachini', 'Fernando', 'sachini@gmail.com', '0714589652', 'Rajagiriya', 'Beautician', 'Female', 0, 'none.jpg'),
+('EMP0000007', 'Surangi', 'De Silva', 'surangi@gmail.com', '0778965412', 'Moratuwa', 'Beautician', 'Female', 0, 'none.jpg'),
+('EMP0000008', 'Mohammed', 'Imdad', 'imdad@gmail.com', '0789655412', 'Jaffna', 'Beautician', 'Male', 1, 'none.jpg'),
+('EMP0000009', 'Aruna', 'Silva', 'aruna@gmail.com', '0714556656', 'Mt. Lavania', 'Beautician', 'Male', 0, 'none.jpg');
 
 -- --------------------------------------------------------
 
@@ -215,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `path` varchar(100) NOT NULL,
   `date_added` datetime(6) NOT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -223,18 +223,36 @@ CREATE TABLE IF NOT EXISTS `gallery` (
 
 INSERT INTO `gallery` (`image_id`, `path`, `date_added`) VALUES
 (14, '5a22e23488c252.72833552.jpg', '2017-12-02 17:26:12.000000'),
-(13, '5a22e22668b2c0.04614764.jpg', '2017-12-02 17:32:26.000000'),
 (15, '5a22e23cbdd1f9.81109506.jpg', '2017-12-03 06:02:12.000000'),
 (16, '5a22e241b7bfe1.08574175.jpg', '2017-12-04 02:56:01.000000'),
 (18, '5a22e24f182d91.57808924.jpg', '2017-12-02 17:26:39.000000'),
-(19, '5a22e261603ec5.10481279.jpg', '2017-12-04 06:19:12.000000'),
-(20, '5a22e37ea4bde7.07960825.jpg', '2017-12-02 17:31:42.000000'),
+(20, '5a22e37ea4bde7.07960825.jpg', '2017-12-08 07:05:24.000000'),
 (21, '5a22e4f8bfd295.32807720.jpg', '2017-12-04 02:55:56.000000'),
-(22, '5a22e552cf2bb8.47819109.jpg', '2017-12-03 06:20:58.000000'),
+(22, '5a22e552cf2bb8.47819109.jpg', '2017-12-08 07:05:31.000000'),
 (23, '5a238b2263aa21.00655776.jpg', '2017-12-03 06:13:29.000000'),
 (24, '5a24b930e1e7c0.29680482.jpg', '2017-12-04 02:55:44.000000'),
-(29, '5a24e8a044b827.13201223.jpg', '2017-12-04 06:18:08.000000'),
-(28, '5a24ddd5d4f564.03945929.jpg', '2017-12-04 05:32:05.000000');
+(28, '5a24ddd5d4f564.03945929.jpg', '2017-12-08 07:05:41.000000'),
+(80, '5a2a31196c23e1.22737022.jpg', '2017-12-08 07:28:41.000000'),
+(37, '5a2a25669fa2f6.40992205.jpg', '2017-12-08 06:38:46.000000'),
+(38, '5a2a258c31fbf4.74806888.jpg', '2017-12-08 06:39:24.000000'),
+(41, '5a2a25b24bce76.84006565.jpg', '2017-12-08 06:40:02.000000'),
+(45, '5a2a25d64dacd1.76276333.jpg', '2017-12-08 06:40:38.000000'),
+(47, '5a2a25ec9f6812.07742496.jpg', '2017-12-08 06:41:00.000000'),
+(51, '5a2a26198f7206.12525227.jpg', '2017-12-08 06:41:45.000000'),
+(53, '5a2a263bc03924.85260655.jpg', '2017-12-08 06:42:19.000000'),
+(54, '5a2a264bbf2929.79635007.jpg', '2017-12-08 06:42:35.000000'),
+(56, '5a2a265f757ce9.75642536.jpg', '2017-12-08 06:42:55.000000'),
+(58, '5a2a26746e4225.09477113.jpg', '2017-12-08 06:43:16.000000'),
+(62, '5a2a278e3d7475.13838529.jpg', '2017-12-08 06:47:58.000000'),
+(64, '5a2a27a8de4238.61287932.jpg', '2017-12-08 06:48:24.000000'),
+(66, '5a2a27c1e7bec3.68521610.jpg', '2017-12-08 06:48:49.000000'),
+(67, '5a2a27c9d9f4c9.44409758.jpg', '2017-12-08 06:48:57.000000'),
+(69, '5a2a27db35fbd7.92155634.jpg', '2017-12-08 06:49:15.000000'),
+(70, '5a2a27e3956e26.00145645.jpg', '2017-12-08 06:49:23.000000'),
+(72, '5a2a27f2916fb3.43257796.jpg', '2017-12-08 06:49:38.000000'),
+(77, '5a2a2818c0b042.89718640.jpg', '2017-12-08 06:50:16.000000'),
+(78, '5a2a281fb8a3d3.61273225.jpg', '2017-12-08 06:50:23.000000'),
+(79, '5a2a2826bc9c00.30229246.jpg', '2017-12-08 06:50:30.000000');
 
 -- --------------------------------------------------------
 
@@ -343,6 +361,7 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
   `cust_email` varchar(30) NOT NULL,
   `date_joined` date NOT NULL,
   `password` varchar(40) NOT NULL,
+  `profile_pic` varchar(30) DEFAULT 'none.jpg',
   PRIMARY KEY (`cust_id`),
   UNIQUE KEY ` cust_phone_UNIQUE` (`cust_phone`),
   UNIQUE KEY `cust_email_UNIQUE` (`cust_email`)
@@ -352,11 +371,11 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
 -- Dumping data for table `registered_customer`
 --
 
-INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`) VALUES
-('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72'),
-('REG0000007', 'Ama', 'Gamage', '0776325654', 'Panadura', 'wasurawattearachchi@gmail.com', '2017-11-28', '900150983cd24fb0d6963f7d28e17f72');
+INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`, `profile_pic`) VALUES
+('REG0000001', 'Vishni', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg'),
+('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg'),
+('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg'),
+('REG0000007', 'Ama', 'Gamage', '0776325654', 'Panadura', 'wasurawattearachchi@gmail.com', '2017-11-28', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg');
 
 -- --------------------------------------------------------
 
@@ -413,7 +432,8 @@ INSERT INTO `service` (`service_id`, `service_name`, `service_charge`, `descript
 ('SER0000005', 'Oil Treatment', 800.00, 'Hair Treatment', 45, 20),
 ('SER0000006', 'Conditioning Treatment', 1200.00, 'Hair Treatment', 45, 20),
 ('SER0000007', 'Protein Treatment', 1200.00, 'Hair Treatment', 45, 20),
-('SER0000008', 'Gold Pedicure', 1000.00, 'Pedicure', 30, 10);
+('SER0000008', 'Gold Pedicure', 1000.00, 'Pedicure', 30, 10),
+('SER0000009', 'dfdf3434', 32323.32, 'dfddxsfdsffs', 4343, 323232);
 
 -- --------------------------------------------------------
 
@@ -492,8 +512,7 @@ CREATE TABLE IF NOT EXISTS `unregistered_customer` (
 
 INSERT INTO `unregistered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_gender`) VALUES
 ('UNR0000001', 'Anne ', 'Fernando', '0778956565', 'Female'),
-('UNR0000002', 'Shanilka', 'Soyza', '0714554412', 'Male'),
-('UNR0000003', 'fhdfh', 'fhdh', 'fdhdh', 'Male');
+('UNR0000002', 'Shanilka', 'Soyza', '0714554412', 'Male');
 
 -- --------------------------------------------------------
 
@@ -512,6 +531,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `is_deleted` tinyint(1) NOT NULL DEFAULT '0',
   `type` varchar(15) NOT NULL,
   `user_reg_id` varchar(20) NOT NULL,
+  `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
 
@@ -519,16 +539,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-08 07:57:09', 0, 'Receptionist', 'EMP0000002'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-08 05:10:49', 0, 'Administrator', 'EMP0000001'),
-(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001'),
-(26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-05 10:24:13', 0, 'Beautician', 'EMP0000003'),
-(29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 12:29:36', 0, 'Customer', 'REG0000004'),
-(30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005'),
-(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-05 10:23:37', 0, 'Customer', 'REG0000007'),
-(35, 'Shehan', 'Dinuka', 'homewsp@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000008'),
-(36, 'Hermione', 'Granger', 'wasuradananjith@ieee.org', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000009');
+INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`, `profile_pic`) VALUES
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', 'e2fc714c4727ee9395f324cd2e7f331f', '2017-12-09 09:20:19', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-09 09:28:21', 0, 'Administrator', 'EMP0000001', '5a2ad93694d070.65134330.jpg'),
+(19, 'Vishni', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-11-02 09:58:26', 0, 'Customer', 'REG0000001', 'none.jpg'),
+(26, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-09 00:18:39', 0, 'Beautician', 'EMP0000003', '5a2ade7c916ff8.20644714.jpg'),
+(29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-04 12:29:36', 0, 'Customer', 'REG0000004', 'none.jpg'),
+(30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005', 'none.jpg'),
+(31, 'Ama', 'Gamage', 'wasurawattearachchi@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-08 15:40:25', 0, 'Customer', 'REG0000007', 'none.jpg'),
+(35, 'Shehan', 'Dinuka', 'homewsp@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000008', 'none.jpg'),
+(36, 'Hermione', 'Granger', 'wasuradananjith@ieee.org', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000009', 'none.jpg');
 
 --
 -- Constraints for dumped tables
