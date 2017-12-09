@@ -149,7 +149,7 @@ $db->connect();
             </div>
         </div>
     </div>
-    
+
     <div class="row">
         <div class="col-md-4 text-center">
             <div class="thumbnail">
@@ -246,7 +246,9 @@ $db->connect();
                 </div>
             </div>
         </div>
+    
 
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/treatments.jpg" alt="" width=500px height=500px >
@@ -257,7 +259,9 @@ $db->connect();
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/brading.jpg" alt="" width=500px height=500px >
@@ -268,7 +272,7 @@ $db->connect();
                 </div>
             </div>
         </div>
-
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/makeup.jpg" alt="" width=500px height=500px >
@@ -290,8 +294,8 @@ $db->connect();
                 </div>
             </div>
         </div>
-
-
+    
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/bridal.jpg" alt="" width=500px height=500px >
@@ -302,6 +306,12 @@ $db->connect();
                 </div>
             </div>
         </div>
+    </div>
+
+    
+    <div class="row">
+    <div class="col-md-3 text-center">
+    </div>
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
@@ -325,6 +335,7 @@ $db->connect();
             </div>
         </div>
     </div>
+
 
     <!-- Our Customers -->
     <div class="row">
