@@ -76,7 +76,7 @@ $db->connect();
         </div>
         <div class="col-md-6">
             <p>Asanka Weerasekara, the founder of AWEERA - BRIDAL, HAIR & BEAUTY commenced his journey as a beautician in the year 2008 joining International Academy of Beauticians (Pvt) Ltd. After successfully completing his vocational training at the institution he joined the industry as an assistant to the renowned beautician Dhananjaya Bandara.</p>
-            <p>Due to his dedication at work and his magical talent in styling hair, he succeeded in opening up a platform of his own. Accordingly, in 2010 he established AWEERA - BRIDAL, HAIR & BEAUTY making his dream a reality. With his professional speciality in hair styling, he succeeded in building up his own name in the industry and currently he serves as the official hairdresser for most of the prominent celebrities in Sri Lanka. Asanka Weerasekara also participated in many international as well as national competitions and proved the whole nation that he is capable of bringing up the most needed change to the industry.</p>
+            <p>Due to his dedication at work and his magical talent in styling hair, he succeeded in opening up a platform of his own. Accordingly, in 2010 he established AWEERA - BRIDAL, HAIR & BEAUTY making his dream a reality. With his professional speciality in hair styling he was succeeded in building up his own name in the industry and currently he is serves as the official hairdresser for most of the prominent celebrities in Sri Lanka. Asanka Weerasekara also participated in many international as well as national competitions and proved the whole nation that he is capable of bringing up change to the industry.</p>
             <p>If you make a visit to AWEERA - BRIDAL HAIR & BEAUTY, Unlike most of the others in the industry, Asanka would give you an entirely different look while treating your hair with love and care, causing no harm at all to your hair.
 
         </div>
@@ -148,7 +148,9 @@ $db->connect();
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-md-4 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/Heshan.png" alt="">
@@ -244,7 +246,9 @@ $db->connect();
                 </div>
             </div>
         </div>
+    
 
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/treatments.jpg" alt="" width=500px height=500px >
@@ -255,7 +259,9 @@ $db->connect();
                 </div>
             </div>
         </div>
+    </div>
 
+    <div class="row">
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/brading.jpg" alt="" width=500px height=500px >
@@ -266,7 +272,7 @@ $db->connect();
                 </div>
             </div>
         </div>
-
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/makeup.jpg" alt="" width=500px height=500px >
@@ -288,8 +294,8 @@ $db->connect();
                 </div>
             </div>
         </div>
-
-
+    
+    
         <div class="col-md-3 text-center">
             <div class="thumbnail">
                 <img class="img-responsive" src="img/aboutus/bridal.jpg" alt="" width=500px height=500px >
@@ -300,6 +306,12 @@ $db->connect();
                 </div>
             </div>
         </div>
+    </div>
+
+    
+    <div class="row">
+    <div class="col-md-3 text-center">
+    </div>
 
         <div class="col-md-3 text-center">
             <div class="thumbnail">
@@ -323,6 +335,7 @@ $db->connect();
             </div>
         </div>
     </div>
+
 
     <!-- Our Customers -->
     <div class="row">
