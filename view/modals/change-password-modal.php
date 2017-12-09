@@ -39,14 +39,14 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Password</label>
+                        <label for="example-text-input" class="col-md-4 col-form-label top-buffer">Password</label>
                         <div class="col-md-8">
                             <input class="form-control" type="password" name="add_password" id="add_password" maxlength="50" required="">
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="example-text-input" class="col-md-4 col-form-label clearfix">Confirm Password</label>
+                        <label for="example-text-input" class="col-md-4 col-form-label top-buffer">Confirm Password</label>
                         <div class="col-md-8">
                             <input class="form-control" type="password" name="add_confirm_password" id="add_confirm_password" maxlength="50" required="">
                         </div>

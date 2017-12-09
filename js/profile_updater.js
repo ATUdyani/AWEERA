@@ -87,6 +87,7 @@ $(function() {
     });
 });
 
+// loading the selected image to preview
 function imageIsLoaded(e) {
     $("#file").css("color","green");
     $('#image_preview').css("display", "block");
@@ -94,3 +95,86 @@ function imageIsLoaded(e) {
     $('#previewing').attr('width', '350px');
     $('#previewing').attr('height', '350px');
 };
+
+// load modal to change the password
+function loadChangePasswordModal() {
+    var id = document.getElementById('id').value;
+    $('#insert_form')[0].reset();
+    $('#user_id').val(id);
+    $('#message').html("");
+    $('#change_password_Modal').modal('show')
+}
+
+
+// matching password
+$('#add_confirm_password').on('keyup', function () {
+    if($(this).val() == ' '){
+        $('#message').html("");
+    }
+    if ($(this).val() == $('#add_password').val()) {
+        $('#message').html('Password Match').css('color', 'green');
+    }
+    else {
+        $('#message').html('Password does not match. Please Re-Enter!').css('color', 'red');
+
+    }
+});
+
+// check old password mismatch on keyup
+$(document).ready(function(){
+    $('#old_password').keyup(function () {
+        var oldHashedPasswordLoaded = document.getElementById('old_password_loaded').value;
+        var typedOldPassword = document.getElementById('old_password').value;
+        var hashedTypedPassword = $.md5(typedOldPassword);
+        if (hashedTypedPassword==oldHashedPasswordLoaded){
+            $('#old_password_message').html("Old Password Matched").css('color', 'green');;
+        }
+        else if(hashedTypedPassword=="d41d8cd98f00b204e9800998ecf8427e"){ // hashed blank
+            $('#old_password_message').html("");
+        }
+        else{
+            $('#old_password_message').html("Old Password Mismatch").css('color', 'red');;
+        }
+    });
+});
+
+
+// change user password
+function onclickChangePassword() {
+    var oldHashedPasswordLoaded = document.getElementById('old_password_loaded').value;
+    var typedOldPassword = document.getElementById('old_password').value;
+    var hashedTypedPassword = $.md5(typedOldPassword);
+
+    var newPassword = document.getElementById('add_password').value;
+    var confirmNewPassword = document.getElementById('add_confirm_password').value;
+
+    if (oldHashedPasswordLoaded != hashedTypedPassword){
+        $('#change_password_Modal').modal('hide');
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>Typed old password does not match with the old password</h4>");
+        return;
+    }
+    else if (newPassword != confirmNewPassword){
+        $('#change_password_Modal').modal('hide');
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>New password mismatched</h4>");
+        return;
+    }
+
+    var formArray = [];
+    formArray.push(document.getElementById("user_id").value);
+    formArray.push(document.getElementById("add_password").value);
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url: "../controller/change-user-password-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data: jsonString},
+        cache: false,
+        success: function (data) {
+            $('#insert_form')[0].reset();
+            $('#change_password_Modal').modal('hide');
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(data);
+        }
+    });
+}

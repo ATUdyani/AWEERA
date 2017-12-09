@@ -78,10 +78,22 @@ $('#msg_Modal').on('hidden.bs.modal', function () {
 
 // change user password
 function onclickChangePassword() {
+    var newPassword = document.getElementById("add_password").value;
+    var confirmNewPassword = document.getElementById("add_confirm_password").value;
+
+    if (newPassword != confirmNewPassword){
+        $('#insert_form')[0].reset();
+        $('#change_password_Modal').modal('hide');
+        $('#msg_Modal').modal('show');
+        $('#msg_result').html("<h4>New password mismatched</h4>");
+        return;
+    }
+
     var formArray = [];
     formArray.push(document.getElementById("add_emp_id").value);
-    formArray.push(document.getElementById("add_password").value);
+    formArray.push(newPassword);
     var jsonString = JSON.stringify(formArray);
+
     $.ajax({
         url: "../controller/change-user-password-handler.php", //the page containing php script
         type: "POST", //request type

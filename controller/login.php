@@ -55,6 +55,7 @@
           $_SESSION['email'] = $user['email'];
           $_SESSION['user_reg_id'] = $user['user_reg_id'];
           $_SESSION['user_profile_pic'] = $user['profile_pic'];
+          $_SESSION['password'] = $user['password'];
 
 
           // update last login

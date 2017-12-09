@@ -162,7 +162,7 @@
         public function changeUserPassword($password,$user_id)
         {
             $hashed_password = md5($password);
-            $query = "UPDATE user SET password='$hashed_password' WHERE id ='$user_id'";
+            $query = "UPDATE user SET password='$hashed_password' WHERE user_reg_id ='$user_id'";
 
 
             try {

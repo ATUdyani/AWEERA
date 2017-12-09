@@ -1,4 +1,5 @@
 <script type="text/javascript" src="../js/profile_updater.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
 
 <?php session_start();?>
     <h2>Edit Profile</h2>
@@ -18,6 +19,7 @@
                         <label>Upload a different photo...</label><br/>
                         <input type="file" name="file" id="file" required class="form-control"/>
                         <input type="submit" value="Upload" class="btn btn-primary btn-block my-lg-button" />
+                        <input type="button" id="change_password" name="change_password" onclick="loadChangePasswordModal()" class="btn btn-primary" value="Change Password">
                     </div>
                 </form>
             </div>
@@ -25,7 +27,6 @@
 
         <!-- edit form column -->
         <div class="col-md-9 personal-info">
-            <div id="message" class="col-md-12"></div>
             <h3>Personal info</h3>
 
             <form class="form-horizontal" role="form">
@@ -86,3 +87,4 @@
 
 <?php include('../modals/update-message-modal.php'); ?>
 <?php include('../modals/message-modal.php'); ?>
+<?php include('../modals/change-profile-password-modal.php'); ?>
