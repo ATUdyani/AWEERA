@@ -93,7 +93,7 @@
             <div class="form-group row">
                 <label for="example-tel-input" class="col-md-4 col-form-label">Percentage</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="number" id="commission_percentage" maxlength="3">
+                    <input class="form-control" type="number" id="commission_percentage" maxlength="2">
                 </div>
             </div>
 

@@ -42,7 +42,7 @@
                     <div class="form-group row">
                         <label for="example-text-input" class="col-md-4 col-form-label clearfix">Commission Percentage</label>
                         <div class="col-md-8">
-                            <input class="form-control" type="number" name="update_commission" id="update_commission" maxlength="50" required="">
+                            <input class="form-control" type="number" name="update_commission" id="update_commission" min="1" required="">
                         </div>
                     </div>
 

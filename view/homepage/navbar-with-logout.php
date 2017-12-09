@@ -17,7 +17,7 @@
         <div class= "collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-right my-primary-menu">
                 <li class="link-1">
-                    <a class='book-now-button' href="#">Book Now</a>
+                    <a class='book-now-button' href="#">Make Appointment</a>
                 </li>
                 <li class="link-1">
                     <a href="../gallery.php">Gallery</a>

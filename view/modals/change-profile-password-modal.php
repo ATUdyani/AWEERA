@@ -30,8 +30,8 @@
                         <label for="example-text-input" class="col-md-4 col-form-label top-buffer">Confirm New Password</label>
                         <div class="col-md-4">
                             <input class="form-control" type="password" name="add_confirm_password" id="add_confirm_password" maxlength="50" required="">
-                            <p id="message" class="col-md-4 top-buffer"></p>
                         </div>
+                        <p id="message" class="col-md-4 top-buffer"></p>
                     </div>
 
                     <div class="col-md-offset-10">
