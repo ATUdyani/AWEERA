@@ -63,7 +63,7 @@
                                                     <p class="text-left">
                                                     <form>
                                                         <input type="hidden" id="user_type" value="<?php echo $_SESSION['type'];?>">
-                                                        <input id="<?php echo $_SESSION['user_reg_id'];?>" class="btn btn-primary btn-block btn-sm" type="button" value="Edit Profile" onclick="handleProfile(this.id)">
+                                                        <input id="<?php echo $_SESSION['user_reg_id'];?>" class="btn btn-primary btn-block btn-sm my-lg-button" type="button" value="Edit Profile" onclick="handleProfile(this.id)">
                                                     </form>
                                                     </p>
                                                 </div>
@@ -77,7 +77,7 @@
                                                 <div class="col-lg-12">
                                                     <p>
                                                     <form>
-                                                        <input class="btn btn-danger btn-block" type="submit" value="Log Out" formaction="../controller/logout.php">
+                                                        <input class="btn btn-danger btn-block my-lg-button-danger" type="submit" value="Log Out" formaction="../controller/logout.php">
                                                     </form>
                                                     </p>
                                                 </div>

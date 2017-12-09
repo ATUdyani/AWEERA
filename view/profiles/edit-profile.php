@@ -6,7 +6,7 @@
 
     <div class="row">
         <!-- left column -->
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="text-center">
                 <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" id="id" name="id" value="<?php echo $_POST['id'];?>">
@@ -17,10 +17,11 @@
                     </div>
                     <div id="selectImage">
                         <label>Upload a different photo...</label><br/>
-                        <input type="file" name="file" id="file" required class="form-control"/>
+                        <input type="file" name="file" id="file" required/>
                         <input type="submit" value="Upload" class="btn btn-primary btn-block my-lg-button" />
-                        <input type="button" id="change_password" name="change_password" onclick="loadChangePasswordModal()" class="btn btn-primary" value="Change Password">
                     </div>
+                    <input type="button" id="change_password" name="change_password" onclick="loadChangePasswordModal()" class="btn btn-primary btn-block my-lg-button" value="Change Password">
+
                 </form>
             </div>
         </div>
@@ -75,10 +76,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-3 control-label"></label>
-                    <div class="col-md-8">
-                        <input type="button" id="submit" name="submit" onclick="updateProfile()" class="btn btn-primary" value="Save Changes">
-                        <input type="button" onclick="location.reload()" class="btn btn-default" value="Cancel">
+                    <div class="row col-md-offset-3">
+                        <div class="col-md-4">
+                            <input type="button" id="submit" name="submit" onclick="updateProfile()" class="btn btn-primary btn-block my-lg-button" value="Save Changes">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="button" onclick="location.reload()" class="btn btn-primary btn-block my-lg-button" value="Cancel">
+                        </div>
                     </div>
                 </div>
             </form>
