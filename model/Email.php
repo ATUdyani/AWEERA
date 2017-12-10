@@ -81,7 +81,7 @@ class Email{
                 try{
 
                     $user = new User();
-                    $result = $user -> addUser($first_name,$last_name,$cust_email,$password,$new_id);
+                    $result = $user -> addCustomerUser($first_name,$last_name,$cust_email,$password,$new_id);
 
                     if ($result){
 

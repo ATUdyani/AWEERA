@@ -60,3 +60,18 @@ $(document).ready(function (){
         });
     });
 });
+
+// load modal to delete customer data
+$(document).ready(function (){
+    $(document).on('click','.delete_data',function(){
+        var id = $(this).attr("id");
+        var table = 'customer';
+        $('#table_name').val(table);
+        $('#record_id').val(id);
+        $('#delete_Modal').modal('show');
+    });
+});
+
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+   $('#content').load('view-customer.php');
+});

@@ -36,7 +36,7 @@
 
         // get all employee data for a particular employee id
         public function getEmployeeData($emp_id){
-            $query = "SELECT * FROM employee WHERE emp_id='".$emp_id."'";
+            $query = "SELECT * FROM employee WHERE emp_id='".$emp_id."' AND is_deleted='0'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_assoc($result);
@@ -100,7 +100,7 @@
             $employee_list ='';
 
             //getting list of employee items
-            $query = "SELECT * FROM employee ORDER BY emp_type";
+            $query = "SELECT * FROM employee WHERE is_deleted='0'ORDER BY emp_type";
 
             try{
                 $result_set = self::$db->executeQuery($query);
@@ -129,7 +129,7 @@
         public function searchEmployeeUserDetails($field,$search_text){
             // load all data on page ready
             if ($field=="*"){
-                $query = "SELECT * FROM employee WHERE is_user='0'";
+                $query = "SELECT * FROM employee WHERE is_user='0' AND is_deleted='0'";
             }
             elseif ($field=="all"){
                 $query = "SELECT * FROM employee WHERE (emp_id LIKE '%".$search_text
@@ -139,10 +139,10 @@
                     ."%' OR emp_address LIKE '%".$search_text
                     ."%' OR emp_phone LIKE '%".$search_text
                     ."%' OR emp_type LIKE '%".$search_text
-                    ."%' OR emp_gender LIKE '%".$search_text."%') AND is_user='0'";
+                    ."%' OR emp_gender LIKE '%".$search_text."%') AND is_user='0' AND is_deleted='0'";
             }
             else{
-                $query = "SELECT * FROM employee WHERE ".$field." LIKE '%".$search_text."%' AND is_user='0'";
+                $query = "SELECT * FROM employee WHERE ".$field." LIKE '%".$search_text."%' AND is_user='0' AND is_deleted='0'";
             }
 
             try{
@@ -152,7 +152,6 @@
                 $employee_list ="<table class=\"table table-hover\">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
@@ -167,7 +166,6 @@
                 if (self::$db->getNumRows($result_set)>0){
                     while($employee = mysqli_fetch_assoc($result_set)){
                         $employee_list.= "<tr>";
-                        $employee_list.= "<td>{$employee['emp_id']}</td>";
                         $employee_list.= "<td>{$employee['first_name']}</td>";
                         $employee_list.= "<td>{$employee['last_name']}</td>";
                         $employee_list.= "<td>{$employee['emp_email']}</td>";
@@ -200,20 +198,20 @@
         public function searchEmployeeDetails($field,$search_text){
             // load all data on page ready
             if ($field=="*"){
-                $query = "SELECT * FROM employee";
+                $query = "SELECT * FROM employee WHERE is_deleted='0'";
             }
             elseif ($field=="all"){
-                $query = "SELECT * FROM employee WHERE emp_id LIKE '%".$search_text
+                $query = "SELECT * FROM employee WHERE (emp_id LIKE '%".$search_text
                     ."%' OR first_name LIKE '%".$search_text
                     ."%' OR last_name LIKE '%".$search_text
                     ."%' OR emp_email LIKE '%".$search_text
                     ."%' OR emp_address LIKE '%".$search_text
                     ."%' OR emp_phone LIKE '%".$search_text
                     ."%' OR emp_type LIKE '%".$search_text
-                    ."%' OR emp_gender LIKE '%".$search_text."%'";
+                    ."%' OR emp_gender LIKE '%".$search_text."%') AND is_deleted='0'";
             }
             else{
-                $query = "SELECT * FROM employee WHERE ".$field." LIKE '%".$search_text."%'";
+                $query = "SELECT * FROM employee WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
             }
 
             try{
@@ -223,7 +221,6 @@
                 $employee_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
@@ -241,7 +238,6 @@
                     while($employee = mysqli_fetch_assoc($result_set)){
 
                         $employee_list.= "<tr>";
-                        $employee_list.= "<td>{$employee['emp_id']}</td>";
                         $employee_list.= "<td>{$employee['first_name']}</td>";
                         $employee_list.= "<td>{$employee['last_name']}</td>";
                         $employee_list.= "<td>{$employee['emp_email']}</td>";
@@ -249,7 +245,7 @@
                         $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
                         $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                        $employee_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        $employee_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                         if ($employee['is_user']==1){
                             $employee_list.= "<td><a class=\"btn btn-success btn-sm add_user disabled\" name=\"add\" value=\"Add\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
                         }
@@ -277,6 +273,31 @@
             try{
                 $result= self::$db->executeQuery($query);
                 return $result;
+            }catch (Exception $e){
+                return $e;
+            }
+        }
+
+        // delete an employee record
+        public function deleteEmployee($record_id){
+            $query = "UPDATE employee SET is_deleted='1' WHERE emp_id='".$record_id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+            }catch (Exception $e){
+                return $e;
+            }
+        }
+
+        // update user status of an employee
+        public function changeUserStatus($record_id,$status){
+            $query = "UPDATE employee SET is_user='".$status."' WHERE emp_id='".$record_id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+
             }catch (Exception $e){
                 return $e;
             }

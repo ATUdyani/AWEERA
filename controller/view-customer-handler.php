@@ -1,5 +1,5 @@
 <?php require_once '../model/Database.php' ?>
-<?php require_once '../model/Customer.php' ?>
+<?php require_once '../model/RegisteredCustomer.php' ?>
 
 
 <?php
@@ -12,6 +12,6 @@
 
 $data = json_decode(stripslashes($_POST['data']));
 
-$customers = new Customer();
-$customers -> viewCustomerDetails($data[0],$data[1]);
+$customers = new RegisteredCustomer();
+$customers -> searchCustomerDetails($data[0],$data[1]);
 ?>

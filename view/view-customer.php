@@ -1,10 +1,11 @@
 <?php session_start(); ?>
 <?php require_once('../model/Database.php') ?>
-<?php require_once('../model/Customer.php') ?>
+<?php require_once('../model/RegisteredCustomer.php') ?>
 
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/customer_handler.js"></script>
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 
 <h2>Manage Customers</h2>
@@ -37,8 +38,8 @@
         <div class="col-md-12 result-table" id="result">
             <?php
             // create an object from Customer class
-            $customers= new Customer();
-            $customer_list = $customers->viewCustomerDetails("*","");
+            $customers= new RegisteredCustomer();
+            $customer_list = $customers->searchCustomerDetails("*","");
             echo $customer_list;
             ?>
         </div>
@@ -46,4 +47,6 @@
 </div>
 
 <?php include('modals/message-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>
 <?php include('modals/view-customer-modal.php'); ?>
+<?php include('modals/delete-modal.php'); ?>

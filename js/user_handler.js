@@ -76,6 +76,10 @@ $('#msg_Modal').on('hidden.bs.modal', function () {
     $('#content').load('manage-users.php');
 });
 
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-users.php');
+});
+
 // change user password
 function onclickChangePassword() {
     var newPassword = document.getElementById("add_password").value;
@@ -107,3 +111,15 @@ function onclickChangePassword() {
         }
     });
 }
+
+
+// load modal to delete user data
+$(document).ready(function (){
+    $(document).on('click','.delete_user',function(){
+        var id = $(this).attr("id");
+        var table = 'user';
+        $('#table_name').val(table);
+        $('#record_id').val(id);
+        $('#delete_Modal').modal('show');
+    });
+});

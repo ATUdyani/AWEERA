@@ -106,6 +106,16 @@ function onclickUpdateService() {
     });
 }
 
+// load modal to delete employee data
+$(document).ready(function (){
+    $(document).on('click','.delete_data',function(){
+        var id = $(this).attr("id");
+        var table = 'service';
+        $('#table_name').val(table);
+        $('#record_id').val(id);
+        $('#delete_Modal').modal('show');
+    });
+});
 
 $('#update_msg_Modal').on('hidden.bs.modal', function () {
     $('#content').load('manage-service.php');

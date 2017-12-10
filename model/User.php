@@ -22,7 +22,7 @@
         }
 
         // add a new user - $new_id is the user_reg_id which can be used to link with other tables
-        public function addUser($first_name,$last_name,$cust_email,$password,$new_id){
+        public function addCustomerUser($first_name, $last_name, $cust_email, $password, $new_id){
 
             // insert the new record to user table
             $query = "INSERT INTO user (first_name, last_name, email, password, type, user_reg_id) VALUES ('".$first_name."', '".$last_name."', '".$cust_email."', '"
@@ -70,9 +70,9 @@
             try{
                 $result = self::$db->executeQuery($query);
                 if ($result){
-                    $query = "UPDATE employee SET is_user = 1 WHERE emp_id ='$id'";
-                    $result_next = self::$db->executeQuery($query);
-                    if ($result){
+                    $employee = new Employee();
+                    $result_employee = $employee -> changeUserStatus($id,'1');
+                    if ($result AND $result_employee){
                         echo "<h4>User successfully added.</h4>";
                     }
                 }
@@ -128,8 +128,8 @@
                         $user_list.= "<td>{$user['email']}</td>";
                         $user_list.= "<td>{$user['last_login']}</td>";
                         $user_list.= "<td>{$user['type']}</td>";
-                        $user_list.= "<td><a class=\"btn btn-success btn-sm change_password\" name=\"change_password\" value=\"change_password\" id=\"{$user['id']}\"><span class=\"glyphicon glyphicon-plus change_password\"></span>  Change Password</a></td>";
-                        $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
+                        $user_list.= "<td><a class=\"btn btn-success btn-sm change_password\" name=\"change_password\" value=\"change_password\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-plus change_password\"></span>  Change Password</a></td>";
+                        $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
                         $user_list.= "</tr>";
                     }
                     $user_list .= "</tbody>
@@ -146,7 +146,7 @@
 
         // get all user data for a particular user id
         public function getUserData($user_id){
-            $query = "SELECT * FROM user WHERE id='".$user_id."'";
+            $query = "SELECT * FROM user WHERE id='".$user_id."' OR user_reg_id='".$user_id."'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_array($result);
@@ -218,6 +218,30 @@
                 }
             }catch (Exception $e){
                 echo $e;
+            }
+        }
+
+        // delete an user record
+        public function deleteUser($record_id){
+            $user = $this -> getUserData($record_id);
+
+            // get user type and check
+            $type = $user['type'];
+            if ($type!='Customer'){
+                $employee = new Employee();
+                $result = $employee -> changeUserStatus($record_id,'0');
+            }
+            else{
+                $result =1; // true by default (for customer deletion)
+            }
+
+            $query = "DELETE FROM user WHERE user_reg_id='".$record_id."'";
+
+            try{
+                $result_user= self::$db->executeQuery($query);
+                return $result AND $result_user;
+            }catch (Exception $e){
+                return $e;
             }
         }
 	}

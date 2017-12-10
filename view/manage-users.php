@@ -6,6 +6,7 @@
 
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/user_handler.js"></script>
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 
 <h2>Manage Users</h2>
@@ -46,4 +47,6 @@
 
 
 <?php include('modals/message-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>
 <?php include('modals/change-password-modal.php'); ?>
+<?php include('modals/delete-modal.php'); ?>

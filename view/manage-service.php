@@ -6,6 +6,7 @@
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/service_handler.js"></script>
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 <h2>Manage Service</h2>
 
@@ -111,5 +112,7 @@
 
 
 <?php include('modals/message-modal.php'); ?>
+<?php include('modals/delete-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>
 <?php include('modals/update-service-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>

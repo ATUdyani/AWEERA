@@ -7,6 +7,7 @@
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/staff_handler.js"></script>
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 <h2>Manage Staff</h2>
 
@@ -268,4 +269,5 @@
 <?php include('modals/update-staff-modal.php'); ?>
 <?php include('modals/add-user-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>
+<?php include('modals/delete-modal.php'); ?>
 

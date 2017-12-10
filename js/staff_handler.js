@@ -62,6 +62,17 @@ $(document).ready(function (){
     });
 });
 
+// load modal to delete employee data
+$(document).ready(function (){
+    $(document).on('click','.delete_data',function(){
+        var id = $(this).attr("id");
+        var table = 'employee';
+            $('#table_name').val(table);
+            $('#record_id').val(id);
+            $('#delete_Modal').modal('show');
+    });
+});
+
 // load modal to add employee as a user
 $(document).ready(function (){
     $(document).on('click','.add_user',function(){
@@ -227,8 +238,8 @@ function onclickAddUser() {
         success: function (data) {
             $('#insert_form')[0].reset();
             $('#add_user_Modal').modal('hide');
-            $('#msg_Modal').modal('show');
-            $('#msg_result').html(data);
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(data);
         }
     });
 }

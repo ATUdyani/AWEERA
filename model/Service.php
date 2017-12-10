@@ -45,7 +45,7 @@
 
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 
@@ -73,42 +73,12 @@
         }
 
 
-        // load service details to a table
-        public function loadServiceDetails(){
-            $service_list ='';
-
-            //getting list of employee items
-            $query = "SELECT * FROM service ORDER BY service_name";
-
-            try{
-                $services = self::$db->executeQuery($query);
-                self::$db->verifyQuery($services);
-
-                while($service = mysqli_fetch_assoc($services)){
-                    $service_list.= "<tr>";
-                    $service_list.= "<td>{$service['service_id']}</td>";
-                    $service_list.= "<td>{$service['service_name']}</td>";
-                    $service_list.= "<td>{$service['service_charge']}</td>";
-                    $service_list.= "<td>{$service['description']}</td>";
-                    $service_list.= "<td>{$service['duration']}</td>";
-                    $service_list.= "<td>{$service['commission_percentage']}</td>";
-                    $service_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                    $service_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
-                    $service_list.= "</tr>";
-                }
-                return $service_list;
-
-            }catch (Exception $e){
-                echo $e;
-            }
-        }
-
         // load service names to checkboxes
         public function loadServiceNames(){
             $service_names ='';
 
             //get list of service names
-            $query = "SELECT * FROM service ORDER BY service_name ASC";
+            $query = "SELECT * FROM service WHERE is_deleted='0' ORDER BY service_name ASC";
 
             try{
                 $services = self::$db->executeQuery($query);
@@ -132,18 +102,18 @@
         public function searchServiceDetails($field,$search_text){
             // load all data on page ready
             if ($field=="*"){
-                $query = "SELECT * FROM service";
+                $query = "SELECT * FROM service WHERE is_deleted='0'";
             }
             elseif ($field=="all"){
-                $query = "SELECT * FROM service WHERE service_id LIKE '%".$search_text
+                $query = "SELECT * FROM service WHERE (service_id LIKE '%".$search_text
                     ."%' OR service_name LIKE '%".$search_text
                     ."%' OR service_charge LIKE '%".$search_text
                     ."%' OR description LIKE '%".$search_text
                     ."%' OR duration LIKE '%".$search_text
-                    ."%' OR commission_percentage LIKE '%".$search_text."%'";
+                    ."%' OR commission_percentage LIKE '%".$search_text."%') AND is_deleted='0'";
             }
             else{
-                $query = "SELECT * FROM service WHERE ".$field." LIKE '%".$search_text."%'";
+                $query = "SELECT * FROM service WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
             }
 
             try{
@@ -176,7 +146,7 @@
                         $service_list.= "<td>{$service['duration']}</td>";
                         $service_list.= "<td>{$service['commission_percentage']}</td>";
                         $service_list.= "<td><a class=\"btn btn-success btn-sm edit_service\" name=\"edit\" value=\"Edit\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                        $service_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        $service_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$service['service_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                         $service_list.= "</tr>";
                     }
                     $service_list .= "</tbody>
@@ -213,7 +183,7 @@
         public function viewAllServiceTypes(){
             $service_types ='';
 
-            $query="SELECT DISTINCT description from service";
+            $query="SELECT DISTINCT description from service WHERE is_deleted='0'";
             try{
                 $services = self::$db->executeQuery($query);
                 self::$db->verifyQuery($services);
@@ -231,7 +201,7 @@
         public function fetchServiceNames($description){
             $service_names ='';
 
-            $query="SELECT * FROM service WHERE description='$description'";
+            $query="SELECT * FROM service WHERE description='$description' AND is_deleted='0'";
 
             $service_names.="<select name=\"select_service_name\" id=\"select_service_name\" class=\"form-control\"><option value=\"\">Select a Service Type</option>";
 
@@ -261,6 +231,18 @@
 
             }catch (Exception $e){
                 echo $e;
+            }
+        }
+
+        // delete a service record
+        public function deleteService($record_id){
+            $query = "UPDATE service SET is_deleted='1' WHERE service_id='".$record_id."'";
+
+            try{
+                $result= self::$db->executeQuery($query);
+                return $result;
+            }catch (Exception $e){
+                return $e;
             }
         }
     }
