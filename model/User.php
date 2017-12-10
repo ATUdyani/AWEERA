@@ -105,7 +105,7 @@
                 $result_set = self::$db->executeQuery($query);
                 self::$db->verifyQuery($result_set);
 
-                $user_list ="<table class=\"table table-hover\">
+                $user_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
                                     <th>First Name</th>

@@ -313,3 +313,7 @@ table{
 .profile-image{
 	height: 120%; width: 120%
 }
+
+.break-words{
+	word-break:break-all;
+}

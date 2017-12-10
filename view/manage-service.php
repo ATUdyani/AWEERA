@@ -39,7 +39,7 @@
                         </ul>
                     </div>
                     <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Search employee here..." id="search_text">
+                    <input type="text" class="form-control" name="x" placeholder="Search service here..." id="search_text">
                 </div>
             </div>
         </div>

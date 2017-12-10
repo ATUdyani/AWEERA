@@ -54,8 +54,8 @@ class StockItem{
         return $stock_list;
     }
 
-    //
-    public function getprducts($product_id){
+
+    /*public function getprducts($product_id){
         $stock_list = '';
 
         $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$product_id$' AND is_deleted='0'";
@@ -71,7 +71,7 @@ class StockItem{
             $stock_list.= "<td><form method='get'></form></td>";
         }
         return $stock_list;
-    }
+    }*/
 
     function addStock(){
         $last_id=self::$db->getLastId('stock_id','stock_item');
@@ -138,8 +138,8 @@ class StockItem{
             echo $e;
         }
     }
-    // view stock details
 
+    // view stock details
     public function viewStockDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
@@ -201,6 +201,7 @@ class StockItem{
         }
     }
 
+    // search stock details
     public function searchStockDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
@@ -233,6 +234,8 @@ class StockItem{
                                     <th>Price</th>
                                     <th>Description</th>
                                     <th>Supplier ID</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>";

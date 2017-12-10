@@ -35,7 +35,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12 result-table" id="result">
+        <div class="col-md-12 result-table break-words" id="result">
             <?php
             // create an object from Customer class
             $customers= new RegisteredCustomer();

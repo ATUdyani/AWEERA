@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="col-md-4 top-buffer">
-                        <input type="text" class="form-control paragraph-font" placeholder="Search customer by name ..." id="search_text_appointment">
+                        <input type="text" class="form-control paragraph-font" placeholder="Search other details ..." id="search_text_appointment">
                     </div>
 
                     <div class="request-icon" onclick="getAppointments('all')">
@@ -53,11 +53,11 @@
 
                 <div class="row">
                     <div class="row ">
-                        <div class="col-md-12 result-table" id="table_results">
+                        <div class="col-md-12 result-table  break-words" id="table_results">
                             <?php
                             // create an object from Appointment class
                             $appointment = new Appointment();
-                            $appointment_list = $appointment->searchAppointmentDetails(date("Y-m-d"),"*");
+                            $appointment_list = $appointment->searchAppointments("*",date("Y-m-d"),"");
                             echo $appointment_list;
                             ?>
                         </div>

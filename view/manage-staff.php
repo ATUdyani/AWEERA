@@ -53,13 +53,13 @@
             </div>
 
             <div class="row">
-                <div class="col-md-12 result-table" id="result">
-                    <?php
-                    // create an object from Employee class
-                    $employee = new Employee();
-                    $employee_list = $employee->searchEmployeeDetails("*","");
-                    echo $employee_list;
-                    ?>
+                <div class="col-md-12 result-table  break-words" id="result">
+                        <?php
+                        // create an object from Employee class
+                        $employee = new Employee();
+                        $employee_list = $employee->searchEmployeeDetails("*","");
+                        echo $employee_list;
+                        ?>
                 </div>
             </div>
 

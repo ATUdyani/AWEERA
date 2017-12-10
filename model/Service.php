@@ -50,7 +50,7 @@
         }
 
         // add a new service
-        function addService(){
+        public function addService(){
             $last_id=self::$db->getLastId('service_id','service');
 
             $id = self::$db->generateId($last_id,"SER");

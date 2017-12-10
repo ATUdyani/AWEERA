@@ -7,10 +7,10 @@
 	class Appointment
     {
 
-        protected static $appointment_id;
-        protected static $appointment_date;
-        protected static $start_time;
-        protected static $end_time;
+        //protected static $appointment_id;
+        //protected static $appointment_date;
+        //protected static $start_time;
+        //protected static $end_time;
         //protected static $payment_id;
         //protected static $cust_id;
         //protected static $service_id;
@@ -385,7 +385,7 @@
         }
 
 
-        // search appointment details - filter by date and emp id
+        // search appointment details - filter by date and emp id - no need
         public function searchAppointmentDetails($date,$emp_id){
             // all dates, all beauticians
             if ($date=="*" && $emp_id=="*"){

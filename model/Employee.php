@@ -218,14 +218,13 @@
                 $result_set = self::$db->executeQuery($query);
                 self::$db->verifyQuery($result_set);
 
-                $employee_list ="<table class=\"table table-hover col-md-12\">
+                $employee_list ="<table class=\"table table-hover col-md-12\";>
                                 <thead>
                                 <tr>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Address</th>
                                     <th>Type</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -242,7 +241,6 @@
                         $employee_list.= "<td>{$employee['last_name']}</td>";
                         $employee_list.= "<td>{$employee['emp_email']}</td>";
                         $employee_list.= "<td>{$employee['emp_phone']}</td>";
-                        $employee_list.= "<td>{$employee['emp_address']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
                         $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
                         $employee_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";

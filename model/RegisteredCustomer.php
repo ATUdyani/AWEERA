@@ -150,7 +150,6 @@
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Address</th>
                                     <th>Date Joined</th>
                                     <th>Edit</th>
                                     <th>Delete</th>
@@ -166,7 +165,6 @@
                         $customer_list.= "<td>{$customer['last_name']}</td>";
                         $customer_list.= "<td>{$customer['cust_email']}</td>";
                         $customer_list.= "<td>{$customer['cust_phone']}</td>";
-                        $customer_list.= "<td>{$customer['cust_address']}</td>";
                         $customer_list.= "<td>{$customer['date_joined']}</td>";
                         $customer_list.= "<td><a class=\"btn btn-info btn-sm view_data\" name=\"view\" value=\"View\" id=\"{$customer['cust_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  View</a></td>";
                         $customer_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$customer['cust_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
