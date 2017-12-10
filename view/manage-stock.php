@@ -7,6 +7,7 @@
 <?php session_start(); ?>
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/StockItem.php') ?>
+<?php require_once('../model/Supplier.php') ?>
 
 <script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
@@ -109,8 +110,14 @@
 
             <div class="form-group row">
                 <label class ="col-md-4 control-label">Suppiler ID</label>
-                <div class="col-md-8">
-                    <input class="form-control" type="text"  id="supplier">
+                <div class="col-md-8 ">
+                    <select name="supplier_id" id="supplier_id" class="form-control" onchange="getAppointments()">
+                        <?php
+                        $supplier = new Supplier();
+                        $supplier_names = $supplier -> fetchSupplierNames();
+                        echo $supplier_names;
+                        ?>
+                    </select>
                 </div>
             </div>
 
@@ -129,7 +136,6 @@
 </div>
 
 <?php include('modals/update-stock-modal.php'); ?>
-
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>
 

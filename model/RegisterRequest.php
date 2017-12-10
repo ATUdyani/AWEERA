@@ -28,10 +28,10 @@ class RegisterRequest
 
 
     // add new register request
-    public function addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$hashed_password){
+    public function addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$rg_gender,$hashed_password){
 
         // query to add new register request
-        $query = "INSERT INTO register_request(first_name,last_name,cust_phone,cust_address,cust_email,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$hashed_password')";
+        $query = "INSERT INTO register_request(first_name,last_name,cust_phone,cust_address,cust_email,cust_gender,password) VALUES ('$rg_first_name','$rg_last_name','$rg_contact_number','$rg_address','$rg_email','$rg_gender','$hashed_password')";
 
         try {
             $result = self::$db->executeQuery($query);

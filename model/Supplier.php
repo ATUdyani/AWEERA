@@ -65,20 +65,26 @@ class Supplier{
         }
     }
 
-    public  function loadSuppilerNameList() {
-        $db = new Database();
-        $connection = $db->connect();
-        $arrSupplier =array();
+    // fetch supplier names
+    public function fetchSupplierNames(){
 
-        //getting list of stock items
-        $query = "SELECT supplier_name, supplier_id FROM supplier ORDER BY supplier_name";
-        $supplierNames = $db->executeQuery($query);
-        $db->verifyQuery($supplierNames);
+        $query="SELECT * FROM supplier";
 
-        while($supplierName = mysqli_fetch_assoc($supplierNames)) {
-            array_push($arrSupplier,$supplierName);
+        $supplier_names ='';
+
+        $supplier_names.="<option value=\"\">Select a Supplier</option>";
+
+        try{
+            $services = self::$db->executeQuery($query);
+            self::$db->verifyQuery($services);
+            while($supplier = mysqli_fetch_assoc($services)){
+                $supplier_names .= "<option value=\"{$supplier['supplier_id']}\">{$supplier['supplier_id']}</option>";
+            }
+            return $supplier_names;
+
+        }catch (Exception $e){
+            echo $e;
         }
-        return $arrSupplier;
     }
 
     public function loadSupplierDetails(){

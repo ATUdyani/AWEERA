@@ -41,7 +41,7 @@ function checkFormStock() {
     formArray.push(document.getElementById("stock_count").value);
     formArray.push(document.getElementById("price").value);
     formArray.push(document.getElementById("description").value);
-    formArray.push(document.getElementById("supplier").value);
+    formArray.push(document.getElementById("supplier_id").value);
     var jsonString = JSON.stringify(formArray);
     $.ajax({
         url: "../controller/add-stock-handler.php", //the page containing php script
@@ -58,9 +58,7 @@ function checkFormStock() {
 // load modal to edit stock data
 $(document).ready(function (){
     $(document).on('click','.edit_data',function(){
-
         var stock_id = $(this).attr("id");
-
         $.ajax({
             url:"../controller/fetch-stock-handler.php",
             method: "post",

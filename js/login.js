@@ -56,10 +56,11 @@ $(function() {
                 var $rg_contact_number=$('#contact_number').val();
                 var $rg_address=$('#address').val();
                 var $rg_email=$('#register_email').val();
+                var $rg_gender=$('#register_gender').val();
                 var $rg_password=$('#register_password').val();
                 var $rg_cpassword=$('#register_cpassword').val();
                 var formArray = [];
-                formArray.push($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$rg_password,$rg_cpassword);
+                formArray.push($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$rg_gender,$rg_password,$rg_cpassword);
 
                 var jsonString = JSON.stringify(formArray);
                 $.ajax({

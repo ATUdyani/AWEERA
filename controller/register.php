@@ -9,15 +9,15 @@ require_once ('functions.php');
 $db = new Database();
 $connection = $db->connect();
 
-
 $data = json_decode(stripslashes($_POST['data']));
 $rg_first_name = $data[0];
 $rg_last_name = $data[1];
 $rg_contact_number = $data[2];
 $rg_address = $data[3];
 $rg_email = $data[4];
-$rg_password = $data[5];
-$rg_cpassword = $data[6];
+$rg_gender = $data[5];
+$rg_password = $data[6];
+$rg_cpassword = $data[7];
 
 // check for submission
 $result =array();
@@ -60,6 +60,30 @@ if(strcmp($rg_password, $rg_cpassword) != 0){
     $errors = 'password doesnt match';
 }
 
+$query = "SELECT * FROM register_request WHERE cust_email='{$rg_email}' LIMIT 1";
+
+$result_set = $db->executeQuery($query);
+
+$emailFlag = false;
+if ($result_set) {
+    if ($db->getNumRows($result_set) == 1) {
+        $errors = 'Your request already send.';
+        $emailFlag=true;
+    }
+}
+
+if (!$emailFlag){
+    $query = "SELECT * FROM registered_customer WHERE cust_email='{$rg_email}' LIMIT 1";
+
+    $result_set = $db->executeQuery($query);
+
+    if ($result_set) {
+        if ($db->getNumRows($result_set) == 1) {
+            $errors = 'You are already user.';
+        }
+    }
+}
+
 // if (!isset($rg_cpassword) || strlen(trim($rg_cpassword)) < 1 ){
 //    $errors[] = 'Invalid user registration';
 // }
@@ -76,6 +100,7 @@ if ($errors == null){
     $rg_contact_number = mysqli_real_escape_string($connection,$rg_contact_number);
     $rg_address = mysqli_real_escape_string($connection,$rg_address);
     $rg_email = mysqli_real_escape_string($connection,$rg_email);
+    $rg_gender=mysqli_real_escape_string($connection,$rg_gender);
     $rg_password = mysqli_real_escape_string($connection,$rg_password);
     $hashed_password = md5($rg_password);
 
@@ -83,7 +108,7 @@ if ($errors == null){
 
     // insert new register request
     $register_request = new RegisterRequest();
-    $result_set = $register_request ->addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$hashed_password);
+    $result_set = $register_request ->addRegisterRequest($rg_first_name,$rg_last_name,$rg_contact_number,$rg_address,$rg_email,$rg_gender,$hashed_password);
 
     if($result_set){
         array_push($result,"success");

@@ -72,6 +72,12 @@
                         <input id="contact_number" class="form-control" type="text" placeholder="Contact Number" maxlength="12" required>
                         <input id="address" class="form-control" type="text" placeholder="Address" required>
                         <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
+                        <div class="form-group">
+                            <select class="form-control" id="register_gender">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
                         <input id="register_password" class="form-control" type="password" placeholder="Password" required>
                         <input id="register_cpassword" class="form-control" type="password" placeholder="Confirm Password" required>
                         <p id="message" style="padding-top:5px;margin-bottom: 0px;"></p>
