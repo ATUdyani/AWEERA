@@ -1,6 +1,8 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Employee.php' ?>
 <?php require_once '../model/RegisteredCustomer.php' ?>
+<?php require_once '../model/StockItem.php' ?>
+<?php require_once '../model/Supplier.php' ?>
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/User.php' ?>
 
@@ -27,6 +29,15 @@ elseif ($table_name=='service'){
     $service = new Service();
     $result = $service -> deleteService($record_id);
 }
+elseif ($table_name=='stock_item'){
+    $stock = new StockItem();
+    $result = $stock -> deleteStock($record_id);
+}
+elseif ($table_name=='supplier'){
+    $supplier = new Supplier();
+    $result = $supplier -> deleteSupplier($record_id);
+}
+
 
 if ($result){
     echo "<h4>Record Deleted Successfully</h4>";

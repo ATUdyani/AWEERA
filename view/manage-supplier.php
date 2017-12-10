@@ -8,11 +8,10 @@
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/Supplier.php') ?>
 
-<script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/supplier_handler.js"></script>
-
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 <h2>Manage Supplier</h2>
 
@@ -114,7 +113,7 @@
 </div>
 
 <?php include('modals/update-supplier-modal.php'); ?>
-
+<?php include('modals/delete-modal.php'); ?>
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>
 

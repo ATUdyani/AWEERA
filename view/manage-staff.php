@@ -3,7 +3,6 @@
 <?php require_once('../model/Employee.php') ?>
 <?php require_once('../model/Service.php') ?>
 
-<script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/staff_handler.js"></script>

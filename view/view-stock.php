@@ -3,9 +3,6 @@
 <?php require_once('../model/StockItem.php') ?>
 
 
-<!-- jQuery -->
-<script type="text/javascript" src="../js/check_form.js"></script>
-
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 

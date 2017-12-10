@@ -2,8 +2,6 @@
 <?php require_once('../model/Database.php') ?>
 <?php require_once('../model/User.php') ?>
 
-<script type="text/javascript" src="../js/check_form.js"></script>
-
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/user_handler.js"></script>
 <script type="text/javascript" src="../js/delete_handler.js"></script>

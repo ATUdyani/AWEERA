@@ -22,7 +22,3 @@ function notDeleteRecord() {
     $('#delete_Modal').modal('hide');
 }
 
-$('#msg_Modal').on('hidden.bs.modal', function () {
-    //refresh the content of the div
-    // $('#content').load('manage-users.php');
-});

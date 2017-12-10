@@ -125,7 +125,6 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <!-- /.container -->
 
 
-    <?php include('modals/select-customer-modal.php'); ?>
     <?php include('modals/message-modal.php'); ?>
 
     <!-- jQuery -->

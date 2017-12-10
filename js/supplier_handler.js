@@ -126,3 +126,14 @@ $(function () {
 $('#update_msg_Modal').on('hidden.bs.modal', function () {
     $('#content').load('manage-supplier.php');
 });
+
+// load modal to delete stock data
+$(document).ready(function (){
+    $(document).on('click','.delete_data',function(){
+        var id = $(this).attr("id");
+        var table = 'supplier';
+        $('#table_name').val(table);
+        $('#record_id').val(id);
+        $('#delete_Modal').modal('show');
+    });
+});

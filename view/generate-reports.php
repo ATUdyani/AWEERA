@@ -1,7 +1,6 @@
 <?php session_start(); ?>
 <?php require_once('../model/Database.php') ?>
 
-<script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/report_handler.js"></script>
 

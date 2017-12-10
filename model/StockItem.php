@@ -35,7 +35,7 @@ class StockItem{
         $stock_list ='';
 
         //getting list of stock items
-        $query = "SELECT * FROM stock_item ORDER BY type";
+        $query = "SELECT * FROM stock_item WHERE is_deleted='0' ORDER BY type";
         $stocks = self::$db->executeQuery($query);
 
         self::$db->verifyQuery($stocks);
@@ -58,7 +58,7 @@ class StockItem{
     public function getprducts($product_id){
         $stock_list = '';
 
-        $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$product_id$'";
+        $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$product_id$' AND is_deleted='0'";
         $stocks = self::$db->executeQuery($query);
 
         self::$db->verifyQuery($stocks);
@@ -98,8 +98,8 @@ class StockItem{
             echo $e;
         }
     }
-    // search stock payment details
 
+    // search stock payment details
     public function searchStockPaymentDetails($field,$search_text){
         $query = "SELECT stock_brand , type , price FROM stock_item WHERE ".$field." LIKE '%".$search_text."%'";
         try{
@@ -143,19 +143,19 @@ class StockItem{
     public function viewStockDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
-            $query = "SELECT * FROM stock_item";
+            $query = "SELECT * FROM stock_item WHERE is_deleted='0'";
         }
         elseif ($field=="all"){
-            $query = "SELECT * FROM stock_item WHERE stock_id LIKE '%".$search_text
+            $query = "SELECT * FROM stock_item WHERE (stock_id LIKE '%".$search_text
                 ."%' OR stock_brand LIKE '%".$search_text
                 ."%' OR type LIKE '%".$search_text
                 ."%' OR stock_count LIKE '%".$search_text
                 ."%' OR price LIKE '%".$search_text
                 ."%' OR description LIKE '%".$search_text
-                ."%' OR supplier_id LIKE '%".$search_text."%'";
+                ."%' OR supplier_id LIKE '%".$search_text."%') AND is_deleted='0'";
         }
         else{
-            $query = "SELECT * FROM stock_item WHERE ".$field." LIKE '%".$search_text."%'";
+            $query = "SELECT * FROM stock_item WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
         }
 
         try{
@@ -204,19 +204,19 @@ class StockItem{
     public function searchStockDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
-            $query = "SELECT * FROM stock_item";
+            $query = "SELECT * FROM stock_item WHERE is_deleted='0'";
         }
         elseif ($field=="all"){
-            $query = "SELECT * FROM stock_item WHERE stock_id LIKE '%".$search_text
+            $query = "SELECT * FROM stock_item WHERE (stock_id LIKE '%".$search_text
                 ."%' OR stock_brand LIKE '%".$search_text
                 ."%' OR type LIKE '%".$search_text
                 ."%' OR stock_count LIKE '%".$search_text
                 ."%' OR price LIKE '%".$search_text
                 ."%' OR description LIKE '%".$search_text
-                ."%' OR supplier_id LIKE '%".$search_text."%'";
+                ."%' OR supplier_id LIKE '%".$search_text."%') AND is_deleted='0'";
         }
         else{
-            $query = "SELECT * FROM stock_item WHERE ".$field." LIKE '%".$search_text."%'";
+            $query = "SELECT * FROM stock_item WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
         }
 
         try{
@@ -249,7 +249,7 @@ class StockItem{
                     $stock_list.= "<td>{$stock['description']}</td>";
                     $stock_list.= "<td>{$stock['supplier_id']}</td>";
                     $stock_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$stock['stock_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                    $stock_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$stock['stock_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                    $stock_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$stock['stock_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $stock_list.= "</tr>";
                 }
                 $stock_list .= "</tbody>
@@ -284,6 +284,7 @@ class StockItem{
 
     }
 
+    // get details about a particular stock item
     public function getStockData($stock_id){
         $query = "SELECT * FROM stock_item WHERE stock_id='".$stock_id."'";
         try{
@@ -298,7 +299,17 @@ class StockItem{
         }
     }
 
+    // delete a stock record
+    public function deleteStock($record_id){
+        $query = "UPDATE stock_item SET is_deleted='1' WHERE stock_id='".$record_id."'";
 
+        try{
+            $result= self::$db->executeQuery($query);
+            return $result;
+        }catch (Exception $e){
+            return $e;
+        }
+    }
 
 }
 

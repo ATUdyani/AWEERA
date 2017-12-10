@@ -68,7 +68,7 @@ class Supplier{
     // fetch supplier names
     public function fetchSupplierNames(){
 
-        $query="SELECT * FROM supplier";
+        $query="SELECT * FROM supplier WHERE is_deleted='0'";
 
         $supplier_names ='';
 
@@ -93,7 +93,7 @@ class Supplier{
         $supplier_list ='';
 
         //getting list of stock items
-        $query = "SELECT * FROM supplier ORDER BY supplier_name";
+        $query = "SELECT * FROM supplier ORDER BY supplier_name WHERE is_deleted='0'";
         $suppliers = $db->executeQuery($query);
 
         $db->verifyQuery($suppliers);
@@ -116,17 +116,17 @@ class Supplier{
     public function viewSupplierDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
-            $query = "SELECT * FROM supplier";
+            $query = "SELECT * FROM supplier WHERE is_deleted='0'";
         }
         elseif ($field=="all"){
-            $query = "SELECT * FROM supplier WHERE supplier_id LIKE '%".$search_text
+            $query = "SELECT * FROM supplier WHERE (supplier_id LIKE '%".$search_text
                 ."%' OR supplier_name LIKE '%".$search_text
                 ."%' OR supplier_phone LIKE '%".$search_text
                 ."%' OR supplier_address LIKE '%".$search_text
-                ."%' OR supplier_email LIKE '%".$search_text."%'";
+                ."%' OR supplier_email LIKE '%".$search_text."%') AND is_deleted='0'";
         }
         else{
-            $query = "SELECT * FROM supplier WHERE ".$field." LIKE '%".$search_text."%'";
+            $query = "SELECT * FROM supplier WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
         }
 
         try{
@@ -155,7 +155,7 @@ class Supplier{
                     $supplier_list.= "<td>{$supplier['supplier_address']}</td>";
                     $supplier_list.= "<td>{$supplier['supplier_email']}</td>";
                     $supplier_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                    $supplier_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                    $supplier_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $supplier_list.= "</tr>";
                 }
                 $supplier_list .= "</tbody>
@@ -174,17 +174,17 @@ class Supplier{
     public function searchSupplierDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
-            $query = "SELECT * FROM supplier";
+            $query = "SELECT * FROM supplier WHERE is_deleted='0'";
         }
         elseif ($field=="all"){
-            $query = "SELECT * FROM supplier WHERE supplier_id LIKE '%".$search_text
+            $query = "SELECT * FROM supplier WHERE (supplier_id LIKE '%".$search_text
                 ."%' OR supplier_name LIKE '%".$search_text
                 ."%' OR supplier_phone LIKE '%".$search_text
                 ."%' OR supplier_address LIKE '%".$search_text
-                ."%' OR supplier_email LIKE '%".$search_text ."%'";
+                ."%' OR supplier_email LIKE '%".$search_text ."%') AND is_deleted='0'";
         }
         else{
-            $query = "SELECT * FROM supplier WHERE ".$field." LIKE '%".$search_text."%'";
+            $query = "SELECT * FROM supplier WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
         }
 
         try{
@@ -216,7 +216,7 @@ class Supplier{
                     $supplier_list.= "<td>{$supplier['supplier_address']}</td>";
                     $supplier_list.= "<td>{$supplier['supplier_email']}</td>";
                     $supplier_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                    $supplier_list.= "<td><a class=\"btn btn-danger btn-sm\" name=\"delete\" value=\"Delete\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                    $supplier_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $supplier_list.= "</tr>";
                 }
                 $supplier_list .= "</tbody>
@@ -249,6 +249,17 @@ class Supplier{
 
     }
 
+    // delete a stock record
+    public function deleteSupplier($record_id){
+        $query = "UPDATE supplier SET is_deleted='1' WHERE supplier_id='".$record_id."'";
+
+        try{
+            $result= self::$db->executeQuery($query);
+            return $result;
+        }catch (Exception $e){
+            return $e;
+        }
+    }
 }
 
 ?>

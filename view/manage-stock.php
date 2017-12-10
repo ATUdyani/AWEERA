@@ -9,10 +9,10 @@
 <?php require_once('../model/StockItem.php') ?>
 <?php require_once('../model/Supplier.php') ?>
 
-<script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/stock_handler.js"></script>
+<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 
 <h2>Manage Stock</h2>
@@ -136,6 +136,7 @@
 </div>
 
 <?php include('modals/update-stock-modal.php'); ?>
+<?php include('modals/delete-modal.php'); ?>
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>
 

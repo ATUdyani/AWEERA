@@ -19,10 +19,10 @@
                         <div class="col-md-6">
                             <input type="hidden" name="record_id" id="record_id" />
                             <input type="hidden" name="table_name" id="table_name" />
-                            <input type="button" onclick="deleteRecord()" name="accept" id="yes" value="Yes" class="btn btn-success my-lg-button-success" />
+                            <input type="button" onclick="deleteRecord()" name="accept" id="yes" value="Yes" class="btn btn-danger my-lg-button-danger" />
                         </div>
                         <div class="col-md-6">
-                            <input type="button" onclick="notDeleteRecord()" name="no" id="no" value="No" class="btn btn-danger my-lg-button-danger" />
+                            <input type="button" onclick="notDeleteRecord()" name="no" id="no" value="No" class="btn btn-success my-lg-button-success" />
                         </div>
                     </div>
 
@@ -31,25 +31,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // change comment status
-    function commentStatus(status){
-        var appointmentId = document.getElementById('appointment_id').value;
-        $.ajax({
-            url:'../controller/update-comment-status-handler.php',
-            type: "POST", //request type
-            data: {appointment_id: appointmentId, status : status},
-            cache: false,
-            success:function(result){
-                $('#view_comments_Modal').modal('hide');
-                $('#msg_Modal').modal('show');
-                $('#msg_result').html(result);
-            }
-        });
-    }
-
-    $('#msg_Modal').on('hidden.bs.modal', function () {
-        $('#content').load('manage-comments.php');
-    });
-</script>
