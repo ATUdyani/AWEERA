@@ -1,7 +1,7 @@
 /* Visit http://www.menucool.com/responsive-slider for instructions */
 @font-face{
-    font-family: myfont;
-    src: url('../fonts/constantine.ttf');
+    font-family: bodyfont;
+    src: url('../fonts/Merriweather-Regular.ttf');
 }
 
 #ninja-slider {
@@ -73,8 +73,8 @@
 /*---------- Captions -------------------*/
 
 #ninja-slider .caption {
-    font-size:7em;
-    font-family: 'Raleway','Bree Serif', sans-serif;
+    font-size:4em;
+    font-family: bodyfont;
     position:absolute;
     width:100%;
     text-align:center;
