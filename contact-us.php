@@ -21,7 +21,7 @@
         <p><i class="fa fa-phone"></i>
             <abbr title="Phone">P</abbr>: 0112727285</p>
         <p><i class="fa fa-envelope-o"></i>
-            <abbr title="Email">E</abbr>: <a href="mailto:aweerahairandbeauty@gmail.com">aweerahairandbeauty@gmail.com</a>
+            <abbr title="Email">E</abbr>: <a href="mailto:hairbyaweera@yahoo.com">hairbyaweera@yahoo.com</a>
         </p>
         <p><i class="fa fa-clock-o"></i>
             <abbr title="Hours">H</abbr>: Monday - Saturday: 9:00 AM to 7:00 PM</p>

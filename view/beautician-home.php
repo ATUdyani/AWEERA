@@ -74,8 +74,8 @@ if(!isset($_SESSION['user_id'])){
                 <nav class="my-sidebar">
                     <ul class="nav">
                         <li><a href="#" onclick="window.location.reload()" class="my-sidebar-menu-item">Today's Schedule</a></li>
-                        <li><a href="beautician/beautician-upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
-                        <li><a href="beautician/beautician-appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
+                        <li><a href="beautician-upcoming-appointments.php" class="my-sidebar-menu-item">Upcoming Appointments</a></li>
+                        <li><a href="beautician-appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
                     </ul>
                 </nav>
             </div>

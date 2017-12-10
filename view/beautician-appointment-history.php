@@ -1,9 +1,9 @@
 <?php session_start() ?>
 
-<?php require_once('../../model/Beautician.php') ?>
+<?php require_once('../model/Beautician.php') ?>
 
 
-<h2>Upcoming Appointments</h2>
+<h2>Appointment History</h2>
 <br>
 
 <div class="row">
@@ -11,7 +11,7 @@
         <?php
         // create an object from Appointment class
         $beautician = new Beautician();
-        $appointment_list = $beautician->loadUpcomingAppointments($_SESSION['user_reg_id']);
+        $appointment_list = $beautician->loadAppointmentHistory($_SESSION['user_reg_id']);
         echo $appointment_list;
         ?>
     </div>

@@ -18,7 +18,7 @@
     /*height: 500px;*/
 }
 
-#login-modal input[type=text], input[type=password] {
+#login-modal input[type=text], input[type=password]{
     margin-top: 10px;
 }
 
@@ -166,6 +166,13 @@
     background-color:#212121 ;
     border-color: #a4a4a4;
     color: #e0e0e0;
+}
+
+.gender-selector{
+    background-color:#212121 ;
+    border-color: #a4a4a4;
+    color: #e0e0e0;
+    margin-top: 10px;
 }
 
 #icon-login-msg, #icon-lost-msg, #icon-register-msg{

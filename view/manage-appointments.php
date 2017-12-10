@@ -95,7 +95,7 @@
             </div>
 
             <div class="row">
-                <div class="result-table col-md-12 " id="result">
+                <div class="result-table col-md-12 break-words" id="result">
                     <?php
                     // create an object from Customer class
                     $customer = new RegisteredCustomer();

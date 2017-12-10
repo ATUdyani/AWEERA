@@ -601,7 +601,7 @@ FROM appointment a,service s WHERE appointment_date='".$date."' AND a.service_id
         public function countAppointmentsCustomer($cust_id){
             $date = date("Y-m-d");
             // query to count appointments for a particular day
-            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date='".$date."'";
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date>='".$date."'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_array($result);

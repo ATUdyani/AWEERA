@@ -73,7 +73,7 @@
                         <input id="address" class="form-control" type="text" placeholder="Address" required>
                         <input id="register_email" class="form-control" type="text" placeholder="E-Mail" required>
                         <div class="form-group">
-                            <select class="form-control" id="register_gender">
+                            <select class="form-control gender-selector" id="register_gender">
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                             </select>
