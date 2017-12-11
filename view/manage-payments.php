@@ -12,7 +12,7 @@
 <h2>Payment Management</h2>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#appointment-payments" role="tab" aria-controls="appointment-payments">Appointment Payments</a>
+        <a class="nav-link active" data-toggle="tab" href="#appointment-payments" role="tab" aria-controls="appointment-payments">Appointments Payments</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#product-payments" role="tab" aria-controls="product-payments">Product Payments</a>
@@ -95,7 +95,7 @@
                         </ul>
                     </div>
                     <input type="hidden" name="search_param" value="all" id="search_param">
-                    <input type="text" class="form-control" name="x" placeholder="Search here..." id="search_text">
+                    <input type="text" class="form-control" name="x" placeholder="Search here..." id="search_text1">
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <?php
                 // create an object from StockItem class
                 $stockItem = new StockItem();
-                $stockItem_list = $stockItem->stockPayment("*","");
+                $stockItem_list = $stockItem->viewstock("*","");
                 echo $stockItem_list;
                 ?>
             </div>

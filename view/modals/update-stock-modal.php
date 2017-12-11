@@ -49,16 +49,14 @@
 
                     <div class="form-group row">
                         <label for="example-tel-input" class="col-md-4 col-form-label">Supplier</label>
-                        <div class="col-md-8">
-                            <div class="col-md-8 ">
-                                <select name="update_supplier_id" id="update_supplier_id" class="form-control" onchange="getAppointments()">
-                                    <?php
-                                    $supplier = new Supplier();
-                                    $supplier_names = $supplier -> fetchSupplierNames();
-                                    echo $supplier_names;
-                                    ?>
-                                </select>
-                            </div>
+                        <div class="col-md-8 ">
+                            <select name="update_supplier_id" id="update_supplier_id" class="form-control" onchange="getAppointments()">
+                                <?php
+                                $supplier = new Supplier();
+                                $supplier_names = $supplier -> fetchSupplierNames();
+                                echo $supplier_names;
+                                ?>
+                            </select>
                         </div>
                     </div>
 

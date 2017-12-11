@@ -314,6 +314,56 @@ class StockItem{
         }
     }
 
+
+    function viewstock($field,$search_text){
+        if ($field=="*"){
+            $query = "SELECT * FROM stock_item WHERE stock_count <> 0";
+        }
+        elseif ($field=="all"){
+            $query = "SELECT * FROM stock_item WHERE stock_id LIKE '%".$search_text."%' OR stock_brand LIKE '%".$search_text."%' OR type LIKE '%".$search_text."%' AND stock_count <> 0";
+        }
+        else{
+            $query = "SELECT * FROM stock_item WHERE ".$field." LIKE '%".$search_text."%' AND stock_count <> 0";
+        }
+        try{
+            $result_set = self::$db->executeQuery($query);
+            self::$db->verifyQuery($result_set);
+
+            $stock_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>Product Brand</th>
+                                    <th>Product Type</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+            if (self::$db->getNumRows($result_set)>0){
+                while($stock = mysqli_fetch_assoc($result_set)){
+                    $index = $stock['stock_id'];
+                    $stock_count = $stock['stock_count'];
+                    $stock_list.= "<tr>";
+                    $stock_list.= "<td id='pbrand_$index'>{$stock['stock_brand']}</td>";
+                    $stock_list.= "<td id='ptype_$index'>{$stock['type']}</td>";
+                    $stock_list.= "<td id='pdescription_$index'>{$stock['description']}</td>";
+                    $stock_list.= "<td id='pprice_$index'>{$stock['price']}</td>";
+                    $stock_list.= "<td id='addbtn_$index'><button onclick=\"addToProductCart('$index','$stock_count')\" class=\"btn btn-success btn-sm fa fa fa-shopping-cart add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon\"></span> Add Cart </button></td>";
+                    $stock_list.= "</tr>";
+                }
+                $stock_list .= "</tbody>
+                                    </table>";
+                echo $stock_list;
+            }
+            else{
+                echo "<p><i>No Search Results Found<i/></p>";
+            }
+        }catch (Exception $e){
+            echo $e;
+        }
+    }
+
 }
 
 ?>

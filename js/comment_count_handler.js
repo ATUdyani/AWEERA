@@ -4,9 +4,10 @@ setInterval(function(){
         url:'../controller/comment-count-handler.php',
         type: "POST",
         data : "",
-        success: function(data)
-        {
-            $('#comment_count').html(data+" NEW");
+        success: function(data) {
+            if (data!=0){
+                $('#comment_count').html(data+" NEW");
+            }
             //alert(data);
         }
     });

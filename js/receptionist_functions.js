@@ -6,8 +6,9 @@ setInterval(function(){
         data : "",
         success: function(data)
         {
-            $('#request_count').html(data+" NEW");
-            //alert(data);
+            if (data!=0){
+                $('#request_count').html(data+" NEW");
+            }
         }
     });
 },3000);

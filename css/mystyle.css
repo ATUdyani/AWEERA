@@ -245,6 +245,10 @@ table{
 	margin-top:2%;
 }
 
+.top-buffer-hard {
+	margin-top:5%;
+}
+
 .right-buffer {
 	margin-right:20px;
 }
