@@ -4,6 +4,11 @@
 }
 
 @font-face{
+    font-family: bodyfont;
+    src: url('../fonts/Merriweather-Regular.ttf');
+}
+
+@font-face{
     font-family: paragraphfont;
     src: url('../fonts/cantora.ttf');
 }
@@ -213,9 +218,9 @@
 
 .logout-content p{
     color: #fff;
-    font-family: paragraphfont ;
+    font-family: bodyfont ;
 }
 
 .logout-content .name-tag{
-    font-size: 120%;
+    font-size: 110%;
 }
