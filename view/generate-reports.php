@@ -1,6 +1,8 @@
 <?php session_start(); ?>
 <?php require_once('../model/Database.php') ?>
+<?php require_once('../model/Beautician.php') ?>
 
+<script type="text/javascript" src="../js/check_form.js"></script>
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/report_handler.js"></script>
 
@@ -19,14 +21,9 @@
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#monthly_collection" role="tab" aria-controls="add-recep">Monthly Collection</a>
     </li>
+
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#daily_commissions" role="tab" aria-controls="add-recep">Daily Commissions</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#monthly_commissions" role="tab" aria-controls="add-recep">Monthlly Commissions</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#customer_history" role="tab" aria-controls="add-recep">Customer History</a>
+        <a class="nav-link" data-toggle="tab" href="#daily_beautician_commissions" role="tab" aria-controls="daily_beautician_commissions">Daily Beautician Commissions</a>
     </li>
 </ul>
 
@@ -42,6 +39,39 @@
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
+                            </small>
+                        </h4>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade active" id="daily_beautician_commissions" role="tabpanel">
+        <div class="row">
+            <div class="main col-md-10">
+                <form action="../controller/daily-commission-beautician.php" target="_blank" method="post" class="userform" id="monthly_commissions_form">
+                    <div class="form-group row">
+
+                        <h4>
+                            Select Employee
+                            <small>
+
+                                    <select name="select_beautician_name" id="select_beautician_name" class="form-control paragraph-font" onchange="getAppointments('')">
+                                        <?php
+                                        $beautician = new Beautician();
+                                        $beautician_names = $beautician -> fetchBeauticianNames("*");
+                                        echo $beautician_names;
+                                        ?>
+                                    </select>
+
+
+                                <input  class="form-control" type="date"  id="rdate" name="rdate"
+                                        value="<?php echo date("m-Y");?>">
                             </small>
                         </h4>
                     </div>
@@ -182,6 +212,8 @@
             </div>
         </div>
     </div>
+
+
 
     <div class="tab-pane fade active" id="customer_history" role="tabpanel">
         <div class="row">

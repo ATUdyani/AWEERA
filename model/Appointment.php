@@ -612,6 +612,76 @@ FROM appointment a,service s WHERE appointment_date='".$date."' AND a.service_id
                 echo $e;
             }
         }
+
+        // view appointment details
+        public function viewAppointmentPaymentDetails($field, $search_text){
+            // load appointment_id, appointment_date, appointment_time data on page ready
+            $today = date("Y-m-d"); // to get today
+
+
+
+            if ($field=="*"){
+
+                $query = "SELECT appointment.appointment_id , customer.first_name , customer.last_name , service.service_name , service.service_charge 
+FROM appointment INNER JOIN customer ON appointment.cust_id = customer.cust_id 
+INNER JOIN service ON appointment.service_id = service.service_id WHERE appointment.payment_id = 'none' AND appointment.appointment_date='".$today."'";
+            }
+            elseif ($field=="all"){
+                $query = "SELECT appointment.appointment_id , customer.first_name , customer.last_name , service.service_name , service.service_charge FROM appointment INNER JOIN customer ON appointment.cust_id = customer.cust_id INNER JOIN service ON appointment.service_id = service.service_id WHERE (customer.first_name LIKE '%".$search_text
+                    ."%' OR customer.last_name LIKE '%".$search_text ."%') AND appointment.payment_id = 'none' AND appointment.appointment_date='".$today."' ";
+
+            }
+            else{
+                $query = "SELECT appointment.appointment_id , customer.first_name , customer.last_name , service.service_name , service.service_charge 
+FROM appointment INNER JOIN customer ON appointment.cust_id = customer.cust_id 
+INNER JOIN service ON appointment.service_id = service.service_id WHERE "
+                    .$field." LIKE '%".$search_text."%' AND appointment.payment_id = 'none' AND appointment.appointment_date='".$today."'";
+            }
+
+            try{
+                $result_set = self::$db->executeQuery($query);
+                self::$db->verifyQuery($result_set);
+
+                $appointment_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Service Name</th>
+                                    <th>Service Charge</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+                if (self::$db->getNumRows($result_set)>0){
+                    //$index = 0;
+                    while($appointment = mysqli_fetch_assoc($result_set)){
+                        $index = $appointment['appointment_id'];
+
+
+                        $appointment_list.= "<tr>";
+                        $appointment_list.= "<td id='fname_$index'>{$appointment['first_name']}</td>";
+                        $appointment_list.= "<td id='lname_$index'>{$appointment['last_name']}</td>";
+                        $appointment_list.= "<td id='sname_$index'>{$appointment['service_name']}</td>";
+                        $appointment_list.= "<td id='scharge_$index'>{$appointment['service_charge']}</td>";
+
+                        $appointment_list.= "<td id='addbtn_$index'><button onclick=\"addToCart('$index')\" class=\"btn btn-success btn-sm fa fa-plus add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon\"></span> ADD </button></td>";
+
+                        $appointment_list.= "</tr>";
+
+                        //$index = $index+1;
+                    }
+                    $appointment_list .= "</tbody>
+                                    </table>";
+                    echo $appointment_list;
+                }
+                else{
+                    echo "<p><i>No Search Results Found</i></p>";
+                }
+            }catch (Exception $e){
+                echo $e;
+            }
+        }
     }
 
 
