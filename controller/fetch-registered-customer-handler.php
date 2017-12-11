@@ -1,4 +1,4 @@
-<?php require_once '../model/Customer.php' ?>
+<?php require_once '../model/RegisteredCustomer.php' ?>
 
 <?php
 /**
@@ -10,7 +10,7 @@
 
 // check whether customer id is not empty
 if (isset($_POST["cust_id"])){
-    $customer = new Customer();
+    $customer = new RegisteredCustomer();
     $row = $customer -> getCustomerData($_POST["cust_id"]);
     echo json_encode($row);
 }

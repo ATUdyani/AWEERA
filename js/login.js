@@ -79,6 +79,16 @@ $(function() {
                         if (recievedResult =="success"){
                             // window.location.href = result;
                             msgChange($('#div-register-msg'), $('#icon-register-msg'), $('#text-register-msg'), "success", "glyphicon-ok", result[1]);
+                            $('#first_name').val("");
+                            $('#last_name').val("");
+                            $('#contact_number').val("");
+                            $('#address').val("");
+                            $('#register_email').val("");
+                            $('#register_gender').val("Male");
+                            $('#register_password').val("");
+                            $('#register_cpassword').val("");
+                            $('#message').html("");
+
                             //alert("success");
                         }
                     }

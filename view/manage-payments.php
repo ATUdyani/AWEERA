@@ -12,7 +12,7 @@
 <h2>Payment Management</h2>
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#appointment-payments" role="tab" aria-controls="appointment-payments">Appointments Payments</a>
+        <a class="nav-link active" data-toggle="tab" href="#appointment-payments" role="tab" aria-controls="appointment-payments">Appointment Payments</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#product-payments" role="tab" aria-controls="product-payments">Product Payments</a>

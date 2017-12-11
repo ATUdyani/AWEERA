@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Login</button>
                         </div>
                         <div>
-                            <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                            <!--<button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>-->
                             <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         </div>
                         <div style="padding-bottom:10px;">
                             <button id="register_login_btn" type="button" class="btn btn-link">Log In</button>
-                            <button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
+                            <!--<button id="register_lost_btn" type="button" class="btn btn-link">Lost Password?</button>-->
                         </div>
                     </div>
                 </form>

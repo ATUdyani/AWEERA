@@ -36,7 +36,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Date
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -57,8 +57,8 @@
             <div class="main col-md-10">
                 <form action="../controller/daily-commission-beautician.php" target="_blank" method="post" class="userform" id="monthly_commissions_form">
                     <div class="form-group row">
-
-                        <h4>
+                        
+                        <h4 class="col-md-4 ">
                             Select Employee
                             <small>
 
@@ -69,14 +69,15 @@
                                         echo $beautician_names;
                                         ?>
                                     </select>
-
+                                    <br>
+                                    
 
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("m-Y");?>">
                             </small>
                         </h4>
                     </div>
-
+                
                     <div class="col-md-4">
                         <input name="submit" type="submit" value="Print" class="btn btn-primary col-md-2 my-button-action my-lg-button"></input>
                     </div>
@@ -92,7 +93,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Date
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -115,7 +116,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Date
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("Y-m-d");?>">
@@ -138,7 +139,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Date 
-                            <hr>
+                            
                             <small>
                                 From:
                                 <input  class="form-control" type="date"  id="fromdate" name="fromdate"
@@ -168,7 +169,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select a Beautician
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo date("m-Y");?>">
@@ -198,7 +199,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Employee
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="date"  id="rdate" name="rdate"
                                         value="<?php echo month("m-Y");?>">
@@ -230,7 +231,7 @@
                     <div class="form-group row">
                         <h4 class="col-md-4">
                             Select Customer
-                            <hr>
+                            
                             <small>
                                 <input  class="form-control" type="month"  id="rdate" name="rdate"
                                         value="<?php echo month("m-Y");?>">

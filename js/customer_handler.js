@@ -38,7 +38,7 @@ $(document).ready(function (){
     $(document).on('click','.view_data',function(){
         var cust_id = $(this).attr("id");
         $.ajax({
-            url:"../controller/fetch-customer-handler.php",
+            url:"../controller/fetch-registered-customer-handler.php",
             method: "post",
             data: {cust_id:cust_id},
             dataType: "json",
