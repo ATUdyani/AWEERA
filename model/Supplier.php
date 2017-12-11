@@ -154,6 +154,61 @@ class Supplier{
                     $supplier_list.= "<td>{$supplier['supplier_phone']}</td>";
                     $supplier_list.= "<td>{$supplier['supplier_address']}</td>";
                     $supplier_list.= "<td>{$supplier['supplier_email']}</td>";
+                    $supplier_list.= "</tr>";
+                }
+                $supplier_list .= "</tbody>
+                                    </table>";
+                echo $supplier_list;
+            }
+            else{
+                echo "<p><i>No Search Results Found</i></p>";
+            }
+        }catch (Exception $e){
+            echo $e;
+        }
+    }
+
+    public function manageSupplierDetails($field,$search_text){
+        // load all data on page ready
+        if ($field=="*"){
+            $query = "SELECT * FROM supplier WHERE is_deleted='0'";
+        }
+        elseif ($field=="all"){
+            $query = "SELECT * FROM supplier WHERE (supplier_id LIKE '%".$search_text
+                ."%' OR supplier_name LIKE '%".$search_text
+                ."%' OR supplier_phone LIKE '%".$search_text
+                ."%' OR supplier_address LIKE '%".$search_text
+                ."%' OR supplier_email LIKE '%".$search_text."%') AND is_deleted='0'";
+        }
+        else{
+            $query = "SELECT * FROM supplier WHERE ".$field." LIKE '%".$search_text."%' AND is_deleted='0'";
+        }
+
+        try{
+            $result_set = self::$db->executeQuery($query);
+            self::$db->verifyQuery($result_set);
+
+            $supplier_list ="<table class=\"table table-hover col-md-12\">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Address</th>
+                                    <th>Email</th>
+                                </tr>
+                                </thead>
+                                <tbody>";
+
+            if (self::$db->getNumRows($result_set)>0){
+                while($supplier = mysqli_fetch_assoc($result_set)){
+
+                    $supplier_list.= "<tr>";
+                    $supplier_list.= "<td>{$supplier['supplier_id']}</td>";
+                    $supplier_list.= "<td>{$supplier['supplier_name']}</td>";
+                    $supplier_list.= "<td>{$supplier['supplier_phone']}</td>";
+                    $supplier_list.= "<td>{$supplier['supplier_address']}</td>";
+                    $supplier_list.= "<td>{$supplier['supplier_email']}</td>";
                     $supplier_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
                     $supplier_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$supplier['supplier_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $supplier_list.= "</tr>";

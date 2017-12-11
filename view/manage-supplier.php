@@ -53,7 +53,7 @@
                     <?php
                     // create an object from StockItem class
                     $supplier= new Supplier();
-                    $supplier_list = $supplier->viewSupplierDetails("*","");
+                    $supplier_list = $supplier->manageSupplierDetails("*","");
                     echo $supplier_list;
                     ?>
                 </div>
