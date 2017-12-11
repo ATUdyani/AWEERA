@@ -577,7 +577,22 @@
                 echo $e;
             }
         }
+	
+	// get appointment count for a period 
+        public function getAppointmentCountPeriod($fdate,$tdate){
 
+            // query to count appointments for a period
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date BETWEEN '".$fdate."' AND '".$tdate."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
 
         // get appointment commission sum for a particular date
         public function getAppointmentCommissionSumByDate($date){
@@ -595,7 +610,23 @@ FROM appointment a,service s WHERE appointment_date='".$date."' AND a.service_id
                 echo $e;
             }
         }
+	
+	// get appointment commission sum for a period
+        public function getAppointmentCommissionSumByPeriod($fdate,$tdate){
 
+            // query to count appointments for a period
+            $query = "SELECT SUM(service_charge*commission_percentage/100) AS commission_sum 
+FROM appointment a,service s WHERE appointment_date BETWEEN '".$fdate."' AND '".$tdate."' AND a.service_id=s.service_id";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
 
         // count the number  of upcoming appointments for a particular customer
         public function countAppointmentsCustomer($cust_id){
