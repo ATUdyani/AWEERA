@@ -243,7 +243,12 @@
                         $employee_list.= "<td>{$employee['emp_phone']}</td>";
                         $employee_list.= "<td>{$employee['emp_type']}</td>";
                         $employee_list.= "<td><a class=\"btn btn-success btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-edit\"></span>  Edit</a></td>";
-                        $employee_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        if ($employee['emp_type']=='Administrator'){
+                            $employee_list.= "<td><a disabled='disabled' class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        }
+                        else{
+                            $employee_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
+                        }
                         if ($employee['is_user']==1){
                             $employee_list.= "<td><a class=\"btn btn-success btn-sm add_user disabled\" name=\"add\" value=\"Add\" id=\"{$employee['emp_id']}\"><span class=\"glyphicon glyphicon-plus\"></span>  Add</a></td>";
                         }
