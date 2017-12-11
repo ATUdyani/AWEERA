@@ -317,3 +317,11 @@ table{
 .break-words{
 	word-break:break-all;
 }
+
+.nav-tabs{
+	display:inline-flex;
+}
+.nav-tabs li{
+	margin-right: 10px;
+	list-style-type:none;
+}

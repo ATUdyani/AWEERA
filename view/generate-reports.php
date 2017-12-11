@@ -8,6 +8,7 @@
 
 <h2>Reports</h2>
 
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" data-toggle="tab" href="#daily_appointments" role="tab" aria-controls="daily_appointments">Daily Collection (Appointments)</a>
