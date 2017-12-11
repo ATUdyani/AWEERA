@@ -19,7 +19,7 @@ function handleProfile(id){
     }
     if(type=="Customer"){
         $.ajax({
-            url:"../controller/fetch-customer-handler.php",
+            url:"../controller/fetch-registered-customer-handler.php",
             method: "post",
             data: {cust_id:id},
             dataType: "json",
