@@ -451,7 +451,7 @@
                     echo $appointment_list;
                 }
                 else{
-                    echo "<p>No Search Results Found</p>";
+                    echo "<p><i>No Search Results Found</i></p>";
                 }
             }catch (Exception $e){
                 echo $e;
@@ -554,7 +554,7 @@
                     echo $appointment_list;
                 }
                 else{
-                    echo "<p>No Search Results Found</p>";
+                    echo "<p><i>No Search Results Found</i></p>";
                 }
             }catch (Exception $e){
                 echo $e;

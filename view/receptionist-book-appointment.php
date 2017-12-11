@@ -36,7 +36,7 @@
                 <label><h4>With whom? (Select Stylist)</h4></p></label>
             </div>
             <div class="col-md-4">
-                <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalender()">
+                <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalenderReceptionist()">
                 </select>
             </div>
         </div>

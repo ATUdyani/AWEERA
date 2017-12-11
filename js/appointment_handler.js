@@ -53,13 +53,34 @@ function loadBeauticianNames(val) {
         success: function( data ) {
             $('#select_beautician_name').html(data);
             document.getElementById("select_beautician_name").disabled=false;
-            document.getElementById("appointment_date").valueAsDate = null;
+            document.getElementById("appointment_date").disabled=true;
+            document.getElementById("time_slots").disabled=true;
         }
     });
 }
 
-// enable calender
-function enableCalender() {
+// enable calender - cannot book for today
+function enableCalenderCustomer() {
+    document.getElementById("appointment_date").disabled=false;
+    document.getElementById("time_slots").disabled=true;
+    var today = new Date();
+    var dd = today.getDate()+1;
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    }
+    if(mm<10){
+        mm='0'+mm
+    }
+
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("appointment_date").value="";
+    document.getElementById("appointment_date").setAttribute("min", today);
+}
+
+// enable calender - can book kor today
+function enableCalenderReceptionist() {
     document.getElementById("appointment_date").disabled=false;
     document.getElementById("time_slots").disabled=true;
     var today = new Date();
@@ -74,6 +95,7 @@ function enableCalender() {
     }
 
     today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("appointment_date").value="";
     document.getElementById("appointment_date").setAttribute("min", today);
 }
 
@@ -92,8 +114,8 @@ function loadSlots(){
         dataType: "json",
         cache:false,
         success: function( data ) {
-            $('#time_slots').html(data);
             document.getElementById("time_slots").disabled=false;
+            document.getElementById("time_slots").innerHTML=data;
         }
     });
 }

@@ -75,7 +75,7 @@ if(!isset($_SESSION['user_id'])){
             <div class="col-md-3">
                 <nav class="my-sidebar">
                     <ul class="nav">
-                        <li><a href="#" onclick="bookAppointment()" class="my-sidebar-menu-item">Book Appointment</a></li>
+                        <li><a href="#" onclick="location.reload()" class="my-sidebar-menu-item">Book Appointment</a></li>
                         <li><a href="customer/customer-upcoming-appointments.php" class="my-sidebar-menu-item">New Appointments <span class="badge badge-pill badge-info" id="appointment_count"></span></a></li>
                         <li><a href="customer/customer-appointment-history.php" class="my-sidebar-menu-item">Appointment History</a></li>
                     </ul>
@@ -118,7 +118,7 @@ if(!isset($_SESSION['user_id'])){
                                 <label><h4>With whom? (Select Stylist)</h4></p></label>
                             </div>
                             <div class="col-md-4">
-                                <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalender()">
+                                <select name="select_beautician_name" id="select_beautician_name" class="form-control" disabled="disabled" onchange="enableCalenderCustomer()">
                                 </select>
                             </div>
                         </div>
