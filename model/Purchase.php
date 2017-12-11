@@ -28,4 +28,20 @@ class Purchase{
             echo $e;
         }
     }
+    
+    // get purchases count for a period
+    public function getPurchaseCountByPeriod($fdate,$tdate){
+
+        // query to count purchases for a period
+        $query = "SELECT COUNT(*) AS purchase_count FROM purchase c,payment p WHERE p.payment_date BETWEEN '".$fdate."' AND '".$tdate."' AND p.payment_id=c.payment_id";
+        try{
+            $result = self::$db->executeQuery($query);
+            $row = mysqli_fetch_array($result);
+            return $row;
+
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+    }
 }

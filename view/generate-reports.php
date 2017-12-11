@@ -19,7 +19,7 @@
         <a class="nav-link" data-toggle="tab" href="#daily_total" role="tab" aria-controls="add-recep">Daily Collection (Total)</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#monthly_collection" role="tab" aria-controls="add-recep">Monthly Collection</a>
+        <a class="nav-link" data-toggle="tab" href="#period-collection-report" role="tab" aria-controls="add-recep">Period Collecction Report</a>
     </li>
 
     <li class="nav-item">
@@ -130,17 +130,24 @@
         </div>
     </div>
 
-    <div class="tab-pane fade active" id="monthly_collection" role="tabpanel">
+    <div class="tab-pane fade active" id="period-collection-report" role="tabpanel">
         <div class="row">
             <div class="main col-md-10">
-                <form action="../controller/monthly-collection.php" target="_blank" method="post" class="userform" id="monthly_collection_form">
+                <form action="../controller/period-collection-report.php" target="_blank" method="post" class="userform" id="monthly_collection_form">
                     <div class="form-group row">
                         <h4 class="col-md-4">
-                            Select Month
+                            Select Date 
                             <hr>
                             <small>
-                                <input  class="form-control" type="month"  id="rdate" name="rdate"
-                                        value="<?php echo month("m-Y");?>">
+                                From:
+                                <input  class="form-control" type="date"  id="fromdate" name="fromdate"
+                                        value="<?php echo date("Y-m-d");?>">
+                            </small>
+                        
+                            <small>
+                                To:
+                                <input  class="form-control" type="date"  id="todate" name="todate"
+                                        value="<?php echo date("Y-m-d");?>">
                             </small>
                         </h4>
                     </div>
