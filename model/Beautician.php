@@ -37,10 +37,10 @@ class Beautician extends Employee
     public function fetchBeauticianNames($service_id){
         // if all beauticians have to be loaded for all services
         if($service_id=="*"){
-            $query="SELECT * FROM employee WHERE emp_type='Beautician'";
+            $query="SELECT * FROM employee WHERE emp_type='Beautician' AND is_deleted='0'";
         }
         else{
-            $query="SELECT * FROM beautician_service b,employee e WHERE b.service_id='$service_id' AND b.emp_id=e.emp_id";
+            $query="SELECT * FROM beautician_service b,employee e WHERE b.service_id='$service_id' AND b.emp_id=e.emp_id AND e.is_deleted='0'";
         }
         $beautician_names ='';
 

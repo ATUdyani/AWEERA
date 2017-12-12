@@ -24,6 +24,11 @@
 	if (empty($data[3])){
 		$errors[] = 'Duration is required.';
 	}
+	else{
+        if($data[3]>=100){
+            $errors[] = 'Invalid percentage';
+        }
+	}
 
 	if (empty($data[4])){
 		$errors[] = 'Percentage is required.';
@@ -34,6 +39,7 @@
  		foreach ($errors as $error) {
  			echo "<h4>".$error."</h4><br>";
  		}
+        echo "<h4>Service is not inserted</h4>";
  	}
  	else{
  		// adding a new record

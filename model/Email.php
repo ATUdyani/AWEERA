@@ -287,7 +287,7 @@ class Email{
             $bodyContent = "<h1>Thank you for using our services.</h1>";
             $bodyContent .= "
             Please visit the below link and comment about the service you received.<br>
-            $comment_link
+            <a href='$comment_link'>$comment_link</a>
             <br><br>Thank you!
             <br>AWEERA - Hair and Beauty</p>";
 

@@ -47,7 +47,7 @@
         // get free time slots for a particular beautician for a particular date
         public function getFreeSlots($beautician_id, $date, $service_id)
         {
-            $query = "SELECT * FROM appointment WHERE emp_id=" . "'$beautician_id'" . " AND appointment_date=" . "'$date' ORDER BY start_time ASC";
+            $query = "SELECT * FROM appointment WHERE emp_id="."'$beautician_id'"." AND appointment_date="."'$date' ORDER BY start_time ASC";
 
             try {
                 $result = self::$db->executeQuery($query);
@@ -77,6 +77,51 @@
             }
         }
 
+        // time slot choosing algorithm
+        public function chooseTimeSlots($result,$duration)
+        {
+            $divided_slots = array(); // to store the slots to return
+
+            /* slots from opening time to the first appointment of the day*/
+
+            // seek the first appointment for the day until now
+            mysqli_data_seek($result, 0);
+            $row = mysqli_fetch_array($result);
+
+            // select first time slot of the day until now
+            $first_time = $row['start_time'];
+
+            $divided_slots_from_start = $this->divideSlotsFromOpen($first_time, $duration);
+            foreach ($divided_slots_from_start as $slot) {
+                $divided_slots[] = $slot;
+            }
+
+
+            /* slots in between appointments*/
+
+            $divided_slots_in_between = $this->divideSlotsInBetween($result, $duration);
+            foreach ($divided_slots_in_between as $slot) {
+                $divided_slots[] = $slot;
+            }
+
+            /* slots from last appointment time to the closing time*/
+
+            // seek the last appointment for the day until now
+            $num_rows = self::$db->getNumRows($result);
+            mysqli_data_seek($result, $num_rows - 1);
+            $row = mysqli_fetch_array($result);
+
+            // select last time slot of the day until now
+            $last_time = $row['end_time'];
+
+            $divided_slots_till_end = $this->divideSlotsToClose($last_time, $duration);
+            foreach ($divided_slots_till_end as $slot) {
+                $divided_slots[] = $slot;
+            }
+            return $divided_slots;
+        }
+
+
         // load original time slots for a particular day
         public function originalTimeSlots()
         {
@@ -102,64 +147,6 @@
 
             return $slots;
         }
-
-        // make an appointment
-        public function makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id){
-            session_start();
-            $start_time = $appointment_time;
-            $end_time = $this->getEndTime($start_time,$duration);
-
-            $last_id=self::$db->getLastId('appointment_id','appointment');
-
-            $new_id = self::$db->generateId($last_id,"APP");
-
-
-            $query = "INSERT INTO appointment(appointment_id, appointment_date, start_time, end_time, payment_id, cust_id, service_id, emp_id) VALUES ('".
-                $new_id."', '".$appointment_date."', '".$start_time."', '".$end_time."', 'none', '".$cust_id."', '".$service_id."', '".$emp_id."')";
-
-
-            try{
-                $result = self::$db->executeQuery($query);
-                if ($result){
-                    echo "<h4>Appointment Successful!</h4><br>";
-                    echo "<h4>Thank You!"." ".$_SESSION['first_name']." ".$_SESSION['last_name'].".</h4>";
-                    echo "<h4>Have a great day!</h4><br>";
-
-                    // send email confirmation
-                    $email = new Email();
-                    $email -> sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id);
-                }
-                else{
-                    echo "<h4>Sorry! Failed to make the Appointment.</h4>";
-                    echo "<h4>Please contact <i>AWEERA.</i></h4>";
-                }
-            }catch (mysqli_sql_exception $e){
-                echo "<h4>".$e."</h4>";
-            }
-        }
-
-
-        // delete the appointment when appointment is cancelled
-        public function cancelAppointment($appointment_id){
-            // send email confirmation
-            $email = new Email();
-            $email -> sendAppointmentCancelEmail($appointment_id);
-
-            $query = "DELETE FROM appointment WHERE appointment_id='".$appointment_id."'";
-            try{
-                $result = self::$db->executeQuery($query);
-                if ($result){
-                    echo "<h4>Appointment ".$appointment_id." is Cancelled!</h4>";
-                }
-                else{
-                    echo "<h4>Sorry! Failed to cancel the Appointment.</h4>";
-                }
-
-            }catch (Exception $e){
-                echo $e;
-            }
-        }
-
 
         // returns appointment end_time based on the start_time and the duration
         public function getEndTime($start_time,$duration){
@@ -187,7 +174,7 @@
             $time_minutes = substr($time,2,2);
             $time_hour = substr($time,0,2);
 
-            $gap_hour = ($time_hour-self::$OPEN_TIME);
+            $gap_hour = ($time_hour-self::$OPEN_TIME); // time gap between the given time and the OPEN_TIME
             $gap_minutes = $gap_hour*60+$time_minutes-self::$MIN_DURATION; // first 30 minutes of the day won't be allocated for appointments
             $begin_time_hour = self::$OPEN_TIME;
             $begin_time_minutes = "00";
@@ -254,6 +241,7 @@
         }
 
         // divide slots in a particular range
+        // start_time is the end_time of the previous appointment and end_time is the start_time of the next appointment
         public function divideSlotsInRange($start_time,$duration,$end_tme){
             $slots = array();
 
@@ -262,6 +250,8 @@
 
             $end_time_minutes = substr($end_tme,2,2);
             $end_time_hour = substr($end_tme,0,2);
+
+            /* finding the gap */
 
             if ($start_time_minutes>0){
                 $gap_hour = ($end_time_hour-$start_time_hour)-1;
@@ -273,8 +263,11 @@
             }
 
             $gap_minutes = $gap_minutes + $gap_hour*60;
+
             $begin_time_hour = $start_time_hour; // slot allocation starting from the given time_hour
             $begin_time_minutes = $start_time_minutes; // slot allocation starting from the given time_minutes
+
+            /* starting the slot allocation */
 
             if ($gap_minutes>=$duration){
                 while($gap_minutes>=$duration){
@@ -320,9 +313,9 @@
                 $start_time_hour = substr($start_time,0,2);
                 $start_minutes_total =$start_time_hour*60+$start_time_minutes;
 
-                $difference = $start_minutes_total - $end_minutes_total;
+                $difference = $start_minutes_total - $end_minutes_total; // gap between 2 appointments (between end_time of the first appointment and start_time of the next appointment)
                 if ($difference>=$duration){
-                    $slots_in_range = $this->divideSlotsInRange($end_time,$duration,$start_time); // previous end_time and current start_time and duration
+                    $slots_in_range = $this->divideSlotsInRange($end_time,$duration,$start_time); // previous end_time and current start_time and duration of the particular service
                     foreach ($slots_in_range as $slot) {
                         $slots[] = $slot;
                     }
@@ -339,49 +332,61 @@
         }
 
 
-        // time slot choosing algorithm
-        public function chooseTimeSlots($result,$duration)
-        {
-            $divided_slots = array(); // to store the slots to return
+        // make an appointment
+        public function makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id){
+            session_start();
+            $start_time = $appointment_time;
+            $end_time = $this->getEndTime($start_time,$duration);
 
-            /* slots from opening time to the first appointment*/
+            $last_id=self::$db->getLastId('appointment_id','appointment');
 
-            // seek the first appointment for the day until now
-            mysqli_data_seek($result, 0);
-            $row = mysqli_fetch_array($result);
+            $new_id = self::$db->generateId($last_id,"APP");
 
-            // select first time slot of the day until now
-            $first_time = $row['start_time'];
 
-            $divided_slots_from_start = $this->divideSlotsFromOpen($first_time, $duration);
-            foreach ($divided_slots_from_start as $slot) {
-                $divided_slots[] = $slot;
+            $query = "INSERT INTO appointment(appointment_id, appointment_date, start_time, end_time, payment_id, cust_id, service_id, emp_id) VALUES ('".
+                $new_id."', '".$appointment_date."', '".$start_time."', '".$end_time."', 'none', '".$cust_id."', '".$service_id."', '".$emp_id."')";
+
+
+            try{
+                $result = self::$db->executeQuery($query);
+                if ($result){
+                    echo "<h4>Appointment Successful!</h4><br>";
+                    echo "<h4>Thank You!"." ".$_SESSION['first_name']." ".$_SESSION['last_name'].".</h4>";
+                    echo "<h4>Have a great day!</h4><br>";
+
+                    // send email confirmation
+                    $email = new Email();
+                    $email -> sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id);
+                }
+                else{
+                    echo "<h4>Sorry! Failed to make the Appointment.</h4>";
+                    echo "<h4>Please contact <i>AWEERA.</i></h4>";
+                }
+            }catch (mysqli_sql_exception $e){
+                echo "<h4>".$e."</h4>";
             }
+        }
 
 
-            /* slots from in between appointments*/
+        // delete the appointment when appointment is cancelled
+        public function cancelAppointment($appointment_id){
+            // send email confirmation
+            $email = new Email();
+            $email -> sendAppointmentCancelEmail($appointment_id);
 
-            $divided_slots_in_between = $this->divideSlotsInBetween($result, $duration);
-            foreach ($divided_slots_in_between as $slot) {
-                $divided_slots[] = $slot;
+            $query = "DELETE FROM appointment WHERE appointment_id='".$appointment_id."'";
+            try{
+                $result = self::$db->executeQuery($query);
+                if ($result){
+                    echo "<h4>Appointment ".$appointment_id." is Cancelled!</h4>";
+                }
+                else{
+                    echo "<h4>Sorry! Failed to cancel the Appointment.</h4>";
+                }
+
+            }catch (Exception $e){
+                echo $e;
             }
-
-
-            /* slots from last appointment time to the closing time*/
-
-            // seek the last appointment for the day until now
-            $num_rows = self::$db->getNumRows($result);
-            mysqli_data_seek($result, $num_rows - 1);
-            $row = mysqli_fetch_array($result);
-
-            // select last time slot of the day until now
-            $last_time = $row['end_time'];
-
-            $divided_slots_till_end = $this->divideSlotsToClose($last_time, $duration);
-            foreach ($divided_slots_till_end as $slot) {
-                $divided_slots[] = $slot;
-            }
-            return $divided_slots;
         }
 
 

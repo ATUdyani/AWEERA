@@ -30,11 +30,16 @@ if (empty($data[3])){
 if (empty($data[4])) {
     $errors[] = 'Commission Percentage is required.';
 }
+else{
+    if($data[4]>=100){
+        $errors[] = 'Invalid percentage';
+    }
+}
 
 if (!empty($errors)){
-    echo '<h4>There were error(s) on your form.<br>';
+    echo '<h4>There were error(s) on your form.</h4><br>';
     foreach ($errors as $error) {
-        echo $error."<br></h4>";
+        echo "<h4>".$error."</h4><br>";
     }
     echo "<h4>Service is not updated</h4>";
 }

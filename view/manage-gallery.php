@@ -1,5 +1,5 @@
 <?php session_start(); ?>
-
+<?php require_once('../model/Database.php') ?>
 <?php require_once('../model/User.php') ?>
 
 <link rel="stylesheet" href="../css/upload_image.css" />

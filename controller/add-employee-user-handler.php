@@ -1,6 +1,6 @@
-<?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/User.php' ?>
+<?php require_once 'functions.php' ?>
 
 <?php
 	$db = new Database();
@@ -9,10 +9,6 @@
 	$data = json_decode(stripslashes($_POST['data']));
 	$errors = array();
 
-	if (empty($data[1])){
-		$errors[] = 'Password is required.';
-	}
-
 	$first_name = mysqli_real_escape_string($connection,$data[0]);
 	$last_name = mysqli_real_escape_string($connection,$data[1]);
 	$emp_email = mysqli_real_escape_string($connection,$data[2]);
@@ -20,11 +16,20 @@
 	$emp_password = mysqli_real_escape_string($connection,$data[4]);
 	$emp_id = mysqli_real_escape_string($connection,$data[5]);
 
+if (empty($emp_password)){
+    $errors[] = 'Password is required.';
+}
+if(!isValidEmail($emp_email)){
+    $errors[] = 'Invalid email address';
+}
+
+
 if (!empty($errors)){
- 		echo 'There were error(s) on your form.<br>';
+ 		echo '<h4>There were error(s) on your form.</h4><br>';
  		foreach ($errors as $error) {
- 			echo $error."<br>";
+ 			echo "<h4>".$error."</h4><br>";
  		}
+    echo "<h4>User is not inserted</h4>";
  	}
  	else{
 

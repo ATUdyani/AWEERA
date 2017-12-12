@@ -42,6 +42,11 @@
 	if (empty($data[3])){
 		$errors[] = 'Phone Number is required.';
 	}
+	else{
+        if(!isValidPhoneNumber($data[3])){
+            $errors[] = 'Invalid phone number';
+        }
+	}
 
 	if (empty($data[4])){
 		$errors[] = 'Address is required.';
@@ -59,6 +64,7 @@
  		foreach ($errors as $error) {
  			echo "<h4>".$error."</h4><br>";
  		}
+        echo "<h4>Employee is not inserted</h4>";
  	}
  	else{
  		// adding a new record

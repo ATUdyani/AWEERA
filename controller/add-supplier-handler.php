@@ -23,6 +23,11 @@ if (empty($data[0])){
 if (empty($data[1])){
     $errors[] = 'Phone Number is required.';
 }
+else{
+    if(!isValidPhoneNumber($data[1])){
+        $errors[] = 'Invalid phone number';
+    }
+}
 
 if (empty($data[2])){
     $errors[] = 'Address is required.';
@@ -53,6 +58,7 @@ if (!empty($errors)){
     foreach ($errors as $error) {
         echo "<h4>".$error."</h4><br>";
     }
+    echo "<h4>Supplier is not inserted</h4>";
 }
 else{
     // adding a new record

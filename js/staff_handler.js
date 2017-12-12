@@ -239,7 +239,7 @@ function onclickAddUser() {
             $('#insert_form')[0].reset();
             $('#add_user_Modal').modal('hide');
             $('#update_msg_Modal').modal('show');
-            $('#up').html(data);
+            $('#update_msg_result').html(data);
         }
     });
 }

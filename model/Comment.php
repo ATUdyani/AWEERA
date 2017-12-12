@@ -21,6 +21,15 @@
                 return;
             }
 
+            // checking whether this comment link is used earlier for commenting
+            $query = "SELECT comment FROM appointment WHERE appointment_id='".$appointment_id."'";
+            $result = self::$db->executeQuery($query);
+            $row = mysqli_fetch_assoc($result);
+            if ($row['comment']!=NULL){
+                echo "<h4>Sorry, you cannot comment again for this appointment. You have already commented!</h4>";
+                return;
+            }
+
             // query to insert a new comment to the particular appointment
             $query = "UPDATE appointment SET comment='".$comment."' WHERE appointment_id='".$appointment_id."'";
             try{
@@ -34,7 +43,7 @@
 
             }
             catch(Exception $e){
-                echo e;
+                echo $e;
             }
         }
 
@@ -116,7 +125,7 @@ AND a.service_id=s.service_id AND a.emp_id=e.emp_id AND a.comment IS NOT NULL AN
                     echo $comment_list;
                 }
                 else{
-                    echo "<p>No new comments</p>";
+                    echo "<p><i>No new comments</i></p>";
                 }
             }catch (Exception $e){
                 echo $e;

@@ -63,10 +63,10 @@ function loadBeauticianNames(val) {
 function enableCalenderCustomer() {
     document.getElementById("appointment_date").disabled=false;
     document.getElementById("time_slots").disabled=true;
-    var today = new Date();
-    var dd = today.getDate()+1;
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
+    var tmrrw = new Date();
+    var dd = tmrrw.getDate()+1;
+    var mm = tmrrw.getMonth()+1; //January is 0!
+    var yyyy = tmrrw.getFullYear();
     if(dd<10){
         dd='0'+dd
     }
@@ -74,9 +74,9 @@ function enableCalenderCustomer() {
         mm='0'+mm
     }
 
-    today = yyyy+'-'+mm+'-'+dd;
+    tmrrw = yyyy+'-'+mm+'-'+dd;
     document.getElementById("appointment_date").value="";
-    document.getElementById("appointment_date").setAttribute("min", today);
+    document.getElementById("appointment_date").setAttribute("min", tmrrw);
 }
 
 // enable calender - can book kor today
@@ -128,10 +128,8 @@ function makeAppointment() {
     var appointmentDate = document.getElementById("appointment_date").value;
     var customerId = document.getElementById("cust_id").value;
 
-    // extracting hours and minutes separately from start time and concatenate them
-    var hoursSTime = document.getElementById('time_slots').value.substr(0,2);
-    var minutesSTime = document.getElementById('time_slots').value.substr(2,2);
-    var appointmentTime = hoursSTime.concat(minutesSTime);
+    // extracting appointment time without letter 'h'
+    var appointmentTime = document.getElementById('time_slots').value.substr(0,4);
 
     var dataArray = [];
     dataArray.push(serviceId,beauticianId,appointmentDate,appointmentTime,customerId);

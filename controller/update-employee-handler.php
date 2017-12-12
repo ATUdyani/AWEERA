@@ -47,6 +47,12 @@ else{ // checking if email address already exists
 if (empty($data[3])){
     $errors[] = 'Phone Number is required.';
 }
+else{
+    if(!isValidPhoneNumber($data[3])){
+        $errors[] = 'Invalid phone number';
+    }
+
+}
 
 if (empty($data[4])){
     $errors[] = 'Address is required.';
@@ -54,9 +60,9 @@ if (empty($data[4])){
 
 
 if (!empty($errors)){
-    echo '<h4>There were error(s) on your form.<br>';
+    echo '<h4>There were error(s) on your form.</h4><br>';
     foreach ($errors as $error) {
-        echo $error."<br></h4>";
+        echo "<h4>".$error."</h4><br>";
     }
     echo "<h4>Employee is not updated</h4>";
 }
