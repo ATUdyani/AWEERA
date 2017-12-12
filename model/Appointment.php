@@ -463,14 +463,14 @@
 
             // any beautician, any date, no search text
             if ($emp_id=="*" AND $date=="" AND $search_text==""){
-                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // any beautician, any date, with search text
             elseif ($emp_id=="*" AND $date=="" AND $search_text!=""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
                     ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
                     ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
-                    ."%' OR s.service_name LIKE '%".$search_text."%') AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // any beautician, date specified, with search text
             elseif ($emp_id=="*" AND $date!="" AND $search_text!=""){
@@ -478,7 +478,7 @@
                     ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
                     ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
                     ."%' OR s.service_name LIKE '%".$search_text."%') AND a.appointment_date='".$date
-                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // beautician specified, date specified, with search text
             elseif ($emp_id!="*" AND $date!="" AND $search_text!=""){
@@ -486,29 +486,29 @@
                     ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
                     ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
                     ."%' OR s.service_name LIKE '%".$search_text."%') AND a.appointment_date='".$date
-                    ."' AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."' AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // beautician specified, any date, with search text
             elseif ($emp_id!="*" AND $date=="" AND $search_text!=""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE (a.appointment_id LIKE '%".$search_text
                     ."%' OR a.start_time LIKE '%".$search_text."%' OR a.end_time LIKE '%".$search_text
                     ."%' OR c.first_name LIKE '%".$search_text."%' OR c.last_name LIKE '%".$search_text
-                    ."%' OR s.service_name LIKE '%".$search_text."%') AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."%' OR s.service_name LIKE '%".$search_text."%') AND e.emp_id='".$emp_id."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // beautician specified, date specified, no search text
             elseif ($emp_id!="*" AND $date!="" AND $search_text==""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE e.emp_id='".$emp_id
-                    ."' AND a.appointment_date='".$date."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."' AND a.appointment_date='".$date."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // any beautician, date specified, no search text
             elseif ($emp_id=="*" AND $date!="" AND $search_text==""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE a.appointment_date='".$date
-                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."' AND a.emp_id=e.emp_id AND a.service_id=s.service_id AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
             // beautician specified, any date, no search text
             elseif ($emp_id!="*" AND $date=="" AND $search_text==""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE e.emp_id='".$emp_id
-                    ."' AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date";
+                    ."' AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
             }
 
             try{
