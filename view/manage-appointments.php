@@ -108,12 +108,7 @@
     </div>
 
     <div class="tab-pane fade active" id="book-now-unregistered" role="tabpanel">
-        <div class="form-errors disabled">
-            <p id="msg_admin"></p>
-        </div>
-
-
-        <form class="userform" method="post" id="unregistered_cust_form">
+        <form class="userform top-buffer" method="post" id="unregistered_cust_form">
             <div class="form-group row">
                 <label for="example-text-input" class="col-md-4 col-form-label clearfix">First Name</label>
                 <div class="col-md-8">
