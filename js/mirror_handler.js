@@ -1,14 +1,12 @@
 // webrtc script file
 
 var img1;
-var imagefirst=$('#jtype a').first().attr('value');
-$('#jtype a').parent('.thumbnail').first().addClass("active1");
+var imagefirst=$('#jtype a').first().attr('value'); // path to first image is assigned to imagefirst
 
 
 var canvas;
 base1 = new Image();
 var panelw= $( '#panel' ).width();
-//$('#photo').width('100');
 
 var webrtc = (function() {
 
@@ -19,32 +17,12 @@ var webrtc = (function() {
         video = document.createElement('video'),
 
 
-        display = document.getElementById('display'),
-        displayContext = display.getContext('2d'),
+        display = document.getElementById('display'), // get the canvas
+        displayContext = display.getContext('2d'), // to create 2 dimensional display context
 
-        photo1 = document.getElementById('photo'),
-        context = photo1.getContext('2d');
+        photo1 = document.getElementById('photo'), // get the other canvas
+        context = photo1.getContext('2d'); // to create 2 dimensional display context
 
-    display.style.visibility='visible';
-    photo.style.visibility='hidden';
-
-    navigator.getUserMedia ||
-    (navigator.getUserMedia = navigator.mozGetUserMedia ||
-        navigator.webkitGetUserMedia || navigator.msGetUserMedia);
-
-    window.audioContext ||
-    (window.audioContext = window.webkitAudioContext);
-
-    //updating animation before repaint
-    window.requestAnimationFrame ||
-    (window.requestAnimationFrame = window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function( callback ){
-            //give time to update
-            window.setTimeout(callback, 1000 / 60);
-        });
 
     //if success usermedia run this
     function onSuccess(stream) {
@@ -68,11 +46,6 @@ var webrtc = (function() {
             streamFeed();
         }
 
-        if (getAudio && window.audioContext) {
-            audioContext = new window.audioContext();
-            mediaStreamSource = audioContext.createMediaStreamSource(stream);
-            mediaStreamSource.connect(audioContext.destination);
-        }
     }
 
     function onError() {
@@ -82,8 +55,6 @@ var webrtc = (function() {
     // when back/reload button is clicked
     function back(){
         location.reload();
-        display.style.visibility='visible';
-        photo.style.visibility='hidden';
     }
 
     // convert the canvas to png image
@@ -94,11 +65,11 @@ var webrtc = (function() {
 
     // add image to canvas
     function additem(item){
-        var name=item;
+
         if(img1!=null){
             canvas.remove(img1);
         }
-        fabric.Image.fromURL(name, function(img2) {
+        fabric.Image.fromURL(item, function(img2) {
             img1=img2;
             canvas.add(img1.set({ left:panelw/2-170, top: -30, angle:0 }).scale(0.15));
         });
@@ -139,7 +110,7 @@ var webrtc = (function() {
         }
     }
 
-    //get into dispaly canvas
+    //get into display canvas
     function streamFeed() {
         //get frame by frame or update frame time to time
         requestAnimationFrame(streamFeed);
@@ -148,9 +119,9 @@ var webrtc = (function() {
 
     function initEvents() {
         var photoButton = document.getElementById('takePhoto');
-        photoButton.addEventListener('click', takePhoto, false);
+        photoButton.addEventListener('click', takePhoto);
         var photoButton2 = document.getElementById('takePhoto2');
-        photoButton2.addEventListener('click', back, false);
+        photoButton2.addEventListener('click', back);
     }
 
     //initially happen function
@@ -165,9 +136,6 @@ var webrtc = (function() {
     function activeitem(){
         $('#jtype a').on('click',function(){
             var value=$(this).attr('value');
-            //alert(value);
-            $('#jtype a').parent('.thumbnail').removeClass("active1");
-            $(this).parent('.thumbnail').addClass("active1");
             additem(value);
         });
     }
