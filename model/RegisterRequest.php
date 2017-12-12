@@ -41,7 +41,7 @@ class RegisterRequest
         }
     }
 
-    // delete register request
+    // delete register request automatically after sending the mail
     public function deleteRegisterRequest($cust_email){
 
         // query to delete the particular register request
@@ -87,6 +87,7 @@ class RegisterRequest
                                     <th>Address</th>
                                     <th>Email</th>
                                     <th>Check Request</th>
+                                    <th>Delete Request</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
@@ -101,6 +102,7 @@ class RegisterRequest
                     $request_list.= "<td>{$user['cust_address']}</td>";
                     $request_list.= "<td>{$user['cust_email']}</td>";
                     $request_list.= "<td><a class=\"btn btn-primary btn-sm edit_data\" name=\"edit\" value=\"Edit\" id=\"{$user['reg_id']}\"><span class=\"glyphicon glyphicon-edit\"></span> Check</a></td>";
+                    $request_list.= "<td><a class=\"btn btn-danger btn-sm delete_data\" name=\"delete\" value=\"Delete\" id=\"{$user['reg_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Delete</a></td>";
                     $request_list.= "</tr>";
                 }
                 $request_list .= "</tbody>
@@ -148,4 +150,18 @@ class RegisterRequest
         }
     }
 
+    // delete a register request manually with delete button
+    public function deleteRequest($record_id){
+        // query to delete the particular register request
+        $query = "DELETE FROM register_request WHERE reg_id='".$record_id."'";
+
+        try{
+            $result = self::$db->executeQuery($query);
+            return $result;
+
+        }
+        catch(Exception $e){
+            echo $e;
+        }
+    }
 }

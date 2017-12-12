@@ -88,3 +88,20 @@ function onClickAcceptReject(status){
 $('#msg_Modal').on('hidden.bs.modal', function () {
     $('#content').load('manage-register-requests.php');
 });
+
+
+// load modal to delete register request data manually if spam
+$(document).ready(function (){
+    $(document).on('click','.delete_data',function(){
+        var id = $(this).attr("id");
+        var table = 'register_request';
+        $('#table_name').val(table);
+        $('#record_id').val(id);
+        $('#delete_Modal').modal('show');
+    });
+});
+
+
+$('#update_msg_Modal').on('hidden.bs.modal', function () {
+    $('#content').load('manage-register-requests.php');
+});

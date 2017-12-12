@@ -302,5 +302,16 @@
             }
         }
 
+        // check mail address is already registered as a registered customer
+        public function checkMailAlreadyExists($email){
+            $query = "SELECT cust_email FROM registered_customer WHERE cust_email='".$email."'";
+            $result = self::$db->query($query);
+            if (self::$db->getNumRows($result)>=1){
+                return 0;
+            }
+            else{
+                return 1;
+            }
+        }
     }
 ?>

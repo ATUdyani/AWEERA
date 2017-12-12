@@ -23,6 +23,5 @@ $gender = $data[7];
 
 $result = $register_request_confirm_mail->sendRegisterConfirmationMail($status,$first_name,$last_name,$cust_phone,$cust_address,$cust_email,$password,$gender);
 
-
 echo $result;
 ?>

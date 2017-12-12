@@ -67,7 +67,9 @@ class Email{
             self::$mail->Subject = 'Email from AWEERA by TeamScorp';
             self::$mail->Body    = $bodyContent;
             if(!self::$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>";
+                echo "<h4>Mail NOT sent.</h4>";
+                echo "<h4>Mail address is not valid or a problem in your internet connection.</h4>";
+                echo "<h4>You can delete this request manually if this is spam!</h4>";
             } else {
                 echo "<h4>Request Accepted.</h4>";
                 echo "<h4>Mail has been sent successfully.</h4>";
@@ -125,7 +127,9 @@ class Email{
             self::$mail->Subject = 'Email from AWEERA by TeamScorp';
             self::$mail->Body    = $bodyContent;
             if(!self::$mail->send()) {
-                echo "<h4>Mail NOT sent</h4>".self::$mail->ErrorInfo;
+                echo "<h4>Mail NOT sent.</h4>";
+                echo "<h4>Mail address is not valid or a problem in your internet connection.</h4>";
+                echo "<h4>You can delete this request manually if this is spam!</h4>";
             } else {
                 echo "<h4>Request Rejected.</h4>";
                 echo "<h4>Mail has been sent successfully.</h4>";

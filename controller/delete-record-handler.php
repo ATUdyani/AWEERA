@@ -5,6 +5,7 @@
 <?php require_once '../model/Supplier.php' ?>
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/User.php' ?>
+<?php require_once '../model/RegisterRequest.php' ?>
 
 <?php
 
@@ -37,7 +38,14 @@ elseif ($table_name=='supplier'){
     $supplier = new Supplier();
     $result = $supplier -> deleteSupplier($record_id);
 }
-
+elseif ($table_name=='supplier'){
+    $supplier = new Supplier();
+    $result = $supplier -> deleteSupplier($record_id);
+}
+elseif ($table_name=='register_request'){
+    $request = new RegisterRequest();
+    $result = $request -> deleteRequest($record_id);
+}
 
 if ($result){
     echo "<h4>Record Deleted Successfully</h4>";
