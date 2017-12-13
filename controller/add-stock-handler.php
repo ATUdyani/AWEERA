@@ -29,9 +29,19 @@ if (empty($data[1])){
 if (empty($data[2])){
     $errors[] = 'Stock count is required.';
 }
+else{
+    if ($data[2]<0){
+        $errors[] = 'Stock count cannot be negative.';
+    }
+}
 
 if (empty($data[3])){
     $errors[] = 'Price is required.';
+}
+else{
+    if ($data[3]<0){
+        $errors[] = 'Price cannot be negative.';
+    }
 }
 
 if (empty($data[5])){

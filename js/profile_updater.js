@@ -69,7 +69,7 @@ $('#update_msg_Modal').on('hidden.bs.modal', function () {
 
 
 $("#uploadimage").on('submit',(function(e) {
-    //e.preventDefault();
+    e.preventDefault();
     $.ajax({
         url: "../controller/upload-profile-picture-handler.php", // Url to which the request is send
         type: "POST",             // Type of request to be send, called as method

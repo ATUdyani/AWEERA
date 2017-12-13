@@ -90,14 +90,14 @@
             <div class="form-group row">
                 <label class="col-md-4 control-label">Stock Count</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text" rows="1" id="stock_count" maxlength="60">
+                    <input class="form-control" type="number" rows="1" id="stock_count" maxlength="60">
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="example-email-input" class="col-md-4 col-form-label">Price</label>
                 <div class="col-md-8">
-                    <input class="form-control" type="text"  id="price" maxlength="10">
+                    <input class="form-control" type="number"  id="price" maxlength="10">
                 </div>
             </div>
 

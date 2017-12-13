@@ -1,6 +1,6 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
-<?php require_once '../model/Customer.php' ?>
+<?php require_once '../model/RegisteredCustomer.php' ?>
 
 
 <?php
@@ -10,6 +10,8 @@ $connection = $db->connect();
 $data = json_decode(stripslashes($_POST['data']));
 $errors = array();
 
+echo $data[0];
+return;
 // checking required fields
 if (empty($data[0])){
     $errors[] = 'First Name is required.';
@@ -47,6 +49,11 @@ else{ // checking if email address already exists
 if (empty($data[3])){
     $errors[] = 'Phone Number is required.';
 }
+else{
+    if(!isValidPhoneNumber($data[3])){ // cheking email address
+        $errors[] = "Phone number is invalid.";
+    }
+}
 
 if (empty($data[4])){
     $errors[] = 'Address is required.';
@@ -71,7 +78,7 @@ else{
     $date_joined = mysqli_real_escape_string($connection,$data[6]);
     $cust_id = mysqli_real_escape_string($connection,$data[7]);
 
-    $customer = new Customer();
+    $customer = new RegisteredCustomer();
     $customer ->setCustomer($first_name,$last_name,$cust_gender,$cust_phone,$cust_address,$cust_email,$date_joined);
     $customer->updateCustomer($cust_id);
 }
