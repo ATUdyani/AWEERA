@@ -9,6 +9,9 @@ setInterval(function(){
             if (data!=0){
                 $('#request_count').html(data+" NEW");
             }
+            else {
+                $('#request_count').html("");
+            }
         }
     });
 },3000);
