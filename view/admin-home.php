@@ -97,7 +97,6 @@
                         </li>-->
                         <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
                         <li><a href="../view/generate-reports.php" class="my-sidebar-menu-item">Reports</a></li>
-
                     </ul>
                 </nav>
             </div>
@@ -131,6 +130,7 @@
         $( document ).ready(function() {
             $('#content').load('manage-appointments.php');
         });
+
     </script>
 
 </body>

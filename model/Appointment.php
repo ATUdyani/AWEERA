@@ -513,7 +513,7 @@
             // beautician specified, any date, no search text
             elseif ($emp_id!="*" AND $date=="" AND $search_text==""){
                 $query = "SELECT * FROM appointment a,customer c,service s,employee e WHERE e.emp_id='".$emp_id
-                    ."' AND a.service_id=s.service_id  AND a.cust_id=c.cust_id ORDER BY a.appointment_date, a.start_time";
+                    ."' AND a.service_id=s.service_id  AND a.cust_id=c.cust_id AND e.emp_id=a.emp_id ORDER BY a.appointment_date, a.start_time";
             }
 
             try{

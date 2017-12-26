@@ -38,7 +38,7 @@
        $hashed_password = md5($password);
 
        // prepare database query
-       $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' LIMIT 1";
+       $query = "SELECT * FROM user WHERE email ='{$email}' AND password = '{$hashed_password}' AND is_deleted='0' LIMIT 1";
 
        $result_set = $db -> executeQuery($query);
 
