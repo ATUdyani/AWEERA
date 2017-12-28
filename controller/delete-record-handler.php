@@ -1,5 +1,6 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/Appointment.php' ?>
 <?php require_once '../model/RegisteredCustomer.php' ?>
 <?php require_once '../model/StockItem.php' ?>
 <?php require_once '../model/Supplier.php' ?>
@@ -16,7 +17,24 @@ $table_name = $data[1];
 
 if ($table_name=='employee'){
     $employee = new Employee();
-    $result = $employee -> deleteEmployee($record_id);
+    $result_emp = $employee->getEmployeeData($record_id);
+    $type = $result_emp['emp_type'];
+
+    if ($type=="Receptionist"){
+        $result = $employee -> deleteEmployee($record_id);
+    }
+    else{
+        $appointment = new Appointment();
+        $result_appointment = $appointment->countAppointmentsBeautician($record_id);
+        if ($result_appointment['appointment_count']!=0){
+            echo "<h4>".$result_emp['first_name']." ".$result_emp['last_name']." has ".$result_appointment['appointment_count']
+                ." Upcoming Appointment(s)<br><br>Please cancel them and try to delete!</h4>";
+        }
+        else{
+         $result=1;
+         //$result = $employee -> deleteEmployee($record_id);
+        }
+    }
 }
 elseif ($table_name=='customer'){
     $customer = new RegisteredCustomer();

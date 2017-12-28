@@ -129,8 +129,13 @@
                         $user_list.= "<td>{$user['last_login']}</td>";
                         $user_list.= "<td>{$user['type']}</td>";
                         $user_list.= "<td><a class=\"btn btn-success btn-sm change_password\" name=\"change_password\" value=\"change_password\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-plus change_password\"></span>  Change Password</a></td>";
-                        $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
-                        $user_list.= "</tr>";
+                        if ($user['type']=='Administrator'){
+                            $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user disabled\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
+                        }
+                        else{
+                            $user_list.= "<td><a class=\"btn btn-danger btn-sm delete_user\" name=\"delete_user\" value=\"delete_user\" id=\"{$user['user_reg_id']}\"><span class=\"glyphicon glyphicon-trash delete_user\"></span>  Delete</a></td>";
+                        }
+                         $user_list.= "</tr>";
                     }
                     $user_list .= "</tbody>
                                     </table>";

@@ -546,11 +546,11 @@
                         $appointment_list.= "<td><a class='customer_check' id={$appointment['cust_id']}>{$appointment[11]} {$appointment[12]}</a></td>";
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
                         $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
-                        if ($appointment['appointment_date']>=date("Y-m-d")){
+                        if ($appointment['payment_id']=='none'){
                             $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         else{
-                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' disabled='disabled' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm disabled\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         $appointment_list.= "</tr>";
                     }
@@ -648,6 +648,23 @@ FROM appointment a,service s WHERE a.appointment_date BETWEEN '".$fdate."' AND '
                 echo $e;
             }
         }
+
+        // count the number of upcoming appointments for a particular customer
+        public function countAppointmentsBeautician($emp_id){
+            $date = date("Y-m-d");
+            // query to count appointments for a particular day
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE emp_id='".$emp_id."' AND appointment_date>='".$date."' AND payment_id='none'";
+            try{
+                $result = self::$db->executeQuery($query);
+                $row = mysqli_fetch_array($result);
+                return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
 
         // get the upcoming appointments for a particular customer
         public function getCustomerAppointments($cust_id){
