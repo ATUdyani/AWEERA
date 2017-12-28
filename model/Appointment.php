@@ -633,15 +633,29 @@ FROM appointment a,service s WHERE a.appointment_date BETWEEN '".$fdate."' AND '
             }
         }
 
-        // count the number  of upcoming appointments for a particular customer
+        // count the number of upcoming appointments for a particular customer
         public function countAppointmentsCustomer($cust_id){
             $date = date("Y-m-d");
             // query to count appointments for a particular day
-            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date>='".$date."'";
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date>='".$date."' AND payment_id='none'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_array($result);
                 return $row;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
+        // get the upcoming appointments for a particular customer
+        public function getCustomerAppointments($cust_id){
+            $date = date("Y-m-d");
+            $query = "SELECT * FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date>='".$date."' AND payment_id='none'";
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
 
             }
             catch(Exception $e){

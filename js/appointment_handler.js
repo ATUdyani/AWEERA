@@ -247,6 +247,9 @@ $(document).ready(function (){
             dataType: "json",
             cache: false,
             success:function (data) {
+                var img = '../img/profiles/'+data.profile_pic; // get image
+                $('#profile_pic').attr('src' , img);
+
                 $('#view_emp_first_name').val(data.first_name);
                 $('#view_emp_last_name').val(data.last_name);
                 $('#view_emp_email').val(data.emp_email);

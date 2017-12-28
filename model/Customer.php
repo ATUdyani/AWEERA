@@ -1,4 +1,5 @@
 <?php require_once('Database.php') ?>
+<?php require_once('User.php') ?>
 
 
 <?php
@@ -72,7 +73,7 @@ class Customer
 
     // get all customer data for a particular customer id
     public function getCustomerData($cust_id){
-        $query = "SELECT * FROM customer WHERE cust_id='".$cust_id."' AND is_deleted='0'";
+        $query = "SELECT * FROM customer WHERE cust_id='".$cust_id."'";
         try{
             $result = self::$db->executeQuery($query);
             $row = mysqli_fetch_array($result);
@@ -89,8 +90,11 @@ class Customer
 
         try{
             $result= self::$db->executeQuery($query);
-            return $result;
-
+            if($result){
+                $user = new User();
+                $result_user = $user->deleteUser($record_id);
+                return $result_user;
+            }
         }catch (Exception $e){
             return $e;
         }

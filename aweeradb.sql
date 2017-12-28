@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2017 at 02:22 PM
+-- Generation Time: Dec 28, 2017 at 09:42 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -73,19 +73,9 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 ('APP0000024', '2017-12-12', '1630', '1715', 'none', 'REG0000007', 'SER0000003', 'EMP0000007', NULL, -1),
 ('APP0000025', '2017-12-13', '0930', '1000', 'none', 'REG0000001', 'SER0000004', 'EMP0000007', NULL, -1),
 ('APP0000026', '2017-12-13', '1000', '1045', 'none', 'REG0000004', 'SER0000006', 'EMP0000003', NULL, -1),
-('APP0000027', '2017-12-13', '1045', '1115', 'none', 'REG0000005', 'SER0000001', 'EMP0000003', NULL, -1);
-
--- --------------------------------------------------------
-
---
--- Stand-in structure for view `beautician_commission`
---
-DROP VIEW IF EXISTS `beautician_commission`;
-CREATE TABLE IF NOT EXISTS `beautician_commission` (
-`commission` double(23,6)
-,`employee_name` varchar(50)
-,`emp_id` varchar(20)
-);
+('APP0000027', '2017-12-13', '1045', '1115', 'none', 'REG0000005', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000028', '2018-01-12', '1500', '1530', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', NULL, -1),
+('APP0000029', '2018-01-13', '1400', '1430', 'none', 'REG0000004', 'SER0000001', 'EMP0000003', NULL, -1);
 
 -- --------------------------------------------------------
 
@@ -159,9 +149,7 @@ INSERT INTO `customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cus
 ('REG0000007', 'Vishni', 'Ganepola', '0776325654', 'Panadura', 'homewsp@gmail.com', '2017-11-28', NULL, 0),
 ('UNR0000003', 'Udara', 'Senanayake', '0774589632', NULL, NULL, NULL, 'Male', 0),
 ('UNR0000002', 'Warna', 'Gamage', '0710626751', NULL, NULL, NULL, 'Female', 0),
-('UNR0000001', 'Dhanushka ', 'Ayagama', '0714334422', NULL, NULL, NULL, 'Female', 0),
-('UNR0000004', 'Ruwanari', 'Heenkenda', '0714563289', NULL, NULL, NULL, 'Female', 0),
-('UNR0000005', 'Ruwanari', 'Heenkenda', '0714563289', NULL, NULL, NULL, 'Female', 0);
+('UNR0000001', 'Dhanushka ', 'Ayagama', '0714334422', NULL, NULL, NULL, 'Female', 0);
 
 -- --------------------------------------------------------
 
@@ -192,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
 --
 
 INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_phone`, `emp_address`, `emp_type`, `emp_gender`, `is_user`, `profile_pic`, `is_deleted`) VALUES
-('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0713888888', 'Moratuwa', 'Administrator', 'Male', 1, '5a2bc322ebc176.45074330.jpg', 0),
+('EMP0000001', 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '0713888888', 'Moratuwa', 'Administrator', 'Male', 1, '5a306cd8ccad09.02894929.jpg', 0),
 ('EMP0000002', 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '0713132431', 'Panadura', 'Receptionist', 'Female', 1, '5a2add240a3460.91513380.jpg', 0),
 ('EMP0000003', 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '0714589656', 'Moratuwa', 'Beautician', 'Male', 1, '5a2d6b19d00ed9.39493558.jpg', 0),
 ('EMP0000004', 'Elankumaran', 'Thanga', 'elankumaran@gmail.com', '0774565456', 'Jaffna', 'Administrator', 'Male', 0, 'none.jpg', 0),
@@ -216,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `gallery` (
   `path` varchar(100) NOT NULL,
   `date_added` datetime(6) NOT NULL,
   PRIMARY KEY (`image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -244,7 +232,7 @@ INSERT INTO `gallery` (`image_id`, `path`, `date_added`) VALUES
 (120, '5a2b4d4e313e04.91419306.jpg', '2017-12-09 03:44:00.000000'),
 (121, '5a2b4d5c2b44e5.28157187.jpg', '2017-12-09 03:41:32.000000'),
 (122, '5a2b4d618ba992.80285379.jpg', '2017-12-09 03:42:35.000000'),
-(123, '5a2b4d6661dd13.40525659.jpg', '2017-12-09 03:42:30.000000'),
+(123, '5a2b4d6661dd13.40525659.jpg', '2017-12-13 07:22:05.000000'),
 (124, '5a2b4d6ab563c7.38855003.jpg', '2017-12-09 03:41:46.000000'),
 (125, '5a2b4d6f4c40f2.53341047.jpg', '2017-12-09 03:44:43.000000');
 
@@ -485,9 +473,7 @@ CREATE TABLE IF NOT EXISTS `unregistered_customer` (
 INSERT INTO `unregistered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_gender`) VALUES
 ('UNR0000001', 'Dhanushka ', 'Ayagama', '0714334422', 'Female'),
 ('UNR0000002', 'Warna', 'Gamage', '0710626751', 'Female'),
-('UNR0000003', 'Udara', 'Senanayake', '0774589632', 'Male'),
-('UNR0000004', 'Ruwanari', 'Heenkenda', '0714563289', 'Female'),
-('UNR0000005', 'Ruwanari', 'Heenkenda', '0714563289', 'Female');
+('UNR0000003', 'Udara', 'Senanayake', '0774589632', 'Male');
 
 -- --------------------------------------------------------
 
@@ -515,25 +501,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`, `profile_pic`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 14:15:01', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 08:58:04', 0, 'Administrator', 'EMP0000001', '5a2bc322ebc176.45074330.jpg'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-20 20:48:12', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-27 20:25:15', 0, 'Administrator', 'EMP0000001', '5a306cd8ccad09.02894929.jpg'),
 (19, 'Ama', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 13:58:46', 0, 'Customer', 'REG0000001', 'none.jpg'),
-(29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 19:52:10', 0, 'Customer', 'REG0000004', '5a2c32a3dfc7a8.03655996.jpg'),
+(29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-18 18:29:06', 0, 'Customer', 'REG0000004', '5a2c32a3dfc7a8.03655996.jpg'),
 (30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005', 'none.jpg'),
 (31, 'Vishni', 'Ganepola', 'homewsp@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 19:52:02', 0, 'Customer', 'REG0000007', '5a2e933379e333.25494883.jpg'),
 (35, 'Shehan', 'Dinuka', 'homewsp@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000008', 'none.jpg'),
 (36, 'Hermione', 'Granger', 'wasuradananjith@ieee.org', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000009', 'none.jpg'),
 (37, 'Shehan', 'Dinuka', 'homewsp@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000008', 'none.jpg'),
 (42, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 08:31:14', 0, 'Beautician', 'EMP0000003', '5a2d6b19d00ed9.39493558.jpg');
-
--- --------------------------------------------------------
-
---
--- Structure for view `beautician_commission`
---
-DROP TABLE IF EXISTS `beautician_commission`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `beautician_commission`  AS  select ((`s`.`service_charge` * `s`.`commission_percentage`) / 100) AS `commission`,`e`.`first_name` AS `employee_name`,`e`.`emp_id` AS `emp_id` from ((`service` `s` join `appointment` `a`) join `employee` `e`) where ((`s`.`service_id` = `a`.`service_id`) and (`a`.`emp_id` = `e`.`emp_id`) and (`a`.`appointment_date` = '2017-12-12')) ;
 
 --
 -- Constraints for dumped tables

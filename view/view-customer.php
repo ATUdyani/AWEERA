@@ -5,7 +5,6 @@
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 <script type="text/javascript" src="../js/customer_handler.js"></script>
-<script type="text/javascript" src="../js/delete_handler.js"></script>
 
 
 <h2>Manage Customers</h2>
@@ -49,4 +48,5 @@
 <?php include('modals/message-modal.php'); ?>
 <?php include('modals/update-message-modal.php'); ?>
 <?php include('modals/view-customer-modal.php'); ?>
+<?php include('modals/customer-delete-warning-modal.php'); ?>
 <?php include('modals/delete-modal.php'); ?>

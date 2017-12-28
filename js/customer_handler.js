@@ -75,3 +75,74 @@ $(document).ready(function (){
 $('#update_msg_Modal').on('hidden.bs.modal', function () {
    $('#content').load('view-customer.php');
 });
+
+function notDeleteRecord() {
+    $('#delete_Modal').modal('hide');
+    $('#warning_Modal').modal('hide');
+}
+
+
+// function to check whether customer can be deleted by checking the upcoming appointments
+function deleteRecord(){
+    $('#delete_Modal').modal('hide');
+    var cust_id = document.getElementById('record_id').value;
+    $.ajax({
+        url:"../controller/appointment-count-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {cust_id : cust_id},
+        cache: false,
+        success:function(result){
+            if (result==0){
+                deleteCustomer(cust_id);
+            }
+            else{
+                $('#warning_cust_id').val(cust_id);
+                $('#warning_Modal').modal('show');
+                $('#warning_msg_result').html("<h4>This Customer has "+result+" upcoming appointment(s)!<br><br>What do you want to do?</h4>");
+            }
+        }
+    });
+}
+
+// function to delete a customer who does not have upcoming appointments
+function deleteCustomer(cust_id){
+    var formArray = [];
+    formArray.push(cust_id,'customer');
+    var jsonString = JSON.stringify(formArray);
+    $.ajax({
+        url:"../controller/delete-record-handler.php", //the page containing php script
+        type: "POST", //request type
+        data: {data : jsonString},
+        cache: false,
+        success:function(result){
+            $('#update_msg_Modal').modal('show');
+            $('#update_msg_result').html(result+"<h4>User privileges removed!</h4>");
+        }
+    });
+}
+
+// function to delete a customer who has upcoming appointments
+function deleteCustomerRecord(decision) {
+    var cust_id = document.getElementById('warning_cust_id').value;
+    $('#delete_all').prop("disabled",true);
+    $('#delete_customer').prop("disabled",true);
+    $('#not_delete').prop("disabled",true);
+    if (decision=='all'){
+        $.ajax({
+            url:"../controller/cancel-appointment-customer-delete-handler.php", //the page containing php script
+            type: "POST", //request type
+            data: {cust_id : cust_id},
+            cache: false,
+            success:function(result){
+                $('#update_msg_Modal').modal('show');
+                $('#update_msg_result').html(result+"<h4>User privileges removed!</h4>");
+                $('#warning_Modal').modal('hide');
+            }
+        });
+    }
+    else{
+        deleteCustomer(cust_id);
+        $('#warning_Modal').modal('hide');
+    }
+
+}
