@@ -60,8 +60,8 @@ $(document).ready(function (){
 
 // accept register request
 function onClickAcceptReject(status){
-    document.getElementById('accept').disabled=true;
-    document.getElementById('reject').disabled=true;
+    $('#accept').addClass('disabled');
+    $('#reject').addClass('disabled');
     var formArray = [];
     formArray.push(status);
     formArray.push(document.getElementById("view_first_name").value);

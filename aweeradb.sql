@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2017 at 09:42 AM
+-- Generation Time: Dec 29, 2017 at 04:06 PM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -144,9 +144,9 @@ CREATE TABLE IF NOT EXISTS `customer` (
 
 INSERT INTO `customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `cust_gender`, `is_deleted`) VALUES
 ('REG0000001', 'Ama', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', 'Female', 0),
-('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', 'Male', 0),
+('REG0000004', 'Hisan', 'Hunais', '0775396038', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', 'Male', 0),
 ('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', NULL, 0),
-('REG0000007', 'Vishni', 'Ganepola', '0776325654', 'Panadura', 'homewsp@gmail.com', '2017-11-28', NULL, 0),
+('REG0000007', 'Vishni', 'Ganepola', '0713132431', 'Panadura', 'homewsp@gmail.com', '2017-11-28', NULL, 0),
 ('UNR0000003', 'Udara', 'Senanayake', '0774589632', NULL, NULL, NULL, 'Male', 0),
 ('UNR0000002', 'Warna', 'Gamage', '0710626751', NULL, NULL, NULL, 'Female', 0),
 ('UNR0000001', 'Dhanushka ', 'Ayagama', '0714334422', NULL, NULL, NULL, 'Female', 0);
@@ -319,8 +319,8 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
   `cust_gender` varchar(6) NOT NULL,
   `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
   PRIMARY KEY (`cust_id`),
-  UNIQUE KEY ` cust_phone_UNIQUE` (`cust_phone`),
-  UNIQUE KEY `cust_email_UNIQUE` (`cust_email`)
+  UNIQUE KEY `cust_email_UNIQUE` (`cust_email`),
+  KEY `cust_phone` (`cust_phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -329,9 +329,9 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
 
 INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cust_address`, `cust_email`, `date_joined`, `password`, `profile_pic`, `cust_gender`, `is_deleted`) VALUES
 ('REG0000001', 'Ama', 'Ganepola', '0775896548', 'Kandana', 'vishni@gmail.com', '2017-09-01', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg', 'Female', 0),
-('REG0000004', 'Hisan', 'Hunais', '0768526186', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72', '5a2c32a3dfc7a8.03655996.jpg', 'Male', 0),
+('REG0000004', 'Hisan', 'Hunais', '0775396038', 'Dehiwala', 'hisanhunais.live@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72', '5a2c32a3dfc7a8.03655996.jpg', 'Male', 0),
 ('REG0000005', 'Sandunika', 'Wattearachchi', '0771380014', 'Moratuwa', 'sw97100@gmail.com', '2017-10-08', '900150983cd24fb0d6963f7d28e17f72', 'none.jpg', '', 0),
-('REG0000007', 'Vishni', 'Ganepola', '0776325654', 'Panadura', 'homewsp@gmail.com', '2017-11-28', '900150983cd24fb0d6963f7d28e17f72', '5a2e933379e333.25494883.jpg', '', 0);
+('REG0000007', 'Vishni', 'Ganepola', '0713132431', 'Panadura', 'homewsp@gmail.com', '2017-11-28', '900150983cd24fb0d6963f7d28e17f72', '5a2e933379e333.25494883.jpg', '', 0);
 
 -- --------------------------------------------------------
 
@@ -351,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `register_request` (
   `password` varchar(100) NOT NULL,
   PRIMARY KEY (`reg_id`),
   KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_request`
@@ -494,15 +494,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_reg_id` varchar(20) NOT NULL,
   `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`, `profile_pic`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-20 20:48:12', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
-(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-27 20:25:15', 0, 'Administrator', 'EMP0000001', '5a306cd8ccad09.02894929.jpg'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-29 21:27:17', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
+(18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-29 14:01:16', 0, 'Administrator', 'EMP0000001', '5a306cd8ccad09.02894929.jpg'),
 (19, 'Ama', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 13:58:46', 0, 'Customer', 'REG0000001', 'none.jpg'),
 (29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-18 18:29:06', 0, 'Customer', 'REG0000004', '5a2c32a3dfc7a8.03655996.jpg'),
 (30, 'Sandunika', 'Wattearachchi', 'sw97100@gmail.com', '900150983cd24fb0d6963f7d28e17f72', NULL, 0, 'Customer', 'REG0000005', 'none.jpg'),

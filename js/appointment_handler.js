@@ -146,8 +146,9 @@ function makeAppointment() {
     });
 }
 
-// cancel appointment - only the rececptionist can invoke this
+// cancel appointment - only the receptionist or admin can invoke this
 function cancelAppointment(appointementId){
+    $('.btn_cancel').addClass('disabled');
     var dataArray = [];
     dataArray.push(appointementId);
     var jsonString = JSON.stringify(dataArray);

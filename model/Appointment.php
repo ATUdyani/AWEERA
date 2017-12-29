@@ -333,10 +333,8 @@
 
 
         // make an appointment
-        public function makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id){
+        public function makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id){
             session_start();
-            $start_time = $appointment_time;
-            $end_time = $this->getEndTime($start_time,$duration);
 
             $last_id=self::$db->getLastId('appointment_id','appointment');
 
@@ -354,9 +352,6 @@
                     echo "<h4>Thank You!"." ".$_SESSION['first_name']." ".$_SESSION['last_name'].".</h4>";
                     echo "<h4>Have a great day!</h4><br>";
 
-                    // send email confirmation
-                    $email = new Email();
-                    $email -> sendAppointmentSuccessEmail($cust_id,$appointment_date,$start_time,$end_time,$emp_id,$service_id);
                 }
                 else{
                     echo "<h4>Sorry! Failed to make the Appointment.</h4>";
@@ -370,9 +365,6 @@
 
         // delete the appointment when appointment is cancelled
         public function cancelAppointment($appointment_id){
-            // send email confirmation
-            $email = new Email();
-            $email -> sendAppointmentCancelEmail($appointment_id);
 
             $query = "DELETE FROM appointment WHERE appointment_id='".$appointment_id."'";
             try{
@@ -444,10 +436,10 @@
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
                         $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
                         if ($appointment['appointment_date']>=date("Y-m-d")){
-                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm btn_cancel\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         else{
-                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' disabled='disabled' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm btn_cancel\" onclick='cancelAppointment(this.id)' disabled='disabled' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         $appointment_list.= "</tr>";
                     }
@@ -547,10 +539,10 @@
                         $appointment_list.= "<td><a class='service_check' id={$appointment['service_id']}>{$appointment['service_name']}</a></td>";
                         $appointment_list.= "<td><a class='emp_check' id={$appointment['emp_id']}>{$appointment['first_name']} {$appointment['last_name']}</a></td>";
                         if ($appointment['payment_id']=='none'){
-                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm btn_cancel\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         else{
-                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm disabled\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
+                            $appointment_list.= "<td><a class=\"btn btn-danger btn-sm disabled btn_cancel\" onclick='cancelAppointment(this.id)' id={$appointment['appointment_id']} id name=\"cancel\" value=\"Cancel\" id=\"{$appointment['appointment_id']}\"><span class=\"glyphicon glyphicon-trash\"></span>  Cancel</a></td>";
                         }
                         $appointment_list.= "</tr>";
                     }

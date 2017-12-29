@@ -1,6 +1,10 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Appointment.php' ?>
 <?php require_once '../model/Service.php' ?>
+<?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/RegisteredCustomer.php' ?>
+<?php require_once('../model/SMS.php') ?>
+<?php require_once('../model/Email.php') ?>
 
 <?php
 /**
@@ -51,8 +55,42 @@ if (!empty($errors)){
 else{
     $service = new Service();
     $duration = $service->fetchServiceDuration($service_id);
+
+
     $appointment = new Appointment();
-    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$appointment_time,$duration,$cust_id);
+    $start_time = $appointment_time;
+    $end_time = $appointment->getEndTime($start_time,$duration);
+
+    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id);
+
+    // get customer email
+    $customer = new RegisteredCustomer();
+    $row = $customer->getCustomerData($cust_id);
+    $cust_email = $row['cust_email'];
+    $cust_phone = $row['cust_phone'];
+
+    // get beautician name
+    $beautician = new Employee();
+    $row = $beautician->getEmployeeData($emp_id);
+    $emp_first_name = $row['first_name'];
+    $emp_last_name = $row['last_name'];
+
+    // get service name
+    $service = new Service();
+    $row = $service->getServiceData($service_id);
+    $service_name = $row['service_name'];
+
+    // send email confirmation
+    $email = new Email();
+    $email -> sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+
+
+
+    // send confirmation sms
+    $sms = new SMS();
+    $sms -> sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+
+
 }
 
  ?>
