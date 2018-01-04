@@ -6,7 +6,7 @@
 <script type="text/javascript" src="../js/loader.js"></script>
 <script type="text/javascript" src="../js/search_filter_change.js"></script>
 
-<script type="text/javascript" src="../js/payment_handler.js"></script>
+<script type="text/javascript" src="../js/appointment_payment_handler.js"></script>
 <script type="text/javascript" src="../js/stock_payment_handler.js"></script>
 
 <h2>Payment Management</h2>
@@ -120,7 +120,7 @@
                         <th>Product Type</th>
                         <th>Description</th>
                         <th>Price</th>
-                        <th>Quty</th>
+                        <th>Quantity</th>
                         <th>Total</th>
                     </tr>
                     </thead>
@@ -135,9 +135,9 @@
                     <tr>
                         <td>SUB TOTAL</td>
                         <td class="sub" id="sub_total_1">0.00</td>
-                        <td><button onclick="paybycard1()" class="btn btn-success btn-sm fa fa-credit-card " value="paybycard"><span> Pay </span></button></td>
-                        <td><button onclick="paybycash1()" class="btn btn-success btn-sm fa fa-money" value="paybycash"><span> Pay </span></button></td>
-                        <td><button onclick="payment_cancel1()" class="btn btn-danger btn-sm fa fa-times" value="cancel"><span> Cancel </span></button></td>
+                        <td><button onclick="ppaybycard()" class="btn btn-success btn-sm fa fa-credit-card " value="paybycard"><span> Pay </span></button></td>
+                        <td><button onclick="ppaybycash()" class="btn btn-success btn-sm fa fa-money" value="paybycash"><span> Pay </span></button></td>
+                        <td><button onclick="ppayment_cancel()" class="btn btn-danger btn-sm fa fa-times" value="cancel"><span> Cancel </span></button></td>
                     </tr>
                     </tbody>
                 </table>
@@ -146,5 +146,7 @@
     </div>
 </div>
 <?php include('modals/message-modal.php'); ?>
+<?php include('modals/update-message-modal.php'); ?>
+
 
 

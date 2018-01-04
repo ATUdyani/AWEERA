@@ -11,6 +11,7 @@ class Purchase{
     {
         self::$db = new Database();
         self::$connection = self::$db->connect();
+        date_default_timezone_set('Asia/Colombo');
     }
 
     // get purchases count for a particular date

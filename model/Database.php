@@ -7,7 +7,7 @@
 			$dbhost = 'localhost';
 			$dbuser = 'root';
 			$dbpass = '';
-			$dbname = 'aweeradb'; 
+			$dbname = 'aweeradb';
 
 			self::$connection = new mysqli($dbhost, $dbuser,$dbpass,$dbname);
 

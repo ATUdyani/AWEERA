@@ -26,6 +26,7 @@
         {
             self::$db = new Database();
             self::$connection = self::$db->connect();
+            date_default_timezone_set('Asia/Colombo');
         }
 
         // get all appointment data for a particular appointment id
@@ -662,6 +663,20 @@ FROM appointment a,service s WHERE a.appointment_date BETWEEN '".$fdate."' AND '
         public function getCustomerAppointments($cust_id){
             $date = date("Y-m-d");
             $query = "SELECT * FROM appointment WHERE cust_id='".$cust_id."' AND appointment_date>='".$date."' AND payment_id='none'";
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
+        // get the appointments today
+        public function getAppointmentsToday(){
+            $date = date("Y-m-d");
+            $query = "SELECT * FROM appointment WHERE appointment_date='".$date."' AND payment_id='none'";
             try{
                 $result = self::$db->executeQuery($query);
                 return $result;

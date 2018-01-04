@@ -2,7 +2,7 @@
 <?php require_once '../model/Appointment.php' ?>
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/Employee.php' ?>
-<?php require_once '../model/RegisteredCustomer.php' ?>
+<?php require_once '../model/Customer.php' ?>
 <?php require_once('../model/SMS.php') ?>
 <?php require_once('../model/Email.php') ?>
 
@@ -64,7 +64,7 @@ else{
     $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id);
 
     // get customer email
-    $customer = new RegisteredCustomer();
+    $customer = new Customer();
     $row = $customer->getCustomerData($cust_id);
     $cust_email = $row['cust_email'];
     $cust_phone = $row['cust_phone'];

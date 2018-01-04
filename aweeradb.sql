@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2017 at 04:06 PM
+-- Generation Time: Jan 03, 2018 at 09:22 AM
 -- Server version: 5.7.9
 -- PHP Version: 5.6.16
 
@@ -453,6 +453,23 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_phone`, `suppl
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `transaction_log`
+--
+
+DROP TABLE IF EXISTS `transaction_log`;
+CREATE TABLE IF NOT EXISTS `transaction_log` (
+  `date` date NOT NULL,
+  `time` varchar(10) NOT NULL,
+  `user_reg_id` varchar(20) NOT NULL,
+  `user_type` varchar(15) NOT NULL,
+  `modified_id` varchar(20) NOT NULL,
+  `table_name` varchar(20) NOT NULL,
+  `operation` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `unregistered_customer`
 --
 
@@ -494,14 +511,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_reg_id` varchar(20) NOT NULL,
   `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`, `profile_pic`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-29 21:27:17', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2018-01-03 09:16:56', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg'),
 (18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-29 14:01:16', 0, 'Administrator', 'EMP0000001', '5a306cd8ccad09.02894929.jpg'),
 (19, 'Ama', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 13:58:46', 0, 'Customer', 'REG0000001', 'none.jpg'),
 (29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-18 18:29:06', 0, 'Customer', 'REG0000004', '5a2c32a3dfc7a8.03655996.jpg'),
