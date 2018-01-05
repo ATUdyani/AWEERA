@@ -274,4 +274,31 @@ class Email{
             echo $ex;
         }
     }
+
+    // send email with password change link
+    public function sendChangePasswordLink($user_reg_id,$entered_email){
+        try{
+            // unique link to comment
+            $reset_link = "http://localhost/AWEERA/change-password.php?user_reg_id=".$user_reg_id;
+
+            $bodyContent = "<h1>This is your password reset link.</h1>";
+            $bodyContent .= "
+            Please visit the below link and reset your password.<br>
+            <a href='$reset_link'>$reset_link</a>
+            <br><br>Thank you!
+            <br>AWEERA - Hair and Beauty</p>";
+
+            self::$mail->addAddress($entered_email);
+            self::$mail->Subject = 'Email from AWEERA by TeamScorp';
+            self::$mail->Body    = $bodyContent;
+            if(!self::$mail->send()) {
+                return "failure";
+            } else {
+                return "success";
+            }
+        }
+        catch (Exception $ex){
+            echo $ex;
+        }
+    }
 }
