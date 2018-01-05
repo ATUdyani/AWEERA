@@ -332,10 +332,11 @@ class StockItem{
             $stock_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
-                                    <th>Product Brand</th>
-                                    <th>Product Type</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
+                                    <th style=\"width: 20%\">Product Brand</th>
+                                    <th style=\"width: 20%\">Product Type</th>
+                                    <th style=\"width: 30%\">Description</th>
+                                    <th style=\"width: 20%\">Price</th>
+                                    <th style=\"width: 10%\">Add</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
@@ -349,7 +350,7 @@ class StockItem{
                     $stock_list.= "<td id='ptype_$index'>{$stock['type']}</td>";
                     $stock_list.= "<td id='pdescription_$index'>{$stock['description']}</td>";
                     $stock_list.= "<td id='pprice_$index'>{$stock['price']}</td>";
-                    $stock_list.= "<td id='addbtn_$index'><button onclick=\"addToProductCart('$index','$stock_count')\" class=\"btn btn-success btn-sm fa fa fa-shopping-cart add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon\"></span> Add Cart </button></td>";
+                    $stock_list.= "<td id='addbtn_$index'><button onclick=\"addToProductCart('$index','$stock_count')\" class=\"btn btn-success btn-sm add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon glyphicon-plus\"></span> Add</button></td>";
                     $stock_list.= "</tr>";
                 }
                 $stock_list .= "</tbody>

@@ -719,10 +719,11 @@ INNER JOIN service ON appointment.service_id = service.service_id WHERE "
                 $appointment_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Service Name</th>
-                                    <th>Service Charge</th>
+                                    <th style=\"width: 20%\">First Name</th>
+                                    <th style=\"width: 20%\">Last Name</th>
+                                    <th style=\"width: 30%\">Service Name</th>
+                                    <th style=\"width: 20%\">Service Charge</th>
+                                    <th style=\"width: 10%\">Add</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
@@ -739,7 +740,7 @@ INNER JOIN service ON appointment.service_id = service.service_id WHERE "
                         $appointment_list.= "<td id='sname_$index'>{$appointment['service_name']}</td>";
                         $appointment_list.= "<td id='scharge_$index'>{$appointment['service_charge']}</td>";
 
-                        $appointment_list.= "<td id='addbtn_$index'><button onclick=\"addToCart('$index')\" class=\"btn btn-success btn-sm fa fa-plus add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon\"></span> ADD </button></td>";
+                        $appointment_list.= "<td id='addbtn_$index'><button onclick=\"addToCart('$index')\" class=\"btn btn-success btn-sm\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon glyphicon-plus\"></span> Add</button></td>";
 
                         $appointment_list.= "</tr>";
 

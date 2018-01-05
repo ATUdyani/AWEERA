@@ -54,8 +54,9 @@
                     <table class="table table-hover col-md-12" id="payment_table">
                         <thead>
                         <tr>
-                            <th>Service Name</th>
-                            <th>Service Charge</th>
+                            <th style="width: 45%">Service Name</th>
+                            <th style="width: 45%">Service Charge</th>
+                            <th style="width: 10%">Remove</th>
                         </tr>
                         </thead>
                         <tbody class="payment_tbody" id="payment_tbody"></tbody>
@@ -67,11 +68,11 @@
                     <table class="table table-hover col-md-12" id="total_payment_table">
                         <tbody id="subtotal_tbody">
                             <tr>
-                                <td>SUB TOTAL</td>
-                                <td class="sub" id="sub_total_1">0.00</td>
-                                <td><button type="button" onclick="paybycard()" class="btn btn-success btn-sm fa fa-credit-card " value="paybycard"><span> Pay </span></button></td>
-                                <td><button type="button" onclick="paybycash()" class="btn btn-success btn-sm fa fa-money" value="paybycash"><span> Pay </span></button></td>
-                                <td><button type="button" onclick="payment_cancel()" class="btn btn-danger btn-sm fa fa-times" value="cancel"><span> Cancel </span></button></td>
+                                <td style="width: 25%; font-size: large; font-weight: bold"><b>SUB TOTAL</b></td>
+                                <td class="sub" id="sub_total_1" style="width: 45%; font-size: large; font-weight: bold"><b>0.00</b></td>
+                                <td style="width: 10%"><button type="button" onclick="paybycard()" class="btn btn-success btn-sm" value="paybycard"><span class="fa fa-credit-card"></span>  Pay</button></button></td>
+                                <td style="width: 10%"><button type="button" onclick="paybycash()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
+                                <td style="width: 10%"><button type="button" onclick="payment_cancel()" class="btn btn-danger btn-sm" value="cancel"><span class="glyphicon glyphicon-remove"></span> Cancel</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -116,12 +117,12 @@
                 <table class="table table-hover col-md-12" id="product_table">
                     <thead>
                     <tr>
-                        <th>Product Brand</th>
-                        <th>Product Type</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
+                        <th style="width: 15%">Product Brand</th>
+                        <th style="width: 15%">Product Type</th>
+                        <th style="width: 25%">Description</th>
+                        <th style="width: 20%">Price</th>
+                        <th style="width: 10%">Quantity</th>
+                        <th style="width: 15%">Total</th>
                     </tr>
                     </thead>
                     <tbody class="product_payment_tbody" id="product_payment_tbody"></tbody>
@@ -133,11 +134,11 @@
                 <table class="table table-hover col-md-12" id="total_payment_table">
                     <tbody id="product_subtotal_tbody">
                     <tr>
-                        <td>SUB TOTAL</td>
-                        <td class="sub" id="sub_total_1">0.00</td>
-                        <td><button onclick="ppaybycard()" class="btn btn-success btn-sm fa fa-credit-card " value="paybycard"><span> Pay </span></button></td>
-                        <td><button onclick="ppaybycash()" class="btn btn-success btn-sm fa fa-money" value="paybycash"><span> Pay </span></button></td>
-                        <td><button onclick="ppayment_cancel()" class="btn btn-danger btn-sm fa fa-times" value="cancel"><span> Cancel </span></button></td>
+                        <td style="width: 25%; font-size: large; font-weight: bold"><b>SUB TOTAL</b></td>
+                        <td class="sub" id="sub_total_1" style="width: 45%; font-size: large; font-weight: bold"><b>0.00</b></td>
+                        <td style="width: 10%"><button type="button" onclick="ppaybycard()" class="btn btn-success btn-sm" value="paybycard"><span class="fa fa-credit-card"></span>  Pay</button></button></td>
+                        <td style="width: 10%"><button type="button" onclick="ppaybycash()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
+                        <td style="width: 10%"><button type="button" onclick="ppayment_cancel()" class="btn btn-danger btn-sm" value="cancel"><span class="glyphicon glyphicon-remove"></span> Cancel</button></td>
                     </tr>
                     </tbody>
                 </table>

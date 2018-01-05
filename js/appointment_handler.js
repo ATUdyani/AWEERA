@@ -1,4 +1,5 @@
-loading_data = "<br><br><br>\n" +
+// loading modal data
+var loading_data = "<br><br><br>\n" +
     "<img src=\"../img/loading.gif\" id=\"loading\" class=\"img-responsive\" alt=\"loading\" height=\"120\" width=\"120\" style=\"margin-left: 38%;\">\n" +
     "<br><br><br>";
 

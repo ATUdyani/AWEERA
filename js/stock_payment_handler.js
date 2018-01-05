@@ -65,7 +65,11 @@ function addToProductCart(id,stock_count) {
 
 
 
-    var new_row = "<tr id="+i+"><td id=paypbrand_"+id+"> "+ product_brand +" </td><td id=payptype_"+id+">" + product_type + "</td><td id=paypdescription >"+description+"</td><td id=paypprice>"+price+"</td><td id=paypqut><input onkeyup='calculateTotal()' type='number' step='1' min='0' id=qty"+i+"><td id=unitTotal"+i+">"+price+"</td></tr>";
+    var new_row = "<tr id="+i+"><td style=\"width: 15%\" id=paypbrand_"+id+"> " + product_brand
+        +" </td><td style=\"width: 15%\" id=payptype_"+id+">" + product_type
+        + "</td><td style=\"width: 25%\" id=paypdescription >"+description
+        +"</td><td style='width: 20%;' id=paypprice>"+price
+        +"</td><td style='width: 10%;' id=paypqut><input onkeyup='calculateTotal()' type='number' step='1' min='0' id=qty"+i+"><td style='width: 15%' id=unitTotal"+i+">"+price+"</td></tr>";
     $(".product_payment_tbody").append(new_row);
 
     i = i+1;
