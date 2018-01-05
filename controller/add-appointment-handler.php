@@ -79,16 +79,17 @@ else{
     $service = new Service();
     $row = $service->getServiceData($service_id);
     $service_name = $row['service_name'];
+    $service_charge = $row['service_charge'];
 
     // send email confirmation
     $email = new Email();
-    $email -> sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+    $email -> sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge);
 
 
 
     // send confirmation sms
     $sms = new SMS();
-    $sms -> sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+    $sms -> sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge);
 
 
 }

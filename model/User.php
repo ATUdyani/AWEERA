@@ -1,6 +1,7 @@
-<?php require_once('../model/Database.php') ?>
-<?php require_once('../model/RegisteredCustomer.php') ?>
-<?php require_once('../model/Employee.php') ?>
+<?php require_once('Database.php') ?>
+<?php require_once('RegisteredCustomer.php') ?>
+<?php require_once('Employee.php') ?>
+
 <?php
 	class User{
 

@@ -11,7 +11,12 @@ setInterval(function(){
         data: {cust_id:cust_id},
         success: function(data)
         {
-            $('#appointment_count').html(data+" NEW");
+            if (data!=0){
+                $('#appointment_count').html(data+" NEW");
+            }
+            else {
+                $('#appointment_count').html("");
+            }
         }
     });
 },3000);

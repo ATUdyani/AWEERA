@@ -1,3 +1,7 @@
+loading_data = "<br><br><br>\n" +
+    "<img src=\"../img/loading.gif\" id=\"loading\" class=\"img-responsive\" alt=\"loading\" height=\"120\" width=\"120\" style=\"margin-left: 38%;\">\n" +
+    "<br><br><br>";
+
 // load suitable results on keyup
 $(document).ready(function(){
     $('#search_text').keyup(function () {
@@ -60,8 +64,11 @@ $(document).ready(function (){
 
 // accept register request
 function onClickAcceptReject(status){
-    $('#accept').addClass('disabled');
-    $('#reject').addClass('disabled');
+    //$('#accept').addClass('disabled');
+    //$('#reject').addClass('disabled');
+    $('#view_data_Modal').modal('hide');
+    $('#msg_Modal').modal('show');
+    $('#msg_result').html(loading_data);
     var formArray = [];
     formArray.push(status);
     formArray.push(document.getElementById("view_first_name").value);
@@ -78,8 +85,6 @@ function onClickAcceptReject(status){
         data: {data : jsonString},
         cache: false,
         success:function(result){
-            $('#view_data_Modal').modal('hide');
-            $('#msg_Modal').modal('show');
             $('#msg_result').html(result);
         }
     });

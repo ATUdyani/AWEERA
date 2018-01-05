@@ -159,7 +159,7 @@ class Email{
     }
 
     // send an email when appointment has been made successfully
-    function sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name){
+    function sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge){
 
         try{
             // set the email address of the customer
@@ -169,7 +169,7 @@ class Email{
             $bodyContent .= "
             Appointment Date : ".$appointment_date."<br>
             Appointment Time: ".$start_time."h to".$end_time."h<br>
-            Service : ".$service_name."<br>
+            Service : ".$service_name." - Rs.".$service_charge."<br>
             Beautician : ".$emp_first_name." ".$emp_last_name."<br>
             Please contact us if there are any changes have to be done. 
             <br><br>Thank you!
@@ -198,7 +198,7 @@ class Email{
             $bodyContent = "<h1>Your appointment has been cancelled.</h1>";
             $bodyContent .= "
             Appointment Date : ".$appointment_date."<br>
-            Appointment Time: ".$start_time." to".$end_time."<br>
+            Appointment Time: ".$start_time."h to".$end_time."h<br>
             Service : ".$service_name."<br>
             Beautician : ".$emp_first_name." ".$emp_last_name."<br>
             Please contact us immediately, if this is a mistake. 
