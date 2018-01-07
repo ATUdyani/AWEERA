@@ -101,7 +101,7 @@ function paybycard() {
             app_charge = [];
             btn_id = [];
             i = 0;
-            generateReceipt(jsonString);
+            generateReceiptAppointment(jsonString);
         }
     });
 
@@ -111,7 +111,7 @@ function paybycard() {
 }
 
 
-function generateReceipt(data) {
+function generateReceiptAppointment(data) {
     var mywindow = window.open(
         '../controller/appointment-payment-receipt-handler.php?data='+data,
         '_blank' // <- This is what makes it open in a new window.
@@ -145,7 +145,7 @@ function paybycash() {
             app_charge = [];
             btn_id = [];
             i = 0;
-            generateReceipt(jsonString);
+            generateReceiptAppointment(jsonString);
         }
     });
 

@@ -37,7 +37,7 @@ $report ->setHeaderReceipt($pdf);
 
 //$pdf->Cell(130 ,15,'Daily Collection Report - Total',0,1,'C');//end of line
 
-$pdf->SetFont('Gadugi','',12);
+$pdf->SetFont('Gadugi','',10);
 
 $pdf->Cell(20 ,5,'Date   :',0,0,'L');//end of line
 $pdf->Cell(30 ,5,$date,0,0,'L');
@@ -62,13 +62,13 @@ $pdf->Cell(189 ,10,'',0,1,'C');//end of line
 $pdf->Cell(189 ,10,'',0,1,'C');//end of line
 
 
-$pdf->SetFont('Gadugi','',14);
+$pdf->SetFont('Gadugi','u',12);
 
 $pdf->Cell(15 ,10,'',0,0,'L');
 $pdf->Cell(70 ,10,'Service',0,0,'L');
 $pdf->Cell(10 ,10,'Amount',0,0,'L');
 
-$pdf->SetFont('Gadugi','',12);
+$pdf->SetFont('Gadugi','',10);
 
 $pdf->Cell(189 ,5,'',0,1,'C');//end of line
 
@@ -85,9 +85,9 @@ $pdf->Cell(189 ,10,'',0,1,'C');//end of line
 $pdf->Cell(15 ,10,'',0,0,'L');
 
 
-$pdf->SetFont('Arial','b',14);
-$pdf->Cell(62 ,10,'SUB TOTAL',0,0,'L');
-$pdf->Cell(40 ,10,"Rs. ".number_format($sub_total, 2, '.', ''),1,0,'C');//end of line
+$pdf->SetFont('Arial','b',12);
+$pdf->Cell(68 ,10,'SUB TOTAL',0,0,'L');
+$pdf->Cell(25 ,10,"Rs. ".number_format($sub_total, 2, '.', ''),1,0,'C');//end of line
 
 $pdf->output();
 ?>

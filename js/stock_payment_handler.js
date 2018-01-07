@@ -164,9 +164,18 @@ function ppaybycash() {
             app_charge = [];
             btn_id = [];
             i = 0;
+            generateReceiptPurchase(jsonString);
         }
     });
 
+}
+
+
+function generateReceiptPurchase(data) {
+    var mywindow = window.open(
+        '../controller/purchase-payment-receipt-handler.php?data='+data,
+        '_blank' // <- This is what makes it open in a new window.
+    );
 }
 
 function ppaybycard() {
@@ -195,6 +204,7 @@ function ppaybycard() {
             app_charge = [];
             btn_id = [];
             i = 0;
+            generateReceiptPurchase(jsonString);
         }
     });
 
