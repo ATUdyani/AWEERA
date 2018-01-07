@@ -577,10 +577,10 @@
         }
 	
 	// get appointment count for a period 
-        public function getAppointmentCountPeriod($fdate,$tdate){
+        public function getAppointmentCountPeriod($from_date,$to_date){
 
             // query to count appointments for a period
-            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date BETWEEN '".$fdate."' AND '".$tdate."'";
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date BETWEEN '".$from_date."' AND '".$to_date."'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_array($result);

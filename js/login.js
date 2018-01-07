@@ -159,7 +159,7 @@ $(function() {
             $iconTag.removeClass($iconClass + " " + $divClass);
         }, $msgShowTime);
     }
-    
+
     //password matching-------------------------------------------------------------------------------
 
     $('#register_cpassword').on('keyup', function () {

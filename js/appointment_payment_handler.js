@@ -101,15 +101,23 @@ function paybycard() {
             app_charge = [];
             btn_id = [];
             i = 0;
+            generateReceipt(jsonString);
         }
     });
-
-
 
     //window.location = document.url;
     //window.location.reload(true);
 
 }
+
+
+function generateReceipt(data) {
+    var mywindow = window.open(
+        '../controller/appointment-payment-receipt-handler.php?data='+data,
+        '_blank' // <- This is what makes it open in a new window.
+    );
+}
+
 
 function paybycash() {
     $('#msg_Modal').modal('show');
@@ -137,6 +145,7 @@ function paybycash() {
             app_charge = [];
             btn_id = [];
             i = 0;
+            generateReceipt(jsonString);
         }
     });
 
