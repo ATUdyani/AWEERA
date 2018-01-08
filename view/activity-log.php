@@ -64,7 +64,7 @@
                 </ul>
             </div>
             <input type="hidden" name="search_param" value="all" id="search_param">
-            <input type="text" class="form-control" name="x" placeholder="Search supplier here..." id="search_text">
+            <input type="text" class="form-control" name="x" placeholder="Search activity here..." id="search_text">
         </div>
     </div>
 

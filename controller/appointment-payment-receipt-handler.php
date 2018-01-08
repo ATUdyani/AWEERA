@@ -15,11 +15,12 @@ $appointment = new Appointment();
 $service = new Service();
 
 foreach ($appointment_id_array as $appointment_id){
-    $result_appointment = $appointment->getAppointmentData($appointment_id);
-    $result_service = $service->getServiceData($result_appointment['service_id']);
-    array_push($service_name_array,$result_service['service_name']);
-    $payment_id = $result_appointment['payment_id'];
+        $result_appointment = $appointment->getAppointmentData($appointment_id);
+        $result_service = $service->getServiceData($result_appointment['service_id']);
+        array_push($service_name_array,$result_service['service_name']);
+        $payment_id = $result_appointment['payment_id'];
 }
+
 
 
 date_default_timezone_set('Asia/Colombo');
@@ -74,11 +75,16 @@ $pdf->Cell(189 ,5,'',0,1,'C');//end of line
 
 $count=0;
 foreach ($appointment_id_array as $appointment_id){
-    $pdf->Cell(189 ,5,'',0,1,'C');//end of line
-    $pdf->Cell(15 ,10,'',0,0,'L');
-    $pdf->Cell(70 ,10,$service_name_array[$count],0,0,'L');
-    $pdf->Cell(10 ,10,"Rs. ".number_format($appointment_amount_array[$count], 2, '.', ''),0,0,'L');
-    $count+=1;
+    if ($appointment_id!=""){
+        $pdf->Cell(189 ,5,'',0,1,'C');//end of line
+        $pdf->Cell(15 ,10,'',0,0,'L');
+        $pdf->Cell(70 ,10,$service_name_array[$count],0,0,'L');
+        $pdf->Cell(10 ,10,"Rs. ".number_format($appointment_amount_array[$count], 2, '.', ''),0,0,'L');
+        $count+=1;
+    }
+    else{
+        $count+=1;
+    }
 }
 
 $pdf->Cell(189 ,10,'',0,1,'C');//end of line

@@ -69,9 +69,13 @@
                         <tbody id="subtotal_tbody">
                             <tr>
                                 <td style="width: 25%; font-size: large; font-weight: bold"><b>SUB TOTAL</b></td>
-                                <td class="sub" id="sub_total_1" style="width: 45%; font-size: large; font-weight: bold"><b>0.00</b></td>
-                                <td style="width: 10%"><button type="button" onclick="paybycard()" class="btn btn-success btn-sm" value="paybycard"><span class="fa fa-credit-card"></span>  Pay</button></button></td>
-                                <td style="width: 10%"><button type="button" onclick="paybycash()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
+                                <td class="sub" id="sub_total_1" style="width: 45%; font-size: large; font-weight: bold"><b></b></td>
+                                <td><select name="payment_method" id="payment_method">
+                                        <option value="Card">Card</option>
+                                        <option value="Cash">Cash</option>
+                                        <option value="Both">Both</option>
+                                    </select></td>
+                                <td style="width: 10%"><button type="button" onclick="doAppointmentPayment()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
                                 <td style="width: 10%"><button type="button" onclick="payment_cancel()" class="btn btn-danger btn-sm" value="cancel"><span class="glyphicon glyphicon-remove"></span> Cancel</button></td>
                             </tr>
                         </tbody>
@@ -136,8 +140,12 @@
                     <tr>
                         <td style="width: 25%; font-size: large; font-weight: bold"><b>SUB TOTAL</b></td>
                         <td class="sub" id="sub_total_1" style="width: 45%; font-size: large; font-weight: bold"><b>0.00</b></td>
-                        <td style="width: 10%"><button type="button" onclick="ppaybycard()" class="btn btn-success btn-sm" value="paybycard"><span class="fa fa-credit-card"></span>  Pay</button></button></td>
-                        <td style="width: 10%"><button type="button" onclick="ppaybycash()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
+                        <td><select id="payment_method_1">
+                                <option value="Card">Card</option>
+                                <option value="Cash">Cash</option>
+                                <option value="Both">Both</option>
+                            </select></td>
+                        <td style="width: 10%"><button type="button" onclick="doProductPayment()" class="btn btn-success btn-sm" value="paybycash"><span class="fa fa-money"></span>  Pay</button></td>
                         <td style="width: 10%"><button type="button" onclick="ppayment_cancel()" class="btn btn-danger btn-sm" value="cancel"><span class="glyphicon glyphicon-remove"></span> Cancel</button></td>
                     </tr>
                     </tbody>

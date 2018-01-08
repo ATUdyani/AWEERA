@@ -76,39 +76,6 @@ function addToCart(id) {
 
 }
 
-function paybycard() {
-    $('#msg_Modal').modal('show');
-    $('#msg_result').html(loading_data);
-    document.getElementById("appointment_payment").classList.add("hidden");
-    document.getElementById("appointment_payment1").classList.add("hidden");
-    var type = 'card';
-    var dataArray = [];
-    dataArray.push(app_id);
-    dataArray.push(app_charge);
-    dataArray.push(sub_total);
-    dataArray.push(type);
-    var jsonString = JSON.stringify(dataArray);
-    //console.log("hi");
-    $.ajax({
-        url: "../controller/appointment-payment-handler.php",
-        method: "post",
-        data:{data:jsonString},
-        cache: false,
-        success: function (data) {
-            $('#msg_result').html(data);
-            sub_total = 0;
-            app_id = [];
-            app_charge = [];
-            btn_id = [];
-            i = 0;
-            generateReceiptAppointment(jsonString);
-        }
-    });
-
-    //window.location = document.url;
-    //window.location.reload(true);
-
-}
 
 
 function generateReceiptAppointment(data) {
@@ -118,14 +85,12 @@ function generateReceiptAppointment(data) {
     );
 }
 
-
-function paybycash() {
+function doAppointmentPayment() {
     $('#msg_Modal').modal('show');
     $('#msg_result').html(loading_data);
-    //var value = document.getElementById("sub_total_"+id).innerText;
     document.getElementById("appointment_payment").classList.add("hidden");
     document.getElementById("appointment_payment1").classList.add("hidden");
-    var type = 'cash';
+    var type = $('#payment_method').val();
     var dataArray = [];
     dataArray.push(app_id);
     dataArray.push(app_charge);
@@ -149,11 +114,8 @@ function paybycash() {
         }
     });
 
-
-
     //window.location = document.url;
     //window.location.reload(true);
-
 
 }
 
@@ -172,10 +134,6 @@ function payment_cancel() {
     app_charge = [];
     btn_id = [];
     i = 0;
-
-
-
-
 }
 
 function remove_appointment(id) {

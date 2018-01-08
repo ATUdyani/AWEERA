@@ -91,18 +91,24 @@ $pdf->Cell(189 ,5,'',0,1,'C');//end of line
 
 $count=0;
 foreach ($stock_id_array as $stock_id){
-    $pdf->Cell(189 ,5,'',0,1,'C');//end of line
-    $pdf->Cell(25 ,10,$stock_id,0,0,'L');
-    $pdf->Cell(35 ,10,$stock_brand_array[$count]." ".$stock_type_array[$count],0,0,'L');
-    $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count], 2, '.', ''),0,0,'L');
-    $pdf->Cell(25 ,10,$stock_quantity_array[$count],0,0,'L');
-    $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count]*$stock_quantity_array[$count], 2, '.', ''),0,0,'L');
+    if ($stock_id!=""){
+        $pdf->Cell(189 ,5,'',0,1,'C');//end of line
+        $pdf->Cell(25 ,10,$stock_id,0,0,'L');
+        $pdf->Cell(35 ,10,$stock_brand_array[$count]." ".$stock_type_array[$count],0,0,'L');
+        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count], 2, '.', ''),0,0,'L');
+        $pdf->Cell(25 ,10,$stock_quantity_array[$count],0,0,'L');
+        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count]*$stock_quantity_array[$count], 2, '.', ''),0,0,'L');
 
-    $pdf->Cell(189 ,5,'',0,1,'C');//end of line
-    $pdf->Cell(25 ,10,"",0,0,'L');
-    $pdf->Cell(35 ,10,$stock_description_array[$count],0,0,'L');
+        $pdf->Cell(189 ,5,'',0,1,'C');//end of line
+        $pdf->Cell(25 ,10,"",0,0,'L');
+        $pdf->Cell(35 ,10,$stock_description_array[$count],0,0,'L');
+        $count+=1;
+    }
+    else{
+        $count+=1;
+    }
 
-    $count+=1;
+
 }
 
 $pdf->Cell(189 ,10,'',0,1,'C');//end of line
