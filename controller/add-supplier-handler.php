@@ -7,6 +7,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Supplier.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 $db = new Database();
@@ -61,6 +62,9 @@ if (!empty($errors)){
     echo "<h4>Supplier is not inserted</h4>";
 }
 else{
+    $last_id = $db->getLastId('supplier_id','supplier');
+    $id = $db->generateId($last_id,"SUP");
+
     // adding a new record
     $supplier_name = mysqli_real_escape_string($connection,$data[0]);
     $supplier_phone = mysqli_real_escape_string($connection,$data[1]);
@@ -69,7 +73,11 @@ else{
 
     $supplier = new Supplier();
     $supplier ->setSupplier($supplier_name,$supplier_phone,$supplier_address,$supplier_email);
-    $supplier->addSupplier();
+    $supplier->addSupplier($id);
+
+    $description = "Add a New Suppler";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($id,$description);
 
 }
 

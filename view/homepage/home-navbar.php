@@ -43,7 +43,8 @@
 
                 // checking if an user is logged in
                 if(!isset($_SESSION['user_id'])){
-                    echo "<li class=\"menu link-1\" id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" ><i class=\"fa fa-unlock-alt\"></i>Log In</a></li>";
+                    echo "<li class=\"menu link-1\" id=\"login\"><a href=\"#\" data-toggle=\"modal\" data-target=\"#login-modal\" >
+                            <span class='glyphicon glyphicon-log-in'></span> Log In</a></li>";
                 }
                 else{
                     echo "<li class=\"menu link-1\" id=\"welcome-msg\">

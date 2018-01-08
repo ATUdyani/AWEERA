@@ -1,5 +1,6 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Service.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 	$db = new Database();
@@ -42,6 +43,10 @@
         echo "<h4>Service is not inserted</h4>";
  	}
  	else{
+
+        $last_id=$db->getLastId('service_id','service');
+        $new_id =$db->generateId($last_id,"SER");
+
  		// adding a new record
  		$service_name = mysqli_real_escape_string($connection,$data[0]);
  		$service_charge = mysqli_real_escape_string($connection,$data[1]);
@@ -49,10 +54,13 @@
  		$duration = mysqli_real_escape_string($connection,$data[3]);
         $commission_percentage = mysqli_real_escape_string($connection,$data[4]);
 
-
- 		$service = new Service();
- 		$service ->setService($service_name,$service_charge,$description,$duration,$commission_percentage);
+        $service = new Service();
+ 		$service ->setService($new_id,$service_name,$service_charge,$description,$duration,$commission_percentage);
  		$result = $service->addService();
+
+        $description = "Add New Service";
+        $activity_log = new ActivityLog();
+        $activity_log->addActivityLogSession($new_id,$description);
 
  	}
  	

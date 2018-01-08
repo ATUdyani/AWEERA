@@ -1,6 +1,7 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/User.php' ?>
 <?php require_once 'functions.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 	$db = new Database();
@@ -33,8 +34,15 @@ if (!empty($errors)){
  	}
  	else{
 
+        $last_id=$db->getLastId('emp_id','employee');
+        $emp_id =$db->generateId($last_id,"EMP");
+
         $employee = new User();
         $employee ->addEmployeeUser($first_name,$last_name,$emp_email,$emp_type,$emp_password,$emp_id);
+
+        $description = "Add New Employee User";
+        $activity_log = new ActivityLog();
+        $activity_log->addActivityLogSession($emp_id,$description);
  	}
 
  	

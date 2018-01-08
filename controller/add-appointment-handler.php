@@ -2,6 +2,7 @@
 <?php require_once '../model/Appointment.php' ?>
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 <?php require_once '../model/RegisteredCustomer.php' ?>
 <?php require_once('../model/SMS.php') ?>
 <?php require_once('../model/Email.php') ?>
@@ -61,7 +62,15 @@ else{
     $start_time = $appointment_time;
     $end_time = $appointment->getEndTime($start_time,$duration);
 
-    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id);
+    $last_id=$db->getLastId('appointment_id','appointment');
+    $new_id =$db->generateId($last_id,"APP");
+
+    $appointment->makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id,$new_id);
+
+    //add activity
+    $description = "Add a new appointment";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLog($new_id,$description);
 
     // get customer email
     $customer = new RegisteredCustomer();

@@ -39,12 +39,7 @@ class Supplier{
     }
 
     // add new supplier
-    public function addSupplier(){
-        $last_id=self::$db->getLastId('supplier_id','supplier');
-
-        $id = self::$db->generateId($last_id,"SUP");
-
-        echo $id;
+    public function addSupplier($id){
 
         $query = "INSERT INTO supplier (supplier_id, supplier_name, supplier_phone, supplier_address, supplier_email) VALUES ('"
             .$id."', '".self::$supplier_name."', '".self::$supplier_phone."', '".self::$supplier_address."', '"
