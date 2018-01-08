@@ -47,14 +47,16 @@
 //                )
 //            );
 //
-//            $result = file_get_contents('https://requestb.in/17orvht1');
+//            /*$result = file_get_contents('https://requestb.in/17orvht1');
 //
 //            if ($result=="ok"){
 //                echo "<h4>SMS has been sent successfully.</h4>";
 //            }
 //            else{
 //                echo "<h4>SMS NOT sent</h4>";
-//            }
+//            }*/
+//            echo "<h4>SMS has been sent successfully.</h4>";
+//
 //        }
 //        catch (Exception $e){
 //            echo $e;
@@ -84,14 +86,16 @@
 //                )
 //            );
 //
-//            $result = file_get_contents('https://requestb.in/17orvht1');
+//            /*$result = file_get_contents('https://requestb.in/17orvht1');
 //
 //            if ($result=="ok"){
 //                echo "<h4>SMS has been sent successfully.</h4>";
 //            }
 //            else{
 //                echo "<h4>SMS NOT sent</h4>";
-//            }
+//            }*/
+//
+//            echo "<h4>SMS has been sent successfully.</h4>";
 //        }
 //        catch (Exception $e){
 //            echo $e;
@@ -123,14 +127,15 @@
 //                )
 //            );
 //
-//            $result = file_get_contents('https://requestb.in/17orvht1');
+//            /*$result = file_get_contents('https://requestb.in/17orvht1');
 //
 //            if ($result=="ok"){
 //                echo "<h4>SMS has been sent successfully.</h4>";
 //            }
 //            else{
 //                echo "<h4>SMS NOT sent</h4>";
-//            }
+//            }*/
+//            echo "<h4>SMS has been sent successfully.</h4>";
 //        }
 //        catch (Exception $e){
 //            echo $e;
