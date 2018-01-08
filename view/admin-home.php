@@ -97,6 +97,7 @@
                         </li>-->
                         <li><a href="../view/manage-service.php" class="my-sidebar-menu-item">Service</a></li>
                         <li><a href="../view/generate-reports.php" class="my-sidebar-menu-item">Reports</a></li>
+                        <li><a href="../view/activity-log.php" class="my-sidebar-menu-item">Activity Log</a></li>
                     </ul>
                 </nav>
             </div>

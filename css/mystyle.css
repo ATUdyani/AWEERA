@@ -66,12 +66,18 @@ body h1,h2,h3,h4{
 
 
 .my-navbar .my-primary-menu li a{
+	display: block;
 	font-size: 16px;
 	color: white;
 }
 
 .my-navbar .my-primary-menu li a:hover{
-	color: #e0e0e0;
+	-moz-transition: all .3s ease-in;
+	-o-transition: all .3s ease-in;
+	-webkit-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+	background-color: white;
+	color: black;
 }
 
 .my-navbar .my-primary-menu .dropdown-menu a{
@@ -88,13 +94,14 @@ body h1,h2,h3,h4{
 }
 
 .link-1:hover{
-  transition: 0.3s ease;
-  border-top: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  border-right: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  padding-left: 15px;
-  padding-right: 15px;
+  /*transition: 0.3s ease;*/
+  /*border-top: 2px solid #ffffff;*/
+  /*border-bottom: 2px solid #ffffff;*/
+  /*border-right: 2px solid #ffffff;*/
+  /*border-left: 2px solid #ffffff;*/
+	/*border: 2px solid white;*/
+  /*padding-left: 15px;*/
+  /*padding-right: 15px;*/
 }
 
 .arrow-up{

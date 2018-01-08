@@ -334,13 +334,8 @@
 
 
         // make an appointment
-        public function makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id){
+        public function makeAppointment($service_id,$emp_id,$appointment_date,$start_time,$end_time,$cust_id,$new_id){
             session_start();
-
-            $last_id=self::$db->getLastId('appointment_id','appointment');
-
-            $new_id = self::$db->generateId($last_id,"APP");
-
 
             $query = "INSERT INTO appointment(appointment_id, appointment_date, start_time, end_time, payment_id, cust_id, service_id, emp_id) VALUES ('".
                 $new_id."', '".$appointment_date."', '".$start_time."', '".$end_time."', 'none', '".$cust_id."', '".$service_id."', '".$emp_id."')";

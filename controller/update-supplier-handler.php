@@ -1,6 +1,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Supplier.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 
 <?php
@@ -72,6 +73,11 @@ else{
     $supplier = new Supplier();
     $supplier ->setSupplier($supplier_name,$supplier_phone,$supplier_address,$supplier_email);
     $supplier->updateSupplier($supplier_id);
+
+    $description = "Update Supplier Details";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($supplier_id,$description);
+
 }
 
 

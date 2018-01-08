@@ -55,30 +55,7 @@ class StockItem{
     }
 
 
-    /*public function getprducts($product_id){
-        $stock_list = '';
-
-        $query = "SELECT stock_brand , type , price FROM  stock_item WHERE type LIKE '%$product_id$' AND is_deleted='0'";
-        $stocks = self::$db->executeQuery($query);
-
-        self::$db->verifyQuery($stocks);
-
-        while ($stock = mysqli_fetch_assoc($stocks)){
-            $stock_list.= "<tr>";
-            $stock_list.= "<td>{$stock['stock_brand']} {$stock['type']}</td>";
-            $stock_list.= "<td><form method='get'></form></td>";
-            $stock_list.= "<td>{$stock['price']}</td>";
-            $stock_list.= "<td><form method='get'></form></td>";
-        }
-        return $stock_list;
-    }*/
-
-    function addStock(){
-        $last_id=self::$db->getLastId('stock_id','stock_item');
-
-        $id = self::$db->generateId($last_id,"STK");
-
-        //echo $id;
+    function addStock($id){
 
         $query = "INSERT INTO stock_item (stock_id, stock_brand, type, stock_count, price, description, supplier_id) VALUES ('"
             .$id."', '".self::$stock_brand."', '".self::$type."', '".self::$stock_count."', '"
@@ -95,7 +72,7 @@ class StockItem{
                 echo "<h4>Failed to add the new stock.</h4>";
             }
         }catch (mysqli_sql_exception $e){
-            echo $e;
+            echo $e."Aruna";
         }
     }
 

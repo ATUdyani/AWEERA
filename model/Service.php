@@ -25,8 +25,9 @@
         }
 
         // set fields
-        public function setService($service_name,$service_charge,$description,$duration,$commission_percentage){
+        public function setService($service_id,$service_name,$service_charge,$description,$duration,$commission_percentage){
 
+            self::$service_id = $service_id;
             self::$service_name = $service_name;
             self::$service_charge = $service_charge;
             self::$description = $description;
@@ -51,12 +52,9 @@
 
         // add a new service
         public function addService(){
-            $last_id=self::$db->getLastId('service_id','service');
-
-            $id = self::$db->generateId($last_id,"SER");
 
             $query = "INSERT INTO service (service_id, service_name, service_charge, description, duration, commission_percentage) VALUES ('".
-                $id."', '".self::$service_name."', '".self::$service_charge."', '".self::$description."', '".self::$duration."', '".self::$commission_percentage."')";
+                self::$service_id."', '".self::$service_name."', '".self::$service_charge."', '".self::$description."', '".self::$duration."', '".self::$commission_percentage."')";
 
 
             try{

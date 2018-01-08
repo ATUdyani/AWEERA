@@ -2,6 +2,7 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Employee.php' ?>
 <?php require_once '../model/Beautician.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 	$db = new Database();
@@ -77,8 +78,8 @@
         $emp_gender = mysqli_real_escape_string($connection,$data[6]);
         if ($emp_type == "Beautician"){
             $emp_services = $data[7] ;
-		}
 
+		}
 
         $employee = new Employee();
         $employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender);
@@ -88,7 +89,17 @@
 		if ($emp_type == "Beautician"){
 			$beautician = new Beautician();
             $beautician ->addBeauticianServices($emp_services);
+
+
 		}
+
+        $last_id=$db->getLastId('emp_id','employee');
+        $emp_id =$db->generateId($last_id,"EMP");
+
+        $description = "Add a New Employee";
+        $activity_log = new ActivityLog();
+        $activity_log->addActivityLogSession($emp_id,$description);
+
 
  	}
 

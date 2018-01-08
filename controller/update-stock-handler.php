@@ -1,6 +1,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/StockItem.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 
 <?php
@@ -62,6 +63,10 @@ else{
     $stock = new StockItem();
     $stock ->setStock($stock_brand,$type,$stock_count,$price,$description,$supplier_id);
     $stock->updateStock($stock_id);
+
+    $description = "Update Stock Details";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($stock_id,$description);
 }
 
 ?>

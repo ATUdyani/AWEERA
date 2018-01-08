@@ -59,7 +59,7 @@
 
 		// get the number of rows in a particular result set
 		public function getNumRows($result_set){
-			return mysqli_num_rows($result_set);
+		    return mysqli_num_rows($result_set);
 		}
 
 		// returns last records id in a particular table

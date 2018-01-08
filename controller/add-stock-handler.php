@@ -9,6 +9,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/StockItem.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 $db = new Database();
@@ -55,6 +56,8 @@ if (!empty($errors)){
     }
 }
 else{
+    $last_id = $db->getLastId('stock_id','stock_item');
+    $id = $db->generateId($last_id,"STK");
     //add a new record
     $stock_brand = mysqli_real_escape_string($connection,$data[0]);
     $type = mysqli_real_escape_string($connection,$data[1]);
@@ -65,7 +68,11 @@ else{
 
     $stock = new StockItem();
     $stock ->setStock($stock_brand,$type,$stock_count,$price,$description,$supplier_id);
-    $stock->addStock();
+    $stock->addStock($id);
+
+    $description = "Add New Stock";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($id,$description);
 
 }
 

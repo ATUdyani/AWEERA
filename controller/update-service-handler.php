@@ -1,7 +1,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Service.php' ?>
-
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 $db = new Database();
@@ -53,8 +53,12 @@ else{
     $service_id = mysqli_real_escape_string($connection,$data[5]);
 
     $employee = new Service();
-    $employee ->setService($service_name,$service_charge,$description,$duration,$commission_percentage);
+    $employee ->setService($service_id,$service_name,$service_charge,$description,$duration,$commission_percentage);
     $employee->updateService($service_id);
+
+    $description = "Update Service Details";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($service_id,$description);
 }
 
 

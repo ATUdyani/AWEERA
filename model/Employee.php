@@ -50,12 +50,9 @@
 
         // add a new employee
 		function addEmployee(){
-		    $last_id=self::$db->getLastId('emp_id','employee');
-
-		    $id = self::$db->generateId($last_id,"EMP");
 
 			$query = "INSERT INTO employee (emp_id, first_name, last_name, emp_email, emp_phone, emp_address, emp_type,emp_gender) VALUES ('"
-                .$id."', '".self::$first_name."', '".self::$last_name."', '".self::$emp_email."', '"
+                .self::$emp_id."', '".self::$first_name."', '".self::$last_name."', '".self::$emp_email."', '"
                 .self::$emp_phone."', '".self::$emp_address."', '".self::$emp_type."', '".self::$emp_gender."')";
 
             try{

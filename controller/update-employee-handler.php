@@ -1,6 +1,7 @@
 <?php require_once '../controller/functions.php' ?>
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Employee.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 
 <?php
@@ -80,6 +81,10 @@ else{
     $employee = new Employee();
     $employee ->setEmployee($first_name,$last_name,$emp_email,$emp_phone,$emp_address,$emp_type,$emp_gender);
     $employee->updateEmployee($emp_id);
+
+    $description = "Update Employee Details";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($emp_id,$description);
 }
 
 
