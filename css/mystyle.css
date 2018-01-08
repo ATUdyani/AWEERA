@@ -24,7 +24,7 @@ body{
 }
 
 body p,li{
-	color: #8d8d8d;
+	color: #cacaca;
 }
 body {
 	font-family: bodyfont;
@@ -182,7 +182,7 @@ body h1,h2,h3,h4{
 }
 
 .main-service-box .panel-default p{
-	color: #bcbcbc;
+	color: #c2c2c2;
 }
 
 .main-service-box .panel-heading{

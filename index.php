@@ -160,7 +160,7 @@
     <div class="well">
         <div class="row">
             <div class="col-md-8">
-                <p>Have a great hair day with our professional in AWEERA. <br>
+                <p>Have a great hair day with our professionals in AWEERA. <br>
                     <strong>"Life is more beautiful when you meet the right Hairdresser"</strong></p>
             </div>
             <div class="col-md-4">
