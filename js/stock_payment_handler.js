@@ -61,6 +61,7 @@ function addToProductCart(id,stock_count) {
 
     document.getElementById("product_payment").classList.remove("hidden");
 
+
     var classList = document.getElementById("product_payment1").classList;
 
     if(classList == "col-md-12 hidden"){
@@ -74,12 +75,12 @@ function addToProductCart(id,stock_count) {
             + "</td><td style=\"width: 25%\" id=paypdescription >"+description
             +"</td><td style='width: 20%;' id=paypprice>"+price
             +"</td><td style='width: 10%;' id=paypqut><input onkeyup='calculateTotal()' value='1' type='number' step='1' min='0' id=qty"+i+"><td style='width: 15%' id=unitTotal"+i+">"+price+"</td>" +
-            "<td><button onclick='removeProduct(id)' id="+i+" class=\"btn btn-danger btn-sm fa fa-minus-circle\" value = \"remove\"><span> Remove </span></button></td></tr>\";</tr>";
+            "<td><button onclick='removeProduct(id)' id="+i+"  class = \"btn btn-danger btn-sm\" value =\"remove\"><span class=\"glyphicon glyphicon-remove\"></span> Remove</button></td></tr>";
 
         $(".product_payment_tbody").append(new_row);
 
         sub_total = price;
-        $("#product_subtotal_tbody .sub").html(sub_total);
+        $("#product_subtotal_tbody .sub").html("Rs. "+sub_total);
 
         i = i+1;
         j = j +1;
@@ -104,11 +105,11 @@ function addToProductCart(id,stock_count) {
             + "</td><td style=\"width: 25%\" id=paypdescription >"+description
             +"</td><td style='width: 20%;' id=paypprice>"+price
             +"</td><td style='width: 10%;' id=paypqut><input onkeyup='calculateTotal()' value='1' type='number' step='1' min='0' id=qty"+i+"><td style='width: 15%' id=unitTotal"+i+">"+price+"</td>" +
-            "<td><button onclick='removeProduct(id)' id="+i+" class=\"btn btn-danger btn-sm fa fa-minus-circle\" value = \"remove\"><span> Remove </span></button></td></tr>\";</tr>";
+            "<td><button onclick='removeProduct(id)' id="+i+" class = \"btn btn-danger btn-sm\" value =\"remove\"><span class=\"glyphicon glyphicon-remove\"></span> Remove</button></td></tr>";
 
         $(".product_payment_tbody").append(new_row);
 
-        //document.getElementById("qty"+j).disabled = true;
+        document.getElementById("qty"+j).disabled = true;
         //$('#product_subtotal_tbody .sub').clear();
         i = i+1;
         j = j +1;
@@ -125,17 +126,19 @@ function addToProductCart(id,stock_count) {
             //console.log("");
         }
         console.log(sub_total);
-        $("#product_subtotal_tbody .sub").html(sub_total);
+        $("#product_subtotal_tbody .sub").html("Rs. "+sub_total+".00");
     }
 
-    document.getElementById("btn_"+id).classList.add("hidden");
+    $('#btn_'+id).prop("disabled",true);
+    //document.getElementById("btn_"+id).classList.add("hidden");
 
 }
 
 
 function removeProduct(id) {
     //console.log(id);
-    document.getElementById("btn_"+stock_id[id]).classList.remove("hidden");
+    //document.getElementById("btn_"+stock_id[id]).classList.remove("hidden");
+    $('#btn_'+stock_id[id]).prop("disabled",false);
 
     var q = 1;
     for(var p=0;p<stock_id.length;p++){
@@ -166,7 +169,7 @@ function removeProduct(id) {
         unit_totalarr[id] = 0;
         $('#'+id).remove();
         var new_subtotal = sub_total;
-        $("#product_subtotal_tbody .sub").html(new_subtotal);
+        $("#product_subtotal_tbody .sub").html("Rs.  "+new_subtotal+".00");
     }
 }
 
@@ -192,7 +195,7 @@ function calculateTotal() {
     //console.log(price);
 
     unit_total = parseFloat(price * count);
-    $('#unitTotal' + j).html(unit_total);
+    $('#unitTotal' + j).html(unit_total+".00");
 
     unit_totalarr[j] = unit_total;
 
@@ -202,13 +205,17 @@ function calculateTotal() {
         //console.log(sub_total);
         //console.log("");
     }
-    $("#product_subtotal_tbody .sub").html(sub_total);
+    $("#product_subtotal_tbody .sub").html("Rs. "+sub_total+".00");
 
     unit_total = 0;
 
 }
 
 function ppayment_cancel() {
+    for (var k = 0; k < stock_id.length ; k++){
+        //document.getElementById("btn_"+btn_id[k]).classList.remove("hidden");
+        $('#btn_'+stock_id[k]).prop("disabled",false);
+    }
     document.getElementById("product_payment").classList.add("hidden");
     document.getElementById("product_payment1").classList.add("hidden");
     $('#product_payment_tbody tr').remove();

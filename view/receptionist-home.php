@@ -62,7 +62,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
             <div class="col-lg-12">
                 <h1 class="page-header">Receptionist Home
                     <small><?php echo $_SESSION['first_name']." ".$_SESSION['last_name'] ?></small>
-                    <div class="request-icon">
+                    <div data-toggle="tooltip" title="Register Requests" class="request-icon">
                         <span role="button" class="badge badge-pill badge-info" id="request_count" onclick="displayRegisterRequests()"></span>
                         <i role="button" class="fa fa-envelope-o envelop" aria-hidden="true" onclick="displayRegisterRequests()"></i>
                     </div>

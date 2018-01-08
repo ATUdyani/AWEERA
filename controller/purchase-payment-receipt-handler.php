@@ -80,9 +80,9 @@ $pdf->SetFont('Gadugi','u',12);
 
 $pdf->Cell(25 ,10,'Stock ID',0,0,'L');
 $pdf->Cell(35 ,10,'Description',0,0,'L');
-$pdf->Cell(25 ,10,'Unit Price',0,0,'L');
-$pdf->Cell(25 ,10,'Quantity',0,0,'L');
-$pdf->Cell(25 ,10,'Total',0,0,'L');
+$pdf->Cell(25 ,10,'Unit Price',0,0,'R');
+$pdf->Cell(20 ,10,'Quantity',0,0,'R');
+$pdf->Cell(25 ,10,'Total',0,0,'C');
 
 
 $pdf->SetFont('Gadugi','',10);
@@ -95,9 +95,9 @@ foreach ($stock_id_array as $stock_id){
         $pdf->Cell(189 ,5,'',0,1,'C');//end of line
         $pdf->Cell(25 ,10,$stock_id,0,0,'L');
         $pdf->Cell(35 ,10,$stock_brand_array[$count]." ".$stock_type_array[$count],0,0,'L');
-        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count], 2, '.', ''),0,0,'L');
-        $pdf->Cell(25 ,10,$stock_quantity_array[$count],0,0,'L');
-        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count]*$stock_quantity_array[$count], 2, '.', ''),0,0,'L');
+        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count], 2, '.', ''),0,0,'R');
+        $pdf->Cell(20 ,10,$stock_quantity_array[$count],0,0,'C');
+        $pdf->Cell(25 ,10,"Rs. ".number_format($stock_price_array[$count]*$stock_quantity_array[$count], 2, '.', ''),0,0,'R');
 
         $pdf->Cell(189 ,5,'',0,1,'C');//end of line
         $pdf->Cell(25 ,10,"",0,0,'L');
@@ -117,7 +117,7 @@ $pdf->Cell(15 ,10,'',0,0,'L');
 
 $pdf->SetFont('Arial','b',12);
 $pdf->Cell(90 ,10,'SUB TOTAL',0,0,'L');
-$pdf->Cell(25 ,10,"Rs. ".number_format($sub_total, 2, '.', ''),1,0,'C');//end of line
+$pdf->Cell(27 ,10,"Rs. ".number_format($sub_total, 2, '.', ''),1,0,'C');//end of line
 
 $pdf->output();
 ?>

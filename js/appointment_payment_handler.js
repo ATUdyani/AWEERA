@@ -68,7 +68,7 @@ function addToCart(id) {
     $(".payment_tbody").append(new_row);
 
     var new_subtotal = sub_total;
-    $("#subtotal_tbody .sub").html(new_subtotal);
+    $("#subtotal_tbody .sub").html("Rs.  "+new_subtotal+".00");
 
     i = i +1;
 
@@ -160,7 +160,7 @@ function remove_appointment(id) {
         app_charge[id] = 0;
         $('#'+id).remove();
         var new_subtotal = sub_total;
-        $("#subtotal_tbody .sub").html(new_subtotal);
+        $("#subtotal_tbody .sub").html("Rs.  "+new_subtotal+".00");
     }
 
 
