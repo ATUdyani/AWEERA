@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2018 at 12:44 PM
--- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- Generation Time: Jan 08, 2018 at 03:36 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,11 +25,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `activity_log`
+--
+
+CREATE TABLE `activity_log` (
+  `id` varchar(20) NOT NULL,
+  `date_time` datetime NOT NULL,
+  `user_reg_id` varchar(20) NOT NULL,
+  `user_type` varchar(15) NOT NULL,
+  `modified_id` varchar(20) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `appointment`
 --
 
-DROP TABLE IF EXISTS `appointment`;
-CREATE TABLE IF NOT EXISTS `appointment` (
+CREATE TABLE `appointment` (
   `appointment_id` varchar(20) NOT NULL,
   `appointment_date` date NOT NULL,
   `start_time` varchar(11) NOT NULL,
@@ -37,10 +53,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   `service_id` varchar(20) NOT NULL,
   `emp_id` varchar(20) NOT NULL,
   `comment` varchar(1000) DEFAULT NULL,
-  `is_approved` tinyint(4) NOT NULL DEFAULT '-1',
-  PRIMARY KEY (`appointment_id`,`payment_id`,`cust_id`),
-  KEY `fk_Appointment_Payment1` (`payment_id`),
-  KEY `fk_Appointment_Customer1` (`cust_id`)
+  `is_approved` tinyint(4) NOT NULL DEFAULT '-1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -83,11 +96,9 @@ INSERT INTO `appointment` (`appointment_id`, `appointment_date`, `start_time`, `
 -- Table structure for table `beautician_service`
 --
 
-DROP TABLE IF EXISTS `beautician_service`;
-CREATE TABLE IF NOT EXISTS `beautician_service` (
+CREATE TABLE `beautician_service` (
   `emp_id` varchar(20) NOT NULL,
-  `service_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`emp_id`,`service_id`)
+  `service_id` varchar(20) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -124,8 +135,7 @@ INSERT INTO `beautician_service` (`emp_id`, `service_id`) VALUES
 -- Table structure for table `customer`
 --
 
-DROP TABLE IF EXISTS `customer`;
-CREATE TABLE IF NOT EXISTS `customer` (
+CREATE TABLE `customer` (
   `cust_id` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) DEFAULT NULL,
@@ -134,8 +144,7 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `cust_email` varchar(30) DEFAULT NULL,
   `date_joined` date DEFAULT NULL,
   `cust_gender` varchar(6) DEFAULT NULL,
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`cust_id`)
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -157,8 +166,7 @@ INSERT INTO `customer` (`cust_id`, `first_name`, `last_name`, `cust_phone`, `cus
 -- Table structure for table `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
-CREATE TABLE IF NOT EXISTS `employee` (
+CREATE TABLE `employee` (
   `emp_id` varchar(20) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
@@ -169,10 +177,7 @@ CREATE TABLE IF NOT EXISTS `employee` (
   `emp_gender` varchar(10) NOT NULL,
   `is_user` tinyint(1) NOT NULL DEFAULT '0',
   `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`emp_id`),
-  UNIQUE KEY `emp_email_UNIQUE` (`emp_email`),
-  UNIQUE KEY `emp_phone_UNIQUE` (`emp_phone`)
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -198,13 +203,11 @@ INSERT INTO `employee` (`emp_id`, `first_name`, `last_name`, `emp_email`, `emp_p
 -- Table structure for table `gallery`
 --
 
-DROP TABLE IF EXISTS `gallery`;
-CREATE TABLE IF NOT EXISTS `gallery` (
-  `image_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `gallery` (
+  `image_id` int(11) NOT NULL,
   `path` varchar(100) NOT NULL,
-  `date_added` datetime(6) NOT NULL,
-  PRIMARY KEY (`image_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
+  `date_added` datetime(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -242,12 +245,10 @@ INSERT INTO `gallery` (`image_id`, `path`, `date_added`) VALUES
 -- Table structure for table `mirror`
 --
 
-DROP TABLE IF EXISTS `mirror`;
-CREATE TABLE IF NOT EXISTS `mirror` (
-  `image_id` int(11) NOT NULL AUTO_INCREMENT,
-  `image` varchar(256) NOT NULL,
-  PRIMARY KEY (`image_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+CREATE TABLE `mirror` (
+  `image_id` int(11) NOT NULL,
+  `image` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mirror`
@@ -267,15 +268,13 @@ INSERT INTO `mirror` (`image_id`, `image`) VALUES
 -- Table structure for table `payment`
 --
 
-DROP TABLE IF EXISTS `payment`;
-CREATE TABLE IF NOT EXISTS `payment` (
+CREATE TABLE `payment` (
   `payment_id` varchar(20) NOT NULL,
   `payment_date` date NOT NULL,
   `payment_time` time NOT NULL,
   `payment_mode` varchar(20) NOT NULL,
   `paid_amount` float(10,2) NOT NULL,
-  `type` varchar(20) NOT NULL,
-  PRIMARY KEY (`payment_id`)
+  `type` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -292,8 +291,7 @@ INSERT INTO `payment` (`payment_id`, `payment_date`, `payment_time`, `payment_mo
 -- Table structure for table `purchase`
 --
 
-DROP TABLE IF EXISTS `purchase`;
-CREATE TABLE IF NOT EXISTS `purchase` (
+CREATE TABLE `purchase` (
   `payment_id` varchar(20) NOT NULL,
   `stock_id` varchar(20) NOT NULL,
   `quantity` int(2) NOT NULL
@@ -305,8 +303,7 @@ CREATE TABLE IF NOT EXISTS `purchase` (
 -- Table structure for table `registered_customer`
 --
 
-DROP TABLE IF EXISTS `registered_customer`;
-CREATE TABLE IF NOT EXISTS `registered_customer` (
+CREATE TABLE `registered_customer` (
   `cust_id` varchar(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
@@ -317,10 +314,7 @@ CREATE TABLE IF NOT EXISTS `registered_customer` (
   `password` varchar(40) NOT NULL,
   `profile_pic` varchar(30) DEFAULT 'none.jpg',
   `cust_gender` varchar(6) NOT NULL,
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`cust_id`),
-  UNIQUE KEY `cust_email_UNIQUE` (`cust_email`),
-  KEY `cust_phone` (`cust_phone`)
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -339,19 +333,16 @@ INSERT INTO `registered_customer` (`cust_id`, `first_name`, `last_name`, `cust_p
 -- Table structure for table `register_request`
 --
 
-DROP TABLE IF EXISTS `register_request`;
-CREATE TABLE IF NOT EXISTS `register_request` (
-  `reg_id` int(20) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `register_request` (
+  `reg_id` int(20) NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `cust_phone` varchar(12) NOT NULL,
   `cust_address` varchar(60) NOT NULL,
   `cust_email` varchar(30) NOT NULL,
   `cust_gender` varchar(6) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  PRIMARY KEY (`reg_id`),
-  KEY `reg_id` (`reg_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
+  `password` varchar(100) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `register_request`
@@ -367,16 +358,14 @@ INSERT INTO `register_request` (`reg_id`, `first_name`, `last_name`, `cust_phone
 -- Table structure for table `service`
 --
 
-DROP TABLE IF EXISTS `service`;
-CREATE TABLE IF NOT EXISTS `service` (
+CREATE TABLE `service` (
   `service_id` varchar(20) NOT NULL,
   `service_name` varchar(50) NOT NULL,
   `service_charge` float(10,2) NOT NULL,
   `description` varchar(50) NOT NULL,
   `duration` int(3) NOT NULL,
   `commission_percentage` int(3) NOT NULL,
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`service_id`)
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -399,8 +388,7 @@ INSERT INTO `service` (`service_id`, `service_name`, `service_charge`, `descript
 -- Table structure for table `stock_item`
 --
 
-DROP TABLE IF EXISTS `stock_item`;
-CREATE TABLE IF NOT EXISTS `stock_item` (
+CREATE TABLE `stock_item` (
   `stock_id` varchar(20) NOT NULL,
   `stock_brand` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
@@ -408,9 +396,7 @@ CREATE TABLE IF NOT EXISTS `stock_item` (
   `price` float(10,2) NOT NULL,
   `description` varchar(50) NOT NULL,
   `supplier_id` varchar(20) NOT NULL,
-  `is_deleted` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`stock_id`,`supplier_id`),
-  KEY `fk_Stock_Item_Supplier1` (`supplier_id`)
+  `is_deleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -428,17 +414,13 @@ INSERT INTO `stock_item` (`stock_id`, `stock_brand`, `type`, `stock_count`, `pri
 -- Table structure for table `supplier`
 --
 
-DROP TABLE IF EXISTS `supplier`;
-CREATE TABLE IF NOT EXISTS `supplier` (
+CREATE TABLE `supplier` (
   `supplier_id` varchar(20) NOT NULL,
   `supplier_name` varchar(20) NOT NULL,
   `supplier_phone` varchar(12) NOT NULL,
   `supplier_address` varchar(60) NOT NULL,
   `supplier_email` varchar(30) NOT NULL,
-  `is_deleted` tinyint(4) DEFAULT '0',
-  PRIMARY KEY (`supplier_id`),
-  UNIQUE KEY `supplier_email_UNIQUE` (`supplier_email`),
-  UNIQUE KEY `supplier_phone_UNIQUE` (`supplier_phone`)
+  `is_deleted` tinyint(4) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -453,34 +435,15 @@ INSERT INTO `supplier` (`supplier_id`, `supplier_name`, `supplier_phone`, `suppl
 -- --------------------------------------------------------
 
 --
--- Table structure for table `transaction_log`
---
-
-DROP TABLE IF EXISTS `transaction_log`;
-CREATE TABLE IF NOT EXISTS `transaction_log` (
-  `date` date NOT NULL,
-  `time` varchar(10) NOT NULL,
-  `user_reg_id` varchar(20) NOT NULL,
-  `user_type` varchar(15) NOT NULL,
-  `modified_id` varchar(20) NOT NULL,
-  `table_name` varchar(20) NOT NULL,
-  `operation` varchar(10) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `unregistered_customer`
 --
 
-DROP TABLE IF EXISTS `unregistered_customer`;
-CREATE TABLE IF NOT EXISTS `unregistered_customer` (
+CREATE TABLE `unregistered_customer` (
   `cust_id` varchar(20) NOT NULL,
   `first_name` varchar(20) DEFAULT NULL,
   `last_name` varchar(20) NOT NULL,
   `cust_phone` varchar(12) NOT NULL,
-  `cust_gender` varchar(10) NOT NULL,
-  PRIMARY KEY (`cust_id`)
+  `cust_gender` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -498,9 +461,8 @@ INSERT INTO `unregistered_customer` (`cust_id`, `first_name`, `last_name`, `cust
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -510,16 +472,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `type` varchar(15) NOT NULL,
   `user_reg_id` varchar(20) NOT NULL,
   `profile_pic` varchar(30) NOT NULL DEFAULT 'none.jpg',
-  `is_lost_password` tinyint(4) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+  `is_lost_password` tinyint(4) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_login`, `is_deleted`, `type`, `user_reg_id`, `profile_pic`, `is_lost_password`) VALUES
-(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2018-01-05 18:09:27', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg', 0),
+(17, 'Thilakshika', 'Udyani', 'thilakshika@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2018-01-08 20:03:31', 0, 'Receptionist', 'EMP0000002', '5a2add240a3460.91513380.jpg', 0),
 (18, 'Wasura', 'Wattearachchi', 'wasuradananjith@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-29 14:01:16', 0, 'Administrator', 'EMP0000001', '5a306cd8ccad09.02894929.jpg', 0),
 (19, 'Ama', 'Ganepola', 'vishni@gmail.com ', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 13:58:46', 0, 'Customer', 'REG0000001', 'none.jpg', 0),
 (29, 'Hisan', 'Hunais', 'hisanhunais.live@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-18 18:29:06', 0, 'Customer', 'REG0000004', '5a2c32a3dfc7a8.03655996.jpg', 0),
@@ -531,6 +492,138 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 (42, 'Dharana', 'Weerawarna', 'wdharana@gmail.com', '900150983cd24fb0d6963f7d28e17f72', '2017-12-11 08:31:14', 0, 'Beautician', 'EMP0000003', '5a2d6b19d00ed9.39493558.jpg', 0);
 
 --
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `activity_log`
+--
+ALTER TABLE `activity_log`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `appointment`
+--
+ALTER TABLE `appointment`
+  ADD PRIMARY KEY (`appointment_id`,`payment_id`,`cust_id`),
+  ADD KEY `fk_Appointment_Payment1` (`payment_id`),
+  ADD KEY `fk_Appointment_Customer1` (`cust_id`);
+
+--
+-- Indexes for table `beautician_service`
+--
+ALTER TABLE `beautician_service`
+  ADD PRIMARY KEY (`emp_id`,`service_id`);
+
+--
+-- Indexes for table `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`cust_id`);
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`emp_id`),
+  ADD UNIQUE KEY `emp_email_UNIQUE` (`emp_email`),
+  ADD UNIQUE KEY `emp_phone_UNIQUE` (`emp_phone`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`image_id`);
+
+--
+-- Indexes for table `mirror`
+--
+ALTER TABLE `mirror`
+  ADD PRIMARY KEY (`image_id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
+-- Indexes for table `registered_customer`
+--
+ALTER TABLE `registered_customer`
+  ADD PRIMARY KEY (`cust_id`),
+  ADD UNIQUE KEY `cust_email_UNIQUE` (`cust_email`),
+  ADD KEY `cust_phone` (`cust_phone`);
+
+--
+-- Indexes for table `register_request`
+--
+ALTER TABLE `register_request`
+  ADD PRIMARY KEY (`reg_id`),
+  ADD KEY `reg_id` (`reg_id`);
+
+--
+-- Indexes for table `service`
+--
+ALTER TABLE `service`
+  ADD PRIMARY KEY (`service_id`);
+
+--
+-- Indexes for table `stock_item`
+--
+ALTER TABLE `stock_item`
+  ADD PRIMARY KEY (`stock_id`,`supplier_id`),
+  ADD KEY `fk_Stock_Item_Supplier1` (`supplier_id`);
+
+--
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supplier_id`),
+  ADD UNIQUE KEY `supplier_email_UNIQUE` (`supplier_email`),
+  ADD UNIQUE KEY `supplier_phone_UNIQUE` (`supplier_phone`);
+
+--
+-- Indexes for table `unregistered_customer`
+--
+ALTER TABLE `unregistered_customer`
+  ADD PRIMARY KEY (`cust_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+
+--
+-- AUTO_INCREMENT for table `mirror`
+--
+ALTER TABLE `mirror`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `register_request`
+--
+ALTER TABLE `register_request`
+  MODIFY `reg_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
 -- Constraints for dumped tables
 --
 
@@ -539,6 +632,7 @@ INSERT INTO `user` (`id`, `first_name`, `last_name`, `email`, `password`, `last_
 --
 ALTER TABLE `stock_item`
   ADD CONSTRAINT `fk_Stock_Item_Supplier1` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
