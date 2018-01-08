@@ -1,6 +1,7 @@
-<?php require_once('../model/Database.php') ?>
-<?php require_once('../model/RegisteredCustomer.php') ?>
-<?php require_once('../model/Employee.php') ?>
+<?php require_once('Database.php') ?>
+<?php require_once('RegisteredCustomer.php') ?>
+<?php require_once('Employee.php') ?>
+
 <?php
 	class User{
 
@@ -168,6 +169,25 @@
         {
             $hashed_password = md5($password);
             $query = "UPDATE user SET password='$hashed_password' WHERE user_reg_id ='$user_id'";
+
+
+            try {
+                $result = self::$db->executeQuery($query);
+                if ($result) {
+                    echo "<h4>Password Changed Successfully.</h4>";
+                } else {
+                    echo "<h4>Failed to Change the Password.</h4>";
+                }
+            } catch (mysqli_sql_exception $e) {
+                echo $e;
+            }
+        }
+
+        // change user password through link
+        public function changeUserPasswordLink($password,$user_id)
+        {
+            $hashed_password = md5($password);
+            $query = "UPDATE user SET password='$hashed_password', is_lost_password=0 WHERE user_reg_id ='$user_id'";
 
 
             try {

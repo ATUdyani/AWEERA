@@ -44,6 +44,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <script type="text/javascript" src="../js/receptionist_functions.js"></script>
     <script type="text/javascript" src="../js/profile_handler.js"></script>
     <script type="text/javascript" src="../js/comment_count_handler.js"></script>
+    <script type="text/javascript" src="../js/sms_notify_handler.js"></script>
 
 </head>
 

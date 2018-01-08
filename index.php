@@ -18,7 +18,7 @@
     <meta name="description" content="AWEERA - Hair and Beauty">
     <meta name="author" content="TeamScorp">
 
-    <title>Aweera - Bridal, Hair & Beauty</title>
+    <title>AWEERA - Bridal, Hair & Beauty</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">

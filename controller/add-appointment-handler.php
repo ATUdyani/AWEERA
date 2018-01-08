@@ -4,6 +4,7 @@
 <?php require_once '../model/Employee.php' ?>
 <?php require_once '../model/ActivityLog.php' ?>
 <?php require_once '../model/RegisteredCustomer.php' ?>
+<?php require_once '../model/Customer.php' ?>
 <?php require_once('../model/SMS.php') ?>
 <?php require_once('../model/Email.php') ?>
 
@@ -73,7 +74,7 @@ else{
     $activity_log->addActivityLog($new_id,$description);
 
     // get customer email
-    $customer = new RegisteredCustomer();
+    $customer = new Customer();
     $row = $customer->getCustomerData($cust_id);
     $cust_email = $row['cust_email'];
     $cust_phone = $row['cust_phone'];
@@ -88,16 +89,17 @@ else{
     $service = new Service();
     $row = $service->getServiceData($service_id);
     $service_name = $row['service_name'];
+    $service_charge = $row['service_charge'];
 
     // send email confirmation
     $email = new Email();
-    $email -> sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+    //$email -> sendAppointmentSuccessEmail($cust_email,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge);
 
 
 
     // send confirmation sms
     $sms = new SMS();
-    $sms -> sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name);
+    $sms -> sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge);
 
 
 }

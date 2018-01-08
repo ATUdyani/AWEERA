@@ -1,6 +1,6 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Appointment.php' ?>
-<?php require_once '../model/RegisteredCustomer.php' ?>
+<?php require_once '../model/Customer.php' ?>
 <?php require_once '../model/Employee.php' ?>
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/Email.php' ?>
@@ -38,7 +38,7 @@
     $service_name = $row['service_name'];
 
     // execute the query and extract the email address of the customer
-    $customer = new RegisteredCustomer();
+    $customer = new Customer();
     $row = $customer->getCustomerData($cust_id);
     $cust_email = $row['cust_email'];
     $cust_phone = $row['cust_phone'];

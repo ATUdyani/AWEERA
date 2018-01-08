@@ -27,12 +27,12 @@
 //    }
 //
 //    // send a sms when appointment has been made successfully
-//    function sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name){
+//    function sendAppointmentSuccessSMS($cust_phone,$appointment_date,$start_time,$end_time,$emp_first_name,$emp_last_name,$service_name,$service_charge){
 //
 //        try{
 //            $contactno1=substr($cust_phone,1,9);
 //            $contactno2='+94'.$contactno1;
-//            $msg_body = "Your Appointment for ".$service_name.", is on ".$appointment_date
+//            $msg_body = "Your Appointment for ".$service_name." - Rs.".$service_charge.", is on ".$appointment_date
 //                .", from ".$start_time."h to ".$end_time."h, with ".$emp_first_name." ".$emp_last_name." - From AWEERA";
 //
 //            self::$client->messages->create(

@@ -10,7 +10,9 @@
             </div>
             <div class="modal-body">
                 <div id="update_msg_result">
-
+                    <div class="col-md-3">
+                        <img src="../../img/loading.gif" id="loading" class="img-responsive" alt="avatar">
+                    </div>
                 </div>
             </div>
         </div>

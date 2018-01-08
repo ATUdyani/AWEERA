@@ -26,6 +26,7 @@
         {
             self::$db = new Database();
             self::$connection = self::$db->connect();
+            date_default_timezone_set('Asia/Colombo');
         }
 
         // get all appointment data for a particular appointment id
@@ -571,10 +572,10 @@
         }
 	
 	// get appointment count for a period 
-        public function getAppointmentCountPeriod($fdate,$tdate){
+        public function getAppointmentCountPeriod($from_date,$to_date){
 
             // query to count appointments for a period
-            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date BETWEEN '".$fdate."' AND '".$tdate."'";
+            $query = "SELECT COUNT(*) AS appointment_count FROM appointment WHERE appointment_date BETWEEN '".$from_date."' AND '".$to_date."'";
             try{
                 $result = self::$db->executeQuery($query);
                 $row = mysqli_fetch_array($result);
@@ -667,6 +668,20 @@ FROM appointment a,service s WHERE a.appointment_date BETWEEN '".$fdate."' AND '
             }
         }
 
+        // get the appointments today
+        public function getAppointmentsToday(){
+            $date = date("Y-m-d");
+            $query = "SELECT * FROM appointment WHERE appointment_date='".$date."' AND payment_id='none'";
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
         // view appointment details
         public function viewAppointmentPaymentDetails($field, $search_text){
             // load appointment_id, appointment_date, appointment_time data on page ready
@@ -699,10 +714,11 @@ INNER JOIN service ON appointment.service_id = service.service_id WHERE "
                 $appointment_list ="<table class=\"table table-hover col-md-12\">
                                 <thead>
                                 <tr>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Service Name</th>
-                                    <th>Service Charge</th>
+                                    <th style=\"width: 20%\">First Name</th>
+                                    <th style=\"width: 20%\">Last Name</th>
+                                    <th style=\"width: 30%\">Service Name</th>
+                                    <th style=\"width: 20%\">Service Charge</th>
+                                    <th style=\"width: 10%\">Add</th>
                                 </tr>
                                 </thead>
                                 <tbody>";
@@ -719,7 +735,7 @@ INNER JOIN service ON appointment.service_id = service.service_id WHERE "
                         $appointment_list.= "<td id='sname_$index'>{$appointment['service_name']}</td>";
                         $appointment_list.= "<td id='scharge_$index'>{$appointment['service_charge']}</td>";
 
-                        $appointment_list.= "<td id='addbtn_$index'><button onclick=\"addToCart('$index')\" class=\"btn btn-success btn-sm fa fa-plus add\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon\"></span> ADD </button></td>";
+                        $appointment_list.= "<td id='addbtn_$index'><button onclick=\"addToCart('$index')\" class=\"btn btn-success btn-sm\"  name=\"add\" value=\"add\" id=\"btn_$index\"><span class=\"glyphicon glyphicon-plus\"></span> Add</button></td>";
 
                         $appointment_list.= "</tr>";
 

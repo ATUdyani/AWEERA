@@ -1,3 +1,8 @@
+// loading modal data
+var loading_data = "<br><br><br>\n" +
+    "<img src=\"../img/loading.gif\" id=\"loading\" class=\"img-responsive\" alt=\"loading\" height=\"120\" width=\"120\" style=\"margin-left: 38%;\">\n" +
+    "<br><br><br>";
+
 // load suitable results on keyup
 $(document).ready(function(){
     $('#search_text_appointment').keyup(function () {
@@ -122,6 +127,8 @@ function loadSlots(){
 
 // make an appointment
 function makeAppointment() {
+    $('#msg_Modal').modal('show');
+    $('#msg_result').html(loading_data);
     $('#make_appointment_button').prop("disabled",true);
     var serviceId = document.getElementById("select_service_name").value;
     var beauticianId = document.getElementById("select_beautician_name").value;
@@ -140,7 +147,6 @@ function makeAppointment() {
         data: {data:jsonString},
         cache:false,
         success: function( data ) {
-            $('#msg_Modal').modal('show');
             $('#msg_result').html(data);
         }
     });
@@ -148,6 +154,8 @@ function makeAppointment() {
 
 // cancel appointment - only the receptionist or admin can invoke this
 function cancelAppointment(appointementId){
+    $('#msg_Modal').modal('show');
+    $('#msg_result').html(loading_data);
     $('.btn_cancel').addClass('disabled');
     var dataArray = [];
     dataArray.push(appointementId);
@@ -158,7 +166,6 @@ function cancelAppointment(appointementId){
         data: {data:jsonString},
         cache:false,
         success: function( data ) {
-            $('#msg_Modal').modal('show');
             $('#msg_result').html(data);
             $('#content').load("manage-appointments.php");
         }

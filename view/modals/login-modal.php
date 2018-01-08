@@ -32,7 +32,7 @@
                             <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Login</button>
                         </div>
                         <div>
-                            <!--<button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>-->
+                            <button id="login_lost_btn" type="button" class="btn btn-link">Lost Password?</button>
                             <button id="login_register_btn" type="button" class="btn btn-link">Register</button>
                         </div>
                     </div>
@@ -46,11 +46,11 @@
                             <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
                             <span id="text-lost-msg" class="my-msg"><p>Type your e-mail.</p></span>
                         </div>
-                        <input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required>
+                        <input id="lost_email" class="form-control" type="text" placeholder="Email" required>
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Send</button>
+                            <button id="btn_lost" type="submit" class="btn btn-primary btn-lg btn-block my-lg-button">Send</button>
                         </div>
                         <div>
                             <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>

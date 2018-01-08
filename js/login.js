@@ -42,12 +42,32 @@ $(function() {
                 return false;
                 break;
             case "lost-form":
-                var $ls_email=$('#lost_email').val();
-                if ($ls_email == "ERROR") {
+                var ls_email=$('#lost_email').val();
+                $('#btn_lost').prop("disabled",true);
+                msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-play", "pending . . . ");
+                $.ajax({
+                    url:"controller/lost-password-handler.php", //the page containing php script
+                    type: "POST", //request type
+                    data: { ls_email: ls_email},
+                    cache: false,
+                    dataType: 'json',
+                    success:function(result){
+                        $('#btn_lost').prop("disabled",false);
+                        var recievedResult = result[0];
+                        if (recievedResult =="failure"){
+                            msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", result[1]);
+                        }
+                        else{
+                            msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", result[1]);
+                            $('#lost_email').val("");
+                        }
+                    }
+                });
+                /*if ($ls_email == "ERROR") {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "error", "glyphicon-remove", "Send error");
                 } else {
                     msgChange($('#div-lost-msg'), $('#icon-lost-msg'), $('#text-lost-msg'), "success", "glyphicon-ok", "Send OK");
-                }
+                }*/
                 return false;
                 break;
             case "register-form":

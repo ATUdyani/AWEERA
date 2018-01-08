@@ -207,7 +207,7 @@
                 $services = self::$db->executeQuery($query);
                 self::$db->verifyQuery($services);
                 while($service = mysqli_fetch_assoc($services)){
-                    $service_names .= "<option value=\"{$service['service_id']}\">{$service['service_name']}</option>";
+                    $service_names .= "<option value=\"{$service['service_id']}\">".$service['service_name']." - Rs.".$service['service_charge']."</option>";
                 }
                 $service_names.="</select>";
                 return $service_names;
@@ -244,3 +244,4 @@
             }
         }
     }
+    ?>

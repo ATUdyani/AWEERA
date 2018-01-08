@@ -1,5 +1,5 @@
 <?php
-require('../model/Commission.php');
+require('../model/Beautician.php');
 
 require('../model/Report.php');
 require('../fpdf/fpdf.php');
@@ -9,14 +9,10 @@ if(!empty($_POST['submit'])){
     $date=$_POST['rdate'];
     $emp_id=$_POST['select_beautician_name'];
 
-    $commission = new Commission();
-    $row = $commission -> getBeauticianCommissionSumByDate($date,$emp_id);
+    $beautician = new Beautician();
+    $row = $beautician -> getBeauticianCommissionSumByDate($date,$emp_id);
     $beautician_com=$row['commission'];
     $beautician_name=$row['employee_name'];
-
-
-   
-
 
     $pdf=new FPDF();
     $pdf->AddFont('Gadugi','','gadugi.php');
