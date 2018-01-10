@@ -10,5 +10,7 @@
 
 $comment = new Comment();
 $result = $comment ->updateCommentStatus($_POST['appointment_id'],$_POST['status']);
+
 echo $result;
+
 ?>

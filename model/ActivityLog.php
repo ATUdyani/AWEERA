@@ -50,10 +50,10 @@ class ActivityLog{
             $result = self::$db->executeQuery($query);
 
             if ($result){
-                echo "<h4>activity successfully added.</h4>";
+                //echo "<h4>activity successfully added.</h4>";
             }
             else{
-                echo "<h4>Failed to add the activity.</h4>";
+                //echo "<h4>Failed to add the activity.</h4>";
             }
         }catch (mysqli_sql_exception $e){
             echo $e;
@@ -81,62 +81,16 @@ class ActivityLog{
             $result = self::$db->executeQuery($query);
 
             if ($result){
-                echo "<h4>activity successfully added.</h4>";
+                //echo "<h4>activity successfully added.</h4>";
             }
             else{
-                echo "<h4>Failed to add the activity.</h4>";
+                //echo "<h4>Failed to add the activity.</h4>";
             }
         }catch (mysqli_sql_exception $e){
             echo $e;
         }
     }
 
-    // fetch supplier names
-//    public function fetchSupplierNames(){
-//
-//        $query="SELECT * FROM supplier WHERE is_deleted='0'";
-//
-//        $supplier_names ='';
-//
-//        $supplier_names.="<option value=\"\">Select a Supplier</option>";
-//
-//        try{
-//            $services = self::$db->executeQuery($query);
-//            self::$db->verifyQuery($services);
-//            while($supplier = mysqli_fetch_assoc($services)){
-//                $supplier_names .= "<option value=\"{$supplier['supplier_id']}\">{$supplier['supplier_id']}</option>";
-//            }
-//            return $supplier_names;
-//
-//        }catch (Exception $e){
-//            echo $e;
-//        }
-//    }
-//
-//    public function loadSupplierDetails(){
-//        $db = new Database();
-//        $connection = $db->connect();
-//        $supplier_list ='';
-//
-//        //getting list of stock items
-//        $query = "SELECT * FROM supplier ORDER BY supplier_name WHERE is_deleted='0'";
-//        $suppliers = $db->executeQuery($query);
-//
-//        $db->verifyQuery($suppliers);
-//
-//        while($supplier = mysqli_fetch_assoc($suppliers)){
-//            $supplier_list.= "<tr>";
-//            $supplier_list.= "<td>{$supplier['supplier_id']}</td>";
-//            $supplier_list.= "<td>{$supplier['supplier_name']}</td>";
-//            $supplier_list.= "<td>{$supplier['supplier_phone']}</td>";
-//            $supplier_list.= "<td>{$supplier['supplier_address']}</td>";
-//            $supplier_list.= "<td>{$supplier['supplier_email']}</td>";
-//            $supplier_list.= "<td><a href=\"modify-supplier.php?user_id={$supplier['supplier_id']}\">Edit</a></td>";
-//            //$supplier_list.= "<td><a href=\"delete-Supplier.php?user_id={$supplier['supplier_id']}\">Delete</a></td>";
-//            $supplier_list.= "</tr>";
-//        }
-//        return $supplier_list;
-//    }
 
     // view activity_log details
     public function viewActivityLogDetails($field,$search_text){
