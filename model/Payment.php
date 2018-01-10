@@ -53,7 +53,7 @@ class Payment
     public function getPurchasePaymentSumByDate($date){
 
         // query to count appointments for a particular day
-        $query = "SELECT SUM(paid_amount) AS payment_sum FROM payment WHERE payment_date='".$date."' AND type='Purchase'";
+        $query = "SELECT SUM(paid_amount) AS payment_sum FROM payment WHERE payment_date='".$date."' AND type='product'";
         try{
             $result = self::$db->executeQuery($query);
             $row = mysqli_fetch_array($result);
@@ -69,7 +69,7 @@ class Payment
     public function getPurchasePaymentSumByPeriod($fdate,$tdate){
 
         // query to count appointments for a period
-        $query = "SELECT SUM(paid_amount) AS purchase_payment_sum FROM payment WHERE payment_date BETWEEN '".$fdate."' AND '".$tdate."' AND type='Purchase'";
+        $query = "SELECT SUM(paid_amount) AS purchase_payment_sum FROM payment WHERE payment_date BETWEEN '".$fdate."' AND '".$tdate."' AND type='product'";
         try{
             $result = self::$db->executeQuery($query);
             $row = mysqli_fetch_array($result);

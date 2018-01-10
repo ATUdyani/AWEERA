@@ -668,6 +668,18 @@ FROM appointment a,service s WHERE a.appointment_date BETWEEN '".$fdate."' AND '
             }
         }
 
+        // get the appointments for a particular beautician for a particular day
+        public function getBeauticianAppointments($emp_id,$date){
+            $query = "SELECT * FROM appointment,service WHERE appointment.service_id=service.service_id AND appointment.emp_id='$emp_id' AND appointment.appointment_date='$date'";
+            try{
+                $result = self::$db->executeQuery($query);
+                return $result;
+            }
+            catch(Exception $e){
+                echo $e;
+            }
+        }
+
         // get the appointments today
         public function getAppointmentsToday(){
             $date = date("Y-m-d");

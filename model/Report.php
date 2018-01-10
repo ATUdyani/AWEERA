@@ -25,7 +25,6 @@ class Report{
         $pdf->SetFont('Arial','B',20);
 
         $pdf->Cell(189 ,10,'',0,1,'C');//end of line
-        $pdf->Cell(189 ,10,'',0,1,'C');//end of line
     }
 
     public function setHeaderReceipt($pdf){

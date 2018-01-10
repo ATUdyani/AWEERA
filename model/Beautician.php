@@ -59,6 +59,30 @@ class Beautician extends Employee
         }
     }
 
+    // fetch suitable Beautician names for a particular service id for the report generation
+    public function fetchBeauticianNamesReport($service_id){
+        // if all beauticians have to be loaded for all services
+        if($service_id=="*"){
+            $query="SELECT * FROM employee WHERE emp_type='Beautician' AND is_deleted='0'";
+        }
+        else{
+            $query="SELECT * FROM beautician_service b,employee e WHERE b.service_id='$service_id' AND b.emp_id=e.emp_id AND e.is_deleted='0'";
+        }
+        $beautician_names ='';
+
+        try{
+            $services = self::$db->executeQuery($query);
+            self::$db->verifyQuery($services);
+            while($beautician = mysqli_fetch_assoc($services)){
+                $beautician_names .= "<option value=\"{$beautician['emp_id']}\">{$beautician['first_name']}</option>";
+            }
+            return $beautician_names;
+
+        }catch (Exception $e){
+            echo $e;
+        }
+    }
+
     // view appointments for a particular date
     public function viewAppointments($emp_id,$date){
         $query ="SELECT * FROM appointment a,registered_customer c,service s WHERE a.emp_id='".$emp_id."' 
@@ -201,7 +225,7 @@ class Beautician extends Employee
 
         // query to count appointments for a particular day
 
-        $add_query = "SELECT SUM(s.service_charge * s.commission_percentage/100) AS commission, e.first_name AS employee_name 
+        $add_query = "SELECT SUM(s.service_charge * s.commission_percentage/100) AS commission, e.first_name AS first_name, e.last_name AS last_name
         FROM service s , appointment a , employee e 
         WHERE s.service_id=a.service_id AND a.emp_id=e.emp_id AND a.appointment_date='".$date."' AND e.emp_id='".$emp_id."'  ";
 

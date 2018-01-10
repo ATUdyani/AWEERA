@@ -68,8 +68,8 @@ class ActivityLog{
         $id = self::$db->generateId($last_id,"ACT");
         $date_time = date("Y-m-d H:i:s");
 
-        echo $_SESSION['user_reg_id'];
-        echo $_SESSION['type'];
+        //echo $_SESSION['user_reg_id'];
+        //echo $_SESSION['type'];
 
         $query = "INSERT INTO activity_log (id,date_time,user_reg_id,user_type,modified_id,description) VALUES ('"
             .$id."','".$date_time."', '".$_SESSION['user_reg_id']."', '"

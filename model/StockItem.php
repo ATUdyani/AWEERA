@@ -224,7 +224,12 @@ class StockItem{
                     $stock_list.= "<td>{$stock['stock_id']}</td>";
                     $stock_list.= "<td>{$stock['stock_brand']}</td>";
                     $stock_list.= "<td>{$stock['type']}</td>";
-                    $stock_list.= "<td>{$stock['stock_count']}</td>";
+                    if($stock['stock_count']==0){
+                        $stock_list.= "<td><span class=\"label label-danger\"><big>Out of Stock</big></span></td>";
+                    }
+                    else{
+                        $stock_list.= "<td>{$stock['stock_count']}</td>";
+                    }
                     $stock_list.= "<td>{$stock['price']}</td>";
                     $stock_list.= "<td>{$stock['description']}</td>";
                     $stock_list.= "<td>{$stock['supplier_id']}</td>";
@@ -338,6 +343,25 @@ class StockItem{
                 echo "<p><i>No Search Results Found<i/></p>";
             }
         }catch (Exception $e){
+            echo $e;
+        }
+    }
+
+    // count out of stock
+    public function countOutStock(){
+        // query to get the comment count
+        $query = "SELECT COUNT(*) FROM stock_item WHERE stock_count=0 AND is_deleted=0";
+
+        try {
+            $result = self::$db->executeQuery($query);
+
+            if ($result) {
+                $req = mysqli_fetch_assoc($result);
+                return $req['COUNT(*)'];
+            } else {
+                echo 0;
+            }
+        } catch (mysqli_sql_exception $e) {
             echo $e;
         }
     }

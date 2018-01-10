@@ -44,6 +44,7 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
     <script type="text/javascript" src="../js/receptionist_functions.js"></script>
     <script type="text/javascript" src="../js/profile_handler.js"></script>
     <script type="text/javascript" src="../js/comment_count_handler.js"></script>
+    <script type="text/javascript" src="../js/out_stock_handler.js"></script>
     <script type="text/javascript" src="../js/sms_notify_handler.js"></script>
 
 </head>
@@ -87,7 +88,11 @@ if(!isset($_SESSION['user_id']) || ($_SESSION['type']!="Receptionist")){
                         </li>
                         <li><a href="../view/view-customer.php" class="my-sidebar-menu-item">Customer</a></li>
                         <li><a href="../view/manage-payments.php" class="my-sidebar-menu-item">Payments</a></li>
-                        <li><a href="../view/manage-stock.php" class="my-sidebar-menu-item">Stock</a></li>
+                        <li>
+                            <a href="../view/manage-stock.php" class="my-sidebar-menu-item">Stock
+                                <span style="background-color: #cc0000;" class="badge badge-pill badge-info" id="out_stock_count"></span>
+                            </a>
+                        </li>
                         <li><a href="../view/manage-supplier.php" class="my-sidebar-menu-item">Supplier</a></li>
 
 

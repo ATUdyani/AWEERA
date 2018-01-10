@@ -103,12 +103,12 @@
                         </div>
                         <div class="col-md-4">
                             <label>From</label>
-                            <input  class="form-control" type="date"  id="from" name="rdate"
+                            <input  class="form-control" type="date"  id="fromdate" name="fromdate"
                                     value="<?php echo date("Y-m-d");?>">
                         </div>
                         <div class="col-md-4">
                             <label>To</label>
-                            <input  class="form-control" type="date"  id="from" name="todate"
+                            <input  class="form-control" type="date"  id="todate" name="todate"
                                     value="<?php echo date("Y-m-d");?>">
                         </div>
                     </div>
@@ -135,7 +135,7 @@
                             <select name="select_beautician_name" id="select_beautician_name" class="form-control paragraph-font" onchange="getAppointments('')">
                                 <?php
                                 $beautician = new Beautician();
-                                $beautician_names = $beautician -> fetchBeauticianNames("*");
+                                $beautician_names = $beautician -> fetchBeauticianNamesReport("*");
                                 echo $beautician_names;
                                 ?>
                             </select>

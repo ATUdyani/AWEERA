@@ -29,10 +29,7 @@ if(!empty($_POST['submit'])){
 
     $pdf->Cell(189 ,15,'Daily Collection Report - Purchases',0,1,'C');//end of line
 
-    $pdf->SetFont('Gadugi','',16);
-
-    $txt = $date; //access the variable
-    $pdf->Cell(189 ,5,$txt,0,1,'C');//end of line
+    $pdf->Cell(189 ,5,$date,0,1,'C');//end of line
 
     $pdf->Cell(189 ,10,'',0,1,'C');//end of line
     $pdf->Cell(189 ,10,'',0,1,'C');//end of line
@@ -41,13 +38,14 @@ if(!empty($_POST['submit'])){
     $pdf->SetFont('Gadugi','',14);
 
 
-    $pdf->Cell(40 ,10,'',0,0,'C');//end of line
-    $pdf->Cell(69 ,10,'Number of Purchases',0,0,'L');
-    $pdf->Cell(80 ,10,$purchase_count,0,1,'C');//end of line
+    $pdf->Cell(30 ,10,'',0,0,'C');//end of line
+    $pdf->Cell(50 ,10,'Number of Purchases',0,0,'L');
+    $pdf->Cell(80 ,10,$purchase_count,0,1,'R');//end of line
 
-    $pdf->Cell(40 ,10,'',0,0,'C');//end of line
-    $pdf->Cell(69 ,10,'Total Income',0,0,'L');
-    $pdf->Cell(80 ,10,"Rs. ".number_format($payment_sum, 2, '.', ''),1,1,'C');//end of line
+    $pdf->SetFont('Arial','b',14);
+    $pdf->Cell(40 ,7,'',0,1,'C');//end of line
+    $pdf->Cell(120 ,10,'TOTAL INCOME',0,0,'C');
+    $pdf->Cell(40 ,10,"Rs. ".number_format($payment_sum, 2, '.', ''),1,1,'R');//end of line
 
     $pdf->Cell(40 ,10,'',0,0,'C');//end of line
     //$pdf->Cell(69 ,10,'Total Commission',0,0,'L');
