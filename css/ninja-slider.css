@@ -4,6 +4,12 @@
     src: url('../fonts/Merriweather-Regular.ttf');
 }
 
+@font-face{
+    font-family: bodyfont-caption;
+    /*src: url('../fonts/Merriweather-Regular.ttf');*/
+    src: url('../fonts/JuliusSansOne-Regular.ttf');
+}
+
 #ninja-slider {
     width:100%;
     background:#FFF;
@@ -73,8 +79,8 @@
 /*---------- Captions -------------------*/
 
 #ninja-slider .caption {
-    font-size:4em;
-    font-family: bodyfont;
+    font-size:5em;
+    font-family: bodyfont-caption;
     position:absolute;
     width:100%;
     text-align:center;
