@@ -1,5 +1,7 @@
 <?php require_once '../model/Database.php' ?>
 <?php require_once '../model/Appointment.php' ?>
+<?php require_once '../model/ActivityLog.php'?>
+
 
 <?php
 
@@ -9,6 +11,8 @@
 
         while($appointments = mysqli_fetch_array($result_set)) {
             $appointment->cancelAppointment($appointments['appointment_id']);
+
+
         }
 
     $customer = new RegisteredCustomer();

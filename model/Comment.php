@@ -1,4 +1,5 @@
 <?php require_once('Database.php') ?>
+<?php require_once('ActivityLog.php') ?>
 <?php
 	
 	class Comment{
@@ -141,13 +142,19 @@ AND a.service_id=s.service_id AND a.emp_id=e.emp_id AND a.comment IS NOT NULL AN
                 $result = self::$db->executeQuery($query);
                 if ($result){
                     if ($status=='1'){
+                        $description = "Comment is Approved";
                         echo "<h4>Comment is Approved</h4>";
                     }
                     else{
+                        $description = "Comment is Disapproved";
                         echo "<h4>Comment is Disapproved</h4>";
                     }
+
+                    $activity_log = new ActivityLog();
+                    $activity_log->addActivityLogSession($appointment_id,$description);
                 }
-                else{
+
+            else{
                     echo "<h4>Failed to Update!</h4>";
                 }
             }

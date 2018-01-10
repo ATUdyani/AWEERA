@@ -5,6 +5,7 @@
 <?php require_once '../model/Service.php' ?>
 <?php require_once '../model/Email.php' ?>
 <?php require_once '../model/SMS.php' ?>
+<?php require_once '../model/ActivityLog.php' ?>
 
 <?php
 /**
@@ -45,6 +46,10 @@
 
     // cancel the appointment
     $appointment->cancelAppointment($data[0]);
+
+    $description = "Cancel Appointment";
+    $activity_log = new ActivityLog();
+    $activity_log->addActivityLogSession($data[0],$description);
 
     // send email confirmation
     $email = new Email();
