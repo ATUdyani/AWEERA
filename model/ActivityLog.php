@@ -96,17 +96,17 @@ class ActivityLog{
     public function viewActivityLogDetails($field,$search_text){
         // load all data on page ready
         if ($field=="*"){
-            $query = "SELECT * FROM activity_log";
+            $query = "SELECT * FROM activity_log  ORDER BY date_time DESC";
         }
         elseif ($field=="all"){
             $query = "SELECT * FROM activity_log WHERE (id LIKE '%".$search_text
                 ."%' OR date_time LIKE '%".$search_text
                 ."%' OR user_reg_id LIKE '%".$search_text
                 ."%' OR modified_id LIKE '%".$search_text
-                ."%' OR description LIKE '%".$search_text."%')  ";
+                ."%' OR description LIKE '%".$search_text."%') ORDER BY date_time DESC";
         }
         else{
-            $query = "SELECT * FROM activity_log WHERE ".$field." LIKE '%".$search_text."%'";
+            $query = "SELECT * FROM activity_log WHERE ".$field." LIKE '%".$search_text."%'  ORDER BY date_time DESC";
         }
 
         try{
